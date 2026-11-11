@@ -1,0 +1,35 @@
+
+--- 10.0.0.18 hping statistic ---
+38214 packets transmitted, 30 packets received, 100% packet loss
+round-trip min/avg/max = 6.0/130.7/241.4 ms
+HPING 10.0.0.18 (h6-eth0 10.0.0.18): udp mode set, 28 headers + 512 data bytes
+status=0 port=38871 seq=400
+status=1 port=38871 seq=400
+status=1 port=38871 seq=400
+status=1 port=38871 seq=400
+status=1 port=38871 seq=400
+status=1 port=38871 seq=400
+status=0 port=38871 seq=1600
+status=0 port=38871 seq=3200
+status=0 port=38871 seq=4800
+status=0 port=38871 seq=6400
+status=0 port=38871 seq=8000
+status=0 port=38871 seq=9600
+status=0 port=38871 seq=11200
+status=0 port=38871 seq=12800
+status=0 port=38871 seq=14400
+status=0 port=38871 seq=16000
+status=0 port=38871 seq=16800
+status=0 port=38871 seq=18400
+status=0 port=38871 seq=20000
+status=0 port=38871 seq=21600
+status=0 port=38871 seq=23200
+status=0 port=38871 seq=24800
+status=0 port=38871 seq=26000
+status=0 port=38871 seq=27600
+status=0 port=38871 seq=29200
+status=0 port=38871 seq=30800
+status=0 port=38871 seq=32000
+status=0 port=38871 seq=33600
+status=0 port=38871 seq=35200
+status=0 port=38871 seq=36800

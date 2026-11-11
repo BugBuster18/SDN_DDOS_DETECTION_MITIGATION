@@ -1,0 +1,21 @@
+# Dry-run mitigation (Phase 6 step 1): logs what WOULD be blocked, installs nothing.
+detection:
+  enabled: true
+  mode: observation
+  method: hybrid
+  window_model: artifacts/experiments/temporal/window_model.json
+  source_model: artifacts/experiments/temporal/source_model.json
+  ml_threshold: 0.5
+  confirm_k: 2
+  confirm_n: 3
+  min_source_pps: 200.0
+
+mitigation:
+  enabled: true
+  dry_run: true
+  allowlist: ["10.0.0.7", "10.0.0.13"]
+
+monitoring:
+  polling_interval_seconds: 5
+  reply_timeout_seconds: 3
+  ml_api_url: http://127.0.0.1:8765/predict

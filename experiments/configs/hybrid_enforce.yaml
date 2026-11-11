@@ -1,0 +1,36 @@
+# Controlled mitigation (Phase 6). Real drops ENABLED and scoped.
+# Requires all three: mitigation.enabled true, dry_run false, detection.mode enforce.
+# Only for the isolated 10.0.0.0/24 Mininet lab. A kill-switch file disables drops live.
+detection:
+  enabled: true
+  mode: enforce
+  method: hybrid
+  window_model: artifacts/experiments/temporal/window_model.json
+  source_model: artifacts/experiments/temporal/source_model.json
+  ml_threshold: 0.5
+  confirm_k: 2
+  confirm_n: 3
+  recovery_windows: 2
+  cooldown_windows: 2
+  min_source_pps: 200.0
+  # At a confirmed victim, any source sending >= this interval rate is attributed
+  # (and blocked) even if the ML source score is marginal — guarantees a clear
+  # flood is never left unblocked. Set below your attacker rate (~3000 pps here).
+  source_min_attribute_pps: 800.0
+
+mitigation:
+  enabled: true
+  dry_run: false
+  priority: 200
+  hard_timeout_seconds: 60
+  max_rules_per_window: 12
+  max_sources_per_destination: 16
+  drop_rate_threshold_pps: 50.0
+  allowlist: ["10.0.0.7", "10.0.0.13"]   # legitimate probe hosts
+  kill_switch_file: experiments/MITIGATION_DISABLE
+
+monitoring:
+  polling_interval_seconds: 5
+  reply_timeout_seconds: 3
+  ml_api_url: http://127.0.0.1:8765/predict
+  log_jsonl: null

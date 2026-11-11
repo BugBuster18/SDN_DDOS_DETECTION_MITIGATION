@@ -1,0 +1,144 @@
+{
+ "mode": "MITIGATION_ENABLED",
+ "n_rules": 6,
+ "rules": [
+  {
+   "cookie": "0xdd05000000000011",
+   "src": "10.0.0.1",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    1
+   ],
+   "switches": [
+    "s1"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435948.657,
+   "age_s": 0.2,
+   "reason": "attributed_attacker",
+   "score": 0.9999,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.1,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd05000000000012",
+   "src": "10.0.0.2",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    1
+   ],
+   "switches": [
+    "s1"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435948.658,
+   "age_s": 0.2,
+   "reason": "attributed_attacker",
+   "score": 0.9999,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.2,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd05000000000013",
+   "src": "10.0.0.3",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    1
+   ],
+   "switches": [
+    "s1"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435948.66,
+   "age_s": 0.2,
+   "reason": "attributed_attacker",
+   "score": 0.9999,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.3,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd05000000000014",
+   "src": "10.0.0.4",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    2
+   ],
+   "switches": [
+    "s2"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435948.662,
+   "age_s": 0.2,
+   "reason": "attributed_attacker",
+   "score": 0.9999,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.4,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd05000000000015",
+   "src": "10.0.0.5",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    2
+   ],
+   "switches": [
+    "s2"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435948.664,
+   "age_s": 0.2,
+   "reason": "attributed_attacker",
+   "score": 0.9999,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.5,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd05000000000016",
+   "src": "10.0.0.6",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    2
+   ],
+   "switches": [
+    "s2"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435948.665,
+   "age_s": 0.2,
+   "reason": "attributed_attacker",
+   "score": 0.9999,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.6,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  }
+ ]
+}

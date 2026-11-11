@@ -1,0 +1,407 @@
+{
+  "project": "SDN DDoS detection",
+  "training_source": "data/demo/demo_flows.csv",
+  "demo_synthetic_data": true,
+  "label_definition": {
+    "0": "BENIGN",
+    "1": "DoS/DDoS"
+  },
+  "feature_columns": [
+    "protocol",
+    "duration_sec",
+    "packet_count",
+    "byte_count",
+    "packet_rate",
+    "byte_rate",
+    "avg_packet_size"
+  ],
+  "excluded_from_model": [
+    "IP addresses",
+    "timestamps",
+    "flow IDs",
+    "datapath IDs",
+    "ports"
+  ],
+  "split_strategy": "GroupShuffleSplit (flow groups kept separate)",
+  "unique_flow_groups": 10000,
+  "train_flow_groups": 8000,
+  "test_flow_groups": 2000,
+  "train_test_group_overlap": 0,
+  "rows_used": 10000,
+  "train_rows": 8000,
+  "test_rows": 2000,
+  "class_counts": {
+    "0": 5051,
+    "1": 4949
+  },
+  "models": {
+    "Random Forest": {
+      "train": {
+        "accuracy": 0.693625,
+        "balanced_accuracy": 0.6939079568272903,
+        "precision": 0.6798277099784638,
+        "recall": 0.7185128983308042,
+        "f1": 0.698635189966802,
+        "roc_auc": 0.7769609718385257,
+        "average_precision": 0.7731057501178591,
+        "false_positive_rate": 0.33069698467622344,
+        "confusion_matrix": [
+          [
+            2708,
+            1338
+          ],
+          [
+            1113,
+            2841
+          ]
+        ],
+        "tn": 2708,
+        "fp": 1338,
+        "fn": 1113,
+        "tp": 2841
+      },
+      "test": {
+        "accuracy": 0.691,
+        "balanced_accuracy": 0.6911172779319483,
+        "precision": 0.6803827751196172,
+        "recall": 0.714572864321608,
+        "f1": 0.6970588235294117,
+        "roc_auc": 0.7492587314682867,
+        "average_precision": 0.7430237689075807,
+        "false_positive_rate": 0.33233830845771145,
+        "confusion_matrix": [
+          [
+            671,
+            334
+          ],
+          [
+            284,
+            711
+          ]
+        ],
+        "tn": 671,
+        "fp": 334,
+        "fn": 284,
+        "tp": 711
+      },
+      "fit_seconds": 1.401,
+      "train_test_f1_gap": 0.0015763664373902309
+    },
+    "Extra Trees": {
+      "train": {
+        "accuracy": 0.71,
+        "balanced_accuracy": 0.710102536060394,
+        "precision": 0.7016288252714709,
+        "recall": 0.7190187152250885,
+        "f1": 0.7102173369972521,
+        "roc_auc": 0.7905532694198808,
+        "average_precision": 0.7916950040180741,
+        "false_positive_rate": 0.29881364310430053,
+        "confusion_matrix": [
+          [
+            2837,
+            1209
+          ],
+          [
+            1111,
+            2843
+          ]
+        ],
+        "tn": 2837,
+        "fp": 1209,
+        "fn": 1111,
+        "tp": 2843
+      },
+      "test": {
+        "accuracy": 0.685,
+        "balanced_accuracy": 0.6850721268031701,
+        "precision": 0.6777020447906524,
+        "recall": 0.699497487437186,
+        "f1": 0.6884272997032641,
+        "roc_auc": 0.7475196879921999,
+        "average_precision": 0.7404804536133938,
+        "false_positive_rate": 0.32935323383084575,
+        "confusion_matrix": [
+          [
+            674,
+            331
+          ],
+          [
+            299,
+            696
+          ]
+        ],
+        "tn": 674,
+        "fp": 331,
+        "fn": 299,
+        "tp": 696
+      },
+      "fit_seconds": 0.596,
+      "train_test_f1_gap": 0.021790037293987985
+    },
+    "Decision Tree": {
+      "train": {
+        "accuracy": 0.704,
+        "balanced_accuracy": 0.7034174019514081,
+        "precision": 0.7217561521252797,
+        "recall": 0.6527567020738493,
+        "f1": 0.6855245683930943,
+        "roc_auc": 0.7916927638680216,
+        "average_precision": 0.7867411179678261,
+        "false_positive_rate": 0.24592189817103313,
+        "confusion_matrix": [
+          [
+            3051,
+            995
+          ],
+          [
+            1373,
+            2581
+          ]
+        ],
+        "tn": 3051,
+        "fp": 995,
+        "fn": 1373,
+        "tp": 2581
+      },
+      "test": {
+        "accuracy": 0.664,
+        "balanced_accuracy": 0.6637965949148729,
+        "precision": 0.6761177753544165,
+        "recall": 0.6231155778894473,
+        "f1": 0.6485355648535565,
+        "roc_auc": 0.7123828095702393,
+        "average_precision": 0.6942970759516689,
+        "false_positive_rate": 0.2955223880597015,
+        "confusion_matrix": [
+          [
+            708,
+            297
+          ],
+          [
+            375,
+            620
+          ]
+        ],
+        "tn": 708,
+        "fp": 297,
+        "fn": 375,
+        "tp": 620
+      },
+      "fit_seconds": 0.079,
+      "train_test_f1_gap": 0.036989003539537824
+    },
+    "Logistic Regression": {
+      "train": {
+        "accuracy": 0.59475,
+        "balanced_accuracy": 0.5926692555090411,
+        "precision": 0.639937106918239,
+        "recall": 0.41173495194739507,
+        "f1": 0.5010772545398584,
+        "roc_auc": 0.6267932059014805,
+        "average_precision": 0.6456767932784044,
+        "false_positive_rate": 0.2263964409293129,
+        "confusion_matrix": [
+          [
+            3130,
+            916
+          ],
+          [
+            2326,
+            1628
+          ]
+        ],
+        "tn": 3130,
+        "fp": 916,
+        "fn": 2326,
+        "tp": 1628
+      },
+      "test": {
+        "accuracy": 0.6,
+        "balanced_accuracy": 0.5990849771244281,
+        "precision": 0.6540284360189573,
+        "recall": 0.41608040201005025,
+        "f1": 0.5085995085995086,
+        "roc_auc": 0.6270356758918973,
+        "average_precision": 0.663017668490897,
+        "false_positive_rate": 0.21791044776119403,
+        "confusion_matrix": [
+          [
+            786,
+            219
+          ],
+          [
+            581,
+            414
+          ]
+        ],
+        "tn": 786,
+        "fp": 219,
+        "fn": 581,
+        "tp": 414
+      },
+      "fit_seconds": 0.071,
+      "train_test_f1_gap": -0.007522254059650235
+    },
+    "KNN": {
+      "train": {
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "roc_auc": 1.0,
+        "average_precision": 1.0,
+        "false_positive_rate": 0.0,
+        "confusion_matrix": [
+          [
+            4046,
+            0
+          ],
+          [
+            0,
+            3954
+          ]
+        ],
+        "tn": 4046,
+        "fp": 0,
+        "fn": 0,
+        "tp": 3954
+      },
+      "test": {
+        "accuracy": 0.6285,
+        "balanced_accuracy": 0.6284732118302958,
+        "precision": 0.6275303643724697,
+        "recall": 0.6231155778894473,
+        "f1": 0.6253151790216843,
+        "roc_auc": 0.6891292282307057,
+        "average_precision": 0.6851276971230564,
+        "false_positive_rate": 0.3661691542288557,
+        "confusion_matrix": [
+          [
+            637,
+            368
+          ],
+          [
+            375,
+            620
+          ]
+        ],
+        "tn": 637,
+        "fp": 368,
+        "fn": 375,
+        "tp": 620
+      },
+      "fit_seconds": 0.206,
+      "train_test_f1_gap": 0.3746848209783157
+    },
+    "Naive Bayes": {
+      "train": {
+        "accuracy": 0.5355,
+        "balanced_accuracy": 0.5400305440394492,
+        "precision": 0.5166480134303302,
+        "recall": 0.9339908952959028,
+        "f1": 0.6652855341379932,
+        "roc_auc": 0.6334635255512541,
+        "average_precision": 0.6471358719335174,
+        "false_positive_rate": 0.8539298072170044,
+        "confusion_matrix": [
+          [
+            591,
+            3455
+          ],
+          [
+            261,
+            3693
+          ]
+        ],
+        "tn": 591,
+        "fp": 3455,
+        "fn": 261,
+        "tp": 3693
+      },
+      "test": {
+        "accuracy": 0.535,
+        "balanced_accuracy": 0.5369534238355959,
+        "precision": 0.5182481751824818,
+        "recall": 0.9276381909547738,
+        "f1": 0.6649855907780979,
+        "roc_auc": 0.6433290832270806,
+        "average_precision": 0.6717900798344608,
+        "false_positive_rate": 0.8537313432835821,
+        "confusion_matrix": [
+          [
+            147,
+            858
+          ],
+          [
+            72,
+            923
+          ]
+        ],
+        "tn": 147,
+        "fp": 858,
+        "fn": 72,
+        "tp": 923
+      },
+      "fit_seconds": 0.04,
+      "train_test_f1_gap": 0.00029994335989524945
+    },
+    "Hist Gradient Boosting": {
+      "train": {
+        "accuracy": 0.729625,
+        "balanced_accuracy": 0.7297114418381832,
+        "precision": 0.7217132953701412,
+        "recall": 0.7372281234193222,
+        "f1": 0.7293882146878519,
+        "roc_auc": 0.8168010844434177,
+        "average_precision": 0.8189501824165855,
+        "false_positive_rate": 0.277805239742956,
+        "confusion_matrix": [
+          [
+            2922,
+            1124
+          ],
+          [
+            1039,
+            2915
+          ]
+        ],
+        "tn": 2922,
+        "fp": 1124,
+        "fn": 1039,
+        "tp": 2915
+      },
+      "test": {
+        "accuracy": 0.6785,
+        "balanced_accuracy": 0.6785444636115903,
+        "precision": 0.6732283464566929,
+        "recall": 0.6874371859296482,
+        "f1": 0.6802585778219791,
+        "roc_auc": 0.7407495187379685,
+        "average_precision": 0.734225348395076,
+        "false_positive_rate": 0.33034825870646767,
+        "confusion_matrix": [
+          [
+            673,
+            332
+          ],
+          [
+            311,
+            684
+          ]
+        ],
+        "tn": 673,
+        "fp": 332,
+        "fn": 311,
+        "tp": 684
+      },
+      "fit_seconds": 0.243,
+      "train_test_f1_gap": 0.049129636865872794
+    }
+  },
+  "selected_model": "Random Forest",
+  "model_path": "artifacts/demo/random_forest.joblib",
+  "elapsed_seconds": 2.702,
+  "warning": "Synthetic demo results are software smoke tests, not real-world DDoS performance."
+}

@@ -1,0 +1,41 @@
+
+--- 10.0.0.18 hping statistic ---
+1533 packets transmitted, 36 packets received, 98% packet loss
+round-trip min/avg/max = 40.9/3158.7/7302.0 ms
+HPING 10.0.0.18 (h2-eth0 10.0.0.18): udp mode set, 28 headers + 64 data bytes
+status=0 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=1 port=47135 seq=0
+status=0 port=47135 seq=400
+status=1 port=47135 seq=400
+status=1 port=47135 seq=400
+status=1 port=47135 seq=400
+status=1 port=47135 seq=400
+status=1 port=47135 seq=400
+status=1 port=47135 seq=400
+status=1 port=47135 seq=400
+status=0 port=47135 seq=800
+status=1 port=47135 seq=800
+status=1 port=47135 seq=800
+status=1 port=47135 seq=800
+status=1 port=47135 seq=800
+status=1 port=47135 seq=800
+status=1 port=47135 seq=800
+status=1 port=47135 seq=800
+status=0 port=47135 seq=1200
+status=1 port=47135 seq=1200
+status=1 port=47135 seq=1200
+status=1 port=47135 seq=1200
+status=1 port=47135 seq=1200
+status=1 port=47135 seq=1200
+status=1 port=47135 seq=1200

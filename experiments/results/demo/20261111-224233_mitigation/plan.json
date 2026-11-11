@@ -1,0 +1,198 @@
+{
+ "scenario": "mitigation",
+ "attack_kind": "icmp",
+ "mode_at_start": "MITIGATION_ENABLED",
+ "victim_ip": "10.0.0.18",
+ "timeline_s": {
+  "warmup": 15.0,
+  "attack": 40.0,
+  "recovery_wait": 40.0
+ },
+ "t_start": 1794436953.4588475,
+ "t_attack": 1794436968.4652956,
+ "t_attack_end": 1794437008.5642588,
+ "t_end": 1794437048.6288598,
+ "generators": [
+  {
+   "host": "h7",
+   "src_ip": "10.0.0.7",
+   "role": "legit",
+   "kind": "tcp_iperf3",
+   "cmd": "iperf3 -c 10.0.0.18 -p 5202 -b 10M -t 95 -i 1 -J",
+   "params": {
+    "mbps_cap": 10,
+    "port": 5202
+   },
+   "dst": "10.0.0.18",
+   "pid": 103928,
+   "start": 1794436953.46,
+   "stop": 1794437048.628,
+   "log": "legit_h7_tcp_iperf3.log"
+  },
+  {
+   "host": "h8",
+   "src_ip": "10.0.0.8",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5203 -b 2M -l 1000 -t 95 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1000,
+    "port": 5203
+   },
+   "dst": "10.0.0.18",
+   "pid": 103929,
+   "start": 1794436953.46,
+   "stop": 1794437048.629,
+   "log": "legit_h8_udp_iperf3.log"
+  },
+  {
+   "host": "h9",
+   "src_ip": "10.0.0.9",
+   "role": "legit",
+   "kind": "http",
+   "cmd": "end=$((SECONDS+95)); while [ $SECONDS -lt $end ]; do echo \"$(date +%s.%N) $(curl -s -o /dev/null --max-time 3 -w '%{http_code} %{time_total}' http://10.0.0.18/medium.bin)\"; sleep 1; done",
+   "params": {
+    "object": "medium.bin (1 MB)"
+   },
+   "dst": "10.0.0.18",
+   "pid": 103930,
+   "start": 1794436953.462,
+   "stop": 1794437048.629,
+   "log": "legit_h9_http.log"
+  },
+  {
+   "host": "h10",
+   "src_ip": "10.0.0.10",
+   "role": "legit",
+   "kind": "udp_request_response",
+   "cmd": "python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/udp_probe.py 10.0.0.18 --port 5353 --qps 20 --size 128 --duration 95",
+   "params": {
+    "qps": 20,
+    "pkt_size": 128
+   },
+   "dst": "10.0.0.18",
+   "pid": 103931,
+   "start": 1794436953.463,
+   "stop": 1794437048.629,
+   "log": "legit_h10_udp_request_response.log"
+  },
+  {
+   "host": "h13",
+   "src_ip": "10.0.0.13",
+   "role": "legit",
+   "kind": "icmp_ping",
+   "cmd": "timeout -s INT 95 ping -D -i 0.2 10.0.0.18",
+   "params": {
+    "interval_s": 0.2
+   },
+   "dst": "10.0.0.18",
+   "pid": 103932,
+   "start": 1794436953.464,
+   "stop": 1794437048.629,
+   "log": "legit_h13_icmp_ping.log"
+  },
+  {
+   "host": "h1",
+   "src_ip": "10.0.0.1",
+   "role": "attack",
+   "kind": "icmp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --icmp -d 512 -i u666 -q 10.0.0.18",
+   "params": {
+    "proto": "ICMP",
+    "pkt_size": 512,
+    "rate_pps": 1500
+   },
+   "dst": "10.0.0.18",
+   "pid": 104025,
+   "start": 1794436968.466,
+   "stop": 1794437008.543,
+   "log": "attack_h1_icmp.log"
+  },
+  {
+   "host": "h2",
+   "src_ip": "10.0.0.2",
+   "role": "attack",
+   "kind": "icmp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --icmp -d 256 -i u500 -q 10.0.0.18",
+   "params": {
+    "proto": "ICMP",
+    "pkt_size": 256,
+    "rate_pps": 2000
+   },
+   "dst": "10.0.0.18",
+   "pid": 104026,
+   "start": 1794436968.467,
+   "stop": 1794437008.543,
+   "log": "attack_h2_icmp.log"
+  },
+  {
+   "host": "h3",
+   "src_ip": "10.0.0.3",
+   "role": "attack",
+   "kind": "icmp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --icmp -d 1000 -i u1000 -q 10.0.0.18",
+   "params": {
+    "proto": "ICMP",
+    "pkt_size": 1000,
+    "rate_pps": 1000
+   },
+   "dst": "10.0.0.18",
+   "pid": 104027,
+   "start": 1794436968.468,
+   "stop": 1794437008.543,
+   "log": "attack_h3_icmp.log"
+  },
+  {
+   "host": "h4",
+   "src_ip": "10.0.0.4",
+   "role": "attack",
+   "kind": "icmp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --icmp -d 512 -i u666 -q 10.0.0.18",
+   "params": {
+    "proto": "ICMP",
+    "pkt_size": 512,
+    "rate_pps": 1500
+   },
+   "dst": "10.0.0.18",
+   "pid": 104028,
+   "start": 1794436968.469,
+   "stop": 1794437008.543,
+   "log": "attack_h4_icmp.log"
+  },
+  {
+   "host": "h5",
+   "src_ip": "10.0.0.5",
+   "role": "attack",
+   "kind": "icmp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --icmp -d 128 -i u500 -q 10.0.0.18",
+   "params": {
+    "proto": "ICMP",
+    "pkt_size": 128,
+    "rate_pps": 2000
+   },
+   "dst": "10.0.0.18",
+   "pid": 104033,
+   "start": 1794436968.474,
+   "stop": 1794437008.543,
+   "log": "attack_h5_icmp.log"
+  },
+  {
+   "host": "h6",
+   "src_ip": "10.0.0.6",
+   "role": "attack",
+   "kind": "icmp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --icmp -d 768 -i u833 -q 10.0.0.18",
+   "params": {
+    "proto": "ICMP",
+    "pkt_size": 768,
+    "rate_pps": 1200
+   },
+   "dst": "10.0.0.18",
+   "pid": 104034,
+   "start": 1794436968.476,
+   "stop": 1794437008.543,
+   "log": "attack_h6_icmp.log"
+  }
+ ]
+}

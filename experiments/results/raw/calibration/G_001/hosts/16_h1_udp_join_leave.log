@@ -1,0 +1,33 @@
+
+--- 10.0.0.18 hping statistic ---
+19205 packets transmitted, 28 packets received, 100% packet loss
+round-trip min/avg/max = 75.4/298.9/457.1 ms
+HPING 10.0.0.18 (h1-eth0 10.0.0.18): udp mode set, 28 headers + 1024 data bytes
+status=0 port=50014 seq=400
+status=1 port=50014 seq=400
+status=1 port=50014 seq=400
+status=1 port=50014 seq=400
+status=1 port=50014 seq=400
+status=1 port=50014 seq=400
+status=0 port=50014 seq=800
+status=0 port=50014 seq=1600
+status=0 port=50014 seq=2400
+status=0 port=50014 seq=3200
+status=0 port=50014 seq=4000
+status=0 port=50014 seq=4800
+status=0 port=50014 seq=5600
+status=0 port=50014 seq=6400
+status=0 port=50014 seq=7600
+status=0 port=50014 seq=8400
+status=0 port=50014 seq=9200
+status=0 port=50014 seq=10000
+status=0 port=50014 seq=10800
+status=0 port=50014 seq=11600
+status=0 port=50014 seq=12400
+status=0 port=50014 seq=13600
+status=0 port=50014 seq=14400
+status=0 port=50014 seq=15200
+status=0 port=50014 seq=16000
+status=0 port=50014 seq=16800
+status=0 port=50014 seq=17600
+status=0 port=50014 seq=18400

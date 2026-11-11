@@ -1,0 +1,447 @@
+"""Leakage-aware, imbalance-aware benchmark and Random Forest export.
+
+The holdout split is made on the full set of flow groups first. Training is
+then balanced by sampling *only from the training partition*. The test sample
+retains the natural class prevalence so false-positive rate and precision are
+meaningful for the source distribution.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import time
+import warnings
+
+import joblib
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.base import clone
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier, HistGradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import GroupShuffleSplit, train_test_split
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score, f1_score,
+    confusion_matrix, roc_auc_score, average_precision_score,
+    balanced_accuracy_score,
+)
+
+from .features import FEATURE_COLUMNS
+
+RANDOM_STATE = 42
+DEFAULT_MAX_TRAIN_ROWS = 60_000
+DEFAULT_MAX_TEST_ROWS = 100_000
+
+
+def model_factories():
+    """Conservative model configurations suitable for a 16 GB RAM laptop."""
+    return {
+        "Random Forest": RandomForestClassifier(
+            n_estimators=160, max_depth=10, min_samples_split=30,
+            min_samples_leaf=15, max_features=0.7,
+            class_weight="balanced_subsample", n_jobs=-1,
+            random_state=RANDOM_STATE,
+        ),
+        "Extra Trees": ExtraTreesClassifier(
+            n_estimators=180, max_depth=14, min_samples_split=20,
+            min_samples_leaf=10, max_features="sqrt",
+            class_weight="balanced", n_jobs=-1,
+            random_state=RANDOM_STATE,
+        ),
+        "Decision Tree": DecisionTreeClassifier(
+            max_depth=10, min_samples_split=30, min_samples_leaf=15,
+            class_weight="balanced", random_state=RANDOM_STATE,
+        ),
+        "Logistic Regression": LogisticRegression(
+            max_iter=1000, class_weight="balanced", solver="lbfgs",
+            random_state=RANDOM_STATE,
+        ),
+        "KNN": KNeighborsClassifier(
+            n_neighbors=9, weights="distance",
+            algorithm="kd_tree", leaf_size=40, n_jobs=-1,
+        ),
+        "Naive Bayes": GaussianNB(),
+        "Hist Gradient Boosting": HistGradientBoostingClassifier(
+            max_iter=160, max_leaf_nodes=15, l2_regularization=2.0,
+            learning_rate=0.08, random_state=RANDOM_STATE,
+        ),
+    }
+
+
+def split_indices(y: pd.Series, groups: pd.Series | None, test_size: float = 0.2):
+    """Return a group-disjoint holdout; never silently fall back to row split."""
+    indices = np.arange(len(y))
+    if groups is not None:
+        groups = pd.Series(groups).reset_index(drop=True)
+        if groups.isna().any():
+            groups = groups.fillna("__MISSING_GROUP__")
+        # Factorization reduces the memory overhead of millions of string IDs.
+        group_codes, unique_groups = pd.factorize(groups, sort=False)
+        if len(unique_groups) < 3:
+            raise ValueError(
+                f"Only {len(unique_groups)} distinct flow groups are available. "
+                "A leakage-resistant train/test split needs at least 3 groups; "
+                "row-wise fallback is disabled."
+            )
+        splitter = GroupShuffleSplit(n_splits=30, test_size=test_size, random_state=RANDOM_STATE)
+        for train_idx, test_idx in splitter.split(indices, y, group_codes):
+            if y.iloc[train_idx].nunique() == 2 and y.iloc[test_idx].nunique() == 2:
+                if np.intersect1d(group_codes[train_idx], group_codes[test_idx]).size == 0:
+                    return train_idx, test_idx, "GroupShuffleSplit (flow groups kept separate)"
+        raise ValueError(
+            "Could not create a flow-group-separated holdout containing both classes. "
+            "Inspect group/class distribution; row-wise fallback is disabled."
+        )
+
+    warnings.warn(
+        "No group_id supplied; using stratified row split. This can overestimate performance.",
+        RuntimeWarning,
+    )
+    train_idx, test_idx = train_test_split(
+        indices, test_size=test_size, random_state=RANDOM_STATE, stratify=y
+    )
+    return train_idx, test_idx, "Stratified row split (no group key supplied; leakage risk)"
+
+
+def _pipeline(estimator):
+    return Pipeline([
+        ("imputer", SimpleImputer(strategy="median", add_indicator=True)),
+        ("scaler", StandardScaler()),
+        ("classifier", estimator),
+    ])
+
+
+def _metrics(y_true, y_pred, y_prob):
+    """Report both attack (1) and benign (0) class performance."""
+    cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
+    tn, fp, fn, tp = [int(v) for v in cm.ravel()]
+    try:
+        auc_attack = float(roc_auc_score(y_true, y_prob))
+    except ValueError:
+        auc_attack = None
+    try:
+        ap_attack = float(average_precision_score(y_true, y_prob))
+    except ValueError:
+        ap_attack = None
+    try:
+        ap_benign = float(average_precision_score((np.asarray(y_true) == 0).astype(int), 1.0 - y_prob))
+    except ValueError:
+        ap_benign = None
+
+    attack_precision = float(precision_score(y_true, y_pred, pos_label=1, zero_division=0))
+    attack_recall = float(recall_score(y_true, y_pred, pos_label=1, zero_division=0))
+    attack_f1 = float(f1_score(y_true, y_pred, pos_label=1, zero_division=0))
+    benign_precision = float(precision_score(y_true, y_pred, pos_label=0, zero_division=0))
+    benign_recall = float(recall_score(y_true, y_pred, pos_label=0, zero_division=0))
+    benign_f1 = float(f1_score(y_true, y_pred, pos_label=0, zero_division=0))
+
+    return {
+        "accuracy": float(accuracy_score(y_true, y_pred)),
+        "balanced_accuracy": float(balanced_accuracy_score(y_true, y_pred)),
+        "macro_f1": float(f1_score(y_true, y_pred, average="macro", zero_division=0)),
+        "precision": attack_precision,
+        "recall": attack_recall,
+        "f1": attack_f1,
+        "attack_precision": attack_precision,
+        "attack_recall": attack_recall,
+        "attack_f1": attack_f1,
+        "benign_precision": benign_precision,
+        "benign_recall": benign_recall,
+        "benign_f1": benign_f1,
+        "roc_auc_attack": auc_attack,
+        "average_precision_attack": ap_attack,
+        "average_precision_benign": ap_benign,
+        "false_positive_rate": float(fp / max(fp + tn, 1)),
+        "confusion_matrix": [[tn, fp], [fn, tp]],
+        "tn": tn, "fp": fp, "fn": fn, "tp": tp,
+    }
+
+
+def _save_plots(results: dict, output_dir: Path):
+    names = list(results)
+    metric_names = ["balanced_accuracy", "attack_recall", "benign_recall", "macro_f1"]
+    x = np.arange(len(names))
+    width = 0.18
+    fig, ax = plt.subplots(figsize=(12, 6))
+    for i, metric in enumerate(metric_names):
+        vals = [results[n]["test"][metric] for n in names]
+        ax.bar(x + (i - 1.5) * width, vals, width, label=metric.replace("_", " ").title())
+    ax.set_xticks(x)
+    ax.set_xticklabels(names, rotation=20, ha="right")
+    ax.set_ylim(0, 1.05)
+    ax.set_ylabel("Score")
+    ax.set_title("Model comparison — natural-prevalence grouped holdout")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(output_dir / "model_comparison.png", dpi=150)
+    plt.close(fig)
+
+    rf = results.get("Random Forest")
+    if rf:
+        cm = np.array(rf["test"]["confusion_matrix"])
+        fig, ax = plt.subplots(figsize=(5, 4))
+        image = ax.imshow(cm, interpolation="nearest")
+        ax.set_title("Random Forest — held-out confusion matrix")
+        ax.set_xlabel("Predicted label")
+        ax.set_ylabel("True label")
+        ax.set_xticks([0, 1], ["Benign", "DDoS/DoS"])
+        ax.set_yticks([0, 1], ["Benign", "DDoS/DoS"])
+        for (i, j), value in np.ndenumerate(cm):
+            ax.text(j, i, str(value), ha="center", va="center")
+        fig.colorbar(image, ax=ax, fraction=0.046, pad=0.04)
+        fig.tight_layout()
+        fig.savefig(output_dir / "random_forest_confusion_matrix.png", dpi=150)
+        plt.close(fig)
+
+
+def _sample_balanced_training(y_train: pd.Series, max_train_rows: int, random_state: int):
+    """Sample equal class counts from training only; retain all minority rows when possible."""
+    if max_train_rows < 200:
+        raise ValueError("max_train_rows must be at least 200 so both classes have useful samples.")
+    class0 = np.flatnonzero(y_train.to_numpy() == 0)
+    class1 = np.flatnonzero(y_train.to_numpy() == 1)
+    if len(class0) < 20 or len(class1) < 20:
+        raise ValueError(
+            f"Too few training samples in a class (benign={len(class0)}, attack={len(class1)}). "
+            "Need at least 20 of each after the group split."
+        )
+    per_class = min(len(class0), len(class1), max_train_rows // 2)
+    rng = np.random.default_rng(random_state)
+    keep0 = rng.choice(class0, size=per_class, replace=False)
+    keep1 = rng.choice(class1, size=per_class, replace=False)
+    selected = np.concatenate([keep0, keep1])
+    rng.shuffle(selected)
+    return selected
+
+
+def _natural_test_sample(test_idx, y: pd.Series, max_test_rows: int, random_state: int):
+    """Subsample only the test partition while preserving its natural prevalence."""
+    if max_test_rows is None or len(test_idx) <= max_test_rows:
+        return np.asarray(test_idx, dtype=int)
+    _, sampled = train_test_split(
+        np.asarray(test_idx, dtype=int),
+        test_size=max_test_rows,
+        random_state=random_state,
+        stratify=y.iloc[test_idx],
+    )
+    return np.asarray(sampled, dtype=int)
+
+
+def _class_counts(y: pd.Series) -> dict[str, int]:
+    return {str(int(k)): int(v) for k, v in y.value_counts().sort_index().items()}
+
+
+def train_dataset(
+    input_path: Path,
+    output_dir: Path,
+    *,
+    max_rows: int | None = DEFAULT_MAX_TRAIN_ROWS,
+    max_test_rows: int = DEFAULT_MAX_TEST_ROWS,
+    demo: bool = False,
+):
+    started = time.time()
+    header = pd.read_csv(input_path, nrows=0)
+    required = FEATURE_COLUMNS + ["label"]
+    missing_cols = [c for c in required if c not in header.columns]
+    if missing_cols:
+        raise ValueError(f"Processed CSV is missing required columns: {missing_cols}")
+    usecols = required + (["group_id"] if "group_id" in header.columns else [])
+    data = pd.read_csv(input_path, usecols=usecols, low_memory=False)
+    data = data.replace([np.inf, -np.inf], np.nan)
+    data["label"] = pd.to_numeric(data["label"], errors="coerce")
+    data = data[data["label"].isin([0, 1])].copy()
+    data["label"] = data["label"].astype("int8")
+    for col in FEATURE_COLUMNS:
+        data[col] = pd.to_numeric(data[col], errors="coerce")
+    if len(data) < 100 or data["label"].nunique() != 2:
+        raise ValueError("Training data must contain at least 100 labelled rows and both classes (0=benign, 1=attack).")
+
+    # Identical feature vectors with contradictory labels are not separable by
+    # any model using this feature schema. Remove all rows for those signatures.
+    feature_hash = pd.util.hash_pandas_object(data[FEATURE_COLUMNS], index=False).to_numpy(dtype="uint64")
+    signature_frame = pd.DataFrame({"signature": feature_hash, "label": data["label"].to_numpy()})
+    signature_label_counts = signature_frame.groupby("signature", sort=False)["label"].nunique()
+    conflicting_signatures = signature_label_counts[signature_label_counts > 1].index.to_numpy(dtype="uint64")
+    if len(conflicting_signatures):
+        ambiguous_mask = np.isin(feature_hash, conflicting_signatures)
+        ambiguous_rows_removed = int(ambiguous_mask.sum())
+        data = data.loc[~ambiguous_mask].reset_index(drop=True)
+        feature_hash = feature_hash[~ambiguous_mask]
+    else:
+        ambiguous_rows_removed = 0
+
+    if data["label"].nunique() != 2:
+        raise ValueError("Removing conflicting feature signatures left only one class. Inspect source data/features.")
+
+    X = data[FEATURE_COLUMNS].reset_index(drop=True)
+    y = data["label"].reset_index(drop=True)
+    groups = data["group_id"].reset_index(drop=True) if "group_id" in data.columns else None
+    train_idx, test_idx, split_name = split_indices(y, groups)
+
+    if groups is not None:
+        group_codes, _ = pd.factorize(groups, sort=False)
+        train_unique_groups = np.unique(group_codes[train_idx])
+        test_unique_groups = np.unique(group_codes[test_idx])
+        group_overlap_count = int(np.intersect1d(train_unique_groups, test_unique_groups).size)
+        if group_overlap_count:
+            raise RuntimeError("Internal error: flow groups overlap across train/test split.")
+        train_group_count = int(train_unique_groups.size)
+        test_group_count = int(test_unique_groups.size)
+    else:
+        group_overlap_count = None
+        train_group_count = None
+        test_group_count = None
+
+    max_train_rows = int(max_rows or DEFAULT_MAX_TRAIN_ROWS)
+    train_local_idx = _sample_balanced_training(y.iloc[train_idx], max_train_rows, RANDOM_STATE)
+    sampled_train_idx = train_idx[train_local_idx]
+    sampled_test_idx = _natural_test_sample(test_idx, y, max_test_rows, RANDOM_STATE)
+
+    X_train, X_test = X.iloc[sampled_train_idx], X.iloc[sampled_test_idx]
+    y_train, y_test = y.iloc[sampled_train_idx], y.iloc[sampled_test_idx]
+
+    train_feature_signatures = set(feature_hash[sampled_train_idx].tolist())
+    test_feature_signatures = set(feature_hash[sampled_test_idx].tolist())
+    feature_signature_overlap = len(train_feature_signatures & test_feature_signatures)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    results = {}
+    selected_model = None
+    for name, estimator in model_factories().items():
+        model = _pipeline(clone(estimator))
+        t0 = time.time()
+        model.fit(X_train, y_train)
+        train_pred = model.predict(X_train)
+        test_pred = model.predict(X_test)
+        train_prob = model.predict_proba(X_train)[:, 1]
+        test_prob = model.predict_proba(X_test)[:, 1]
+        train_metrics = _metrics(y_train, train_pred, train_prob)
+        test_metrics = _metrics(y_test, test_pred, test_prob)
+        results[name] = {
+            "train": train_metrics,
+            "test": test_metrics,
+            "fit_seconds": round(time.time() - t0, 3),
+            "train_test_attack_f1_gap": float(train_metrics["attack_f1"] - test_metrics["attack_f1"]),
+            "train_test_benign_f1_gap": float(train_metrics["benign_f1"] - test_metrics["benign_f1"]),
+        }
+        if name == "Random Forest":
+            selected_model = model
+        print(
+            f"{name:24s} test balanced-acc={test_metrics['balanced_accuracy']:.4f} | "
+            f"attack recall={test_metrics['attack_recall']:.4f} | "
+            f"benign recall={test_metrics['benign_recall']:.4f} | "
+            f"FPR={test_metrics['false_positive_rate']:.4f} | "
+            f"macro-F1={test_metrics['macro_f1']:.4f}"
+        )
+        # Release non-deployment models before fitting the next candidate.
+        if name != "Random Forest":
+            del model
+
+    if selected_model is None:
+        raise RuntimeError("Random Forest model was not trained.")
+
+    model_path = output_dir / "random_forest.joblib"
+    joblib.dump(selected_model, model_path)
+    train_before_sampling = y.iloc[train_idx]
+    test_before_sampling = y.iloc[test_idx]
+    report = {
+        "project": "SDN DDoS detection",
+        "training_source": str(input_path),
+        "demo_synthetic_data": bool(demo),
+        "label_definition": {"0": "BENIGN", "1": "DoS/DDoS"},
+        "feature_columns": FEATURE_COLUMNS,
+        "excluded_from_model": ["IP addresses", "timestamps", "flow IDs", "datapath IDs", "ports"],
+        "split_strategy": split_name,
+        "unique_flow_groups": int(groups.nunique()) if groups is not None else None,
+        "train_flow_groups": train_group_count,
+        "test_flow_groups": test_group_count,
+        "train_test_group_overlap": group_overlap_count,
+        "feature_signature_overlap_count": int(feature_signature_overlap),
+        "ambiguous_feature_signatures_removed": int(len(conflicting_signatures)),
+        "ambiguous_rows_removed": int(ambiguous_rows_removed),
+        "rows_after_ambiguous_signature_removal": int(len(data)),
+        "rows_used_for_split": int(len(data)),
+        "train_rows_before_sampling": int(len(train_idx)),
+        "test_rows_before_sampling": int(len(test_idx)),
+        "train_rows": int(len(sampled_train_idx)),
+        "test_rows": int(len(sampled_test_idx)),
+        "train_class_counts_before_sampling": _class_counts(train_before_sampling),
+        "train_class_counts_after_sampling": _class_counts(y_train),
+        "test_class_counts_before_sampling": _class_counts(test_before_sampling),
+        "test_class_counts_after_sampling": _class_counts(y_test),
+        "training_sampling": "Equal number of benign and attack rows sampled only from the training partition",
+        "test_sampling": "Stratified-size sample from the group-separated test partition; natural class prevalence preserved",
+        "models": results,
+        "selected_model": "Random Forest (deployment baseline; review model_comparison.csv before deployment)",
+        "model_path": str(model_path),
+        "elapsed_seconds": round(time.time() - started, 3),
+        "warning": "Synthetic demo results are software smoke tests, not real-world DDoS performance." if demo else None,
+    }
+    (output_dir / "metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    pd.DataFrame([
+        {
+            "model": k,
+            **v["test"],
+            "train_attack_f1": v["train"]["attack_f1"],
+            "train_benign_f1": v["train"]["benign_f1"],
+            "train_test_attack_f1_gap": v["train_test_attack_f1_gap"],
+            "train_test_benign_f1_gap": v["train_test_benign_f1_gap"],
+            "fit_seconds": v["fit_seconds"],
+        }
+        for k, v in results.items()
+    ]).to_csv(output_dir / "metrics.csv", index=False)
+
+    metadata = {
+        "feature_columns": FEATURE_COLUMNS,
+        "label_0": "BENIGN", "label_1": "DoS/DDoS",
+        "demo_synthetic_data": bool(demo),
+        "training_source": str(input_path),
+        "training_rows": int(len(sampled_train_idx)),
+        "train_test_group_overlap": group_overlap_count,
+        "ambiguous_rows_removed": int(ambiguous_rows_removed),
+    }
+    (output_dir / "model_metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    _save_plots(results, output_dir)
+    print(f"\nSaved model: {model_path}")
+    print(f"Saved report: {output_dir / 'metrics.json'}")
+    print(f"Flow-group overlap: {group_overlap_count}")
+    print(f"Training class counts: {_class_counts(y_train)}")
+    print(f"Natural test class counts: {_class_counts(y_test)}")
+    print(f"Ambiguous rows removed: {ambiguous_rows_removed}")
+    if demo:
+        print("NOTE: This run used synthetic demo data. Do not use this model for live mitigation.")
+    return report
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Train and compare DDoS detection classifiers.")
+    parser.add_argument("--input", default="data/processed/flows.csv", help="Preprocessed canonical flows CSV")
+    parser.add_argument("--output-dir", default="artifacts/production")
+    parser.add_argument(
+        "--max-rows", "--max-train-rows", dest="max_rows", type=int,
+        default=DEFAULT_MAX_TRAIN_ROWS,
+        help="Maximum balanced training sample size (sampled after the group split; default: 60000)",
+    )
+    parser.add_argument(
+        "--max-test-rows", type=int, default=DEFAULT_MAX_TEST_ROWS,
+        help="Maximum natural-prevalence test rows (default: 100000)",
+    )
+    parser.add_argument("--demo", action="store_true", help="Mark the model as synthetic-demo-only")
+    args = parser.parse_args()
+    train_dataset(
+        Path(args.input), Path(args.output_dir),
+        max_rows=args.max_rows, max_test_rows=args.max_test_rows, demo=args.demo,
+    )
+
+
+if __name__ == "__main__":
+    main()

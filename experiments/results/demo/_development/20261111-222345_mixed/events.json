@@ -1,0 +1,197 @@
+[
+ {
+  "seq": 58,
+  "ts": 1794435842.365,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "NORMAL",
+  "state": "SUSPECTED",
+  "label": "SUSPICIOUS TRAFFIC",
+  "score": 0.9884,
+  "attributed": [],
+  "features": {
+   "n_sources": 11.0,
+   "n_active_flows": 107.0,
+   "n_new_flows": 103.0,
+   "pps": 1675.1299,
+   "bps": 13574672.3713,
+   "avg_pkt_size": 1012.9567,
+   "udp_share": 0.4171,
+   "tcp_share": 0.5806,
+   "icmp_share": 0.0024,
+   "response_ratio": 0.4783,
+   "top_source_share": 0.4138,
+   "ml_max_prob": 0.9994,
+   "ml_mean_prob": 0.8496,
+   "ml_flow_frac": 0.934,
+   "ml_pps_share": 0.4171
+  },
+  "mode": "DRY_RUN"
+ },
+ {
+  "seq": 59,
+  "ts": 1794435848.641,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "SUSPECTED",
+  "state": "CONFIRMED",
+  "label": "ATTACK CONFIRMED",
+  "score": 1.0,
+  "attributed": [
+   "10.0.0.1",
+   "10.0.0.2",
+   "10.0.0.3",
+   "10.0.0.4",
+   "10.0.0.5",
+   "10.0.0.6"
+  ],
+  "features": {
+   "n_sources": 11.0,
+   "n_active_flows": 11.0,
+   "n_new_flows": 8.0,
+   "pps": 13494.932,
+   "bps": 94184258.0167,
+   "avg_pkt_size": 872.404,
+   "udp_share": 0.9336,
+   "tcp_share": 0.066,
+   "icmp_share": 0.0004,
+   "response_ratio": 0.0022,
+   "top_source_share": 0.1946,
+   "ml_max_prob": 0.9994,
+   "ml_mean_prob": 0.7854,
+   "ml_flow_frac": 0.8182,
+   "ml_pps_share": 0.9336
+  },
+  "mode": "DRY_RUN"
+ },
+ {
+  "seq": 60,
+  "ts": 1794435848.643,
+  "type": "would_block",
+  "src": "10.0.0.1",
+  "dst": "10.0.0.18",
+  "proto": 17,
+  "proto_name": "UDP",
+  "switches": [
+   "s1"
+  ]
+ },
+ {
+  "seq": 61,
+  "ts": 1794435848.643,
+  "type": "would_block",
+  "src": "10.0.0.2",
+  "dst": "10.0.0.18",
+  "proto": 17,
+  "proto_name": "UDP",
+  "switches": [
+   "s1"
+  ]
+ },
+ {
+  "seq": 62,
+  "ts": 1794435848.643,
+  "type": "would_block",
+  "src": "10.0.0.3",
+  "dst": "10.0.0.18",
+  "proto": 17,
+  "proto_name": "UDP",
+  "switches": [
+   "s1"
+  ]
+ },
+ {
+  "seq": 63,
+  "ts": 1794435848.643,
+  "type": "would_block",
+  "src": "10.0.0.4",
+  "dst": "10.0.0.18",
+  "proto": 17,
+  "proto_name": "UDP",
+  "switches": [
+   "s2"
+  ]
+ },
+ {
+  "seq": 64,
+  "ts": 1794435848.644,
+  "type": "would_block",
+  "src": "10.0.0.5",
+  "dst": "10.0.0.18",
+  "proto": 17,
+  "proto_name": "UDP",
+  "switches": [
+   "s2"
+  ]
+ },
+ {
+  "seq": 65,
+  "ts": 1794435848.644,
+  "type": "would_block",
+  "src": "10.0.0.6",
+  "dst": "10.0.0.18",
+  "proto": 17,
+  "proto_name": "UDP",
+  "switches": [
+   "s2"
+  ]
+ },
+ {
+  "seq": 66,
+  "ts": 1794435890.782,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "CONFIRMED",
+  "state": "RECOVERING",
+  "label": "RECOVERING",
+  "score": 0.1594,
+  "attributed": [],
+  "features": {
+   "n_sources": 5.0,
+   "n_active_flows": 108.0,
+   "n_new_flows": 104.0,
+   "pps": 1487.9514,
+   "bps": 12598444.7895,
+   "avg_pkt_size": 1058.3717,
+   "udp_share": 0.1654,
+   "tcp_share": 0.8315,
+   "icmp_share": 0.0032,
+   "response_ratio": 0.6723,
+   "top_source_share": 0.5771,
+   "ml_max_prob": 0.9923,
+   "ml_mean_prob": 0.8274,
+   "ml_flow_frac": 0.9167,
+   "ml_pps_share": 0.1651
+  },
+  "mode": "DRY_RUN"
+ },
+ {
+  "seq": 67,
+  "ts": 1794435900.861,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "RECOVERING",
+  "state": "NORMAL",
+  "label": "NORMAL TRAFFIC",
+  "score": 0.1754,
+  "attributed": [],
+  "features": {
+   "n_sources": 5.0,
+   "n_active_flows": 107.0,
+   "n_new_flows": 103.0,
+   "pps": 1445.9924,
+   "bps": 12644548.8331,
+   "avg_pkt_size": 1093.0684,
+   "udp_share": 0.1742,
+   "tcp_share": 0.8224,
+   "icmp_share": 0.0033,
+   "response_ratio": 0.5548,
+   "top_source_share": 0.5951,
+   "ml_max_prob": 0.9923,
+   "ml_mean_prob": 0.834,
+   "ml_flow_frac": 0.9238,
+   "ml_pps_share": 0.1739
+  },
+  "mode": "DRY_RUN"
+ }
+]

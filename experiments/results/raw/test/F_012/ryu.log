@@ -1,0 +1,50 @@
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=rule poll=5.0s confirm=2/3 mitigation.enabled=False dry_run=True
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Registered switch 0000000000000004
+Registered switch 0000000000000001
+Registered switch 0000000000000005
+Registered switch 0000000000000006
+Registered switch 0000000000000002
+Registered switch 0000000000000003
+Switch 0000000000000001 disconnected; counter state discarded
+Switch 0000000000000006 disconnected; counter state discarded
+Switch 0000000000000005 disconnected; counter state discarded
+HybridDetector: Exception occurred during handler processing. Backtrace from offending handler [_packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/Codes/controller/hybrid_controller.py", line 112, in _packet_in_handler
+    super(HybridDetector, self)._packet_in_handler(ev)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/Codes/controller/switch.py", line 131, in _packet_in_handler
+    self.add_flow(datapath, 1, match, actions, idle=self.FLOW_IDLE_TIMEOUT, hard=self.FLOW_HARD_TIMEOUT)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/Codes/controller/hybrid_controller.py", line 91, in add_flow
+    super(HybridDetector, self).add_flow(datapath, priority, match, actions, buffer_id, idle, hard)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/Codes/controller/switch.py", line 56, in add_flow
+    datapath.send_msg(mod)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/controller/controller.py", line 438, in send_msg
+    msg.serialize()
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/ofproto_parser.py", line 270, in serialize
+    self._serialize_body()
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/ofproto_v1_3_parser.py", line 2743, in _serialize_body
+    match_len = self.match.serialize(self.buf, offset)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/ofproto_v1_3_parser.py", line 1052, in serialize
+    fields = [ofproto.oxm_from_user(k, uv) for (k, uv)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/ofproto_v1_3_parser.py", line 1052, in <listcomp>
+    fields = [ofproto.oxm_from_user(k, uv) for (k, uv)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/oxx_fields.py", line 72, in _from_user
+    value = t.from_user(value)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/lib/addrconv.py", line 29, in text_to_bin
+    return self._addr(text, **self._addr_kwargs).packed
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/netaddr/ip/__init__.py", line 346, in __init__
+    self._value = self._module.str_to_int(addr, flags)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/netaddr/strategy/ipv4.py", line 123, in str_to_int
+    elif pton_mode and any(len(p) > 1 and p.startswith('0') for p in addr.split('.')):
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/netaddr/strategy/ipv4.py", line 123, in <genexpr>
+    elif pton_mode and any(len(p) > 1 and p.startswith('0') for p in addr.split('.')):
+KeyboardInterrupt
+Switch 0000000000000002 disconnected; counter state discarded
+Switch 0000000000000003 disconnected; counter state discarded
+Switch 0000000000000004 disconnected; counter state discarded

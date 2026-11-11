@@ -1,0 +1,24 @@
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=hybrid poll=5.0s confirm=2/3 mitigation.enabled=True dry_run=False
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Registered switch 0000000000000001
+Registered switch 0000000000000005
+Registered switch 0000000000000004
+Registered switch 0000000000000003
+Registered switch 0000000000000002
+Registered switch 0000000000000006
+dst=10.0.0.18 NORMAL->SUSPECTED score=1.000 sources=[] actions=[]
+dst=10.0.0.18 SUSPECTED->MITIGATING score=1.000 sources=['10.0.0.2', '10.0.0.4', '10.0.0.6'] actions=['block']
+BLOCK 10.0.0.2 -> 10.0.0.18 proto=17 at dpids=[1] cookie=dd05000000000001
+BLOCK 10.0.0.4 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000002
+BLOCK 10.0.0.6 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000003
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.883 sources=['10.0.0.5'] actions=['block']
+BLOCK 10.0.0.5 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000004
+Switch 0000000000000001 disconnected; counter state discarded
+Switch 0000000000000004 disconnected; counter state discarded
+Switch 0000000000000006 disconnected; counter state discarded
+Switch 0000000000000003 disconnected; counter state discarded
+Switch 0000000000000002 disconnected; counter state discarded
+Switch 0000000000000005 disconnected; counter state discarded

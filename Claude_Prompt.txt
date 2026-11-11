@@ -1,0 +1,1232 @@
+# Research and Engineering Brief: SDN-Based DDoS Detection and Mitigation Using Machine Learning and Temporal Traffic Analysis
+
+## 1. Your role
+
+Act as a senior researcher and software engineer specialising in:
+
+- Software-Defined Networking (SDN)
+- DDoS detection and mitigation
+- Machine learning for network intrusion detection
+- OpenFlow, Ryu, Open vSwitch and Mininet
+- Reproducible network simulation and experimental evaluation
+- IEEE journal and conference research methodology
+
+You have access to my existing project repository. Your responsibility is to inspect it, understand what is already implemented, identify technical and research limitations, and turn it into a working, experimentally validated research project.
+
+Do not immediately rewrite the repository. First understand the existing implementation and decide whether to extend, refactor, or selectively rebuild it.
+
+I want a working end-to-end system and a potentially publishable research contribution, not just a model with high accuracy on a pre-existing dataset.
+
+Be technically critical. Do not agree with my assumptions automatically, do not manufacture novelty, and do not report experimental results that have not actually been obtained.
+
+---
+
+## 2. Project location and existing repository
+
+My repository is located at:
+
+```bash
+~/projects/ddos-cicddos2019-ready
+```
+
+Start by inspecting the complete repository.
+
+Run:
+
+```bash
+cd ~/projects/ddos-cicddos2019-ready
+
+pwd
+git status --short
+find . -maxdepth 3 -type f | sort
+```
+
+Inspect the README, configuration files, dependencies, scripts, tests, existing reports, model metadata and generated artifacts.
+
+### Important existing directories and files
+
+These are the main locations you should inspect. Verify the current contents before editing.
+
+**Machine learning implementation:**
+
+```text
+ddos_ml/
+    __init__.py
+    features.py
+    training.py
+    runtime.py
+    sdn_runtime.py
+    predict_api.py
+```
+
+Responsibilities:
+
+- `features.py`: Existing seven-feature extraction and canonicalisation logic.
+- `training.py`: Model training, dataset preparation, model comparisons, evaluation and artifact export.
+- `runtime.py`: Loads the production model and metadata.
+- `sdn_runtime.py`: Aggregates bidirectional OpenFlow flow-statistics rows.
+- `predict_api.py`: Local HTTP service used by the Ryu controller to obtain ML predictions.
+- `__init__.py`: Lazy imports were introduced so that the Ryu Python environment can import SDN functionality without importing the ML dependencies.
+
+**SDN controller:**
+
+```text
+Codes/controller/
+    controller.py
+    switch.py
+    switchm.py
+```
+
+Important:
+
+- `controller.py` is the main Ryu controller.
+- It imports `switch.py`, not `switchm.py`.
+- `switchm.py` is an alternative implementation. Do not assume it is active.
+- The controller collects OpenFlow statistics, aggregates rows, communicates with the prediction API and writes optional capture CSVs.
+
+**Mininet topology:**
+
+```text
+Codes/mininet/
+    topology.py
+```
+
+The existing topology uses six OpenFlow 1.3 switches arranged in a chain and 18 hosts.
+
+**Existing datasets and captures:**
+
+```text
+data/
+    raw/
+        ...
+    processed/
+        ...
+```
+
+Inspect these files if they exist:
+
+```text
+data/processed/cicddos2019_flows.csv
+
+data/raw/mininet_benign_openflow.csv
+data/raw/mininet_attack_openflow.csv
+
+data/processed/mininet_attack_udp_latest.csv
+data/processed/mininet_attack_udp_all_scenarios.csv
+data/processed/mininet_model_audit.csv
+```
+
+**Model artifacts:**
+
+```text
+artifacts/production/
+```
+
+The current production model is HistGradientBoosting. Do not overwrite or delete it.
+
+**Tests:**
+
+Inspect the existing test suite and run:
+
+```bash
+source .venv/bin/activate
+pytest -q
+```
+
+The previous known result was 24 passing tests. Verify the current result rather than assuming it.
+
+---
+
+## 3. Current system architecture and environment
+
+The project already has a functioning separation between the ML environment and the Ryu environment.
+
+### ML environment
+
+```text
+.venv
+Python 3.12
+```
+
+It contains the machine-learning dependencies such as:
+
+- NumPy
+- Pandas
+- Scikit-learn
+- Joblib
+
+The ML prediction service runs using:
+
+```bash
+source .venv/bin/activate
+python -m ddos_ml.predict_api
+```
+
+It exposes:
+
+```text
+GET  http://127.0.0.1:8765/health
+POST http://127.0.0.1:8765/predict
+```
+
+### Ryu environment
+
+```text
+.venv-ryu39
+Python 3.9
+```
+
+It contains Ryu 4.34 and the compatible Eventlet version.
+
+The controller runs using:
+
+```bash
+source .venv-ryu39/bin/activate
+cd Codes/controller
+ryu-manager --ofp-tcp-listen-port 6653 controller.py
+```
+
+Do not merge the Python environments or install the ML stack into Ryu without a compelling technical reason. The existing localhost HTTP architecture avoids importing Scikit-learn, NumPy and Pandas into the Ryu runtime.
+
+### Mininet
+
+- Mininet: 2.3.0
+- Open vSwitch: 3.3.9
+- OpenFlow version: 1.3
+- Controller address: `127.0.0.1:6653`
+- Six switches in a chain: s1–s6
+- Eighteen hosts: h1–h18
+- Victim host in the existing experiments: h18
+- Victim IP: `10.0.0.18`
+
+Use this environment as the starting point unless the topology has a demonstrated design limitation.
+
+### Important operational warning
+
+Running:
+
+```bash
+sudo mn -c
+```
+
+has previously killed the Ryu manager process in this environment.
+
+Perform Mininet cleanup before launching Ryu. Do not run cleanup after starting the controller unless you intentionally want to restart it.
+
+---
+
+## 4. Existing ML model and features
+
+The existing seven-feature model schema is:
+
+```text
+protocol
+duration_sec
+packet_count
+byte_count
+packet_rate
+byte_rate
+avg_packet_size
+```
+
+The labels are:
+
+```text
+0 = BENIGN
+1 = DoS/DDoS
+```
+
+The main original training subset was built from CIC-DDoS2019 files, including:
+
+```text
+DrDoS_NTP.csv
+Syn.csv
+UDPLag.csv
+```
+
+Approximately 3.17 million processed records were used.
+
+The original training implementation:
+
+- Removes contradictory duplicate feature signatures.
+- Uses group-separated training and test partitions.
+- Performs balancing within the training partition.
+- Keeps the test distribution natural.
+- Compares several classical ML algorithms.
+- Previously selected Hist Gradient Boosting as the best candidate on the reported group-separated test.
+
+The historical test results for that experiment were approximately:
+
+| Metric | Result |
+|---|---:|
+| Balanced accuracy | 99.64% |
+| Macro F1 | 92.32% |
+| Attack recall | 99.67% |
+| Benign recall | 99.61% |
+| False-positive rate | 0.39% |
+
+There were approximately 365,949 test records, including a heavily attack-dominated class distribution.
+
+Important limitation: a feature-signature overlap diagnostic found approximately 3,841 signatures appearing in both training and test partitions, despite zero group overlap. These results must not be presented as conclusive evidence of real-world generalisation.
+
+The production model is currently Hist Gradient Boosting, and its artifacts are stored in:
+
+```text
+artifacts/production/
+```
+
+The model loader reads its selected filename from the metadata.
+
+Do not change the production artifact while developing a replacement. Use a separate experimental artifact directory.
+
+---
+
+## 5. The actual problem that needs solving
+
+The largest current issue is the model's behaviour on legitimate UDP traffic.
+
+The Mininet testbed successfully demonstrates:
+
+- Six-switch SDN topology.
+- Ryu controller registration.
+- OpenFlow statistics collection.
+- ML API communication.
+- End-to-end host connectivity.
+- TCP traffic generation.
+- UDP traffic generation.
+- Capturing benign and attack traffic.
+- Flow-level prediction.
+
+However, the existing model has a serious false-positive problem.
+
+### Current Mininet evaluation
+
+The previous audit used the latest snapshot per unique flow tuple rather than counting repeated polling snapshots as separate independent records.
+
+| Traffic category | Correct predictions | Total |
+|---|---:|---:|
+| Benign ICMP | 6 | 6 |
+| Benign TCP | 8 | 8 |
+| Benign UDP | 0 | 18 |
+| Attack UDP | 18 | 18 |
+
+Overall:
+
+- Benign flows: 14/32 correctly classified.
+- Benign false positives: 18.
+- Attack flows: 18/18 correctly classified in this small experiment.
+- All observed benign UDP flows were incorrectly classified as attacks.
+- The sample is too small to claim reliable attack detection.
+
+### Why this is happening
+
+The model makes independent predictions using seven flow-level features.
+
+The original CIC-DDoS2019 training subset does not sufficiently represent the UDP packet-size and traffic patterns observed in our Mininet benign traffic.
+
+A previous data diagnostic found that one sampled collection of CIC benign UDP records had an average-packet-size maximum of approximately 300 bytes, whereas the Mininet benign UDP traffic included packet sizes around 554, 1242 and 1512 bytes.
+
+Our simulated UDP attacks also contained similar packet-size ranges.
+
+Therefore, packet size alone cannot distinguish all benign and malicious UDP flows.
+
+Do not simply raise the probability threshold or retrain the same model and claim the issue is fixed.
+
+### Existing traffic aggregation observation
+
+A previous diagnostic grouped records into approximate polling batches and deduplicated repeated flow snapshots within each batch.
+
+The observed maximum values were:
+
+| Metric | Benign UDP | Attack UDP |
+|---|---:|---:|
+| Maximum simultaneous source IPs | 3 | 6 |
+| Maximum concurrent flows | 3 | 6 |
+| Maximum estimated aggregate rate | 15.53 Mbps | 89.50 Mbps |
+
+The largest attack batches had aggregate rates around 89.50, 73.84, 62.38, 54.37 and 31.30 Mbps.
+
+The largest benign batches included approximately 11.23, 7.34, 7.15, 6.95 and 2.86 Mbps.
+
+This suggests that destination-centric traffic aggregation may provide useful evidence that the flow-level classifier is missing.
+
+However:
+
+- These are limited laboratory captures.
+- The benign and attack scenarios are not yet a comprehensive workload.
+- The 4-source threshold is only a preliminary observation, not a validated general rule.
+- The estimated flow rates were derived from cumulative flow counters and durations, not necessarily true per-poll traffic rates.
+
+The new design must use counter deltas over time for accurate interval-rate estimation.
+
+---
+
+## 6. Research direction and possible contribution
+
+Investigate the following research direction:
+
+### Proposed direction
+
+**A False-Positive-Aware, Destination-Centric Temporal Detection and Mitigation Framework for DDoS Attacks in Software-Defined Networks.**
+
+The proposed system should combine two complementary detection levels:
+
+**Level 1 — Flow-level machine learning**
+
+Use the existing seven-feature ML model to identify suspicious individual flows.
+
+Investigate whether adding better benign UDP training data improves its performance.
+
+**Level 2 — Destination-centric temporal traffic analysis**
+
+For each destination IP, analyse multiple flows over a rolling time window.
+
+Potential features include:
+
+- Number of distinct source IPs targeting one destination.
+- Number of simultaneous active flows.
+- Aggregate packet rate.
+- Aggregate byte rate.
+- Change in packet and byte counters between polling intervals.
+- Distribution of traffic across source IPs.
+- Flow arrival rate.
+- Per-source traffic contribution.
+- Protocol distribution.
+- Source concentration or entropy, if justified by experiments.
+- Rate changes across consecutive time windows.
+
+Use destination-level context to distinguish a legitimate high-volume UDP application from a distributed flooding pattern.
+
+Do not hardcode the preliminary 4-source threshold. Estimate thresholds from training and validation experiments, and verify them on independent Mininet runs.
+
+### Important implementation requirement: counter deltas
+
+OpenFlow counters are cumulative for the lifetime of a flow entry.
+
+Do not treat:
+
+```text
+byte_count / duration
+```
+
+as an accurate instantaneous or per-poll traffic rate.
+
+Maintain previous counter values and timestamps for each suitable flow identity.
+
+For an interval:
+
+```text
+delta_bytes = current_bytes - previous_bytes
+delta_packets = current_packets - previous_packets
+
+interval_byte_rate = delta_bytes / elapsed_seconds
+interval_packet_rate = delta_packets / elapsed_seconds
+```
+
+Handle:
+
+- New flows.
+- Expired flows.
+- Flow counter resets.
+- Switch disconnections.
+- Duplicate flow observations.
+- Reverse-direction aggregation.
+- Polling delays.
+- Missing statistics replies.
+- Counter wrap/reset conditions where applicable.
+
+The existing controller has used approximately 10-second polling. Make the polling interval configurable and investigate whether a shorter interval improves detection latency without creating excessive controller overhead.
+
+### Level 3 — Detection decision and mitigation policy
+
+Design a transparent decision process.
+
+For example:
+
+1. The ML model produces per-flow predictions and probabilities.
+2. The destination-level analyser computes traffic features for the current window.
+3. A policy combines these independent sources of evidence.
+4. Suspicious destinations are flagged.
+5. The system logs an alert and its supporting evidence.
+6. Mitigation is enabled only after the detection stage has passed validation.
+
+Use a configurable state machine if it improves reliability:
+
+```text
+NORMAL
+  |
+  v
+SUSPECTED
+  |
+  v
+CONFIRMED
+  |
+  v
+MITIGATING
+  |
+  v
+RECOVERING
+  |
+  v
+NORMAL
+```
+
+Use consecutive-window confirmation, hysteresis or cooldown periods where experiments demonstrate that they reduce false alarms.
+
+Do not use an arbitrary rule merely because it works on the current 18 attack flows.
+
+---
+
+## 7. Dataset research and training requirements
+
+Investigate additional datasets with enough legitimate traffic, especially benign UDP flows.
+
+The main candidate is CSE-CIC-IDS2018 / CIC-CSE-CIC-IDS2018.
+
+The dataset contains a large benign class overall, but the number of benign UDP records is not known until it is inspected.
+
+Important: it has known dataset-quality and labelling limitations. Do not assume every row is reliable or every benign flow is representative of our Mininet environment.
+
+Potential sources to investigate include:
+
+- CIC-DDoS2019.
+- CSE-CIC-IDS2018.
+- CIC-IDS2017, if useful.
+- NF-UNSW-NB15 or other NetFlow datasets, if their feature schema can be legitimately harmonised.
+- Other public datasets with substantial benign UDP traffic.
+
+Do not merge incompatible feature schemas blindly.
+
+### Required dataset audit
+
+Before training, generate a report containing:
+
+- Dataset name and source.
+- Download source and license.
+- Original file names.
+- Number of rows.
+- Number of benign rows.
+- Number of attack rows.
+- Number of UDP benign rows.
+- Number of UDP attack rows.
+- Number of TCP and ICMP rows.
+- Missing-value counts.
+- Infinite-value counts.
+- Duplicate counts.
+- Contradictory labels.
+- Feature ranges and distributions.
+- Average packet-size distributions for benign and attack UDP.
+- Packet-rate and byte-rate distributions.
+- Duration distributions.
+- Outlier analysis.
+- Protocol-specific class distribution.
+
+Use the actual dataset label and protocol fields. Inspect their formats before filtering.
+
+Do not assume that a protocol column uses the same numeric convention in every source.
+
+### Training experiments
+
+Compare at least these model families if practical:
+
+- Hist Gradient Boosting.
+- Random Forest.
+- Extra Trees.
+- Logistic Regression.
+- XGBoost, if dependencies and computational resources permit.
+
+Do not add complex neural networks unless they provide a measurable research advantage.
+
+Use an experimental artifact directory such as:
+
+```text
+artifacts/experiments/
+```
+
+Never silently replace:
+
+```text
+artifacts/production/
+```
+
+Evaluate the original model and new candidates on exactly the same held-out data.
+
+Do not use the Mininet test captures for model fitting or threshold selection if they will later be reported as final independent test results.
+
+---
+
+## 8. Experimental design: required Mininet simulation
+
+A real experimental network testbed is essential. Simply reporting results on CIC CSV files is insufficient for demonstrating the SDN control and mitigation system.
+
+Use the existing topology initially:
+
+```text
+s1 -- s2 -- s3 -- s4 -- s5 -- s6
+```
+
+with 18 hosts.
+
+Use h18 as the victim in the existing experiment setup.
+
+Create reproducible test scenarios.
+
+### Scenario A — Normal traffic only
+
+Include:
+
+- ICMP ping traffic.
+- TCP transfers.
+- HTTP-like traffic where feasible.
+- Ordinary UDP traffic.
+- UDP traffic with different payload sizes.
+- Low, medium and high UDP rates.
+- Multiple legitimate clients accessing the same server.
+- More than one legitimate UDP source communicating concurrently.
+
+Crucially, include benign UDP workloads with aggregate rates that overlap with attack workloads.
+
+Otherwise, the classifier may simply learn that high traffic volume means attack.
+
+### Scenario B — Single-source flooding
+
+Generate controlled UDP traffic from one source to the victim.
+
+Vary:
+
+- Packet size.
+- Sending rate.
+- Duration.
+
+### Scenario C — Multi-source UDP DDoS
+
+Use at least:
+
+```text
+h1, h2, h3, h4, h5, h6
+```
+
+to send UDP traffic towards h18.
+
+Vary:
+
+- Number of attacking sources.
+- Individual source rate.
+- Aggregate attack rate.
+- Packet size.
+- Attack duration.
+- Start-time synchronisation.
+- Destination port.
+
+### Scenario D — TCP SYN flooding
+
+Implement this only in the isolated Mininet laboratory.
+
+Compare detection and mitigation with UDP detection.
+
+### Scenario E — ICMP flooding
+
+Generate controlled ICMP flooding and evaluate the model separately.
+
+### Scenario F — Mixed benign and attack traffic
+
+This is extremely important.
+
+Have legitimate TCP, ICMP and UDP traffic continue while the simulated attack takes place.
+
+Test legitimate traffic at different rates and packet sizes during the attack.
+
+A good DDoS detector must not classify every flow targeting the victim as malicious.
+
+### Scenario G — Low-rate and changing-source attack
+
+Investigate whether the detection system can detect:
+
+- Low-rate attacks.
+- Bursty attacks.
+- Sources that join and leave during the attack.
+- Different packet sizes.
+- Attackers using multiple destination ports.
+
+Do not claim detection of sophisticated attacks unless they are actually simulated and evaluated.
+
+### Repetition
+
+Where practical, perform at least 10 independent runs per major scenario with different random seeds or traffic timing.
+
+Record:
+
+- Start and end times.
+- Network topology.
+- Host configuration.
+- Traffic-generation commands.
+- Packet sizes.
+- Rates.
+- Number of sources.
+- Attack duration.
+- Polling interval.
+- Model version.
+- Decision thresholds.
+
+Make the entire experiment repeatable through scripts.
+
+Do not count repeated snapshots of the same flow as independent samples.
+
+---
+
+## 9. Baselines and comparative experiments
+
+The research needs to show why the proposed approach is useful.
+
+Compare at least four methods:
+
+| Method | Description |
+|---|---|
+| Baseline 1 | Existing flow-level Hist Gradient Boosting model |
+| Baseline 2 | Destination-level statistical detection without ML |
+| Baseline 3 | Flow-level ML combined with destination-level traffic features |
+| Proposed method | Validated hybrid detection and staged mitigation policy |
+
+Also compare different ML algorithms where feasible.
+
+Perform an ablation study.
+
+For example:
+
+- ML only.
+- ML + unique source count.
+- ML + aggregate interval rate.
+- ML + source count + aggregate rate.
+- ML + full temporal feature set.
+- Full detection with consecutive-window confirmation.
+
+The purpose is to establish which component actually improves detection and reduces false positives.
+
+Do not claim an improvement simply because the proposed approach uses more features.
+
+---
+
+## 10. Evaluation metrics required for research
+
+Do not focus on accuracy alone.
+
+### Classification metrics
+
+Report:
+
+- Accuracy.
+- Precision.
+- Recall.
+- F1-score.
+- Macro F1.
+- Balanced accuracy.
+- Specificity.
+- False-positive rate.
+- False-negative rate.
+- ROC-AUC.
+- PR-AUC.
+- Confusion matrix.
+
+Report results separately for:
+
+- Benign UDP.
+- Attack UDP.
+- Benign TCP.
+- Attack TCP.
+- Benign ICMP.
+- Attack ICMP.
+- Mixed traffic.
+
+### Operational SDN metrics
+
+Measure:
+
+- Detection latency.
+- Time to confirmation.
+- Mitigation latency.
+- False alerts per minute or hour.
+- Packet loss.
+- Throughput before and during attack.
+- Legitimate-client goodput.
+- Round-trip latency.
+- Jitter where relevant.
+- Controller CPU utilisation.
+- Controller memory utilisation.
+- Number of OpenFlow messages.
+- Packet-In rate.
+- Number of installed flow rules.
+- Flow-table usage.
+- CPU and memory overhead of the ML API.
+
+### Mitigation effectiveness
+
+Compare:
+
+1. Normal network performance.
+2. Network performance under attack with no mitigation.
+3. Network performance under attack with the proposed mitigation.
+4. Legitimate traffic performance during mitigation.
+
+A successful mitigation must reduce the attack's effect without unnecessarily disrupting legitimate users.
+
+Use repeated experiments and report mean, standard deviation and confidence intervals where appropriate.
+
+Where sufficient independent repetitions exist, use appropriate statistical tests to compare methods.
+
+---
+
+## 11. Train/test separation and data leakage prevention
+
+This section is mandatory.
+
+Do not use a random row-level split as the only evidence of generalisation.
+
+Network-flow records can be highly correlated.
+
+Use suitable group-aware or temporal evaluation.
+
+Possible strategies:
+
+- Group by bidirectional flow tuple.
+- Group by capture session or experiment run.
+- Use chronological train, validation and test partitions.
+- Keep Mininet simulation runs unseen during model fitting.
+- Use cross-dataset evaluation where feature compatibility permits.
+
+Fit preprocessing, feature selection, imputation and scaling on training data only.
+
+Apply balancing or oversampling to training data only.
+
+Do not oversample the test set.
+
+Investigate duplicate feature signatures and contradictory labels.
+
+If training on CIC-DDoS2019 and evaluating on CSE-CIC-IDS2018, explain any feature differences and domain shift. Do not describe incompatible feature extraction as direct cross-dataset validation.
+
+The Mininet testbed should provide an independent systems-level evaluation.
+
+---
+
+## 12. Safe mitigation implementation
+
+The current project has automatic mitigation disabled. Keep it disabled by default.
+
+First implement detection-only mode.
+
+Then implement dry-run mitigation that logs what would be blocked without installing drop rules.
+
+Only after the detection results are satisfactory, implement actual mitigation.
+
+Mitigation requirements:
+
+- Restrict experiments to the isolated Mininet topology.
+- Use narrowly scoped OpenFlow rules.
+- Prefer blocking confirmed malicious traffic towards the victim rather than blindly blocking an entire source host.
+- Use configurable timeouts.
+- Maintain an allowlist for legitimate traffic and test hosts.
+- Log every rule installation and removal.
+- Provide an explicit rollback mechanism.
+- Avoid permanently blocking a benign host due to one incorrect prediction.
+- Demonstrate that legitimate connectivity recovers after mitigation.
+- Make mitigation enablement explicit in configuration.
+
+Provide a configuration resembling:
+
+```yaml
+detection:
+  enabled: true
+  mode: observation
+
+mitigation:
+  enabled: false
+  dry_run: true
+
+monitoring:
+  polling_interval_seconds: 5
+```
+
+This is an example, not a requirement to replace the existing configuration framework without inspecting it.
+
+Do not silently enable blocking.
+
+---
+
+## 13. Research novelty and related-work investigation
+
+I want to investigate whether this can become a journal publication.
+
+Do not claim that a hybrid ML model, an SDN architecture, or a Mininet demonstration is novel by itself.
+
+Research recent related work, including:
+
+- SDN-based DDoS detection.
+- Flow-level and port-level ML detection.
+- Hybrid ML and threshold-based detection.
+- Destination-centric aggregation.
+- Temporal and window-based detection.
+- Online learning.
+- False-positive reduction under legitimate UDP traffic.
+- SDN control-plane protection.
+- DDoS mitigation and recovery.
+- Generalisation across datasets and network environments.
+
+Include recent work from IEEE Xplore, IEEE Access, ACM, Springer, Elsevier and other credible research publishers when accessible.
+
+Pay particular attention to the following existing works:
+
+1. **A hybrid machine learning approach for detecting DDoS attacks in software-defined networks**, Scientific Reports, 2026. It uses Ryu, Open vSwitch, OpenFlow flow and port statistics, and a hybrid RF-XGBoost classifier.
+
+2. **HSF: A Hybrid SVM-RF Machine Learning Framework for Dual-Plane DDoS Detection and Mitigation in Software-Defined Networks**, IEEE Access, 2025. It combines data-plane and control-plane monitoring.
+
+3. **Enhancing DDoS Attack Detection and Mitigation in SDN Using an Ensemble Online Machine Learning Model**, IEEE Access, 2024. It investigates online ML and SDN simulation using Mininet and Ryu.
+
+For each relevant paper, produce a literature comparison table containing:
+
+- Paper title.
+- Authors.
+- Publication year.
+- Journal or conference.
+- DOI or stable URL.
+- Dataset.
+- SDN controller.
+- Simulator or testbed.
+- Features.
+- Detection algorithm.
+- Mitigation strategy.
+- Reported metrics.
+- Limitations.
+- How our proposed work differs.
+
+Target at least 15–25 relevant papers, prioritising recent and directly related publications.
+
+Verify references. Never invent article titles, authors, DOI numbers or performance results.
+
+Clearly identify which sources were fully accessible and which were only available as abstracts.
+
+### Potential contribution to investigate
+
+One possible research contribution is:
+
+**A false-positive-aware destination-centric temporal detection framework that combines per-flow machine learning with counter-delta-based multi-source traffic behaviour, validated under concurrent legitimate UDP and DDoS workloads in an SDN testbed, with controlled mitigation and recovery evaluation.**
+
+This is a hypothesis, not a claim of novelty.
+
+Investigate whether the complete combination is sufficiently different from existing work.
+
+If another publication already implements essentially the same method, identify a stronger contribution or recommend narrowing the research question.
+
+Potential differentiators worth investigating:
+
+- Accurate interval-rate computation rather than lifetime-average flow rates.
+- Handling of legitimate high-volume UDP traffic.
+- Evaluation under overlapping benign and malicious traffic rates.
+- Robust detection when the number of attacking sources changes.
+- Cross-dataset and Mininet generalisation.
+- Explainable evidence behind a mitigation decision.
+- Safe, reversible mitigation with recovery.
+- Measurement of control-plane overhead and legitimate-user impact.
+
+Do not force all of these into the project. Select a coherent contribution backed by experiments.
+
+---
+
+## 14. IEEE-style paper preparation
+
+Design the experiment so that the results can later support a proper IEEE paper.
+
+Prepare the structure:
+
+1. Abstract.
+2. Index Terms.
+3. Introduction.
+4. Motivation and Problem Statement.
+5. Related Work.
+6. Research Gap.
+7. Proposed Architecture.
+8. Detection Methodology.
+9. Destination-Level Temporal Feature Engineering.
+10. Mitigation Mechanism.
+11. Experimental Setup.
+12. Dataset Description and Preprocessing.
+13. Evaluation Metrics.
+14. Results and Discussion.
+15. Ablation Study.
+16. Threats to Validity.
+17. Limitations.
+18. Conclusion and Future Work.
+19. References.
+
+Produce publication-quality figures and tables from actual experiment outputs.
+
+Required figures may include:
+
+- System architecture.
+- Mininet topology.
+- Detection flowchart.
+- Controller and ML communication sequence.
+- Temporal source-count and aggregate-rate plots.
+- ROC and Precision-Recall curves.
+- Confusion matrices.
+- Detection latency comparison.
+- Throughput before and after mitigation.
+- CPU and controller-overhead plots.
+
+Use clear axis labels, units, legends, figure captions and table captions.
+
+Do not generate charts from fabricated or illustrative numbers and present them as experimental results.
+
+Do not call the work IEEE-compliant merely because the paper uses IEEE formatting. Publication requires a credible contribution, sound experiments, accurate citations and successful peer review.
+
+---
+
+## 15. Implementation and engineering requirements
+
+Maintain a clean and understandable repository.
+
+Avoid unnecessary complexity.
+
+Prefer modular implementation:
+
+```text
+ddos_ml/
+    features.py
+    training.py
+    runtime.py
+    sdn_runtime.py
+    predict_api.py
+    temporal_features.py
+    decision_engine.py
+
+Codes/
+    controller/
+    mininet/
+
+data/
+    raw/
+    processed/
+
+artifacts/
+    production/
+    experiments/
+
+experiments/
+    configs/
+    scripts/
+    results/
+
+docs/
+    architecture.md
+    research_plan.md
+    dataset_audit.md
+    experimental_methodology.md
+    related_work.md
+    limitations.md
+```
+
+This is a proposed organisation. Adapt it to the actual repository rather than duplicating existing components unnecessarily.
+
+Engineering requirements:
+
+- Use configuration files for thresholds and experiment parameters.
+- Add type hints where useful.
+- Add clear logging.
+- Handle missing and invalid OpenFlow statistics.
+- Avoid blocking the Ryu event loop with expensive ML operations.
+- Keep model inference asynchronous or otherwise bounded where appropriate.
+- Add unit tests for temporal feature calculations.
+- Add tests for counter resets and missing statistics.
+- Add integration tests for the ML API.
+- Add controller-level tests where feasible.
+- Add reproducible experiment scripts.
+- Save raw experimental results and processed summaries separately.
+- Record the code version, model version, dataset version and configuration for every result.
+
+Do not make broad unrelated refactors.
+
+---
+
+## 16. Required working process
+
+Work in the following phases.
+
+### Phase 1 — Repository audit
+
+Inspect the repository before editing.
+
+Determine:
+
+- What currently works.
+- What is incomplete.
+- Which files are responsible for each subsystem.
+- Whether the existing tests pass.
+- Whether the current model and API are compatible.
+- Whether the controller's flow aggregation is correct.
+- Whether the existing Mininet experiments are reproducible.
+
+Deliver:
+
+```text
+docs/research_plan.md
+docs/architecture.md
+```
+
+Also provide a concise audit summary with specific file names and findings.
+
+Do not start from scratch unless there is a clear technical reason.
+
+### Phase 2 — Data audit and problem validation
+
+Inspect existing datasets and Mininet captures.
+
+Check whether an additional dataset provides enough benign UDP records.
+
+Investigate CSE-CIC-IDS2018 and other compatible sources.
+
+Download only the files needed after estimating their storage requirements.
+
+Do not download the entire raw PCAP collection unnecessarily.
+
+Produce:
+
+```text
+docs/dataset_audit.md
+```
+
+The report must include actual benign UDP counts and feature distributions.
+
+### Phase 3 — Research-gap validation
+
+Complete the related-work investigation.
+
+Produce:
+
+```text
+docs/related_work.md
+```
+
+It must contain a comparison matrix and a defensible research gap.
+
+Recommend one precise research contribution.
+
+If the contribution is not sufficiently novel, explicitly say so and propose an alternative.
+
+### Phase 4 — Detection implementation
+
+Preserve the original model and API.
+
+Build the experimental hybrid detection pipeline.
+
+Use accurate counter deltas for interval traffic rates.
+
+Implement destination-level rolling-window analysis.
+
+Build a configurable decision engine.
+
+Begin in observation-only mode.
+
+Add tests before integrating with the controller.
+
+### Phase 5 — Mininet test and validation
+
+Run benign and attack scenarios.
+
+Validate the actual outputs.
+
+Investigate false positives.
+
+Test mixed traffic.
+
+Test changing source counts and attack rates.
+
+Compare the proposed method against baselines.
+
+Do not enable mitigation at this phase.
+
+### Phase 6 — Mitigation
+
+Implement dry-run and controlled mitigation.
+
+Validate:
+
+- Attack suppression.
+- Legitimate traffic preservation.
+- Rollback.
+- Recovery.
+- Controller overhead.
+
+Keep real mitigation disabled by default.
+
+### Phase 7 — Reproducible evaluation
+
+Run repeated experiments and generate results.
+
+Create scripts that can reproduce each experiment.
+
+Save raw CSV results, summaries, plots and configuration metadata.
+
+Perform ablation studies and statistical comparisons where appropriate.
+
+### Phase 8 — Research paper preparation
+
+Prepare the figures, tables, methodology and paper outline from actual results.
+
+List all limitations and threats to validity.
+
+Give a candid recommendation about whether the work is ready for:
+
+- A student research project.
+- A conference submission.
+- A journal submission.
+
+Do not exaggerate its publication readiness.
+
+---
+
+## 17. Rules you must follow
+
+1. Do not immediately delete or rewrite working code.
+2. Do not overwrite `artifacts/production/`.
+3. Do not change the seven-feature production model schema without a migration plan.
+4. Do not install ML dependencies into the Ryu environment unnecessarily.
+5. Do not assume every dataset row is valid.
+6. Do not assume additional benign flows automatically solve the false-positive issue.
+7. Do not use random row-level splitting as the only evaluation.
+8. Do not count repeated OpenFlow snapshots as independent samples.
+9. Do not use lifetime-average flow rates as if they were true per-window rates.
+10. Do not use the final Mininet test set for training or threshold tuning.
+11. Do not enable automatic blocking before detection is validated.
+12. Do not fabricate metrics or paper references.
+13. Do not report accuracy alone.
+14. Do not claim novelty without comparing recent publications.
+15. Do not generate fake graphs or illustrative metrics as real results.
+16. Do not make unnecessary changes to the existing topology.
+17. Do not download very large datasets without checking the actual required files and available disk space.
+18. Keep the implementation understandable and explain the purpose of each major change.
+19. Run tests after every major change.
+20. Report failures honestly instead of silently ignoring them.
+
+---
+
+## 18. What I expect from you first
+
+Start with Phase 1.
+
+Do not modify code immediately.
+
+First inspect the repository and provide:
+
+1. A concise architecture of the current implementation.
+2. A list of existing working components.
+3. A list of actual bugs and limitations.
+4. A diagnosis of the benign UDP false-positive issue.
+5. Your recommendation on whether to extend or rebuild.
+6. A proposed research contribution.
+7. A list of related work that could threaten the novelty claim.
+8. A practical sequence of implementation and experiments.
+9. Any dependencies or storage requirements.
+
+After that, proceed with the implementation in small, testable stages without repeatedly asking me to approve obvious technical steps.
+
+I want a functional SDN DDoS detection and mitigation system supported by rigorous experiments. The end goal is a credible research contribution with reproducible results and a realistic possibility of IEEE journal or conference submission—not an artificial 99.99% accuracy claim on a potentially leaked dataset.
+
+Be direct, practical and technically honest throughout the project.

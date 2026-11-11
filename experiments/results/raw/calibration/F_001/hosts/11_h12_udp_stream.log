@@ -1,0 +1,39 @@
+iperf3: interrupt - the client has terminated
+Connecting to host 10.0.0.18, port 5205
+[  7] local 10.0.0.12 port 41005 connected to 10.0.0.18 port 5205
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  7]   0.00-1.00   sec   976 KBytes  7.98 Mbits/sec  976  
+[  7]   1.00-2.00   sec   977 KBytes  8.02 Mbits/sec  977  
+[  7]   2.00-3.00   sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]   3.00-4.00   sec   976 KBytes  7.99 Mbits/sec  976  
+[  7]   4.00-5.00   sec   975 KBytes  7.97 Mbits/sec  975  
+[  7]   5.00-6.00   sec   975 KBytes  8.01 Mbits/sec  975  
+[  7]   6.00-7.00   sec   980 KBytes  8.03 Mbits/sec  980  
+[  7]   7.00-8.00   sec   976 KBytes  8.00 Mbits/sec  976  
+[  7]   8.00-9.00   sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]   9.00-10.00  sec   976 KBytes  8.00 Mbits/sec  976  
+[  7]  10.00-11.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  11.00-12.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  12.00-13.00  sec   976 KBytes  8.00 Mbits/sec  976  
+[  7]  13.00-14.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  14.00-15.00  sec   976 KBytes  8.00 Mbits/sec  976  
+[  7]  15.00-16.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  16.00-17.00  sec   976 KBytes  7.97 Mbits/sec  976  
+[  7]  17.00-18.00  sec   977 KBytes  8.03 Mbits/sec  977  
+[  7]  18.00-19.00  sec   976 KBytes  8.00 Mbits/sec  976  
+[  7]  19.00-20.00  sec   978 KBytes  8.01 Mbits/sec  978  
+[  7]  20.00-21.00  sec   975 KBytes  7.99 Mbits/sec  975  
+[  7]  21.00-22.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  22.00-23.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  23.00-24.00  sec   975 KBytes  7.96 Mbits/sec  976  
+[  7]  24.00-25.00  sec   978 KBytes  8.03 Mbits/sec  977  
+[  7]  25.00-26.00  sec   976 KBytes  8.01 Mbits/sec  976  
+[  7]  26.00-27.00  sec   973 KBytes  7.97 Mbits/sec  974  
+[  7]  27.00-28.00  sec   980 KBytes  8.03 Mbits/sec  979  
+[  7]  28.00-29.00  sec   977 KBytes  8.00 Mbits/sec  977  
+[  7]  29.00-30.00  sec   976 KBytes  8.00 Mbits/sec  976  
+[  7]  31.00-31.96  sec  0.00 Bytes  0.00 bits/sec  0  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  7]   0.00-31.96  sec  29.6 MBytes  7.76 Mbits/sec  0.000 ms  0/30273 (0%)  sender
+[  7]   0.00-31.96  sec  0.00 Bytes  0.00 bits/sec  0.000 ms  0/0 (0%)  receiver

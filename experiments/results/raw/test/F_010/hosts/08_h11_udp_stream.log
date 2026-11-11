@@ -1,0 +1,53 @@
+Connecting to host 10.0.0.18, port 5204
+[  7] local 10.0.0.11 port 42011 connected to 10.0.0.18 port 5204
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  7]   0.00-1.00   sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]   1.00-2.00   sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]   2.00-3.00   sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]   3.00-4.00   sec   610 KBytes  4.99 Mbits/sec  610  
+[  7]   4.00-5.00   sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]   5.00-6.00   sec   609 KBytes  4.98 Mbits/sec  610  
+[  7]   6.00-7.00   sec   611 KBytes  5.02 Mbits/sec  610  
+[  7]   7.00-8.00   sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]   8.00-9.00   sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]   9.00-10.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  10.00-11.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  11.00-12.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  12.00-13.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  13.00-14.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  14.00-15.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  15.00-16.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  16.00-17.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  17.00-18.00  sec   607 KBytes  4.97 Mbits/sec  607  
+[  7]  18.00-19.00  sec   614 KBytes  5.03 Mbits/sec  614  
+[  7]  19.00-20.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  20.00-21.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  21.00-22.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  22.00-23.00  sec   610 KBytes  4.99 Mbits/sec  610  
+[  7]  23.00-24.00  sec   610 KBytes  5.01 Mbits/sec  610  
+[  7]  24.00-25.00  sec   610 KBytes  4.98 Mbits/sec  611  
+[  7]  25.00-26.00  sec   611 KBytes  5.02 Mbits/sec  610  
+[  7]  26.00-27.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  27.00-28.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  28.00-29.00  sec   606 KBytes  4.96 Mbits/sec  607  
+[  7]  29.00-30.00  sec   614 KBytes  5.04 Mbits/sec  613  
+[  7]  30.00-31.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  31.00-32.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  32.00-33.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  33.00-34.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  34.00-35.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  35.00-36.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  36.00-37.00  sec   610 KBytes  5.00 Mbits/sec  610  
+[  7]  37.00-38.00  sec   609 KBytes  4.99 Mbits/sec  610  
+[  7]  38.00-39.00  sec   612 KBytes  5.01 Mbits/sec  611  
+[  7]  39.00-40.00  sec   608 KBytes  4.97 Mbits/sec  608  
+[  7]  40.00-41.00  sec   612 KBytes  5.02 Mbits/sec  612  
+[  7]  41.00-42.00  sec   611 KBytes  5.01 Mbits/sec  611  
+[  7]  42.00-43.00  sec   609 KBytes  4.98 Mbits/sec  610  
+[  7]  43.00-44.00  sec   608 KBytes  4.98 Mbits/sec  607  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  7]   0.00-44.00  sec  26.2 MBytes  5.00 Mbits/sec  0.000 ms  0/26852 (0%)  sender
+[  7]   0.00-44.34  sec  26.2 MBytes  4.96 Mbits/sec  0.097 ms  0/26852 (0%)  receiver
+
+iperf Done.

@@ -1,0 +1,36 @@
+
+--- 10.0.0.18 hping statistic ---
+39851 packets transmitted, 31 packets received, 100% packet loss
+round-trip min/avg/max = 18.0/163.1/240.0 ms
+HPING 10.0.0.18 (h3-eth0 10.0.0.18): udp mode set, 28 headers + 1024 data bytes
+status=0 port=11837 seq=1200
+status=1 port=11837 seq=1200
+status=1 port=11837 seq=1200
+status=1 port=11837 seq=1200
+status=1 port=11837 seq=1200
+status=1 port=11837 seq=1200
+status=0 port=11837 seq=2000
+status=0 port=11837 seq=3600
+status=0 port=11837 seq=5200
+status=0 port=11837 seq=6800
+status=0 port=11837 seq=8800
+status=0 port=11837 seq=10000
+status=0 port=11837 seq=11600
+status=0 port=11837 seq=13200
+status=0 port=11837 seq=14800
+status=0 port=11837 seq=16400
+status=0 port=11837 seq=18000
+status=0 port=11837 seq=19600
+status=0 port=11837 seq=21200
+status=0 port=11837 seq=22400
+status=0 port=11837 seq=23600
+status=0 port=11837 seq=25200
+status=0 port=11837 seq=26800
+status=0 port=11837 seq=28400
+status=0 port=11837 seq=30000
+status=0 port=11837 seq=31600
+status=0 port=11837 seq=32800
+status=0 port=11837 seq=34400
+status=0 port=11837 seq=36000
+status=0 port=11837 seq=37600
+status=0 port=11837 seq=38800

@@ -1,0 +1,36 @@
+
+--- 10.0.0.18 hping statistic ---
+26810 packets transmitted, 31 packets received, 100% packet loss
+round-trip min/avg/max = 18.1/337.7/424.9 ms
+HPING 10.0.0.18 (h5-eth0 10.0.0.18): udp mode set, 28 headers + 512 data bytes
+status=0 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=1 port=18110 seq=20000
+status=0 port=18110 seq=20400
+status=1 port=18110 seq=20400
+status=1 port=18110 seq=20400
+status=0 port=18110 seq=21200
+status=0 port=18110 seq=22000
+status=0 port=18110 seq=23200
+status=0 port=18110 seq=24000
+status=0 port=18110 seq=24800
+status=0 port=18110 seq=25600

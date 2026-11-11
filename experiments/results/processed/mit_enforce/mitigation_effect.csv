@@ -1,0 +1,3 @@
+condition,probe_udp_goodput_mbps,probe_loss_pct,probe_jitter_ms,ping_rtt_ms_during,ping_rtt_ms_p95
+mitigation,1.9999948001866146,0.0,0.0,0.24564851485148512,0.8234999999999996
+no_mitigation,2.000030195916492,0.0,0.0,0.7172932454695223,1.701999999999996

@@ -1,0 +1,210 @@
+{
+ "scenario": "mitigation",
+ "attack_kind": "udp",
+ "mode_at_start": "MITIGATION_ENABLED",
+ "victim_ip": "10.0.0.18",
+ "timeline_s": {
+  "warmup": 15.0,
+  "attack": 40.0,
+  "recovery_wait": 40.0
+ },
+ "t_start": 1794436856.8760731,
+ "t_attack": 1794436871.883142,
+ "t_attack_end": 1794436911.9620805,
+ "t_end": 1794436952.0266435,
+ "generators": [
+  {
+   "host": "h7",
+   "src_ip": "10.0.0.7",
+   "role": "legit",
+   "kind": "tcp_iperf3",
+   "cmd": "iperf3 -c 10.0.0.18 -p 5202 -b 10M -t 95 -i 1 -J",
+   "params": {
+    "mbps_cap": 10,
+    "port": 5202
+   },
+   "dst": "10.0.0.18",
+   "pid": 103395,
+   "start": 1794436856.877,
+   "stop": 1794436952.026,
+   "log": "legit_h7_tcp_iperf3.log"
+  },
+  {
+   "host": "h8",
+   "src_ip": "10.0.0.8",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5203 -b 2M -l 1000 -t 95 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1000,
+    "port": 5203
+   },
+   "dst": "10.0.0.18",
+   "pid": 103396,
+   "start": 1794436856.878,
+   "stop": 1794436952.026,
+   "log": "legit_h8_udp_iperf3.log"
+  },
+  {
+   "host": "h9",
+   "src_ip": "10.0.0.9",
+   "role": "legit",
+   "kind": "http",
+   "cmd": "end=$((SECONDS+95)); while [ $SECONDS -lt $end ]; do echo \"$(date +%s.%N) $(curl -s -o /dev/null --max-time 3 -w '%{http_code} %{time_total}' http://10.0.0.18/medium.bin)\"; sleep 1; done",
+   "params": {
+    "object": "medium.bin (1 MB)"
+   },
+   "dst": "10.0.0.18",
+   "pid": 103397,
+   "start": 1794436856.879,
+   "stop": 1794436952.026,
+   "log": "legit_h9_http.log"
+  },
+  {
+   "host": "h10",
+   "src_ip": "10.0.0.10",
+   "role": "legit",
+   "kind": "udp_request_response",
+   "cmd": "python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/udp_probe.py 10.0.0.18 --port 5353 --qps 20 --size 128 --duration 95",
+   "params": {
+    "qps": 20,
+    "pkt_size": 128
+   },
+   "dst": "10.0.0.18",
+   "pid": 103398,
+   "start": 1794436856.88,
+   "stop": 1794436952.026,
+   "log": "legit_h10_udp_request_response.log"
+  },
+  {
+   "host": "h13",
+   "src_ip": "10.0.0.13",
+   "role": "legit",
+   "kind": "icmp_ping",
+   "cmd": "timeout -s INT 95 ping -D -i 0.2 10.0.0.18",
+   "params": {
+    "interval_s": 0.2
+   },
+   "dst": "10.0.0.18",
+   "pid": 103399,
+   "start": 1794436856.881,
+   "stop": 1794436952.026,
+   "log": "legit_h13_icmp_ping.log"
+  },
+  {
+   "host": "h1",
+   "src_ip": "10.0.0.1",
+   "role": "attack",
+   "kind": "udp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --udp -d 1024 -i u333 -k -s 40001 -p 9999 -q 10.0.0.18",
+   "params": {
+    "proto": "UDP",
+    "pkt_size": 1024,
+    "rate_pps": 3000,
+    "dport": 9999,
+    "sport": 40001
+   },
+   "dst": "10.0.0.18",
+   "pid": 103486,
+   "start": 1794436871.883,
+   "stop": 1794436911.931,
+   "log": "attack_h1_udp.log"
+  },
+  {
+   "host": "h2",
+   "src_ip": "10.0.0.2",
+   "role": "attack",
+   "kind": "udp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --udp -d 512 -i u333 -k -s 40002 -p 53 -q 10.0.0.18",
+   "params": {
+    "proto": "UDP",
+    "pkt_size": 512,
+    "rate_pps": 3000,
+    "dport": 53,
+    "sport": 40002
+   },
+   "dst": "10.0.0.18",
+   "pid": 103487,
+   "start": 1794436871.885,
+   "stop": 1794436911.938,
+   "log": "attack_h2_udp.log"
+  },
+  {
+   "host": "h3",
+   "src_ip": "10.0.0.3",
+   "role": "attack",
+   "kind": "udp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --udp -d 1400 -i u500 -k -s 40003 -p 123 -q 10.0.0.18",
+   "params": {
+    "proto": "UDP",
+    "pkt_size": 1400,
+    "rate_pps": 2000,
+    "dport": 123,
+    "sport": 40003
+   },
+   "dst": "10.0.0.18",
+   "pid": 103488,
+   "start": 1794436871.886,
+   "stop": 1794436911.938,
+   "log": "attack_h3_udp.log"
+  },
+  {
+   "host": "h4",
+   "src_ip": "10.0.0.4",
+   "role": "attack",
+   "kind": "udp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --udp -d 1024 -i u333 -k -s 40004 -p 1900 -q 10.0.0.18",
+   "params": {
+    "proto": "UDP",
+    "pkt_size": 1024,
+    "rate_pps": 3000,
+    "dport": 1900,
+    "sport": 40004
+   },
+   "dst": "10.0.0.18",
+   "pid": 103489,
+   "start": 1794436871.887,
+   "stop": 1794436911.946,
+   "log": "attack_h4_udp.log"
+  },
+  {
+   "host": "h5",
+   "src_ip": "10.0.0.5",
+   "role": "attack",
+   "kind": "udp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --udp -d 256 -i u250 -k -s 40005 -p 8080 -q 10.0.0.18",
+   "params": {
+    "proto": "UDP",
+    "pkt_size": 256,
+    "rate_pps": 4000,
+    "dport": 8080,
+    "sport": 40005
+   },
+   "dst": "10.0.0.18",
+   "pid": 103491,
+   "start": 1794436871.889,
+   "stop": 1794436911.946,
+   "log": "attack_h5_udp.log"
+  },
+  {
+   "host": "h6",
+   "src_ip": "10.0.0.6",
+   "role": "attack",
+   "kind": "udp_flood",
+   "cmd": "timeout -s INT 40.0 hping3 --udp -d 768 -i u400 -k -s 40006 -p 9999 -q 10.0.0.18",
+   "params": {
+    "proto": "UDP",
+    "pkt_size": 768,
+    "rate_pps": 2500,
+    "dport": 9999,
+    "sport": 40006
+   },
+   "dst": "10.0.0.18",
+   "pid": 103492,
+   "start": 1794436871.889,
+   "stop": 1794436911.946,
+   "log": "attack_h6_udp.log"
+  }
+ ]
+}

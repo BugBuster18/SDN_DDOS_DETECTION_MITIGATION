@@ -1,0 +1,23 @@
+# Observation-only telemetry collection (Phase 5). No blocking, no dry-run rules.
+# The live engine uses a conservative non-ML rule only so that the full pipeline
+# runs; all reported detection results are produced by offline replay of the
+# logged telemetry with models fitted on calibration runs only.
+detection:
+  enabled: true
+  mode: observation
+  method: rule
+  rule:
+    min_pps: 20000
+    min_sources: 2
+  ml_threshold: 0.5
+  confirm_k: 2
+  confirm_n: 3
+
+mitigation:
+  enabled: false
+  dry_run: true
+
+monitoring:
+  polling_interval_seconds: 5
+  reply_timeout_seconds: 3
+  ml_api_url: http://127.0.0.1:8765/predict

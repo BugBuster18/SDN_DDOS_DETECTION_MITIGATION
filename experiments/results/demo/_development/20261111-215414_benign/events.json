@@ -1,0 +1,64 @@
+[
+ {
+  "seq": 9,
+  "ts": 1794434055.856,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "NORMAL",
+  "state": "SUSPECTED",
+  "label": "SUSPICIOUS TRAFFIC",
+  "score": 0.8037,
+  "attributed": [],
+  "features": {
+   "n_sources": 9.0,
+   "n_active_flows": 24.0,
+   "n_new_flows": 24.0,
+   "pps": 516.6,
+   "bps": 3830836.8,
+   "avg_pkt_size": 926.935,
+   "udp_share": 0.4955,
+   "tcp_share": 0.5033,
+   "icmp_share": 0.0012,
+   "response_ratio": 0.4507,
+   "top_source_share": 0.3562,
+   "ml_max_prob": 0.9994,
+   "ml_mean_prob": 0.5637,
+   "ml_flow_frac": 0.625,
+   "ml_pps_share": 0.4955
+  },
+  "mode": "DETECTION_ONLY"
+ },
+ {
+  "seq": 10,
+  "ts": 1794434060.735,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "SUSPECTED",
+  "state": "CONFIRMED",
+  "label": "ATTACK CONFIRMED",
+  "score": 0.9325,
+  "attributed": [
+   "10.0.0.11",
+   "10.0.0.15",
+   "10.0.0.16"
+  ],
+  "features": {
+   "n_sources": 9.0,
+   "n_active_flows": 111.0,
+   "n_new_flows": 104.0,
+   "pps": 4555.031,
+   "bps": 36606673.6889,
+   "avg_pkt_size": 1004.5671,
+   "udp_share": 0.5582,
+   "tcp_share": 0.4403,
+   "icmp_share": 0.0015,
+   "response_ratio": 0.1928,
+   "top_source_share": 0.377,
+   "ml_max_prob": 0.9994,
+   "ml_mean_prob": 0.8486,
+   "ml_flow_frac": 0.9369,
+   "ml_pps_share": 0.5582
+  },
+  "mode": "DETECTION_ONLY"
+ }
+]

@@ -1,0 +1,114 @@
+{
+ "scenario": "benign",
+ "attack_kind": null,
+ "mode_at_start": "DETECTION_ONLY",
+ "victim_ip": "10.0.0.18",
+ "timeline_s": {
+  "warmup": 15.0,
+  "attack": 0,
+  "recovery_wait": 0
+ },
+ "t_start": 1794436196.0994203,
+ "t_attack": null,
+ "t_attack_end": null,
+ "t_end": 1794436261.639826,
+ "generators": [
+  {
+   "host": "h11",
+   "src_ip": "10.0.0.11",
+   "role": "legit",
+   "kind": "tcp_iperf3",
+   "cmd": "iperf3 -c 10.0.0.18 -p 5204 -b 20M -t 65 -i 1 -J",
+   "params": {
+    "mbps_cap": 20,
+    "port": 5204
+   },
+   "dst": "10.0.0.18",
+   "pid": 100988,
+   "start": 1794436196.1,
+   "stop": 1794436261.222,
+   "log": "legit_h11_tcp_iperf3.log"
+  },
+  {
+   "host": "h12",
+   "src_ip": "10.0.0.12",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5205 -b 1M -l 200 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 1,
+    "pkt_size": 200,
+    "port": 5205
+   },
+   "dst": "10.0.0.18",
+   "pid": 100989,
+   "start": 1794436196.101,
+   "stop": 1794436261.222,
+   "log": "legit_h12_udp_iperf3.log"
+  },
+  {
+   "host": "h14",
+   "src_ip": "10.0.0.14",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5206 -b 8M -l 1400 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 8,
+    "pkt_size": 1400,
+    "port": 5206
+   },
+   "dst": "10.0.0.18",
+   "pid": 100990,
+   "start": 1794436196.102,
+   "stop": 1794436261.222,
+   "log": "legit_h14_udp_iperf3.log"
+  },
+  {
+   "host": "h15",
+   "src_ip": "10.0.0.15",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5207 -b 4M -l 512 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 4,
+    "pkt_size": 512,
+    "port": 5207
+   },
+   "dst": "10.0.0.18",
+   "pid": 100991,
+   "start": 1794436196.104,
+   "stop": 1794436261.222,
+   "log": "legit_h15_udp_iperf3.log"
+  },
+  {
+   "host": "h9",
+   "src_ip": "10.0.0.9",
+   "role": "legit",
+   "kind": "http",
+   "cmd": "end=$((SECONDS+65)); while [ $SECONDS -lt $end ]; do echo \"$(date +%s.%N) $(curl -s -o /dev/null --max-time 3 -w '%{http_code} %{time_total}' http://10.0.0.18/medium.bin)\"; sleep 1; done",
+   "params": {
+    "object": "medium.bin (1 MB)"
+   },
+   "dst": "10.0.0.18",
+   "pid": 100992,
+   "start": 1794436196.105,
+   "stop": 1794436261.639,
+   "log": "legit_h9_http.log"
+  },
+  {
+   "host": "h10",
+   "src_ip": "10.0.0.10",
+   "role": "legit",
+   "kind": "icmp_ping",
+   "cmd": "timeout -s INT 65 ping -D -i 0.2 10.0.0.18",
+   "params": {
+    "interval_s": 0.2
+   },
+   "dst": "10.0.0.18",
+   "pid": 100993,
+   "start": 1794436196.106,
+   "stop": 1794436261.639,
+   "log": "legit_h10_icmp_ping.log"
+  }
+ ]
+}

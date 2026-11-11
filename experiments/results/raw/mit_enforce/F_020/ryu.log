@@ -1,0 +1,48 @@
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=hybrid poll=5.0s confirm=2/3 mitigation.enabled=True dry_run=False
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Registered switch 0000000000000006
+Registered switch 0000000000000003
+Registered switch 0000000000000004
+Registered switch 0000000000000002
+Registered switch 0000000000000001
+Registered switch 0000000000000005
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.905 sources=[] actions=[]
+dst=10.0.0.18 SUSPECTED->MITIGATING score=0.871 sources=['10.0.0.9'] actions=['block']
+BLOCK 10.0.0.9 -> 10.0.0.18 proto=6 at dpids=[3] cookie=dd05000000000001
+BLOCK 10.0.0.9 -> 10.0.0.18 proto=17 at dpids=[3] cookie=dd05000000000002
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.968 sources=['10.0.0.2', '10.0.0.4'] actions=['block']
+BLOCK 10.0.0.2 -> 10.0.0.18 proto=17 at dpids=[1] cookie=dd05000000000003
+BLOCK 10.0.0.4 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000004
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.955 sources=['10.0.0.2', '10.0.0.4', '10.0.0.5', '10.0.0.6'] actions=['block']
+BLOCK 10.0.0.5 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000005
+BLOCK 10.0.0.6 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000006
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.944 sources=['10.0.0.2', '10.0.0.5', '10.0.0.6'] actions=['block']
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.867 sources=['10.0.0.5', '10.0.0.6'] actions=['block']
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.839 sources=['10.0.0.5', '10.0.0.6'] actions=['block']
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.788 sources=['10.0.0.6'] actions=['block']
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.842 sources=['10.0.0.6'] actions=['block']
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.963 sources=['10.0.0.3'] actions=['block']
+BLOCK 10.0.0.3 -> 10.0.0.18 proto=17 at dpids=[1] cookie=dd05000000000007
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.898 sources=['10.0.0.3'] actions=['block']
+Switch 0000000000000006 disconnected; counter state discarded
+Switch 0000000000000001 disconnected; counter state discarded
+HybridDetector: Exception occurred during handler processing. Backtrace from offending handler [_packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/Codes/controller/hybrid_controller.py", line 112, in _packet_in_handler
+    super(HybridDetector, self)._packet_in_handler(ev)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/Codes/controller/switch.py", line 123, in _packet_in_handler
+    match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_IP,
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/ofproto_v1_3_parser.py", line 894, in __init__
+    fields = [ofproto.oxm_from_user(k, v) for (k, v)
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/.venv-ryu39/lib/python3.9/site-packages/ryu/ofproto/ofproto_v1_3_parser.py", line 894, in <listcomp>
+    fields = [ofproto.oxm_from_user(k, v) for (k, v)
+KeyboardInterrupt
+Switch 0000000000000005 disconnected; counter state discarded
+Switch 0000000000000003 disconnected; counter state discarded
+Switch 0000000000000002 disconnected; counter state discarded
+Switch 0000000000000004 disconnected; counter state discarded

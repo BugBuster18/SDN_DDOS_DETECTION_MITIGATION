@@ -1,0 +1,366 @@
+{
+ "scenario": "F",
+ "seed": 12,
+ "duration": 80.0,
+ "traffic_start": 8.0,
+ "benign_level": "low",
+ "victim": "h18",
+ "victim_ip": "10.0.0.18",
+ "attack_start": 25.96691735380616,
+ "attack_end": 57.991310996644955,
+ "iperf_server_ports": [
+  5201,
+  5202,
+  5203,
+  5204,
+  5205,
+  5206
+ ],
+ "events": [
+  {
+   "host": "h17",
+   "start": 11.44688051348361,
+   "duration": 70.0,
+   "cmd": "ping -i 1.0 10.0.0.18",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 1,
+   "kind": "icmp_ping",
+   "params": {
+    "interval": 1.0
+   },
+   "src_ip": "10.0.0.17",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421758.1645894
+  },
+  {
+   "host": "h10",
+   "start": 9.777400400804234,
+   "duration": 70.0,
+   "cmd": "ping -i 0.5 10.0.0.18",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 1,
+   "kind": "icmp_ping",
+   "params": {
+    "interval": 0.5
+   },
+   "src_ip": "10.0.0.10",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421756.4951167
+  },
+  {
+   "host": "h14",
+   "start": 12.831207442467363,
+   "duration": 70.0,
+   "cmd": "bash -c 'while true; do curl -s -o /dev/null --max-time 5 http://10.0.0.18/medium.bin; sleep 1.0; done'",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 6,
+   "kind": "http",
+   "params": {
+    "object": "medium.bin"
+   },
+   "src_ip": "10.0.0.14",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421759.54888
+  },
+  {
+   "host": "h12",
+   "start": 13.44402898937306,
+   "duration": 40.78539986449883,
+   "cmd": "iperf3 -c 10.0.0.18 -p 5201 -b 2M -t 40",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 6,
+   "kind": "tcp_bulk",
+   "params": {
+    "mbps": 2,
+    "port": 5201
+   },
+   "src_ip": "10.0.0.12",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421760.1617515
+  },
+  {
+   "host": "h16",
+   "start": 9.185948419436286,
+   "duration": 68.81147572846025,
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5202 -b 8M -l 512 -t 68",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_stream",
+   "params": {
+    "mbps": 8,
+    "size": 512,
+    "port": 5202
+   },
+   "src_ip": "10.0.0.16",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421755.903748
+  },
+  {
+   "host": "h11",
+   "start": 18.550064375123952,
+   "duration": 22.820623280837264,
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5203 -b 8M -l 1024 -t 22",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_stream",
+   "params": {
+    "mbps": 8,
+    "size": 1024,
+    "port": 5203
+   },
+   "src_ip": "10.0.0.11",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421765.2703934
+  },
+  {
+   "host": "h9",
+   "start": 14.111283078104403,
+   "duration": 56.97838693431575,
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5204 -b 20M -l 200 -t 56",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_stream",
+   "params": {
+    "mbps": 20,
+    "size": 200,
+    "port": 5204
+   },
+   "src_ip": "10.0.0.9",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421760.8290446
+  },
+  {
+   "host": "h15",
+   "start": 29.244703219461215,
+   "duration": 41.61292423165166,
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5205 -b 15M -l 512 -t 41",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_stream",
+   "params": {
+    "mbps": 15,
+    "size": 512,
+    "port": 5205
+   },
+   "src_ip": "10.0.0.15",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421775.96743
+  },
+  {
+   "host": "h8",
+   "start": 10.952094653622952,
+   "duration": 70.0,
+   "cmd": "python3 {SCRIPTS}/udp_rr.py client 10.0.0.18 5353 20 256",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_request_response",
+   "params": {
+    "qps": 20,
+    "size": 256
+   },
+   "src_ip": "10.0.0.8",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421757.669771
+  },
+  {
+   "host": "h17",
+   "start": 11.886480955455088,
+   "duration": 70.0,
+   "cmd": "python3 {SCRIPTS}/udp_rr.py client 10.0.0.18 5353 50 64",
+   "role": "benign",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_request_response",
+   "params": {
+    "qps": 50,
+    "size": 64
+   },
+   "src_ip": "10.0.0.17",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421758.6041698
+  },
+  {
+   "host": "h8",
+   "start": 11.683747207622563,
+   "duration": 64.0,
+   "cmd": "iperf3 -u -c 10.0.0.12 -p 5201 -b 1M -l 1000 -t 64",
+   "role": "benign",
+   "dst": "h12",
+   "proto": 17,
+   "kind": "udp_stream_other",
+   "params": {},
+   "src_ip": "10.0.0.8",
+   "dst_ip": "10.0.0.12",
+   "epoch_start": 1794421758.401487
+  },
+  {
+   "host": "h7",
+   "start": 8.0,
+   "duration": 70.0,
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5206 -b 2M -l 1000 -t 70 -i 1 --json --get-server-output --logfile {RUN}/probe_iperf.json",
+   "role": "probe",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "probe_udp",
+   "params": {
+    "port": 5206
+   },
+   "src_ip": "10.0.0.7",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421754.7180414
+  },
+  {
+   "host": "h13",
+   "start": 8.0,
+   "duration": 70.0,
+   "cmd": "ping -D -i 0.2 10.0.0.18",
+   "role": "probe",
+   "dst": "h18",
+   "proto": 1,
+   "kind": "probe_ping",
+   "params": {
+    "logfile": "probe_ping.txt"
+   },
+   "src_ip": "10.0.0.13",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421754.7190602
+  },
+  {
+   "host": "h2",
+   "start": 26.523306048243438,
+   "duration": 30.93565299572426,
+   "cmd": "hping3 --udp -d 1024 -i u500 -k -s 2415 -p 8080 -q 10.0.0.18",
+   "role": "attack",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_ddos",
+   "params": {
+    "pps": 2000,
+    "size": 1024,
+    "fixed_port": true,
+    "multi_port": false,
+    "dport": 8080
+   },
+   "src_ip": "10.0.0.2",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421773.2412806
+  },
+  {
+   "host": "h4",
+   "start": 27.055658000920694,
+   "duration": 30.93565299572426,
+   "cmd": "hping3 --udp -d 64 -i u250 -k -s 1025 -p 53 -q 10.0.0.18",
+   "role": "attack",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_ddos",
+   "params": {
+    "pps": 4000,
+    "size": 64,
+    "fixed_port": true,
+    "multi_port": false,
+    "dport": 53
+   },
+   "src_ip": "10.0.0.4",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421773.7733905
+  },
+  {
+   "host": "h3",
+   "start": 26.54336722666782,
+   "duration": 30.93565299572426,
+   "cmd": "hping3 --udp -d 512 -i u500 -k -s 5947 -p 123 -q 10.0.0.18",
+   "role": "attack",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_ddos",
+   "params": {
+    "pps": 2000,
+    "size": 512,
+    "fixed_port": true,
+    "multi_port": false,
+    "dport": 123
+   },
+   "src_ip": "10.0.0.3",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421773.261338
+  },
+  {
+   "host": "h1",
+   "start": 26.925974415097105,
+   "duration": 30.93565299572426,
+   "cmd": "hping3 --udp -d 512 -i u250 -k -s 32882 -p 1900 -q 10.0.0.18",
+   "role": "attack",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_ddos",
+   "params": {
+    "pps": 4000,
+    "size": 512,
+    "fixed_port": true,
+    "multi_port": false,
+    "dport": 1900
+   },
+   "src_ip": "10.0.0.1",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421773.6462305
+  },
+  {
+   "host": "h5",
+   "start": 25.96691735380616,
+   "duration": 30.93565299572426,
+   "cmd": "hping3 --udp -d 64 -i u250 -k -s 9369 -p 53 -q 10.0.0.18",
+   "role": "attack",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_ddos",
+   "params": {
+    "pps": 4000,
+    "size": 64,
+    "fixed_port": true,
+    "multi_port": false,
+    "dport": 53
+   },
+   "src_ip": "10.0.0.5",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421772.6846213
+  },
+  {
+   "host": "h6",
+   "start": 26.381769335182373,
+   "duration": 30.93565299572426,
+   "cmd": "hping3 --udp -d 64 -i u1000 -k -s 48023 -p 1900 -q 10.0.0.18",
+   "role": "attack",
+   "dst": "h18",
+   "proto": 17,
+   "kind": "udp_ddos",
+   "params": {
+    "pps": 1000,
+    "size": 64,
+    "fixed_port": true,
+    "multi_port": false,
+    "dport": 1900
+   },
+   "src_ip": "10.0.0.6",
+   "dst_ip": "10.0.0.18",
+   "epoch_start": 1794421773.0996823
+  }
+ ],
+ "epoch0": 1794421746.7173333,
+ "epoch_end": 1794421826.7174566,
+ "bw_mbps": 100.0,
+ "cpu_cap": null,
+ "idle_timeout": 10,
+ "config_file": "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/configs/observation.yaml",
+ "code_version": "no-git",
+ "model_dir": "artifacts/production"
+}

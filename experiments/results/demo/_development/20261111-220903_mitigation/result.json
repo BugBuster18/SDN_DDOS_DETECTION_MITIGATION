@@ -1,0 +1,791 @@
+{
+ "scenario": "mitigation",
+ "attack_kind": "udp",
+ "mode": "MITIGATION_ENABLED",
+ "run_dir": "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/results/demo/20261111-220903_mitigation",
+ "times": {
+  "start": 1794434943.921851,
+  "attack_start": 1794434958.9298418,
+  "attack_end": 1794434999.1466725,
+  "end": 1794435039.147483,
+  "first_suspected": 1794434966.952,
+  "first_confirmed": 1794434970.542,
+  "first_rule": 1794434970.543
+ },
+ "phases": {
+  "before": [
+   3.0,
+   15.0
+  ],
+  "attack_unmitigated": [
+   16.0,
+   26.6
+  ],
+  "mitigated": [
+   29.6,
+   55.2
+  ],
+  "after": [
+   60.2,
+   95.2
+  ]
+ },
+ "detection": {
+  "max_state": "MITIGATING",
+  "max_score": 0.9996,
+  "threshold": 0.6815617263950804,
+  "peak_window": {
+   "ctl_n_sources": 11.0,
+   "ctl_n_flows": 44.0,
+   "ctl_pps": 5114.8557,
+   "ctl_mbps": 36.973910792000005,
+   "ctl_avg_pkt": 903.5912,
+   "ctl_ml_max_prob": 0.9994,
+   "ctl_ml_flagged": 0.9091,
+   "score": 0.9996,
+   "label": "SUSPICIOUS TRAFFIC"
+  },
+  "peak_sources": [
+   {
+    "src": "10.0.0.5",
+    "pps": 859.9,
+    "share": 0.168,
+    "flows": 1,
+    "ml_max_prob": 0.8747,
+    "source_score": 0.9074,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.1",
+    "pps": 738.1,
+    "share": 0.144,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9182,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.4",
+    "pps": 715.5,
+    "share": 0.14,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9176,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.2",
+    "pps": 712.8,
+    "share": 0.139,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9175,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.6",
+    "pps": 620.9,
+    "share": 0.121,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9151,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.7",
+    "pps": 614.4,
+    "share": 0.12,
+    "flows": 1,
+    "ml_max_prob": 0.0019,
+    "source_score": 0.3915,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.3",
+    "pps": 555.1,
+    "share": 0.109,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9132,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.8",
+    "pps": 176.5,
+    "share": 0.034,
+    "flows": 1,
+    "ml_max_prob": 0.9923,
+    "source_score": 0.5415,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.9",
+    "pps": 118.2,
+    "share": 0.023,
+    "flows": 2,
+    "ml_max_prob": 0.0014,
+    "source_score": 0.2581,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.13",
+    "pps": 3.4,
+    "share": 0.001,
+    "flows": 1,
+    "ml_max_prob": 0.0021,
+    "source_score": 0.0239,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.10",
+    "pps": 0.0,
+    "share": 0.0,
+    "flows": 33,
+    "ml_max_prob": 0.9081,
+    "source_score": 0.4455,
+    "blocked": false
+   }
+  ],
+  "n_state_events": 6
+ },
+ "mitigation": {
+  "installed": [
+   {
+    "seq": 14,
+    "ts": 1794434970.543,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000001",
+    "src": "10.0.0.1",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     1
+    ],
+    "switches": [
+     "s1"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434970.543,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9995,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.1,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   },
+   {
+    "seq": 15,
+    "ts": 1794434970.543,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000002",
+    "src": "10.0.0.2",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     1
+    ],
+    "switches": [
+     "s1"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434970.543,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9995,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.2,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   },
+   {
+    "seq": 16,
+    "ts": 1794434970.544,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000003",
+    "src": "10.0.0.3",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     1
+    ],
+    "switches": [
+     "s1"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434970.544,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9995,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.3,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   },
+   {
+    "seq": 17,
+    "ts": 1794434970.544,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000004",
+    "src": "10.0.0.4",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     2
+    ],
+    "switches": [
+     "s2"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434970.544,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9995,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.4,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   },
+   {
+    "seq": 18,
+    "ts": 1794434970.545,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000005",
+    "src": "10.0.0.5",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     2
+    ],
+    "switches": [
+     "s2"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434970.545,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9995,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.5,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   },
+   {
+    "seq": 19,
+    "ts": 1794434970.545,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000006",
+    "src": "10.0.0.6",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     2
+    ],
+    "switches": [
+     "s2"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434970.545,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9995,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.6,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   },
+   {
+    "seq": 20,
+    "ts": 1794434983.085,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000007",
+    "src": "10.0.0.10",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     4
+    ],
+    "switches": [
+     "s4"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434983.085,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.0195,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.10,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   },
+   {
+    "seq": 21,
+    "ts": 1794434983.086,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000008",
+    "src": "10.0.0.10",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "dpids": [
+     4
+    ],
+    "switches": [
+     "s4"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794434983.086,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.0195,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.10,ipv4_dst=10.0.0.18,ip_proto=17",
+    "action": "drop"
+   }
+  ],
+  "removed": [
+   {
+    "seq": 23,
+    "ts": 1794435012.468,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000001",
+    "src": "10.0.0.1",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 41.93,
+    "dropped_packets": 57561
+   },
+   {
+    "seq": 24,
+    "ts": 1794435012.469,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000002",
+    "src": "10.0.0.2",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 41.93,
+    "dropped_packets": 42080
+   },
+   {
+    "seq": 25,
+    "ts": 1794435012.469,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000003",
+    "src": "10.0.0.3",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 41.92,
+    "dropped_packets": 30931
+   },
+   {
+    "seq": 26,
+    "ts": 1794435012.469,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000004",
+    "src": "10.0.0.4",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 41.92,
+    "dropped_packets": 42603
+   },
+   {
+    "seq": 27,
+    "ts": 1794435012.469,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000005",
+    "src": "10.0.0.5",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 41.92,
+    "dropped_packets": 53571
+   },
+   {
+    "seq": 28,
+    "ts": 1794435012.469,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000006",
+    "src": "10.0.0.6",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 41.92,
+    "dropped_packets": 49487
+   },
+   {
+    "seq": 29,
+    "ts": 1794435012.469,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000007",
+    "src": "10.0.0.10",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 29.38,
+    "dropped_packets": 0
+   },
+   {
+    "seq": 30,
+    "ts": 1794435012.47,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000008",
+    "src": "10.0.0.10",
+    "dst": "10.0.0.18",
+    "proto": 17,
+    "proto_name": "UDP",
+    "reason": "recovered",
+    "age_s": 29.38,
+    "dropped_packets": 58
+   }
+  ],
+  "would_block": [],
+  "rules_on_attackers": [
+   "10.0.0.1",
+   "10.0.0.2",
+   "10.0.0.3",
+   "10.0.0.4",
+   "10.0.0.5",
+   "10.0.0.6"
+  ],
+  "rules_on_legit": [
+   "10.0.0.10"
+  ],
+  "ovs_rules_at_peak": [
+   "cookie=0xdd05000000000001, duration=13.455s, table=0, n_packets=28680, n_bytes=30572880, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.1,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000002, duration=13.455s, table=0, n_packets=14229, n_bytes=7882866, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.2,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000003, duration=13.455s, table=0, n_packets=10220, n_bytes=14737240, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.3,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000004, duration=13.487s, table=0, n_packets=15111, n_bytes=16108326, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.4,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000005, duration=13.487s, table=0, n_packets=19072, n_bytes=5683456, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.5,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000006, duration=13.487s, table=0, n_packets=25715, n_bytes=20829150, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.6,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000007, duration=1.054s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.10,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000008, duration=1.054s, table=0, n_packets=2, n_bytes=340, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.10,nw_dst=10.0.0.18 actions=drop"
+  ]
+ },
+ "attack_traffic": {
+  "offered_pps": 8839.0,
+  "delivered_before_pps": 3213.0,
+  "delivered_after_pps": 118.0,
+  "per_attacker": {
+   "h1": {
+    "ip": "10.0.0.1",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 1024,
+     "rate_pps": 3000,
+     "dport": 9999,
+     "sport": 40001
+    },
+    "sent_pps": 1900.0,
+    "delivered_before_pps": 1498.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h2": {
+    "ip": "10.0.0.2",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 512,
+     "rate_pps": 3000,
+     "dport": 53,
+     "sport": 40002
+    },
+    "sent_pps": 1317.0,
+    "delivered_before_pps": 0.0,
+    "delivered_after_pps": 47.0,
+    "rule_installed": true
+   },
+   "h3": {
+    "ip": "10.0.0.3",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 1400,
+     "rate_pps": 2000,
+     "dport": 123,
+     "sport": 40003
+    },
+    "sent_pps": 975.0,
+    "delivered_before_pps": 0.0,
+    "delivered_after_pps": 36.0,
+    "rule_installed": true
+   },
+   "h4": {
+    "ip": "10.0.0.4",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 1024,
+     "rate_pps": 3000,
+     "dport": 1900,
+     "sport": 40004
+    },
+    "sent_pps": 1334.0,
+    "delivered_before_pps": 924.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h5": {
+    "ip": "10.0.0.5",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 256,
+     "rate_pps": 4000,
+     "dport": 8080,
+     "sport": 40005
+    },
+    "sent_pps": 1669.0,
+    "delivered_before_pps": 509.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h6": {
+    "ip": "10.0.0.6",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 768,
+     "rate_pps": 2500,
+     "dport": 9999,
+     "sport": 40006
+    },
+    "sent_pps": 1644.0,
+    "delivered_before_pps": 281.0,
+    "delivered_after_pps": 35.0,
+    "rule_installed": true
+   }
+  },
+  "reduction_pct": 96.3
+ },
+ "legit": {
+  "h7": {
+   "host": "h7",
+   "ip": "10.0.0.7",
+   "kind": "tcp_iperf3",
+   "params": {
+    "mbps_cap": 10,
+    "port": 5202
+   },
+   "phases": {
+    "before": {
+     "mbps": 10.0,
+     "n": 13
+    },
+    "attack_unmitigated": {
+     "mbps": 9.96,
+     "n": 10
+    },
+    "mitigated": {
+     "mbps": 10.0,
+     "n": 26
+    },
+    "after": {
+     "mbps": 9.99,
+     "n": 34
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  },
+  "h8": {
+   "host": "h8",
+   "ip": "10.0.0.8",
+   "kind": "udp_iperf3",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1000,
+    "port": 5203
+   },
+   "phases": {
+    "before": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 12
+    },
+    "attack_unmitigated": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 10
+    },
+    "mitigated": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 26
+    },
+    "after": {
+     "mbps": 1.96,
+     "loss_pct": 0.0,
+     "n": 35
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  },
+  "h9": {
+   "host": "h9",
+   "ip": "10.0.0.9",
+   "kind": "http",
+   "params": {
+    "object": "medium.bin (1 MB)"
+   },
+   "phases": {
+    "before": {
+     "loss_pct": 0.0,
+     "rtt_ms": 126.18,
+     "n": 11
+    },
+    "attack_unmitigated": {
+     "loss_pct": 100.0,
+     "rtt_ms": 3002.453,
+     "n": 2
+    },
+    "mitigated": {
+     "loss_pct": 0.0,
+     "rtt_ms": 339.168,
+     "n": 17
+    },
+    "after": {
+     "loss_pct": 0.0,
+     "rtt_ms": 162.901,
+     "n": 29
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  },
+  "h10": {
+   "host": "h10",
+   "ip": "10.0.0.10",
+   "kind": "udp_request_response",
+   "params": {
+    "qps": 20,
+    "pkt_size": 128
+   },
+   "phases": {
+    "before": {
+     "loss_pct": 0.42,
+     "rtt_ms": 16.157,
+     "n": 238
+    },
+    "attack_unmitigated": {
+     "loss_pct": 100.0,
+     "rtt_ms": null,
+     "n": 21
+    },
+    "mitigated": {
+     "loss_pct": 10.67,
+     "rtt_ms": 19.418,
+     "n": 375
+    },
+    "after": {
+     "loss_pct": 1.46,
+     "rtt_ms": 19.284,
+     "n": 1162
+    }
+   },
+   "blocked_by_rule": true,
+   "preserved": false
+  },
+  "h13": {
+   "host": "h13",
+   "ip": "10.0.0.13",
+   "kind": "icmp_ping",
+   "params": {
+    "interval_s": 0.2
+   },
+   "phases": {
+    "before": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.582,
+     "n": 61
+    },
+    "attack_unmitigated": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.107,
+     "n": 22
+    },
+    "mitigated": null,
+    "after": null
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  }
+ },
+ "recovery": {
+  "recovered": true,
+  "recovery_time_s": 24.8,
+  "attackers_reach_victim": true
+ },
+ "statuses": [
+  "NORMAL TRAFFIC",
+  "SUSPICIOUS TRAFFIC",
+  "ATTACK CONFIRMED",
+  "MITIGATION INSTALLED",
+  "ATTACK TRAFFIC BLOCKED",
+  "LEGITIMATE TRAFFIC BLOCKED: rule installed on 10.0.0.10",
+  "NETWORK RECOVERED"
+ ],
+ "row": {
+  "run_id": "20261111-220903_mitigation",
+  "scenario": "mitigation",
+  "start": "2026-11-11T22:09:03",
+  "end": "2026-11-11T22:10:39",
+  "mode": "MITIGATION_ENABLED",
+  "traffic_type": "UDP",
+  "n_attack_sources": 6,
+  "attack_hosts": "h1 h2 h3 h4 h5 h6",
+  "victim_ip": "10.0.0.18",
+  "attack_pkt_sizes": "1024 512 1400 1024 256 768",
+  "per_source_rate_pps": "3000 3000 2000 3000 4000 2500",
+  "offered_attack_pps": 8839.0,
+  "delivered_attack_pps_before_mitigation": 3213.0,
+  "delivered_attack_pps_after_mitigation": 118.0,
+  "attack_reduction_pct": 96.3,
+  "detected": true,
+  "max_state": "MITIGATING",
+  "max_window_score": 0.9996,
+  "flow_ml_max_prob": 0.999,
+  "flow_ml_flagged_pct": 90.9,
+  "detection_latency_s": 11.6,
+  "suspicious_latency_s": 8.0,
+  "mitigation_latency_s": 11.6,
+  "n_rules_installed": 8,
+  "rules_on_legit_hosts": "10.0.0.10",
+  "legit_tcp_mbps_before": 10.0,
+  "legit_tcp_mbps_during": 10.0,
+  "legit_tcp_mbps_after": 9.99,
+  "legit_udp_loss_before": 0.0,
+  "legit_udp_loss_during": 0.0,
+  "legit_udp_loss_after": 0.0,
+  "legit_ping_loss_during": "",
+  "legit_status": "blocked",
+  "recovered": true,
+  "recovery_time_s": 24.8,
+  "false_alarm": false,
+  "statuses": "NORMAL TRAFFIC | SUSPICIOUS TRAFFIC | ATTACK CONFIRMED | MITIGATION INSTALLED | ATTACK TRAFFIC BLOCKED | LEGITIMATE TRAFFIC BLOCKED: rule installed on 10.0.0.10 | NETWORK RECOVERED",
+  "result_dir": "experiments/results/demo/20261111-220903_mitigation"
+ }
+}

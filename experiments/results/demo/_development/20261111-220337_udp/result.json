@@ -1,0 +1,334 @@
+{
+ "scenario": "udp",
+ "attack_kind": "udp",
+ "mode": "DETECTION_ONLY",
+ "run_dir": "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/results/demo/20261111-220337_udp",
+ "times": {
+  "start": 1794434617.0155559,
+  "attack_start": 1794434632.0188694,
+  "attack_end": 1794434672.1152415,
+  "end": 1794434712.1159549,
+  "first_suspected": 1794434639.984,
+  "first_confirmed": 1794434643.679,
+  "first_rule": null
+ },
+ "phases": {
+  "before": [
+   3.0,
+   15.0
+  ],
+  "attack_unmitigated": [
+   16.0,
+   55.1
+  ],
+  "mitigated": null,
+  "after": [
+   60.1,
+   95.1
+  ]
+ },
+ "detection": {
+  "max_state": "CONFIRMED",
+  "max_score": 0.9997,
+  "threshold": 0.6815617263950804,
+  "peak_window": {
+   "ctl_n_sources": 8.0,
+   "ctl_n_flows": 8.0,
+   "ctl_pps": 6716.8478,
+   "ctl_mbps": 44.8837954318,
+   "ctl_avg_pkt": 835.2838,
+   "ctl_ml_max_prob": 0.9994,
+   "ctl_ml_flagged": 0.875,
+   "score": 0.9997,
+   "label": "SUSPICIOUS TRAFFIC"
+  },
+  "peak_sources": [
+   {
+    "src": "10.0.0.5",
+    "pps": 1331.8,
+    "share": 0.198,
+    "flows": 1,
+    "ml_max_prob": 0.8747,
+    "source_score": 0.9027,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.2",
+    "pps": 1153.9,
+    "share": 0.172,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.914,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.1",
+    "pps": 1115.6,
+    "share": 0.166,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9134,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.4",
+    "pps": 1093.3,
+    "share": 0.163,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.913,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.6",
+    "pps": 967.1,
+    "share": 0.144,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9106,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.3",
+    "pps": 851.2,
+    "share": 0.127,
+    "flows": 1,
+    "ml_max_prob": 0.9994,
+    "source_score": 0.9082,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.7",
+    "pps": 200.1,
+    "share": 0.03,
+    "flows": 1,
+    "ml_max_prob": 0.9923,
+    "source_score": 0.655,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.13",
+    "pps": 3.9,
+    "share": 0.001,
+    "flows": 1,
+    "ml_max_prob": 0.0021,
+    "source_score": 0.0392,
+    "blocked": false
+   }
+  ],
+  "n_state_events": 4
+ },
+ "mitigation": {
+  "installed": [],
+  "removed": [],
+  "would_block": [],
+  "rules_on_attackers": [],
+  "rules_on_legit": [],
+  "ovs_rules_at_peak": []
+ },
+ "attack_traffic": {
+  "offered_pps": 12021.0,
+  "delivered_before_pps": 11420.0,
+  "delivered_after_pps": null,
+  "per_attacker": {
+   "h1": {
+    "ip": "10.0.0.1",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 1024,
+     "rate_pps": 3000,
+     "dport": 9999,
+     "sport": 40001
+    },
+    "sent_pps": 2049.0,
+    "delivered_before_pps": 1925.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h2": {
+    "ip": "10.0.0.2",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 512,
+     "rate_pps": 3000,
+     "dport": 53,
+     "sport": 40002
+    },
+    "sent_pps": 2100.0,
+    "delivered_before_pps": 1914.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h3": {
+    "ip": "10.0.0.3",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 1400,
+     "rate_pps": 2000,
+     "dport": 123,
+     "sport": 40003
+    },
+    "sent_pps": 1521.0,
+    "delivered_before_pps": 1312.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h4": {
+    "ip": "10.0.0.4",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 1024,
+     "rate_pps": 3000,
+     "dport": 1900,
+     "sport": 40004
+    },
+    "sent_pps": 2091.0,
+    "delivered_before_pps": 2075.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h5": {
+    "ip": "10.0.0.5",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 256,
+     "rate_pps": 4000,
+     "dport": 8080,
+     "sport": 40005
+    },
+    "sent_pps": 2601.0,
+    "delivered_before_pps": 2550.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h6": {
+    "ip": "10.0.0.6",
+    "params": {
+     "proto": "UDP",
+     "pkt_size": 768,
+     "rate_pps": 2500,
+     "dport": 9999,
+     "sport": 40006
+    },
+    "sent_pps": 1659.0,
+    "delivered_before_pps": 1643.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   }
+  },
+  "reduction_pct": null
+ },
+ "legit": {
+  "h7": {
+   "host": "h7",
+   "ip": "10.0.0.7",
+   "kind": "udp_iperf3",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1000,
+    "port": 5201
+   },
+   "phases": {
+    "before": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 13
+    },
+    "attack_unmitigated": {
+     "mbps": 1.97,
+     "loss_pct": 1.37,
+     "n": 39
+    },
+    "mitigated": null,
+    "after": {
+     "mbps": 1.96,
+     "loss_pct": 0.0,
+     "n": 35
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  },
+  "h13": {
+   "host": "h13",
+   "ip": "10.0.0.13",
+   "kind": "icmp_ping",
+   "params": {
+    "interval_s": 0.2
+   },
+   "phases": {
+    "before": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.049,
+     "n": 61
+    },
+    "attack_unmitigated": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.091,
+     "n": 195
+    },
+    "mitigated": null,
+    "after": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.05,
+     "n": 164
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  }
+ },
+ "recovery": {
+  "recovered": true,
+  "recovery_time_s": 19.9,
+  "attackers_reach_victim": true
+ },
+ "statuses": [
+  "NORMAL TRAFFIC",
+  "SUSPICIOUS TRAFFIC",
+  "ATTACK CONFIRMED",
+  "DETECTION ONLY: NO MITIGATION (mode DETECTION_ONLY)",
+  "LEGITIMATE TRAFFIC OK (no rule touched it)",
+  "NETWORK RECOVERED"
+ ],
+ "row": {
+  "run_id": "20261111-220337_udp",
+  "scenario": "udp",
+  "start": "2026-11-11T22:03:37",
+  "end": "2026-11-11T22:05:12",
+  "mode": "DETECTION_ONLY",
+  "traffic_type": "UDP",
+  "n_attack_sources": 6,
+  "attack_hosts": "h1 h2 h3 h4 h5 h6",
+  "victim_ip": "10.0.0.18",
+  "attack_pkt_sizes": "1024 512 1400 1024 256 768",
+  "per_source_rate_pps": "3000 3000 2000 3000 4000 2500",
+  "offered_attack_pps": 12021.0,
+  "delivered_attack_pps_before_mitigation": 11420.0,
+  "delivered_attack_pps_after_mitigation": "",
+  "attack_reduction_pct": "",
+  "detected": true,
+  "max_state": "CONFIRMED",
+  "max_window_score": 0.9997,
+  "flow_ml_max_prob": 0.999,
+  "flow_ml_flagged_pct": 87.5,
+  "detection_latency_s": 11.7,
+  "suspicious_latency_s": 8.0,
+  "mitigation_latency_s": "",
+  "n_rules_installed": 0,
+  "rules_on_legit_hosts": "",
+  "legit_tcp_mbps_before": "",
+  "legit_tcp_mbps_during": "",
+  "legit_tcp_mbps_after": "",
+  "legit_udp_loss_before": 0.0,
+  "legit_udp_loss_during": 1.37,
+  "legit_udp_loss_after": 0.0,
+  "legit_ping_loss_during": 0.0,
+  "legit_status": "preserved",
+  "recovered": true,
+  "recovery_time_s": 19.9,
+  "false_alarm": false,
+  "statuses": "NORMAL TRAFFIC | SUSPICIOUS TRAFFIC | ATTACK CONFIRMED | DETECTION ONLY: NO MITIGATION (mode DETECTION_ONLY) | LEGITIMATE TRAFFIC OK (no rule touched it) | NETWORK RECOVERED",
+  "result_dir": "experiments/results/demo/20261111-220337_udp"
+ }
+}

@@ -1,0 +1,35 @@
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=hybrid poll=5.0s confirm=2/3 mitigation.enabled=True dry_run=False
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Registered switch 0000000000000004
+Registered switch 0000000000000001
+Registered switch 0000000000000005
+Registered switch 0000000000000002
+Registered switch 0000000000000006
+Registered switch 0000000000000003
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.809 sources=[] actions=[]
+dst=10.0.0.18 SUSPECTED->NORMAL score=0.000 sources=[] actions=[]
+dst=10.0.0.18 NORMAL->MITIGATING score=1.000 sources=['10.0.0.3', '10.0.0.4'] actions=['block']
+BLOCK 10.0.0.3 -> 10.0.0.18 proto=17 at dpids=[1] cookie=dd05000000000001
+BLOCK 10.0.0.4 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000002
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.999 sources=['10.0.0.14', '10.0.0.15', '10.0.0.3', '10.0.0.4'] actions=['block']
+BLOCK 10.0.0.14 -> 10.0.0.18 proto=17 at dpids=[5] cookie=dd05000000000003
+BLOCK 10.0.0.15 -> 10.0.0.18 proto=6 at dpids=[5] cookie=dd05000000000004
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.999 sources=['10.0.0.1'] actions=['block']
+BLOCK 10.0.0.1 -> 10.0.0.18 proto=17 at dpids=[1] cookie=dd05000000000005
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.955 sources=['10.0.0.1'] actions=['block']
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.847 sources=['10.0.0.5', '10.0.0.6'] actions=['block']
+BLOCK 10.0.0.5 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000006
+BLOCK 10.0.0.6 -> 10.0.0.18 proto=17 at dpids=[2] cookie=dd05000000000007
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.481 sources=['10.0.0.12', '10.0.0.2'] actions=['block']
+BLOCK 10.0.0.12 -> 10.0.0.18 proto=1 at dpids=[4] cookie=dd05000000000008
+BLOCK 10.0.0.12 -> 10.0.0.18 proto=17 at dpids=[4] cookie=dd05000000000009
+BLOCK 10.0.0.2 -> 10.0.0.18 proto=17 at dpids=[1] cookie=dd0500000000000a
+Switch 0000000000000004 disconnected; counter state discarded
+Switch 0000000000000006 disconnected; counter state discarded
+Switch 0000000000000001 disconnected; counter state discarded
+Switch 0000000000000003 disconnected; counter state discarded
+Switch 0000000000000005 disconnected; counter state discarded
+Switch 0000000000000002 disconnected; counter state discarded

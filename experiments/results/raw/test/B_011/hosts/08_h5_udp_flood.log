@@ -1,0 +1,39 @@
+
+--- 10.0.0.18 hping statistic ---
+138206 packets transmitted, 34 packets received, 100% packet loss
+round-trip min/avg/max = 2.1/34.8/78.5 ms
+HPING 10.0.0.18 (h5-eth0 10.0.0.18): udp mode set, 28 headers + 64 data bytes
+status=0 port=17836 seq=9600
+status=1 port=17836 seq=9600
+status=1 port=17836 seq=9600
+status=1 port=17836 seq=9600
+status=1 port=17836 seq=9600
+status=1 port=17836 seq=9600
+status=1 port=17836 seq=9600
+status=0 port=17836 seq=11600
+status=0 port=17836 seq=16800
+status=0 port=17836 seq=21600
+status=0 port=17836 seq=26000
+status=0 port=17836 seq=30800
+status=0 port=17836 seq=35600
+status=0 port=17836 seq=40800
+status=0 port=17836 seq=45600
+status=0 port=17836 seq=50800
+status=0 port=17836 seq=55600
+status=0 port=17836 seq=60000
+status=0 port=17836 seq=64800
+status=0 port=17836 seq=70000
+status=0 port=17836 seq=74800
+status=0 port=17836 seq=80000
+status=0 port=17836 seq=84800
+status=0 port=17836 seq=89600
+status=0 port=17836 seq=94000
+status=0 port=17836 seq=98400
+status=0 port=17836 seq=103200
+status=0 port=17836 seq=106800
+status=0 port=17836 seq=110800
+status=0 port=17836 seq=115600
+status=0 port=17836 seq=120800
+status=0 port=17836 seq=125600
+status=0 port=17836 seq=130400
+status=0 port=17836 seq=135600

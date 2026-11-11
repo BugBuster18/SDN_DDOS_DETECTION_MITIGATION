@@ -1,0 +1,26 @@
+
+--- 10.0.0.18 hping statistic ---
+23799 packets transmitted, 21 packets received, 100% packet loss
+round-trip min/avg/max = 47.7/170.9/351.5 ms
+HPING 10.0.0.18 (h4-eth0 10.0.0.18): udp mode set, 28 headers + 512 data bytes
+status=0 port=44275 seq=400
+status=1 port=44275 seq=400
+status=1 port=44275 seq=400
+status=1 port=44275 seq=400
+status=1 port=44275 seq=400
+status=1 port=44275 seq=400
+status=0 port=44275 seq=1600
+status=0 port=44275 seq=3200
+status=0 port=44275 seq=4400
+status=0 port=44275 seq=5600
+status=0 port=44275 seq=7200
+status=0 port=44275 seq=8800
+status=0 port=44275 seq=10400
+status=0 port=44275 seq=12000
+status=0 port=44275 seq=13200
+status=0 port=44275 seq=14800
+status=0 port=44275 seq=16400
+status=0 port=44275 seq=18000
+status=0 port=44275 seq=19600
+status=0 port=44275 seq=20800
+status=0 port=44275 seq=22400

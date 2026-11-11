@@ -1,0 +1,28 @@
+# Python environments (recreate with requirements*.txt)
+.venv/
+venv/
+.venv-ryu/
+.venv-ryu39/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Datasets: several GB, files > 100 MB; download them again (see README / DATASET_DOWNLOAD_STATUS.md)
+data/raw/**
+!data/raw/.gitkeep
+data/processed/**
+!data/processed/.gitkeep
+
+# The trained models ARE committed (artifacts/production, artifacts/experiments) so the demo
+# runs from a fresh clone without retraining.
+
+# Legacy top-level results folder
+results/**
+
+# Logs: ignored in general, but the experiment and demo logs are kept as evidence
+*.log
+!experiments/results/**/*.log
+
+# Transient demo runtime state (written while the Mininet lab is running)
+experiments/results/demo/run/
+experiments/MITIGATION_DISABLE

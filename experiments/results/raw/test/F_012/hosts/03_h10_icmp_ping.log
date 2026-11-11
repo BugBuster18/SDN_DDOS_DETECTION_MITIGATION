@@ -1,0 +1,132 @@
+PING 10.0.0.18 (10.0.0.18) 56(84) bytes of data.
+64 bytes from 10.0.0.18: icmp_seq=1 ttl=64 time=10.2 ms
+64 bytes from 10.0.0.18: icmp_seq=2 ttl=64 time=0.928 ms
+64 bytes from 10.0.0.18: icmp_seq=3 ttl=64 time=0.048 ms
+64 bytes from 10.0.0.18: icmp_seq=4 ttl=64 time=0.049 ms
+64 bytes from 10.0.0.18: icmp_seq=5 ttl=64 time=0.040 ms
+64 bytes from 10.0.0.18: icmp_seq=6 ttl=64 time=0.038 ms
+64 bytes from 10.0.0.18: icmp_seq=7 ttl=64 time=0.074 ms
+64 bytes from 10.0.0.18: icmp_seq=8 ttl=64 time=0.049 ms
+64 bytes from 10.0.0.18: icmp_seq=9 ttl=64 time=0.049 ms
+64 bytes from 10.0.0.18: icmp_seq=10 ttl=64 time=0.038 ms
+64 bytes from 10.0.0.18: icmp_seq=11 ttl=64 time=0.051 ms
+64 bytes from 10.0.0.18: icmp_seq=12 ttl=64 time=0.055 ms
+64 bytes from 10.0.0.18: icmp_seq=13 ttl=64 time=0.045 ms
+64 bytes from 10.0.0.18: icmp_seq=14 ttl=64 time=0.056 ms
+64 bytes from 10.0.0.18: icmp_seq=15 ttl=64 time=0.044 ms
+64 bytes from 10.0.0.18: icmp_seq=16 ttl=64 time=10.8 ms
+64 bytes from 10.0.0.18: icmp_seq=17 ttl=64 time=0.047 ms
+64 bytes from 10.0.0.18: icmp_seq=18 ttl=64 time=0.045 ms
+64 bytes from 10.0.0.18: icmp_seq=19 ttl=64 time=0.048 ms
+64 bytes from 10.0.0.18: icmp_seq=20 ttl=64 time=0.050 ms
+64 bytes from 10.0.0.18: icmp_seq=21 ttl=64 time=0.049 ms
+64 bytes from 10.0.0.18: icmp_seq=22 ttl=64 time=0.042 ms
+64 bytes from 10.0.0.18: icmp_seq=23 ttl=64 time=0.054 ms
+64 bytes from 10.0.0.18: icmp_seq=24 ttl=64 time=0.036 ms
+64 bytes from 10.0.0.18: icmp_seq=25 ttl=64 time=0.044 ms
+64 bytes from 10.0.0.18: icmp_seq=26 ttl=64 time=0.062 ms
+64 bytes from 10.0.0.18: icmp_seq=27 ttl=64 time=0.044 ms
+64 bytes from 10.0.0.18: icmp_seq=28 ttl=64 time=0.040 ms
+64 bytes from 10.0.0.18: icmp_seq=29 ttl=64 time=0.056 ms
+64 bytes from 10.0.0.18: icmp_seq=30 ttl=64 time=3.96 ms
+64 bytes from 10.0.0.18: icmp_seq=31 ttl=64 time=0.157 ms
+64 bytes from 10.0.0.18: icmp_seq=32 ttl=64 time=0.052 ms
+64 bytes from 10.0.0.18: icmp_seq=33 ttl=64 time=0.049 ms
+64 bytes from 10.0.0.18: icmp_seq=34 ttl=64 time=0.043 ms
+64 bytes from 10.0.0.18: icmp_seq=35 ttl=64 time=0.047 ms
+64 bytes from 10.0.0.18: icmp_seq=36 ttl=64 time=0.042 ms
+64 bytes from 10.0.0.18: icmp_seq=37 ttl=64 time=0.041 ms
+64 bytes from 10.0.0.18: icmp_seq=38 ttl=64 time=5.48 ms
+64 bytes from 10.0.0.18: icmp_seq=39 ttl=64 time=1.07 ms
+64 bytes from 10.0.0.18: icmp_seq=40 ttl=64 time=0.099 ms
+64 bytes from 10.0.0.18: icmp_seq=41 ttl=64 time=0.051 ms
+64 bytes from 10.0.0.18: icmp_seq=42 ttl=64 time=0.068 ms
+64 bytes from 10.0.0.18: icmp_seq=43 ttl=64 time=0.047 ms
+64 bytes from 10.0.0.18: icmp_seq=44 ttl=64 time=0.047 ms
+64 bytes from 10.0.0.18: icmp_seq=45 ttl=64 time=0.041 ms
+64 bytes from 10.0.0.18: icmp_seq=46 ttl=64 time=0.045 ms
+64 bytes from 10.0.0.18: icmp_seq=47 ttl=64 time=0.041 ms
+64 bytes from 10.0.0.18: icmp_seq=48 ttl=64 time=0.042 ms
+64 bytes from 10.0.0.18: icmp_seq=49 ttl=64 time=0.048 ms
+64 bytes from 10.0.0.18: icmp_seq=50 ttl=64 time=0.045 ms
+64 bytes from 10.0.0.18: icmp_seq=51 ttl=64 time=0.044 ms
+64 bytes from 10.0.0.18: icmp_seq=52 ttl=64 time=0.040 ms
+64 bytes from 10.0.0.18: icmp_seq=53 ttl=64 time=0.043 ms
+64 bytes from 10.0.0.18: icmp_seq=54 ttl=64 time=0.043 ms
+64 bytes from 10.0.0.18: icmp_seq=55 ttl=64 time=0.058 ms
+64 bytes from 10.0.0.18: icmp_seq=56 ttl=64 time=0.064 ms
+64 bytes from 10.0.0.18: icmp_seq=57 ttl=64 time=0.045 ms
+64 bytes from 10.0.0.18: icmp_seq=58 ttl=64 time=0.041 ms
+64 bytes from 10.0.0.18: icmp_seq=59 ttl=64 time=0.047 ms
+64 bytes from 10.0.0.18: icmp_seq=60 ttl=64 time=0.071 ms
+64 bytes from 10.0.0.18: icmp_seq=61 ttl=64 time=0.046 ms
+64 bytes from 10.0.0.18: icmp_seq=62 ttl=64 time=0.047 ms
+64 bytes from 10.0.0.18: icmp_seq=63 ttl=64 time=0.046 ms
+64 bytes from 10.0.0.18: icmp_seq=64 ttl=64 time=0.063 ms
+64 bytes from 10.0.0.18: icmp_seq=65 ttl=64 time=0.043 ms
+64 bytes from 10.0.0.18: icmp_seq=66 ttl=64 time=0.040 ms
+64 bytes from 10.0.0.18: icmp_seq=67 ttl=64 time=0.058 ms
+From 10.0.0.10 icmp_seq=68 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=69 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=70 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=71 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=72 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=73 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=74 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=75 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=76 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=77 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=78 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=79 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=80 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=81 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=82 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=83 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=84 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=85 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=86 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=87 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=88 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=89 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=90 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=91 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=92 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=99 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=100 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=101 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=102 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=103 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=104 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=105 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=106 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=107 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=108 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=109 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=110 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=111 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=112 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=113 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=114 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=115 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=116 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=117 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=118 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=119 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=120 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=121 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=122 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=123 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=124 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=125 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=126 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=127 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=128 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=129 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=130 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=131 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=132 Destination Host Unreachable
+From 10.0.0.10 icmp_seq=133 Destination Host Unreachable
+
+--- 10.0.0.18 ping statistics ---
+139 packets transmitted, 67 received, +60 errors, 51.7986% packet loss, time 70597ms
+rtt min/avg/max/mdev = 0.036/0.530/10.813/1.931 ms, pipe 7

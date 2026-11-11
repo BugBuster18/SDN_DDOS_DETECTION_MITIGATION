@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SDN DDoS Defence Explained</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: sticky table of contents on the left (wide screens), one readable 72ch column of chapters on the right; stacks on phones. */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --fg:#16202b; --muted:#566475; --line:#d8dee6;
+  --accent:#1d5fc2; --accent-soft:#e3ecfb; --code:#edf1f6;
+  --ok:#17784a; --ok-soft:#e1f3ea; --warn:#9a5b00; --warn-soft:#fbefd9; --bad:#b3261e; --bad-soft:#fbe4e2;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-head:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1319; --surface:#151c25; --fg:#e2e8ef; --muted:#97a4b4; --line:#283341;
+  --accent:#71a6ff; --accent-soft:#1a2a44; --code:#1b2430;
+  --ok:#4cc38a; --ok-soft:#14301f; --warn:#e6a945; --warn-soft:#33270f; --bad:#ff7a6e; --bad-soft:#3a1714; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1319; --surface:#151c25; --fg:#e2e8ef; --muted:#97a4b4; --line:#283341;
+  --accent:#71a6ff; --accent-soft:#1a2a44; --code:#1b2430;
+  --ok:#4cc38a; --ok-soft:#14301f; --warn:#e6a945; --warn-soft:#33270f; --bad:#ff7a6e; --bad-soft:#3a1714; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.62;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:32px}
+@media (min-width:1000px){.shell{grid-template-columns:240px minmax(0,1fr)}}
+nav.toc{font-size:14px}
+@media (min-width:1000px){nav.toc{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto;padding-block:32px}}
+nav.toc .lbl{font-family:var(--f-head);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--muted);margin-bottom:8px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav.toc a{display:block;padding:4px 8px;border-radius:6px;color:var(--fg);text-decoration:none}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--accent-soft);outline:none}
+nav.toc .n{font-family:var(--f-mono);color:var(--muted);font-size:12px;display:inline-block;width:26px}
+main{min-width:0;max-width:78ch}
+header.top{padding-block:40px 8px}
+.eyebrow{font-family:var(--f-mono);font-size:13px;color:var(--accent);letter-spacing:.02em}
+h1{font-family:var(--f-head);font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:8px 0 12px;text-wrap:balance}
+h2{font-family:var(--f-head);font-weight:600;font-size:28px;line-height:1.2;margin:56px 0 12px;text-wrap:balance;scroll-margin-top:16px}
+h3{font-family:var(--f-head);font-weight:600;font-size:20px;margin:28px 0 8px;text-wrap:balance}
+h2 .n{font-family:var(--f-mono);font-size:15px;color:var(--muted);font-weight:500;display:block;margin-bottom:2px}
+p{margin:0 0 14px}
+.lead{font-size:18px;color:var(--muted)}
+a{color:var(--accent)}
+code,kbd{font-family:var(--f-mono);font-size:.88em;background:var(--code);padding:1px 5px;border-radius:4px}
+pre{font-family:var(--f-mono);font-size:13px;line-height:1.5;background:var(--code);padding:12px 14px;border-radius:8px;overflow-x:auto;margin:0 0 16px}
+pre code{background:none;padding:0}
+.term{border-bottom:1px dotted var(--muted);font-weight:500}
+.def{display:block;font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:6px 0 14px}
+.def b{color:var(--fg)}
+/* step cards: the five questions */
+.step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:18px 0}
+.step h3{margin-top:0;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.step h3 .file{font-family:var(--f-mono);font-size:12.5px;font-weight:400;color:var(--muted)}
+.w5{display:grid;grid-template-columns:72px minmax(0,1fr);gap:6px 14px;margin:0}
+.w5 dt{font-family:var(--f-head);font-weight:600;text-transform:uppercase;font-size:12.5px;letter-spacing:.06em;color:var(--accent);padding-top:3px}
+.w5 dd{margin:0}
+@media (max-width:520px){.w5{grid-template-columns:1fr}.w5 dt{padding-top:8px}}
+/* pipeline diagram */
+.flow{display:grid;gap:0;margin:18px 0}
+.stage{display:grid;grid-template-columns:118px minmax(0,1fr);gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stage .where{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-top:2px}
+.stage b{font-family:var(--f-head);font-size:16px}
+.stage small{display:block;color:var(--muted);font-size:13.5px}
+.arrow{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);padding:4px 0 4px 132px;position:relative}
+.arrow::before{content:"";position:absolute;left:58px;top:0;bottom:0;border-left:2px solid var(--line)}
+@media (max-width:520px){.stage{grid-template-columns:1fr}.arrow{padding-left:24px}.arrow::before{left:8px}}
+.lane-ml{border-left:4px solid var(--accent)}
+.lane-net{border-left:4px solid var(--muted)}
+.lane-act{border-left:4px solid var(--bad)}
+/* traces */
+.trace{list-style:none;margin:12px 0 18px;padding:0;display:grid;gap:0}
+.trace li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:14px;padding:10px 0;border-top:1px solid var(--line)}
+.trace li:first-child{border-top:0}
+.trace .t{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.trace .where{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+@media (max-width:520px){.trace li{grid-template-columns:1fr;gap:2px}}
+/* chips + tables */
+.chip{display:inline-block;font-family:var(--f-mono);font-size:12px;font-weight:500;padding:1px 8px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.ok{color:var(--ok);background:var(--ok-soft)} .warn{color:var(--warn);background:var(--warn-soft)} .bad{color:var(--bad);background:var(--bad-soft)}
+.info{color:var(--accent);background:var(--accent-soft)}
+.tbl{overflow-x:auto;margin:12px 0 20px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font-family:var(--f-head);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--code)}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.callout{border-radius:10px;padding:14px 16px;margin:16px 0;border:1px solid var(--line);background:var(--surface)}
+.callout.warnbox{background:var(--warn-soft);border-color:transparent}
+.callout.badbox{background:var(--bad-soft);border-color:transparent}
+.callout.okbox{background:var(--ok-soft);border-color:transparent}
+.callout p:last-child{margin-bottom:0}
+.analogy{font-style:italic;color:var(--muted)}
+.states{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 14px;font-size:14px}
+.states .sep{color:var(--muted);font-family:var(--f-mono)}
+details.qa{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 16px;margin:8px 0}
+details.qa summary{cursor:pointer;padding:12px 0;font-weight:600;list-style-position:outside}
+details.qa summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+details.qa[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+details.qa > div{padding-bottom:12px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:14px 0}
+.two > div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.two h4{margin:0 0 6px;font-family:var(--f-head);font-size:16px}
+ul.tight{margin:6px 0 14px;padding-left:20px} ul.tight li{margin:3px 0}
+.foot{margin-top:56px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+</head>
+<body>
+<div class="shell">
+<nav class="toc" aria-label="Contents">
+  <div class="lbl">Contents</div>
+  <ol>
+    <li><a href="#pitch"><span class="n">00</span>One-minute pitch</a></li>
+    <li><a href="#problem"><span class="n">01</span>The problem</a></li>
+    <li><a href="#big"><span class="n">02</span>The whole system</a></li>
+    <li><a href="#ml"><span class="n">03</span>Building the ML model</a></li>
+    <li><a href="#net"><span class="n">04</span>The network: Mininet, OpenFlow, Ryu</a></li>
+    <li><a href="#detect"><span class="n">05</span>Detection, three levels</a></li>
+    <li><a href="#mitigate"><span class="n">06</span>Mitigation</a></li>
+    <li><a href="#trace-normal"><span class="n">07</span>Trace: a normal packet</a></li>
+    <li><a href="#trace-attack"><span class="n">08</span>Trace: a DDoS attack</a></li>
+    <li><a href="#run"><span class="n">09</span>Running it</a></li>
+    <li><a href="#limits"><span class="n">10</span>False positives &amp; limits</a></li>
+    <li><a href="#status"><span class="n">11</span>Done vs experimental</a></li>
+    <li><a href="#files"><span class="n">12</span>File map</a></li>
+    <li><a href="#qa"><span class="n">13</span>Interview questions</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="top">
+  <div class="eyebrow">~/projects/ddos-cicddos2019-ready · study guide</div>
+  <h1>Machine-learning DDoS detection and mitigation in a software-defined network</h1>
+  <p class="lead">Everything in this project, from the dataset to the OpenFlow drop rule, explained from zero. Every number on this page was produced by the code in the repository; nothing is estimated.</p>
+</header>
+
+<!-- ============================================================ 00 -->
+<h2 id="pitch"><span class="n">00</span>The one-minute pitch</h2>
+<p>We built a small virtual network (18 computers, 6 switches) whose switches are controlled by a program called the <b>controller</b>. Every 5 seconds the controller asks every switch "how many packets and bytes did each conversation send?". It turns those counters into traffic rates, asks a <b>machine-learning model</b> whether each conversation looks like attack traffic, and then looks at the whole picture per victim: how many machines are sending to it, how fast, with what packet sizes, and whether it answers. A second, small model turns that picture into a score. If the score stays high for 2 of the last 3 checks, the controller declares <span class="chip bad">ATTACK CONFIRMED</span>. When mitigation is switched on, it finds the machines responsible and installs a <b>drop rule</b> on each attacker's own switch. The flood stops, legitimate users keep working, and the rules remove themselves when the attack ends.</p>
+<p>The research point: a model that looks at one conversation at a time (the "flow-level" model) wrongly flags normal high-volume UDP traffic as an attack. Looking at the victim's whole picture over time fixes most of those false alarms.</p>
+
+<!-- ============================================================ 01 -->
+<h2 id="problem"><span class="n">01</span>The problem, and why each technology is here</h2>
+
+<h3>What is a DDoS attack?</h3>
+<p>A <span class="term">DDoS (Distributed Denial of Service)</span> attack is many machines sending so much traffic to one target that real users can no longer use it. "Distributed" means many sources at once, which is what makes it hard to block: there is no single bad machine.</p>
+<p class="analogy">Analogy: a shop with one door. One rude customer blocking the door is a DoS; you can ask security to remove them. Two hundred people sent by a competitor crowding the door at once is a DDoS; they look like customers, and they come from everywhere.</p>
+<p>The attacks used here are <b>floods</b>: a <b>UDP flood</b> (lots of UDP datagrams), an <b>ICMP flood</b> (lots of "ping"-type packets) and a <b>TCP SYN flood</b> (lots of "open a connection" requests that are never completed).</p>
+<span class="def"><b>Packet</b>: one unit of data on a network. <b>UDP</b>: a "fire and forget" protocol, no connection, no acknowledgements (used by video, DNS, games). <b>TCP</b>: a connection protocol with acknowledgements (web, file transfer). <b>ICMP</b>: control messages, e.g. <code>ping</code>.</span>
+
+<h3>Why SDN?</h3>
+<p>In a normal network every switch decides for itself where packets go. In <span class="term">SDN (Software-Defined Networking)</span> the switches are "dumb" and a central program, the <b>controller</b>, tells them what to do. That gives two things we need: one place that can <b>see</b> traffic statistics from every switch, and one place that can <b>act</b> by installing a blocking rule on any switch within milliseconds.</p>
+<p class="analogy">Analogy: traditional network = every traffic light runs on its own timer. SDN = a city control room that sees every junction's camera and can change any light remotely.</p>
+
+<h3>Why machine learning, and why it was not enough on its own?</h3>
+<p>Fixed rules like "more than 1000 packets per second is an attack" break easily: a legitimate video stream or file transfer is fast too. Machine learning learns patterns from labelled examples. Our first model learned from a public dataset of real attacks (CIC-DDoS2019). It scored very well on that dataset, but in our network it flagged about <b>half of all legitimate UDP windows</b> as attacks. The reason, found in <code>docs/dataset_audit.md</code>: the dataset's benign UDP is almost all small packets (DNS-like, ~67&nbsp;B median), while normal bulk UDP in our lab uses 500–1500&nbsp;B packets, exactly like flood packets. <b>At the level of a single conversation, a legitimate large-packet UDP stream and one flood stream look the same.</b> So the project adds a second, destination-centric layer that looks at all traffic to a victim together. That is the core contribution.</p>
+
+<!-- ============================================================ 02 -->
+<h2 id="big"><span class="n">02</span>The whole system on one page</h2>
+<p>Two groups of software run at the same time, each in its own Python environment, plus the virtual network:</p>
+<ul class="tight">
+  <li><code>.venv</code> (Python 3.12): the ML side: pandas, scikit-learn, the trained model and the prediction API.</li>
+  <li><code>.venv-ryu39</code> (Python 3.9): the Ryu controller. Ryu is old and does not run on Python 3.12, which is why there are two environments.</li>
+  <li>Mininet + Open vSwitch: the virtual network, run as root.</li>
+</ul>
+
+<div class="flow" role="list" aria-label="System pipeline">
+  <div class="stage lane-ml" role="listitem"><div class="where">offline, once</div><div><b>Dataset → preprocessing → training</b><small>CIC-DDoS2019 CSVs → 7 features → 7 algorithms compared → HistGradientBoosting saved to <code>artifacts/production/</code></small></div></div>
+  <div class="arrow">model file loaded at start-up</div>
+  <div class="stage lane-ml" role="listitem"><div class="where">Terminal 1</div><div><b>ML prediction API</b> <small><code>ddos_ml/predict_api.py</code> · HTTP on 127.0.0.1:8765 · <code>POST /predict</code> returns an attack probability per flow</small></div></div>
+  <div class="arrow">HTTP request every 5 s ↑ (from the controller)</div>
+  <div class="stage lane-net" role="listitem"><div class="where">Terminal 2</div><div><b>Ryu controller</b> <small><code>Codes/controller/hybrid_controller.py</code> · forwards traffic, polls switch counters every 5 s, runs detection levels 1–3, installs/removes drop rules · REST API on :8080</small></div></div>
+  <div class="arrow">OpenFlow 1.3 over TCP port 6653 ↕</div>
+  <div class="stage lane-net" role="listitem"><div class="where">Terminal 3</div><div><b>Mininet network</b> <small>6 Open vSwitch switches s1–s6 in a chain, 18 hosts h1–h18, victim h18 = 10.0.0.18 · <code>Codes/mininet/topology.py</code> via <code>scripts/demo/mininet_lab.py</code></small></div></div>
+  <div class="arrow">traffic generated inside the hosts</div>
+  <div class="stage lane-act" role="listitem"><div class="where">Terminal 4</div><div><b>Traffic &amp; measurement</b> <small><code>scripts/demo/demo_runner.py</code>: legitimate clients (iperf3, ping, HTTP, DNS-like) + attackers (hping3) + measures what really arrived + saves a report</small></div></div>
+</div>
+<p>Terminal 5 is only for watching: <code>scripts/demo/watch_status.sh</code> or the controller log.</p>
+
+<!-- ============================================================ 03 -->
+<h2 id="ml"><span class="n">03</span>Building the flow-level ML model (offline)</h2>
+<p>This happens once, before any demo. The result is a file, <code>artifacts/production/hist_gradient_boosting.joblib</code>. The demo never retrains it.</p>
+
+<div class="step">
+  <h3>Step 1 · Dataset <span class="file">data/raw/CICDDoS2019/01-12/</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>A model can only learn from labelled examples: traffic records already marked "benign" or "attack".</dd>
+    <dt>What</dt><dd>CIC-DDoS2019 from the Canadian Institute for Cybersecurity. Three CSV files are used (<code>DrDoS_NTP</code>, <code>Syn</code>, <code>UDPLag</code>): <b>3,170,293</b> flow records, of which only <b>18,462 (0.58 %) are benign</b>. Each row is one <span class="term">flow</span> (one conversation between two IP:port pairs) summarised by a tool called CICFlowMeter, with ~80 columns.</dd>
+    <dt>How</dt><dd>Downloaded with <code>scripts/download_cicddos2019.py</code> (public mirror).</dd>
+    <dt>When</dt><dd>Once, before training.</dd>
+    <dt>Next</dt><dd>The raw CSVs use different column names and units than our switches report, so they must be converted.</dd>
+  </dl>
+</div>
+
+<div class="step">
+  <h3>Step 2 · Preprocessing <span class="file">ddos_ml/preprocess.py, ddos_ml/features.py</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>The model must be trained on exactly the same features the controller can compute live from OpenFlow counters. Anything the switch cannot measure is useless at run time.</dd>
+    <dt>What</dt><dd><code>canonicalize_frame()</code> reduces every row to <b>7 features</b>: protocol, duration (s), packet count, byte count, packet rate, byte rate, average packet size. It also builds the label (0 = benign, 1 = attack) and a <code>group_id</code>.</dd>
+    <dt>How</dt><dd>Finds columns by name aliases; converts CICFlowMeter's duration from microseconds to seconds; computes rates; marks impossible values (negative, infinite) as missing. IP addresses, ports and timestamps are <b>never</b> features. They are only used for the <code>group_id</code>, a hash of the conversation (both directions together), so the same conversation can never end up in both the training and test sets. Reads files in chunks of 100,000 rows to fit in memory.</dd>
+    <dt>When</dt><dd>Once: <code>python -m ddos_ml.preprocess --input data/raw/... --output data/processed/cicddos2019_flows.csv</code>.</dd>
+    <dt>Next</dt><dd>The clean CSV goes to training.</dd>
+  </dl>
+  <span class="def"><b>Why "group" splitting matters (data leakage)</b>: if pieces of the same conversation are in both training and test data, the model sees the "answers" during training, and test scores look better than reality.</span>
+</div>
+
+<div class="step">
+  <h3>Step 3 · Training and model choice <span class="file">ddos_ml/training.py</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>To learn a function: 7 numbers in → probability of attack out. And to pick the best algorithm honestly.</dd>
+    <dt>What</dt><dd>
+      <ol class="tight">
+        <li><b>Remove contradictions</b>: 1,338,471 rows had identical feature values but opposite labels. No model can separate those, so they are dropped (a warning that 7 features cannot describe everything).</li>
+        <li><b>Group split</b>: 80 % / 20 % by conversation group (<code>GroupShuffleSplit</code>), overlap verified = 0.</li>
+        <li><b>Balance the training part only</b>: 13,386 benign + 13,386 attack rows. The test part keeps its natural mix (3,347 benign, 362,602 attack) so error rates are realistic.</li>
+        <li><b>Pipeline</b>: fill missing values with the training median → standardise (scale each feature) → classifier.</li>
+        <li><b>Compare 7 algorithms</b>: Random Forest, Extra Trees, Decision Tree, Logistic Regression, KNN, Naive Bayes, HistGradientBoosting.</li>
+      </ol></dd>
+    <dt>How</dt><dd><b>HistGradientBoosting</b> builds many small decision trees one after another, each correcting the mistakes of the previous ones ("boosting"); "Hist" means it bins numbers into histograms to be fast. 160 trees, at most 15 leaves each.</dd>
+    <dt>When</dt><dd>Once: <code>python -m ddos_ml.training --input data/processed/cicddos2019_flows.csv</code> → <code>artifacts/production/</code> (model + <code>metrics.json</code> + plots).</dd>
+    <dt>Next</dt><dd>The saved model is served by the prediction API.</dd>
+  </dl>
+</div>
+
+<div class="tbl"><table>
+<thead><tr><th>Model (CIC-DDoS2019 held-out test)</th><th>Balanced accuracy</th><th>Attack recall</th><th>Benign recall</th><th>False-positive rate</th><th>Macro F1</th></tr></thead>
+<tbody>
+<tr><td><b>HistGradientBoosting (chosen)</b></td><td class="num">0.996</td><td class="num">0.997</td><td class="num">0.996</td><td class="num">0.4 %</td><td class="num">0.923</td></tr>
+<tr><td>KNN</td><td class="num">0.996</td><td class="num">0.997</td><td class="num">0.996</td><td class="num">0.4 %</td><td class="num">0.919</td></tr>
+<tr><td>Decision Tree</td><td class="num">0.995</td><td class="num">0.996</td><td class="num">0.993</td><td class="num">0.7 %</td><td class="num">0.916</td></tr>
+<tr><td>Random Forest</td><td class="num">0.994</td><td class="num">0.994</td><td class="num">0.994</td><td class="num">0.6 %</td><td class="num">0.878</td></tr>
+<tr><td>Extra Trees</td><td class="num">0.988</td><td class="num">0.979</td><td class="num">0.996</td><td class="num">0.4 %</td><td class="num">0.727</td></tr>
+<tr><td>Logistic Regression</td><td class="num">0.778</td><td class="num">0.685</td><td class="num">0.871</td><td class="num">12.9 %</td><td class="num">0.430</td></tr>
+<tr><td>Naive Bayes</td><td class="num">0.555</td><td class="num">0.639</td><td class="num">0.471</td><td class="num">52.9 %</td><td class="num">0.400</td></tr>
+</tbody></table></div>
+<span class="def"><b>Recall</b>: of all real attacks, the share caught. <b>False-positive rate</b>: of all benign flows, the share wrongly called attack. <b>Balanced accuracy</b>: the average of attack recall and benign recall, fair when classes are imbalanced. <b>Macro F1</b>: average of the F1 score of both classes; low when the small benign class is often confused.</span>
+<div class="callout warnbox"><p><b>Say this clearly in the presentation:</b> these near-perfect numbers are <i>on the dataset</i>. Only 3,347 benign test flows exist, and the benign traffic in CIC-DDoS2019 is not like our lab's normal traffic. In our Mininet network the same model flagged about 50 % of legitimate UDP windows. That gap is why Levels 2 and 3 exist.</p></div>
+
+<div class="step">
+  <h3>Step 4 · The prediction API <span class="file">ddos_ml/predict_api.py, ddos_ml/runtime.py</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>The model needs Python 3.12 + scikit-learn; the controller runs on Python 3.9. A tiny local web service lets them talk without sharing an environment.</dd>
+    <dt>What</dt><dd><code>GET /health</code> → <code>{"status":"ok", "selected_model":"Hist Gradient Boosting"}</code>. <code>POST /predict</code> with up to 2000 flows → one <code>{"prediction":0|1, "attack_probability":0.0–1.0}</code> per flow.</dd>
+    <dt>How</dt><dd>At start-up <code>load_model()</code> checks the metadata (feature list must match exactly; models trained on synthetic demo data are refused). For each request, <code>live_flow_features()</code> rebuilds the same 7 features from the raw counters the controller sends, and the pipeline predicts.</dd>
+    <dt>When</dt><dd>Started in Terminal 1, called by the controller every 5-second cycle.</dd>
+    <dt>Next</dt><dd>The controller uses the probabilities as Level-1 evidence.</dd>
+  </dl>
+<pre><code>POST /predict  {"flows":[{"ip_proto":17,"duration_sec":30,"duration_nsec":0,"packet_count":7500,"byte_count":7680000}]}
+→ {"predictions":[{"prediction":1,"attack_probability":0.99}]}      # a normal 2 Mbit/s UDP stream!</code></pre>
+</div>
+
+<!-- ============================================================ 04 -->
+<h2 id="net"><span class="n">04</span>The network: Mininet, Open vSwitch, OpenFlow and Ryu</h2>
+
+<div class="step">
+  <h3>Mininet topology <span class="file">Codes/mininet/topology.py (MyTopo), scripts/demo/mininet_lab.py</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>We cannot attack real machines. <span class="term">Mininet</span> creates a whole virtual network on one Linux machine, where every "host" is an isolated network namespace (its own network card, IP address and processes) and the switches are real Open vSwitch software switches.</dd>
+    <dt>What</dt><dd>6 switches in a line, 3 hosts per switch, 100 Mbit/s links. Host <code>hN</code> = <code>10.0.0.N</code>. Victim h18 on s6. Attackers h1–h6 on s1/s2; legitimate clients h7–h17.
+<pre><code> h1 h2 h3   h4 h5 h6   h7 h8 h9   h10 h11 h12   h13 h14 h15   h16 h17 h18
+    s1 ──────── s2 ──────── s3 ───────── s4 ───────── s5 ───────── s6</code></pre></dd>
+    <dt>How</dt><dd>The demo launcher uses the original <code>MyTopo</code> class unchanged and adds what real measurement needs: hosts not CPU-throttled (the default 5 % CPU per host strangles traffic), NIC offloads off (so counters count real packets, not merged "super packets"), a packet-in rate limit of 500/s per switch (explained below), and services on the victim (iperf3 servers, a web server on :80, a DNS-like server on :5353, silent UDP sinks).</dd>
+    <dt>When</dt><dd>Terminal 3, after the controller is up.</dd>
+    <dt>Next</dt><dd>Each switch opens a TCP connection to the controller on port 6653 and asks what to do.</dd>
+  </dl>
+</div>
+
+<h3>OpenFlow in five ideas</h3>
+<p><span class="term">OpenFlow 1.3</span> is the language between controller and switches. You need five ideas:</p>
+<ol>
+  <li><b>Flow table.</b> Each switch has a list of rules. A rule = <b>match</b> (which packets, e.g. "UDP from 10.0.0.7:40001 to 10.0.0.18:5203") + <b>action</b> (e.g. "send out port 3", or nothing = drop) + <b>priority</b> (higher wins) + <b>timeouts</b> + <b>counters</b> (packets and bytes matched so far).</li>
+  <li><b>Table-miss and packet-in.</b> If no rule matches, the lowest-priority rule (priority 0) sends the packet to the controller. That message is a <span class="term">packet-in</span>.</li>
+  <li><b>Flow-mod and packet-out.</b> The controller replies with a <span class="term">flow-mod</span> (install/delete a rule) and a <span class="term">packet-out</span> (send this one packet out of that port).</li>
+  <li><b>Flow statistics.</b> The controller can ask "give me all your rules with their counters" (<code>OFPFlowStatsRequest</code>). This is how we measure traffic without touching packets.</li>
+  <li><b>Cookie.</b> A 64-bit tag on each rule. Our drop rules carry <code>0xdd05…</code> so they can be found, counted and deleted precisely.</li>
+</ol>
+<p class="analogy">Analogy: the switch is a post-office sorter with a rule book. Unknown letter → phone head office (packet-in). Head office answers and adds a page to the rule book (flow-mod). Next time that kind of letter arrives, the sorter handles it alone and ticks a counter.</p>
+
+<div class="step">
+  <h3>Ryu controller, forwarding part <span class="file">Codes/controller/switch.py (SimpleSwitch13)</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>Someone has to make the network actually deliver packets, or there is nothing to measure.</dd>
+    <dt>What</dt><dd>A "learning switch". It remembers which port each MAC address was last seen on (<code>mac_to_port</code>). When a packet's destination is known, it installs a rule matching the exact conversation: for TCP/UDP the <b>5-tuple</b> (source IP, destination IP, protocol, source port, destination port), for ICMP the IPs + ICMP type/code. Priority 1, idle timeout 10 s in the demo, hard timeout 100 s. Unknown destinations and ARP are flooded without installing a rule.</dd>
+    <dt>How</dt><dd>Ryu is an event-driven framework: methods decorated with <code>@set_ev_cls(ofp_event.EventOFPPacketIn, ...)</code> are called for each packet-in.</dd>
+    <dt>When</dt><dd>On the first packet of every new conversation, at every switch along the path.</dd>
+    <dt>Next</dt><dd>Because there is one rule per conversation, the rule counters are exactly the per-flow statistics the ML needs. <code>hybrid_controller.py</code> inherits this class and adds detection.</dd>
+  </dl>
+  <span class="def"><b>Reactive controller</b>: rules are created only when traffic appears (on packet-in). Side effect we measured: a flood that changes its source port on every packet creates a new rule and a packet-in for every packet, which overloads the controller. This shapes the SYN-flood result.</span>
+</div>
+
+<!-- ============================================================ 05 -->
+<h2 id="detect"><span class="n">05</span>Detection, in three levels (every 5 seconds)</h2>
+<p>All of this runs inside <code>hybrid_controller.py</code> in a background loop (<code>_monitor</code> → <code>_poll_once</code> → <code>_process</code>), once per <b>polling window</b> of 5 seconds.</p>
+
+<div class="step">
+  <h3>Collect: counter deltas <span class="file">ddos_ml/temporal_features.py · FlowCounterTracker</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>OpenFlow counters are totals since the rule was created. "7500 packets in 30 s" is an average over the past; it hides that the last 5 seconds might be a sudden burst.</dd>
+    <dt>What</dt><dd>For every rule on every switch, subtract the previous reading → packets and bytes in <i>this</i> window. Handles new rules, rules that expired and came back ("reset"), switches that did not answer (old values kept, no fake zeros), and the same flow seen on several switches (take the maximum, never the sum, or a 6-hop path would count 6 times).</dd>
+    <dt>When</dt><dd>Every 5 s, after the replies from all 6 switches (3 s timeout).</dd>
+    <dt>Next</dt><dd>The merged per-flow records feed Level 1 and Level 2.</dd>
+  </dl>
+</div>
+
+<div class="step">
+  <h3>Level 1 · Flow-level ML <span class="file">hybrid_controller._score_ml · ddos_ml/sdn_runtime.py</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>Use what the CIC-DDoS2019 model knows about attack-shaped conversations.</dd>
+    <dt>What</dt><dd>Every active flow gets an attack probability from the API.</dd>
+    <dt>How</dt><dd><code>aggregate_bidirectional_rows()</code> joins the two directions of a conversation (CICFlowMeter flows are two-way, OpenFlow rules are one-way), sends lifetime counters in batches to <code>POST /predict</code>, and writes the probability back onto each flow. If the API is down, detection continues without this evidence and logs an error.</dd>
+    <dt>Next</dt><dd>The probabilities become features of the victim's window (e.g. "share of packets from ML-flagged flows").</dd>
+  </dl>
+</div>
+
+<div class="step">
+  <h3>Level 2 · Destination-centric window features <span class="file">temporal_features.DestinationWindowAnalyzer</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>A DDoS is defined by its <i>victim</i>: many sources, one destination. You only see that by grouping all flows by destination.</dd>
+    <dt>What</dt><dd>For each destination IP, 19 numbers per window, including: <code>n_sources</code> (distinct senders), <code>n_active_flows</code>, <code>pps</code> and <code>bps</code> (packets/bits per second), <code>avg_pkt_size</code>, <code>top_source_share</code>, <code>source_entropy</code> (how evenly spread the senders are), <code>udp/tcp/icmp_share</code>, <code>response_ratio</code> (bytes the destination sends back ÷ bytes it receives; a flood victim answers little), <code>log_pps_change</code> (sudden jump), <code>packet_in_rate</code>, and the Level-1 summaries <code>ml_max_prob</code>, <code>ml_flow_frac</code>, <code>ml_pps_share</code>. It also computes 10 per-source features for every (source → destination) pair: <code>src_pps</code>, <code>src_share</code>, new flows, packets per flow, the source's ML probability, its response ratio, how long it has been active.</dd>
+    <dt>Next</dt><dd>The window features are scored by the window model.</dd>
+  </dl>
+</div>
+
+<div class="step">
+  <h3>Level 2b · The window model <span class="file">decision_engine.LinearScorer · artifacts/experiments/temporal/window_model.json</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>Combine the 19 numbers into one score in a way you can explain.</dd>
+    <dt>What</dt><dd>A <span class="term">logistic regression</span>: score = sigmoid(intercept + Σ weight × standardised feature). Heavy-tailed counts are log-transformed first. The output is between 0 and 1; the threshold is <b>0.682</b>.</dd>
+    <dt>How it was trained</dt><dd>Not on CIC-DDoS2019, but on our own Mininet <b>calibration</b> runs: 14 seeded runs of 7 scenarios (benign only, single flood, multi-source UDP, SYN, ICMP, mixed, low-rate/bursty), 2,063 labelled windows (<code>experiments/scripts/fit_models.py</code>). The threshold was chosen on held-out calibration runs to keep false positives ≤ 2 %. Final numbers were measured on separate <b>test</b> runs never used for fitting. Pure Python, so it runs inside Ryu without scikit-learn.</dd>
+    <dt>Strongest weights</dt><dd><code>n_sources</code> +2.58, <code>avg_pkt_size</code> +2.05, <code>bps</code> +1.69, <code>response_ratio</code> −1.59, <code>pps</code> +1.45, <code>packet_in_rate</code> +1.36, <code>top_source_share</code> −1.22, <code>ml_pps_share</code> <b>−1.06</b>. That last one is negative: the model learned that "the flow-level ML flags these packets" is, on its own, <i>not</i> trustworthy in this network.</dd>
+    <dt>Explainable</dt><dd>Each feature's contribution (weight × value) is logged as <b>evidence</b>, e.g. <code>n_sources +5.30, pps +3.40</code>, so every alert says why it fired.</dd>
+  </dl>
+</div>
+
+<div class="step">
+  <h3>Level 3 · The state machine <span class="file">decision_engine.DecisionEngine.step</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>One noisy window must not trigger blocking. And blocking must be undone when the attack ends.</dd>
+    <dt>What</dt><dd>Each destination is in one state:
+      <div class="states"><span class="chip ok">NORMAL</span><span class="sep">→</span><span class="chip warn">SUSPECTED</span><span class="sep">→</span><span class="chip bad">CONFIRMED</span><span class="sep">→</span><span class="chip bad">MITIGATING</span><span class="sep">→</span><span class="chip info">RECOVERING</span><span class="sep">→</span><span class="chip ok">NORMAL</span></div>
+      <ul class="tight">
+        <li>One window over the threshold → <b>SUSPECTED</b>.</li>
+        <li><b>2 of the last 3</b> windows over → <b>CONFIRMED</b> (k-of-n confirmation).</li>
+        <li>Confirmed + mitigation enabled + attackers identified → rules installed → <b>MITIGATING</b>.</li>
+        <li>While mitigating, the attack still "counts" if the drop rules are hitting ≥ 50 pps. So the rules are not removed while the attacker keeps sending behind them.</li>
+        <li>2 quiet windows → <b>RECOVERING</b>, rules removed; 2 more quiet windows → <b>NORMAL</b>. New evidence during recovery jumps straight back to CONFIRMED.</li>
+      </ul></dd>
+    <dt>When</dt><dd>Once per window, per destination.</dd>
+  </dl>
+</div>
+
+<!-- ============================================================ 06 -->
+<h2 id="mitigate"><span class="n">06</span>Mitigation: from "attack" to an OpenFlow drop rule</h2>
+
+<h3>Three modes (an operator choice, default is the safest)</h3>
+<div class="tbl"><table>
+<thead><tr><th>Mode</th><th>On a confirmed attack</th><th>How to select</th></tr></thead>
+<tbody>
+<tr><td><code>DETECTION_ONLY</code> <span class="chip ok">default</span></td><td>Alert only; the network is never touched.</td><td>start-up default</td></tr>
+<tr><td><code>DRY_RUN</code></td><td>Alert + log each rule it <i>would</i> install. No rule installed.</td><td><code>scripts/demo/10_enable_mitigation.sh DRY_RUN</code></td></tr>
+<tr><td><code>MITIGATION_ENABLED</code></td><td>Alert + install real drop rules.</td><td><code>scripts/demo/10_enable_mitigation.sh</code>, only accepted because the config says <code>detection.mode: enforce</code> (double opt-in)</td></tr>
+</tbody></table></div>
+
+<div class="step">
+  <h3>Who gets blocked? Source attribution <span class="file">DecisionEngine.attribute_sources · source_model.json</span></h3>
+  <dl class="w5">
+    <dt>Why</dt><dd>Blocking the victim, or every sender, would complete the attacker's job for them. Only the sources causing the flood should be blocked.</dd>
+    <dt>What</dt><dd>For each source sending to the confirmed victim, the rules in <code>experiments/configs/demo.yaml</code>:
+      <ol class="tight">
+        <li>A source sending <b>&lt; 50 packets/s</b> to the victim is never blocked (it cannot be causing a flood).</li>
+        <li>Blocked if the <b>source model</b> (another logistic regression on the 10 per-source features) scores ≥ <b>0.911</b>, <i>or</i></li>
+        <li>if it sends ≥ <b>800 packets/s</b> <i>and</i> something independent agrees: the flow-level ML flags its flows (p ≥ 0.5), or it opens ≥ 10 new flows per window. <b>Speed alone never gets anyone blocked</b>, because a legitimate file transfer is fast too.</li>
+      </ol></dd>
+    <dt>Real example</dt><dd>Rules 1 and 3 were added during testing because the earlier policy, measured live, blocked a legitimate 10 Mbit/s TCP transfer (h7, blocked by speed alone) and a DNS-like client (h10, 0.1 packets/s but many new flows). Both are now spared; see <a href="#limits">Section 10</a>.</dd>
+  </dl>
+</div>
+
+<div class="step">
+  <h3>The rule itself <span class="file">hybrid_controller._install_drop</span></h3>
+  <dl class="w5">
+    <dt>What</dt><dd><pre><code>match:   eth_type=IPv4, ipv4_src=10.0.0.1, ipv4_dst=10.0.0.18, ip_proto=17 (UDP)
+action:  none  (= drop)          priority: 200  (forwarding rules are 1)
+where:   only s1, the attacker's own (ingress) switch
+cookie:  0xdd05000000000001      hard_timeout: 120 s     flag: tell me when removed</code></pre></dd>
+    <dt>Why this shape</dt><dd><b>Narrow</b>: h1 can still reach every other host, and the victim with other protocols. <b>At the ingress switch</b>: dropped packets never use the rest of the network. The controller knows the ingress switch because it remembers the first switch that reported each IP. <b>Self-expiring</b>: a forgotten rule disappears after 120 s.</dd>
+    <dt>Removal</dt><dd>Automatic on recovery; by the operator via the REST API (<code>DELETE /ddos/rules</code> or <code>/ddos/rules/&lt;cookie&gt;</code>, wrapped by <code>scripts/demo/mitigation_ctl.sh</code>); by switching back to <code>DETECTION_ONLY</code>; or by creating the file <code>experiments/MITIGATION_DISABLE</code> (emergency kill switch).</dd>
+    <dt>Proof</dt><dd>Every install/remove is logged and stored as an event. The demo scripts also read the rules directly from the switches (<code>ovs-ofctl dump-flows</code>) so you can show the switch really holds them, with packet counters growing.</dd>
+  </dl>
+</div>
+
+<!-- ============================================================ 07 -->
+<h2 id="trace-normal"><span class="n">07</span>Trace 1: one normal UDP packet, from h7 to h18</h2>
+<p>h7 runs a legitimate 2 Mbit/s UDP stream to the victim's iperf3 server (1000-byte packets, about 250 per second). Path: h7 → s3 → s4 → s5 → s6 → h18.</p>
+<ol class="trace">
+  <li><span class="t">t = 0</span><div><span class="where">h7 kernel · ARP</span><br>h7 knows the IP 10.0.0.18 but not its MAC address. It broadcasts an <b>ARP</b> request ("who has 10.0.0.18?"). s3 has no rule → <b>packet-in</b> to Ryu. Ryu learns "h7's MAC is on s3 port 1" and floods the request. Every switch does the same; h18 answers; the answer travels back the same way, and every switch learns where h18 is.</div></li>
+  <li><span class="t">+1 ms</span><div><span class="where">s3 · table-miss</span><br>The first UDP packet reaches s3. No rule matches → packet-in. <code>switch.py</code> knows the output port for h18's MAC, so it sends a <b>flow-mod</b>: "UDP 10.0.0.7:40958 → 10.0.0.18:5203 → output port 4, priority 1, idle 10 s", plus a packet-out for this packet. The controller also records <code>host_location[10.0.0.7] = s3</code>.</div></li>
+  <li><span class="t">+3 ms</span><div><span class="where">s4, s5, s6</span><br>The same happens at each next switch (one packet-in each). From now on <b>every</b> packet of this stream is forwarded by the switches alone, at full speed, without the controller. Each rule's counters tick up.</div></li>
+  <li><span class="t">≤ 5 s</span><div><span class="where">controller · poll</span><br>The polling loop asks all 6 switches for their flow statistics. The flow appears on s3, s4, s5, s6; the tracker computes ~1,250 new packets and ~1.28 MB in this 5 s window, and merges the 4 copies into one (max, not sum).</div></li>
+  <li><span class="t">+ ~50 ms</span><div><span class="where">Level 1 · ML API</span><br>The conversation's lifetime counters are sent to <code>POST /predict</code>. The CIC-DDoS2019 model answers <b>probability ≈ 0.99</b>: it thinks this legitimate stream is an attack, the known large-packet UDP false positive.</div></li>
+  <li><span class="t">same cycle</span><div><span class="where">Level 2 · destination 10.0.0.18</span><br>Window features for the victim: 2 sources (h7 + h13's ping), ~255 pps, 2 Mbit/s, avg packet ~1024 B, one big ML-flagged flow. Contributions: <code>ml_pps_share</code> −2.9, low <code>n_sources</code>, low rate. Score <b>0.000</b>, far below 0.682.</div></li>
+  <li><span class="t">same cycle</span><div><span class="where">Level 3 · decision</span><br>State stays <span class="chip ok">NORMAL TRAFFIC</span>. The log shows: <code>[poll 31] dst=10.0.0.18 NORMAL TRAFFIC score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%</code>. Nothing is blocked. <b>This line is the whole project in one sentence:</b> the flow model says attack; the system correctly says normal.</div></li>
+  <li><span class="t">10 s idle</span><div><span class="where">switches</span><br>When the stream stops, the rules expire after 10 s without traffic, and the conversation disappears from the statistics.</div></li>
+</ol>
+
+<!-- ============================================================ 08 -->
+<h2 id="trace-attack"><span class="n">08</span>Trace 2: a six-source UDP flood against h18</h2>
+<p>Real timings from the final verification run <code>experiments/results/demo/20261111-224056_mitigation</code> (<code>MITIGATION_ENABLED</code>). Legitimate h7 (TCP 10 Mbit/s), h8 (UDP 2 Mbit/s), h9 (HTTP), h10 (DNS-like) and h13 (ping) were running the whole time. h1–h6 sent UDP floods with different packet sizes (256–1400 B) to different ports, about <b>12,900 packets/s</b> in total.</p>
+<ol class="trace">
+  <li><span class="t">−15 s</span><div><span class="where">baseline</span><br>Only legitimate traffic. Victim <span class="chip ok">NORMAL TRAFFIC</span>.</div></li>
+  <li><span class="t">0.0 s</span><div><span class="where">h1–h6 · hping3</span><br>Six attackers start at once. Each flood's first packets miss at every switch → a burst of packet-ins. OVS lets at most 500 per second per switch through to the controller (the rest of that burst is dropped at the switch), so Ryu installs the six flood rules within a second or two without drowning. From then on the flood is forwarded in the data plane.</div></li>
+  <li><span class="t">0–7 s</span><div><span class="where">effect on users</span><br>The flood fills the shared links and the controller's queue: HTTP downloads fail (100 % in this phase), DNS-like queries lose 48 %, ping RTT jumps from 0.3 ms to 49 ms. That is the denial of service, measured.</div></li>
+  <li><span class="t">7.0 s</span><div><span class="where">first window with the flood</span><br>Victim: 11 sources, ~9,100 pps, 65 Mbit/s, avg packet 888 B, almost no response traffic, packet-in spike, 78 % of flows ML-flagged. Score ≈ <b>1.0</b> &gt; 0.682 → <span class="chip warn">SUSPICIOUS TRAFFIC</span> (1 of 3).</div></li>
+  <li><span class="t">11.7 s</span><div><span class="where">second window</span><br>Over threshold again → 2 of 3 → <span class="chip bad">ATTACK CONFIRMED</span>. The log prints a <b>DDoS ALERT</b> block: sources, rate, protocol mix, flow-ML probability, strongest evidence, top senders.</div></li>
+  <li><span class="t">11.7 s</span><div><span class="where">attribution, same window</span><br>Each attacker sends 900–2,600 pps, its flows are ML-flagged, and its source score is high → all six attributed. h7 (TCP, fast but never ML-flagged, low source score), h8, h9, h10, h13 are <b>not</b>: below the source-model threshold, and either slow or uncorroborated.</div></li>
+  <li><span class="t">11.7 s</span><div><span class="where">mitigation</span><br>Six flow-mods: <code>DROP 10.0.0.1/2/3 → 10.0.0.18 UDP</code> at <b>s1</b>, <code>DROP 10.0.0.4/5/6 → 10.0.0.18 UDP</code> at <b>s2</b>. State <span class="chip bad">MITIGATION ACTIVE</span>. Within one second the switches report thousands of dropped packets on each rule.</div></li>
+  <li><span class="t">14–40 s</span><div><span class="where">measured effect</span><br>Attack packets reaching the victim's switch: <b>9,334 pps → 0 pps (−100 %)</b>. h7 TCP: 10.0 Mbit/s before, during and after. h8 UDP: 0 % loss throughout. HTTP: back to 0 % failures. DNS-like: back to 0 % loss. h13 ping: 0 % loss. The attackers are still sending; the drop counters keep rising, so the state stays MITIGATING.</div></li>
+  <li><span class="t">40.1 s</span><div><span class="where">attack stops</span><br>The drop counters stop increasing.</div></li>
+  <li><span class="t">~50 s</span><div><span class="where">recovery</span><br>Two quiet windows → <span class="chip info">RECOVERING</span>: all six rules deleted (<code>MITIGATION REMOVED … (recovered)</code>). Two more quiet windows → <span class="chip ok">NORMAL TRAFFIC</span>. Total <b>23.9 s</b> from the end of the attack to a clean state; every former attacker can reach h18 again (ping checked).</div></li>
+</ol>
+
+<!-- ============================================================ 09 -->
+<h2 id="run"><span class="n">09</span>Running it: commands and what you should see</h2>
+<p>Full detail is in <code>docs/DEMO_GUIDE.md</code>. The short version, each in its own WSL terminal, after <code>cd ~/projects/ddos-cicddos2019-ready</code>:</p>
+<div class="tbl"><table>
+<thead><tr><th>Where</th><th>Command</th><th>Success looks like</th></tr></thead>
+<tbody>
+<tr><td>T4, first</td><td><code>sudo scripts/demo/00_preflight.sh</code></td><td><code>== PREFLIGHT PASSED</code> (also runs <code>mn -c</code>, which must happen before Ryu starts because it kills ryu-manager)</td></tr>
+<tr><td>T1</td><td><code>scripts/demo/01_start_ml_api.sh</code></td><td><code>ML prediction API listening on http://127.0.0.1:8765</code>; <code>curl …/health</code> → <code>"status": "ok"</code></td></tr>
+<tr><td>T2</td><td><code>sudo scripts/demo/02_start_controller.sh</code></td><td><code>MODE=DETECTION_ONLY</code>, then six <code>Registered switch … (s6) - 6 switch(es) connected</code></td></tr>
+<tr><td>T3</td><td><code>sudo scripts/demo/03_start_mininet.sh</code></td><td><code>Controller reports 6/6 switches connected</code>, <code>LAB READY</code>, <code>mininet&gt;</code></td></tr>
+<tr><td>T5</td><td><code>scripts/demo/watch_status.sh</code></td><td>live state per victim, per-source rates, rules, events</td></tr>
+<tr><td>T4</td><td><code>sudo scripts/demo/04_test_connectivity.sh</code></td><td><code>switches=6/6</code>, <code>RESULT: CONNECTIVITY OK</code></td></tr>
+<tr><td>T4</td><td><code>sudo scripts/demo/05_test_benign_traffic.sh</code></td><td><code>&gt;&gt;&gt; NORMAL TRAFFIC</code>, <code>&gt;&gt;&gt; LEGITIMATE TRAFFIC PRESERVED</code></td></tr>
+<tr><td>T4</td><td><code>sudo scripts/demo/06_test_udp_attack.sh</code></td><td><code>SUSPICIOUS TRAFFIC</code>, <code>ATTACK CONFIRMED</code>, <code>DETECTION ONLY: NO MITIGATION</code></td></tr>
+<tr><td>T4</td><td><code>scripts/demo/10_enable_mitigation.sh</code></td><td><code>"mode": "MITIGATION_ENABLED"</code></td></tr>
+<tr><td>T4</td><td><code>sudo scripts/demo/11_verify_mitigation.sh</code></td><td>NORMAL → SUSPICIOUS → ATTACK CONFIRMED → MITIGATION INSTALLED → ATTACK TRAFFIC BLOCKED → LEGITIMATE TRAFFIC PRESERVED → NETWORK RECOVERED</td></tr>
+<tr><td>T4</td><td><code>sudo scripts/demo/12_disable_mitigation.sh</code></td><td><code>RESULT: NETWORK RECOVERED</code> (every attacker reaches h18 by ICMP, UDP and HTTP)</td></tr>
+<tr><td>any</td><td><code>sudo scripts/demo/13_cleanup.sh</code></td><td>stops everything</td></tr>
+</tbody></table></div>
+<p>Each test saves a folder in <code>experiments/results/demo/&lt;time&gt;_&lt;scenario&gt;/</code> with <code>summary.md</code>, <code>result.json</code>, a 1-second <code>timeline.csv</code>, the controller's <code>events.json</code>, the rules as the switches held them (<code>ovs_drop_rules.txt</code>) and every traffic generator's raw log, plus one row in <code>experiments/results/demo/demo_results.csv</code>. A status line is printed only when the measurements support it. For example, <code>ATTACK TRAFFIC BLOCKED</code> requires ≥ 90 % fewer attack packets at the victim's switch <i>and</i> a rule on every attacker.</p>
+
+<!-- ============================================================ 10 -->
+<h2 id="limits"><span class="n">10</span>False positives, limitations, and how they are handled</h2>
+
+<h3>The main false positive, and the fix</h3>
+<p>A <span class="term">false positive</span> is legitimate traffic treated as an attack; in a system that blocks, it means cutting off real users. Measured on the held-out test campaign (21 runs, not used for fitting; <code>docs/results_summary.md</code>):</p>
+<div class="tbl"><table>
+<thead><tr><th>Measure</th><th>Flow-level ML alone</th><th>Our hybrid system</th></tr></thead>
+<tbody>
+<tr><td>False-positive rate on benign <b>UDP</b> windows</td><td class="num">50 %</td><td class="num">3.6 %</td></tr>
+<tr><td>False-positive rate, all windows</td><td class="num">7.6 %</td><td class="num">1.2 %</td></tr>
+<tr><td>False alerts per benign run</td><td class="num">30.7</td><td class="num">1.3</td></tr>
+<tr><td>Attack recall (windows)</td><td class="num">0.46</td><td class="num">0.81</td></tr>
+<tr><td>ICMP flood recall</td><td class="num">0.00</td><td class="num">1.00</td></tr>
+<tr><td>Mean detection latency</td><td class="num">7.9 s</td><td class="num">12.4 s</td></tr>
+</tbody></table></div>
+<p>How: the destination-level window (many sources? answering? sudden jump?), 2-of-3 confirmation, attribution by a separate source model with a minimum rate, and corroboration before blocking by rate. The price is a few seconds of extra latency.</p>
+
+<h3>Known limitations, all measured</h3>
+<div class="callout badbox">
+<p><b>Flash crowd → false alarm.</b> Nine legitimate clients hitting h18 at once (~37 Mbit/s) were <b>CONFIRMED as an attack</b>. With mitigation on, two legitimate large-packet UDP clients (h14, h15) were <b>blocked</b>. Cause: the window model weighs "number of sources" very heavily (+7.1 of the score here) because calibration data rarely had more than a few senders per victim. Measured boundary with this traffic mix: up to 6 concurrent clients stay normal; 8 or more cross the threshold. Fix requires calibration runs with many legitimate clients (not done; retraining was out of scope).</p>
+</div>
+<div class="callout badbox">
+<p><b>TCP SYN floods are not detected.</b> With random source ports (the realistic form), each SYN is a new rule and a packet-in in this reactive controller, so the attack hits the control plane: about 20,000 short-lived rules, only ~10 SYN/s reaching the victim, and the destination statistics show nearly nothing. With fixed source ports (~12,600 SYN/s reach the victim) the score spikes once at the start (0.98, SUSPICIOUS) then settles at 0.19–0.27: small 73-byte packets that the victim answers do not match what the model learned. Presented as future work.</p>
+</div>
+<div class="callout badbox">
+<p><b>ICMP floods are detected, but blocking them is unreliable.</b> In the final verification run (ICMP flood + legitimate clients, <code>MITIGATION_ENABLED</code>) the attack was CONFIRMED in 10.4 s but <b>no rule was installed</b>. The attackers' source-model scores were 0.66–0.81, below the 0.911 threshold, and the flow-level ML gives ICMP flows ~0.002 (it is essentially blind to ICMP), so the "fast and corroborated" rule never triggered. An earlier ICMP run did block all six, so the outcome depends on whether one window crosses the source threshold. This is a direct trade-off of the corroboration rule that protects legitimate fast TCP transfers. Possible fix (not applied): accept a lower source score as corroboration, or add an ICMP-specific signal.</p>
+</div>
+<div class="callout warnbox">
+<p><b>Thin margin for normal traffic.</b> One six-client benign run peaked at 0.591 (threshold 0.682); in the final run, one window reached 0.928 (SUSPICIOUS) while flows from the connectivity test that ran just before were still counted (9 sources). It was never confirmed, which is what 2-of-3 confirmation is for, but heavier normal traffic will alarm (see flash crowd).</p>
+<p><b>Lab, not internet.</b> The window and source models were fitted on our own Mininet traffic. They are tuned to this topology, link speed and these tools. A real network would need recalibration.</p>
+<p><b>Reactive controller.</b> Every new conversation costs a packet-in. Without the switch-side packet-in rate limit (500/s), a flood's first packets queued ~1 minute of work at the controller, starving ARP: hosts, legitimate and attacking, stopped sending for ~12 s (measured before the fix).</p>
+<p><b>Attribution is per source, not per packet.</b> A drop rule blocks all UDP (or ICMP, or TCP) from that attacker to that victim, including any legitimate UDP the same host might also send to the victim.</p>
+<p><b>Re-blocking.</b> If an operator removes rules while the attack continues and mitigation is still enabled, the controller re-blocks within 1–2 windows (measured: 8 s). To stop blocking, change the mode.</p>
+<p><b>Tool rate.</b> hping3 achieves about 2,000 packets/s per host, not the 3,000–4,000 configured. Reports always show measured rates.</p>
+</div>
+
+<!-- ============================================================ 11 -->
+<h2 id="status"><span class="n">11</span>What is implemented and tested, and what is not</h2>
+<h3>Final verification run (one unattended pass, all steps in demo order)</h3>
+<p>Produced by <code>scripts/demo/run_full_verification.sh</code>; each row is a folder in <code>experiments/results/demo/</code>. Latency is from attack start.</p>
+<div class="tbl"><table>
+<thead><tr><th>Scenario</th><th>Mode</th><th>Decision</th><th>Confirmed after</th><th>Attack at victim's switch</th><th>Legitimate traffic</th><th>Recovered</th></tr></thead>
+<tbody>
+<tr><td>Benign, 6 clients</td><td>detect</td><td><span class="chip warn">1 suspicious window</span>, never confirmed</td><td class="num">–</td><td class="num">–</td><td>all fine</td><td class="num">–</td></tr>
+<tr><td>Flash crowd, 9 clients</td><td>detect</td><td><span class="chip bad">false alarm</span> confirmed</td><td class="num">–</td><td class="num">–</td><td>all fine (nothing blocked)</td><td class="num">–</td></tr>
+<tr><td>UDP flood, 6 sources</td><td>detect</td><td><span class="chip ok">confirmed</span></td><td class="num">11.3 s</td><td class="num">10,719 pps (not blocked)</td><td>fine</td><td class="num">24.9 s</td></tr>
+<tr><td>ICMP flood, 6 sources</td><td>detect</td><td><span class="chip ok">confirmed</span></td><td class="num">11.1 s</td><td class="num">6,951 pps (not blocked)</td><td>fine</td><td class="num">23.9 s</td></tr>
+<tr><td>SYN flood, random ports</td><td>detect</td><td><span class="chip bad">not detected</span></td><td class="num">–</td><td class="num">3 pps</td><td>degraded</td><td>slow</td></tr>
+<tr><td>SYN flood, fixed ports</td><td>detect</td><td><span class="chip bad">not detected</span> (suspicious once)</td><td class="num">–</td><td class="num">12,529 pps</td><td>fine</td><td class="num">yes</td></tr>
+<tr><td>Mixed, UDP flood</td><td>detect</td><td><span class="chip ok">confirmed</span></td><td class="num">8.5 s</td><td class="num">11,777 pps (not blocked)</td><td>fine</td><td class="num">20.9 s</td></tr>
+<tr><td><b>Mixed, UDP flood</b></td><td><b>mitigate</b></td><td><span class="chip ok">confirmed + 6 rules</span></td><td class="num">11.7 s</td><td class="num"><b>9,334 → 0 pps</b></td><td><b>preserved</b> (no rule on any legit host)</td><td class="num">23.9 s</td></tr>
+<tr><td>Mixed, ICMP flood</td><td>mitigate</td><td><span class="chip warn">confirmed, 0 rules</span></td><td class="num">10.4 s</td><td class="num">7,131 pps (not blocked)</td><td>HTTP + ping degraded</td><td class="num">22.9 s</td></tr>
+</tbody></table></div>
+<p>After the run, <code>12_disable_mitigation.sh</code> reported <code>NETWORK RECOVERED</code>: no rule left on any switch, and every former attacker reached h18 by ICMP, UDP and HTTP.</p>
+<div class="tbl"><table>
+<thead><tr><th>Capability</th><th>Status</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>Preprocessing, leakage-safe training, 7-model comparison, saved model</td><td><span class="chip ok">done, tested</span></td><td><code>artifacts/production/metrics.json</code>, unit tests</td></tr>
+<tr><td>ML prediction API</td><td><span class="chip ok">done, tested</span></td><td>health + predict used in every live run</td></tr>
+<tr><td>6-switch / 18-host Mininet lab, controller connection</td><td><span class="chip ok">done, tested</span></td><td>connectivity test: 6/6 switches, 17/17 hosts</td></tr>
+<tr><td>Counter deltas, destination window features, window + source models</td><td><span class="chip ok">done, tested</span></td><td>unit tests + calibration/test campaigns</td></tr>
+<tr><td>Normal traffic (TCP, UDP 200–1400 B, ICMP, HTTP; 6 clients) stays NORMAL</td><td><span class="chip ok">done, tested</span></td><td>benign scenario</td></tr>
+<tr><td>Multi-source UDP flood: detect, block at ingress, preserve legitimate, recover</td><td><span class="chip ok">done, tested</span></td><td>UDP + mitigation runs</td></tr>
+<tr><td>Multi-source ICMP flood: detection and recovery</td><td><span class="chip ok">done, tested</span></td><td>confirmed in 10.4–11.1 s in every ICMP run</td></tr>
+<tr><td>Multi-source ICMP flood: blocking</td><td><span class="chip warn">unreliable</span></td><td>all 6 blocked in one run, none in the final run (source scores below threshold)</td></tr>
+<tr><td>Modes DETECTION_ONLY / DRY_RUN / MITIGATION_ENABLED, REST controls, list/remove rules</td><td><span class="chip ok">done, tested</span></td><td>dry-run run; operator removal test; OVS dumps</td></tr>
+<tr><td>Automatic experiment reports and CSV</td><td><span class="chip ok">done, tested</span></td><td><code>experiments/results/demo/</code></td></tr>
+<tr><td>Unit tests</td><td><span class="chip ok">65 pass</span></td><td><code>.venv/bin/python -m pytest -q</code></td></tr>
+<tr><td>Flash crowd of 8+ legitimate clients</td><td><span class="chip bad">false alarm</span></td><td>crowd scenario</td></tr>
+<tr><td>TCP SYN flood (random or fixed ports)</td><td><span class="chip bad">not detected</span></td><td>SYN scenarios; experimental</td></tr>
+<tr><td>Rate limiting (meters) instead of drop</td><td><span class="chip warn">not implemented</span></td><td>drop only</td></tr>
+<tr><td>Real hardware / internet traffic</td><td><span class="chip warn">not done</span></td><td>lab only</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ 12 -->
+<h2 id="files"><span class="n">12</span>File map: what each important file does</h2>
+<div class="tbl"><table>
+<thead><tr><th>File</th><th>In one line</th></tr></thead>
+<tbody>
+<tr><td><code>ddos_ml/features.py</code></td><td>Turns dataset rows and live switch counters into the same 7 features.</td></tr>
+<tr><td><code>ddos_ml/preprocess.py</code></td><td>Reads the huge CSVs in chunks and writes the clean training CSV.</td></tr>
+<tr><td><code>ddos_ml/training.py</code></td><td>Group split, training-only balancing, 7 models, saves HistGradientBoosting + metrics.</td></tr>
+<tr><td><code>ddos_ml/runtime.py</code>, <code>predict_api.py</code></td><td>Loads the model safely and serves <code>/health</code> and <code>/predict</code>.</td></tr>
+<tr><td><code>ddos_ml/sdn_runtime.py</code></td><td>Joins the two directions of a conversation, counts it once across switches.</td></tr>
+<tr><td><code>ddos_ml/temporal_features.py</code></td><td>Counter deltas per window; per-destination and per-source features.</td></tr>
+<tr><td><code>ddos_ml/decision_engine.py</code></td><td>Window/source scoring, the state machine, who to block.</td></tr>
+<tr><td><code>ddos_ml/mitigation.py</code></td><td>The three modes, the drop-rule table, status labels.</td></tr>
+<tr><td><code>ddos_ml/config.py</code> + <code>experiments/configs/demo.yaml</code></td><td>Settings with safe defaults; mitigation off unless explicitly enabled.</td></tr>
+<tr><td><code>Codes/controller/switch.py</code></td><td>Learning switch: installs per-conversation forwarding rules.</td></tr>
+<tr><td><code>Codes/controller/controller.py</code></td><td>Original baseline: flow-level ML only, logs "Potential DDoS", never blocks. Kept for comparison.</td></tr>
+<tr><td><code>Codes/controller/hybrid_controller.py</code></td><td>The real system: polling, 3 detection levels, alerts, drop rules, REST API.</td></tr>
+<tr><td><code>Codes/mininet/topology.py</code></td><td>The 6-switch chain with 18 hosts.</td></tr>
+<tr><td><code>scripts/demo/*</code></td><td>Start/stop scripts, lab launcher, traffic orchestrator, operator controls.</td></tr>
+<tr><td><code>experiments/scripts/*</code></td><td>Research campaigns: scenarios A–G, replay, model fitting, evaluation, plots.</td></tr>
+<tr><td><code>tests/*</code></td><td>Unit tests for features, training, runtime alignment, temporal features, engine, mitigation.</td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ 13 -->
+<h2 id="qa"><span class="n">13</span>Questions a professor or interviewer may ask</h2>
+
+<details class="qa"><summary>Your model has 99.6 % balanced accuracy. Why do you need anything else?</summary><div><p>That figure is on CIC-DDoS2019's own held-out data, which has only 3,347 benign test flows and almost no large-packet benign UDP. In our network the same model flagged about half of legitimate UDP windows as attacks. A single flood flow and a single legitimate bulk UDP flow have the same per-flow statistics, so no per-flow model can separate them. The difference only shows at the victim: number of sources, total rate, response, change over time.</p></div></details>
+
+<details class="qa"><summary>Why HistGradientBoosting?</summary><div><p>It had the best balanced accuracy and macro-F1 of the 7 candidates on the leakage-safe split (0.996 / 0.923), the lowest false-positive rate tied with KNN, and it is fast and small to serve. KNN scored similarly but must keep the whole training set and is slower to query.</p></div></details>
+
+<details class="qa"><summary>How did you prevent data leakage?</summary><div><p>The train/test split is by conversation group (both directions of a 5-tuple hashed together), so no conversation is in both sets; overlap is checked and was 0. Balancing is done after the split, on the training part only. The test set keeps its natural class mix. Identical feature vectors with contradictory labels were removed. For the temporal models, calibration runs and test runs are separate Mininet runs with different seeds.</p></div></details>
+
+<details class="qa"><summary>Why logistic regression for the window model instead of something stronger?</summary><div><p>Three reasons: it runs inside the Python 3.9 Ryu process with no libraries (just weights in a JSON file); every decision is a sum of feature contributions, so each alert can explain itself; and the calibration set is small (2,063 windows), where a simple model generalises more safely.</p></div></details>
+
+<details class="qa"><summary>How fast is detection, and why not faster?</summary><div><p>About 8.5–11.7 s from attack start to CONFIRMED in the demo runs (one 5 s window to suspect, a second to confirm). Polling faster gives more controller load and the models were calibrated on 5 s windows. Requiring 2 of 3 windows trades a few seconds for far fewer false alarms (30.7 → 1.3 per benign run).</p></div></details>
+
+<details class="qa"><summary>How do you avoid blocking legitimate users?</summary><div><p>Blocking needs a confirmed victim, then a per-source decision: a minimum of 50 pps to the victim, and either a high source-model score or (high rate and independent corroboration by the flow ML or new-flow churn). Rules are narrow (one attacker, one victim, one protocol), placed at the attacker's switch, self-expiring, and removed on recovery. We did not use an allow-list; in the tests legitimate TCP, UDP, HTTP, DNS-like and ping clients were not blocked during UDP and ICMP floods. They <i>were</i> wrongly blocked in a 9-client flash crowd, which is a documented limitation.</p></div></details>
+
+<details class="qa"><summary>Does mitigation work for every attack type?</summary><div><p>No. Measured: UDP floods are detected and fully blocked with legitimate traffic preserved. ICMP floods are always detected, but blocking is unreliable: in the final run no attacker was blocked, because their per-source scores stayed below threshold and the flow-level model cannot corroborate ICMP. SYN floods are not detected. The stricter blocking policy that protects legitimate fast TCP transfers is what costs ICMP blocking; that is a deliberate safety-over-coverage trade-off, with a proposed fix.</p></div></details>
+
+<details class="qa"><summary>What happens if the ML API crashes?</summary><div><p>The controller logs "ML API unavailable" and keeps running Levels 2 and 3 without the flow-level evidence. Forwarding is never affected, because forwarding rules are installed independently of detection.</p></div></details>
+
+<details class="qa"><summary>What if the controller crashes during an attack?</summary><div><p>Installed rules stay in the switches. Forwarding rules expire as usual, and drop rules expire after their 120 s hard timeout, so the network cannot be left blocked forever. New conversations cannot be set up until the controller is back, which is the general weakness of a single reactive controller.</p></div></details>
+
+<details class="qa"><summary>Why not detect the SYN flood?</summary><div><p>Measured, not guessed: with random source ports, each SYN creates a new rule and a packet-in, so the attack exhausts the control plane and flow table (about 20,000 short-lived rules) while only ~10 SYN/s reach the victim, so the victim-side statistics barely change. With fixed ports the victim sees ~12,600 SYN/s but the model, trained mostly on volumetric UDP/ICMP patterns, scores it 0.19–0.27 after the first window. Fixing it would need packet-in-rate features per source, SYN-specific features, or wildcard forwarding rules.</p></div></details>
+
+<details class="qa"><summary>Why install the drop rule at the attacker's switch and not at the victim's?</summary><div><p>Dropping at the edge where the traffic enters frees every link on the path, so other users sharing those links recover too (in the final run, HTTP and DNS-like clients went from 100 % / 48 % failures back to 0 %). Dropping at s6 would protect h18 but leave the chain congested.</p></div></details>
+
+<details class="qa"><summary>What does "SDN makes this possible" actually mean here?</summary><div><p>Two concrete things: the controller can read per-conversation counters from every switch with one standard message (flow statistics), and it can push a precise drop rule into any switch within milliseconds. In a traditional network you would need flow-export tools to see the traffic and per-device configuration to block it.</p></div></details>
+
+<details class="qa"><summary>What would you do next?</summary><div><p>Calibrate with many-client legitimate traffic to fix the flash-crowd false alarm; add SYN-specific and packet-in-based features; use OpenFlow meters for rate limiting instead of dropping when confidence is lower; proactive or wildcard forwarding to remove the packet-in weakness; and validate on traffic from outside the lab.</p></div></details>
+
+<p class="foot">Built from a read-only inspection of the repository and the measured runs in <code>experiments/results/</code>. Numbers: CIC-DDoS2019 model metrics from <code>artifacts/production/metrics.json</code>; research comparison from <code>docs/results_summary.md</code>; demo traces from <code>experiments/results/demo/</code>.</p>
+</main>
+</div>
+
+</body>
+</html>

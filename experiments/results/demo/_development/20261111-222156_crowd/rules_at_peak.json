@@ -1,0 +1,98 @@
+{
+ "mode": "MITIGATION_ENABLED",
+ "n_rules": 4,
+ "rules": [
+  {
+   "cookie": "0xdd0500000000000d",
+   "src": "10.0.0.14",
+   "dst": "10.0.0.18",
+   "proto": 6,
+   "proto_name": "TCP",
+   "dpids": [
+    5
+   ],
+   "switches": [
+    "s5"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435725.78,
+   "age_s": 0.9,
+   "reason": "attributed_attacker",
+   "score": 0.8859,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.14,ipv4_dst=10.0.0.18,ip_proto=6",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd0500000000000e",
+   "src": "10.0.0.14",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    5
+   ],
+   "switches": [
+    "s5"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435725.78,
+   "age_s": 0.9,
+   "reason": "attributed_attacker",
+   "score": 0.8859,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.14,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd0500000000000f",
+   "src": "10.0.0.15",
+   "dst": "10.0.0.18",
+   "proto": 6,
+   "proto_name": "TCP",
+   "dpids": [
+    5
+   ],
+   "switches": [
+    "s5"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435725.781,
+   "age_s": 0.9,
+   "reason": "attributed_attacker",
+   "score": 0.8859,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.15,ipv4_dst=10.0.0.18,ip_proto=6",
+   "action": "drop"
+  },
+  {
+   "cookie": "0xdd05000000000010",
+   "src": "10.0.0.15",
+   "dst": "10.0.0.18",
+   "proto": 17,
+   "proto_name": "UDP",
+   "dpids": [
+    5
+   ],
+   "switches": [
+    "s5"
+   ],
+   "priority": 200,
+   "hard_timeout": 120,
+   "installed": 1794435725.782,
+   "age_s": 0.9,
+   "reason": "attributed_attacker",
+   "score": 0.8859,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.15,ipv4_dst=10.0.0.18,ip_proto=17",
+   "action": "drop"
+  }
+ ]
+}

@@ -1,0 +1,287 @@
+{
+ "scenario": "syn",
+ "attack_kind": "synfixed",
+ "mode": "DETECTION_ONLY",
+ "run_dir": "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/results/demo/20261111-223743_synfixed",
+ "times": {
+  "start": 1794436663.09524,
+  "attack_start": 1794436678.098475,
+  "attack_end": 1794436718.1850915,
+  "end": 1794436759.2032943,
+  "first_suspected": 1794436681.448,
+  "first_confirmed": null,
+  "first_rule": null
+ },
+ "phases": {
+  "before": [
+   3.0,
+   15.0
+  ],
+  "attack_unmitigated": [
+   16.0,
+   55.1
+  ],
+  "mitigated": null,
+  "after": [
+   60.1,
+   96.1
+  ]
+ },
+ "detection": {
+  "max_state": "SUSPECTED",
+  "max_score": 0.9714,
+  "threshold": 0.6815617263950804,
+  "peak_window": {
+   "ctl_n_sources": 6.0,
+   "ctl_n_flows": 6.0,
+   "ctl_pps": 2827.872,
+   "ctl_mbps": 3.0028012376,
+   "ctl_avg_pkt": 132.7324,
+   "ctl_ml_max_prob": 0.9923,
+   "ctl_ml_flagged": 0.1667,
+   "score": 0.9714,
+   "label": "SUSPICIOUS TRAFFIC"
+  },
+  "peak_sources": [
+   {
+    "src": "10.0.0.1",
+    "pps": 654.8,
+    "share": 0.232,
+    "flows": 1,
+    "ml_max_prob": 0.0007,
+    "source_score": 0.6897,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.3",
+    "pps": 650.4,
+    "share": 0.23,
+    "flows": 1,
+    "ml_max_prob": 0.0007,
+    "source_score": 0.6893,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.2",
+    "pps": 648.8,
+    "share": 0.229,
+    "flows": 1,
+    "ml_max_prob": 0.0007,
+    "source_score": 0.6891,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.4",
+    "pps": 644.2,
+    "share": 0.228,
+    "flows": 1,
+    "ml_max_prob": 0.0007,
+    "source_score": 0.6887,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.7",
+    "pps": 225.2,
+    "share": 0.08,
+    "flows": 1,
+    "ml_max_prob": 0.9923,
+    "source_score": 0.6393,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.13",
+    "pps": 4.4,
+    "share": 0.002,
+    "flows": 1,
+    "ml_max_prob": 0.0021,
+    "source_score": 0.0366,
+    "blocked": false
+   }
+  ],
+  "n_state_events": 2
+ },
+ "mitigation": {
+  "installed": [],
+  "removed": [],
+  "would_block": [],
+  "rules_on_attackers": [],
+  "rules_on_legit": [],
+  "ovs_rules_at_peak": []
+ },
+ "attack_traffic": {
+  "offered_pps": 12544.0,
+  "delivered_before_pps": 12529.0,
+  "delivered_after_pps": null,
+  "per_attacker": {
+   "h1": {
+    "ip": "10.0.0.1",
+    "params": {
+     "proto": "TCP-SYN",
+     "pkt_size": 0,
+     "rate_pps": 2000,
+     "dport": 80,
+     "sport": 41001
+    },
+    "sent_pps": 3133.0,
+    "delivered_before_pps": 3129.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h2": {
+    "ip": "10.0.0.2",
+    "params": {
+     "proto": "TCP-SYN",
+     "pkt_size": 0,
+     "rate_pps": 2000,
+     "dport": 80,
+     "sport": 41002
+    },
+    "sent_pps": 3135.0,
+    "delivered_before_pps": 3132.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h3": {
+    "ip": "10.0.0.3",
+    "params": {
+     "proto": "TCP-SYN",
+     "pkt_size": 0,
+     "rate_pps": 2000,
+     "dport": 80,
+     "sport": 41003
+    },
+    "sent_pps": 3125.0,
+    "delivered_before_pps": 3122.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   },
+   "h4": {
+    "ip": "10.0.0.4",
+    "params": {
+     "proto": "TCP-SYN",
+     "pkt_size": 0,
+     "rate_pps": 2000,
+     "dport": 80,
+     "sport": 41004
+    },
+    "sent_pps": 3151.0,
+    "delivered_before_pps": 3145.0,
+    "delivered_after_pps": null,
+    "rule_installed": false
+   }
+  },
+  "reduction_pct": null
+ },
+ "legit": {
+  "h7": {
+   "host": "h7",
+   "ip": "10.0.0.7",
+   "kind": "udp_iperf3",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1000,
+    "port": 5201
+   },
+   "phases": {
+    "before": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 12
+    },
+    "attack_unmitigated": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 39
+    },
+    "mitigated": null,
+    "after": {
+     "mbps": 1.97,
+     "loss_pct": 0.0,
+     "n": 36
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  },
+  "h13": {
+   "host": "h13",
+   "ip": "10.0.0.13",
+   "kind": "icmp_ping",
+   "params": {
+    "interval_s": 0.2
+   },
+   "phases": {
+    "before": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.054,
+     "n": 61
+    },
+    "attack_unmitigated": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.037,
+     "n": 195
+    },
+    "mitigated": null,
+    "after": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.049,
+     "n": 165
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  }
+ },
+ "recovery": {
+  "recovered": true,
+  "recovery_time_s": 0.9,
+  "attackers_reach_victim": true
+ },
+ "statuses": [
+  "NORMAL TRAFFIC",
+  "SUSPICIOUS TRAFFIC",
+  "ATTACK NOT DETECTED",
+  "LEGITIMATE TRAFFIC OK (no rule touched it)",
+  "NETWORK RECOVERED"
+ ],
+ "row": {
+  "run_id": "20261111-223743_synfixed",
+  "scenario": "syn",
+  "start": "2026-11-11T22:37:43",
+  "end": "2026-11-11T22:39:19",
+  "mode": "DETECTION_ONLY",
+  "traffic_type": "SYNFIXED",
+  "n_attack_sources": 4,
+  "attack_hosts": "h1 h2 h3 h4",
+  "victim_ip": "10.0.0.18",
+  "attack_pkt_sizes": "0 0 0 0",
+  "per_source_rate_pps": "2000 2000 2000 2000",
+  "offered_attack_pps": 12544.0,
+  "delivered_attack_pps_before_mitigation": 12529.0,
+  "delivered_attack_pps_after_mitigation": "",
+  "attack_reduction_pct": "",
+  "detected": false,
+  "max_state": "SUSPECTED",
+  "max_window_score": 0.9714,
+  "flow_ml_max_prob": 0.992,
+  "flow_ml_flagged_pct": 16.7,
+  "detection_latency_s": "",
+  "suspicious_latency_s": 3.3,
+  "mitigation_latency_s": "",
+  "n_rules_installed": 0,
+  "rules_on_legit_hosts": "",
+  "legit_tcp_mbps_before": "",
+  "legit_tcp_mbps_during": "",
+  "legit_tcp_mbps_after": "",
+  "legit_udp_loss_before": 0.0,
+  "legit_udp_loss_during": 0.0,
+  "legit_udp_loss_after": 0.0,
+  "legit_ping_loss_during": 0.0,
+  "legit_status": "preserved",
+  "recovered": true,
+  "recovery_time_s": 0.9,
+  "false_alarm": false,
+  "statuses": "NORMAL TRAFFIC | SUSPICIOUS TRAFFIC | ATTACK NOT DETECTED | LEGITIMATE TRAFFIC OK (no rule touched it) | NETWORK RECOVERED",
+  "result_dir": "experiments/results/demo/20261111-223743_synfixed"
+ }
+}

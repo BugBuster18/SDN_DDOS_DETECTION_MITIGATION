@@ -1,0 +1,5 @@
+
+--- 10.0.0.18 hping statistic ---
+62965 packets transmitted, 58948 packets received, 7% packet loss
+round-trip min/avg/max = 0.0/126.9/274.5 ms
+HPING 10.0.0.18 (h2-eth0 10.0.0.18): S set, 40 headers + 0 data bytes

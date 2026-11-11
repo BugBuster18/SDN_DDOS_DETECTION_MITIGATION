@@ -1,0 +1,17 @@
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=rule poll=5.0s confirm=2/3 mitigation.enabled=False dry_run=True
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Registered switch 0000000000000006
+Registered switch 0000000000000002
+Registered switch 0000000000000005
+Registered switch 0000000000000003
+Registered switch 0000000000000004
+Registered switch 0000000000000001
+Switch 0000000000000006 disconnected; counter state discarded
+Switch 0000000000000004 disconnected; counter state discarded
+Switch 0000000000000001 disconnected; counter state discarded
+Switch 0000000000000003 disconnected; counter state discarded
+Switch 0000000000000002 disconnected; counter state discarded
+Switch 0000000000000005 disconnected; counter state discarded

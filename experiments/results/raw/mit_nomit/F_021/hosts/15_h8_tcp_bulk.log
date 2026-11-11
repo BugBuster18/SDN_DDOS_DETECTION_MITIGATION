@@ -1,0 +1,10 @@
+iperf3: interrupt - the client has terminated
+Connecting to host 10.0.0.18, port 5201
+[  7] local 10.0.0.8 port 38592 connected to 10.0.0.18 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  7]   0.00-1.00   sec   256 KBytes  2.10 Mbits/sec    7   42.4 KBytes       
+[  7]   1.00-1.66   sec   256 KBytes  3.18 Mbits/sec    0   42.4 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  7]   0.00-1.66   sec   512 KBytes  2.53 Mbits/sec    7             sender
+[  7]   0.00-1.66   sec  0.00 Bytes  0.00 bits/sec                  receiver

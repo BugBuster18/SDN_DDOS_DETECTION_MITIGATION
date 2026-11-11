@@ -1,0 +1,2 @@
+# Optional dependency for scripts/download_cicddos2019.py
+huggingface_hub>=0.24,<2

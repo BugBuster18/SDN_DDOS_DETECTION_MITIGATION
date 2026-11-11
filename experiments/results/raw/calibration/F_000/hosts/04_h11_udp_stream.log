@@ -1,0 +1,75 @@
+Connecting to host 10.0.0.18, port 5203
+[  7] local 10.0.0.11 port 44979 connected to 10.0.0.18 port 5203
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  7]   0.00-1.00   sec   976 KBytes  7.99 Mbits/sec  4997  
+[  7]   1.00-2.00   sec   976 KBytes  8.00 Mbits/sec  4999  
+[  7]   2.00-3.00   sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]   3.00-4.00   sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]   4.00-5.00   sec   977 KBytes  8.01 Mbits/sec  5004  
+[  7]   5.00-6.00   sec   976 KBytes  7.99 Mbits/sec  4995  
+[  7]   6.00-7.00   sec   977 KBytes  8.01 Mbits/sec  5000  
+[  7]   7.00-8.00   sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]   8.00-9.00   sec   977 KBytes  8.01 Mbits/sec  5004  
+[  7]   9.00-10.00  sec   973 KBytes  7.97 Mbits/sec  4982  
+[  7]  10.00-11.00  sec   979 KBytes  8.02 Mbits/sec  5014  
+[  7]  11.00-12.00  sec   907 KBytes  7.41 Mbits/sec  4647  
+[  7]  12.00-13.00  sec   786 KBytes  6.46 Mbits/sec  4024  
+[  7]  13.00-14.00  sec  1.20 MBytes  10.1 Mbits/sec  6311  
+[  7]  14.00-15.00  sec   973 KBytes  7.96 Mbits/sec  4983  
+[  7]  15.00-16.00  sec   983 KBytes  8.07 Mbits/sec  5035  
+[  7]  16.00-17.00  sec   883 KBytes  7.24 Mbits/sec  4523  
+[  7]  17.00-18.00  sec  1.04 MBytes  8.76 Mbits/sec  5477  
+[  7]  18.00-19.03  sec   980 KBytes  7.81 Mbits/sec  5017  
+[  7]  19.03-20.01  sec   977 KBytes  8.16 Mbits/sec  5001  
+[  7]  20.01-21.00  sec   972 KBytes  8.02 Mbits/sec  4977  
+[  7]  21.00-22.00  sec   978 KBytes  8.02 Mbits/sec  5005  
+[  7]  22.00-23.00  sec   920 KBytes  7.53 Mbits/sec  4710  
+[  7]  23.00-24.00  sec  1.01 MBytes  8.46 Mbits/sec  5290  
+[  7]  24.00-25.00  sec   977 KBytes  8.00 Mbits/sec  4999  
+[  7]  25.00-26.00  sec   972 KBytes  7.96 Mbits/sec  4978  
+[  7]  26.00-27.00  sec   970 KBytes  7.94 Mbits/sec  4966  
+[  7]  27.00-28.00  sec   988 KBytes  8.09 Mbits/sec  5058  
+[  7]  28.00-29.00  sec   976 KBytes  8.01 Mbits/sec  4999  
+[  7]  29.00-30.00  sec   975 KBytes  7.99 Mbits/sec  4994  
+[  7]  30.00-31.00  sec   975 KBytes  7.99 Mbits/sec  4994  
+[  7]  31.00-32.00  sec   979 KBytes  8.02 Mbits/sec  5012  
+[  7]  32.00-33.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  33.00-34.00  sec   976 KBytes  7.99 Mbits/sec  4995  
+[  7]  34.00-35.00  sec   971 KBytes  7.95 Mbits/sec  4975  
+[  7]  35.00-36.00  sec   977 KBytes  8.01 Mbits/sec  5003  
+[  7]  36.00-37.00  sec   981 KBytes  8.04 Mbits/sec  5022  
+[  7]  37.00-38.00  sec   977 KBytes  8.01 Mbits/sec  5004  
+[  7]  38.00-39.00  sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]  39.00-40.00  sec   969 KBytes  7.94 Mbits/sec  4961  
+[  7]  40.00-41.00  sec   984 KBytes  8.06 Mbits/sec  5040  
+[  7]  41.00-42.00  sec   977 KBytes  8.00 Mbits/sec  4999  
+[  7]  42.00-43.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  43.00-44.00  sec   976 KBytes  8.00 Mbits/sec  5000  
+[  7]  44.00-45.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  45.00-46.00  sec   976 KBytes  8.00 Mbits/sec  4998  
+[  7]  46.00-47.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  47.00-48.00  sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]  48.00-49.00  sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]  49.00-50.00  sec   976 KBytes  8.00 Mbits/sec  4999  
+[  7]  50.00-51.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  51.00-52.00  sec   976 KBytes  7.99 Mbits/sec  4996  
+[  7]  52.00-53.00  sec   978 KBytes  8.01 Mbits/sec  5004  
+[  7]  53.00-54.00  sec   976 KBytes  8.00 Mbits/sec  4999  
+[  7]  54.00-55.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  55.00-56.00  sec   976 KBytes  8.00 Mbits/sec  4999  
+[  7]  56.00-57.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  57.00-58.00  sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]  58.00-59.00  sec   976 KBytes  8.00 Mbits/sec  4999  
+[  7]  59.00-60.00  sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]  60.00-61.00  sec   977 KBytes  8.00 Mbits/sec  5000  
+[  7]  61.00-62.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  62.00-63.00  sec   976 KBytes  8.00 Mbits/sec  4999  
+[  7]  63.00-64.00  sec   977 KBytes  8.00 Mbits/sec  5001  
+[  7]  64.00-65.iperf3: interrupt - the client has terminated
+00  sec   965 KBytes  7.90 Mbits/sec  4941  
+[  7]  65.00-66.00  sec   988 KBytes  8.09 Mbits/sec  5058  
+[  7]  67.00-67.97  sec  0.00 Bytes  0.00 bits/sec  0  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  7]   0.00-67.97  sec  63.9 MBytes  7.89 Mbits/sec  0.000 ms  0/334997 (0%)  sender
+[  7]   0.00-67.97  sec  0.00 Bytes  0.00 bits/sec  0.000 ms  0/0 (0%)  receiver

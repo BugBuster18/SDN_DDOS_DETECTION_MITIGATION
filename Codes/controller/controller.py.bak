@@ -1,0 +1,225 @@
+"""Ryu OpenFlow 1.3 monitor using the seven-feature CICFlowMeter model.
+
+This version aligns live OpenFlow observations with the bidirectional feature
+semantics used during CICFlowMeter training and handles multipart stats replies.
+"""
+from __future__ import annotations
+
+import os
+import sys
+import time
+from pathlib import Path
+from datetime import datetime
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from ryu.controller import ofp_event
+from ryu.controller.handler import MAIN_DISPATCHER, DEAD_DISPATCHER, set_ev_cls
+from ryu.lib import hub
+
+import switch
+from ddos_ml.runtime import load_model, live_feature_frame
+from ddos_ml.sdn_runtime import aggregate_bidirectional_rows
+
+POLL_SECONDS = max(float(os.environ.get("DDOS_POLL_SECONDS", "10")), 1.0)
+REPLY_TIMEOUT_SECONDS = max(
+    float(os.environ.get("DDOS_REPLY_TIMEOUT_SECONDS", "3")), 0.25
+)
+
+
+class SimpleMonitor13(switch.SimpleSwitch13):
+    """Collect stats, aggregate bidirectional conversations, and classify."""
+
+    def __init__(self, *args, **kwargs):
+        super(SimpleMonitor13, self).__init__(*args, **kwargs)
+        self.datapaths = {}
+        model_dir = PROJECT_ROOT / os.environ.get(
+            "DDOS_MODEL_DIR", "artifacts/production"
+        )
+        self.flow_model, self.model_metadata = load_model(model_dir)
+        self._active_cycle = None
+        self.logger.info(
+            "Loaded DDoS model trained from %s",
+            self.model_metadata.get("training_source", "unknown"),
+        )
+        self.logger.info(
+            "Monitoring with bidirectional aggregation; poll=%ss reply_timeout=%ss",
+            POLL_SECONDS,
+            REPLY_TIMEOUT_SECONDS,
+        )
+        self.monitor_thread = hub.spawn(self._monitor)
+
+    @set_ev_cls(ofp_event.EventOFPStateChange, [MAIN_DISPATCHER, DEAD_DISPATCHER])
+    def _state_change_handler(self, ev):
+        datapath = ev.datapath
+        if ev.state == MAIN_DISPATCHER:
+            self.datapaths[datapath.id] = datapath
+            self.logger.info("Registered switch %016x", datapath.id)
+        elif ev.state == DEAD_DISPATCHER:
+            self.datapaths.pop(datapath.id, None)
+            self.logger.info("Unregistered switch %016x", datapath.id)
+
+    def _monitor(self):
+        while True:
+            cycle_started = time.monotonic()
+            cycle = {"rows": [], "pending": set()}
+            self._active_cycle = cycle
+
+            for datapath in list(self.datapaths.values()):
+                request = datapath.ofproto_parser.OFPFlowStatsRequest(datapath)
+                # Assign XID before sending so the reply can be tied to this poll.
+                if getattr(request, "xid", None) is None:
+                    datapath.set_xid(request)
+                key = (datapath.id, request.xid)
+                cycle["pending"].add(key)
+                try:
+                    datapath.send_msg(request)
+                except Exception:
+                    cycle["pending"].discard(key)
+                    self.logger.exception(
+                        "Could not request flow statistics from switch %016x",
+                        datapath.id,
+                    )
+
+            deadline = time.monotonic() + REPLY_TIMEOUT_SECONDS
+            while cycle["pending"] and time.monotonic() < deadline:
+                hub.sleep(0.05)
+
+            # Close the cycle before scoring. Late replies are discarded instead
+            # of accidentally contaminating the next polling window.
+            if self._active_cycle is cycle:
+                self._active_cycle = None
+
+            raw_rows = cycle["rows"]
+            rows = aggregate_bidirectional_rows(raw_rows)
+            missing_replies = len(cycle["pending"])
+            if missing_replies:
+                self.logger.warning(
+                    "Flow-stat poll timed out waiting for %d switch reply(s); processing received data",
+                    missing_replies,
+                )
+
+            if rows:
+                self.logger.info(
+                    "Scoring %d bidirectional conversations from %d raw switch-flow observations",
+                    len(rows),
+                    len(raw_rows),
+                )
+                self._process_rows(rows)
+            else:
+                self.logger.info(
+                    "Monitoring network: no IPv4 flow observations in this poll window"
+                )
+
+            elapsed = time.monotonic() - cycle_started
+            hub.sleep(max(POLL_SECONDS - elapsed, 0.1))
+
+    def _request_stats(self, datapath):
+        """Compatibility helper for manual requests; normal polling is in _monitor."""
+        request = datapath.ofproto_parser.OFPFlowStatsRequest(datapath)
+        datapath.send_msg(request)
+
+    @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
+    def _flow_stats_reply_handler(self, ev):
+        datapath = ev.msg.datapath
+        cycle = self._active_cycle
+        if cycle is None:
+            return
+
+        request_key = (datapath.id, ev.msg.xid)
+        if request_key not in cycle["pending"]:
+            return
+
+        for stat in ev.msg.body:
+            match = stat.match
+            if (
+                stat.priority != 1
+                or "ipv4_src" not in match
+                or "ipv4_dst" not in match
+                or "ip_proto" not in match
+            ):
+                continue
+
+            ip_proto = int(match.get("ip_proto", -1))
+            tcp_src = match.get("tcp_src")
+            udp_src = match.get("udp_src")
+            tcp_dst = match.get("tcp_dst")
+            udp_dst = match.get("udp_dst")
+            tp_src = tcp_src if tcp_src is not None else (udp_src or 0)
+            tp_dst = tcp_dst if tcp_dst is not None else (udp_dst or 0)
+
+            match_fields = {}
+            for key in (
+                "in_port", "eth_type", "ipv4_src", "ipv4_dst", "ip_proto",
+                "tcp_src", "tcp_dst", "udp_src", "udp_dst",
+                "icmpv4_code", "icmpv4_type",
+            ):
+                value = match.get(key)
+                if value is not None:
+                    match_fields[key] = value
+
+            cycle["rows"].append(
+                {
+                    "timestamp": datetime.now().timestamp(),
+                    "datapath_id": datapath.id,
+                    "datapath": datapath,
+                    "ip_src": match.get("ipv4_src"),
+                    "ip_dst": match.get("ipv4_dst"),
+                    "ip_proto": ip_proto,
+                    "tp_src": tp_src or 0,
+                    "tp_dst": tp_dst or 0,
+                    "duration_sec": stat.duration_sec,
+                    "duration_nsec": stat.duration_nsec,
+                    "packet_count": stat.packet_count,
+                    "byte_count": stat.byte_count,
+                    "in_port": match.get("in_port"),
+                    "match_fields": match_fields,
+                }
+            )
+
+        # OpenFlow may split large flow-stat replies across multiple messages.
+        more_flag = getattr(datapath.ofproto, "OFPMPF_REPLY_MORE", 1)
+        if not (getattr(ev.msg, "flags", 0) & more_flag):
+            cycle["pending"].discard(request_key)
+
+    def _process_rows(self, rows):
+        features = live_feature_frame(rows)
+        predictions = self.flow_model.predict(features)
+        probabilities = self.flow_model.predict_proba(features)[:, 1]
+        attacks = []
+        for row, prediction, probability in zip(rows, predictions, probabilities):
+            is_attack = int(prediction) == 1
+            self._on_prediction(row, is_attack, float(probability))
+            if is_attack:
+                attacks.append(row)
+
+        if attacks:
+            destination_counts = {}
+            for row in attacks:
+                destination = row.get("ip_dst", "unknown")
+                destination_counts[destination] = destination_counts.get(destination, 0) + 1
+            victim = max(destination_counts, key=destination_counts.get)
+            self.logger.warning(
+                "Potential DDoS: %d/%d bidirectional conversations classified as attack; "
+                "most frequent observed destination=%s",
+                len(attacks),
+                len(rows),
+                victim,
+            )
+        else:
+            self.logger.info(
+                "Traffic classified as benign: %d/%d bidirectional conversations",
+                len(rows),
+                len(rows),
+            )
+
+    def _on_prediction(self, row, is_attack, probability):
+        self.logger.info(
+            "flow %s:%s <-> %s:%s proto=%s attack=%s probability=%.3f datapath=%s",
+            row.get("ip_src"), row.get("tp_src"),
+            row.get("ip_dst"), row.get("tp_dst"),
+            row.get("ip_proto"), is_attack, probability,
+            row.get("datapath_id"),
+        )

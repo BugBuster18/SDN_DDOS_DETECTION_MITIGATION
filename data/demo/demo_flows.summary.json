@@ -1,0 +1,15 @@
+{
+  "input_files": [
+    {
+      "file": "data/demo/demo_flows_raw.csv",
+      "rows_kept": 10000
+    }
+  ],
+  "rows_read": 10000,
+  "rows_kept": 10000,
+  "class_counts": {
+    "benign_0": 5051,
+    "attack_1": 4949
+  },
+  "errors": []
+}

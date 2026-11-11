@@ -1,0 +1,38 @@
+
+--- 10.0.0.18 hping statistic ---
+45340 packets transmitted, 33 packets received, 100% packet loss
+round-trip min/avg/max = 0.1/130.1/238.3 ms
+HPING 10.0.0.18 (h4-eth0 10.0.0.18): udp mode set, 28 headers + 1024 data bytes
+status=0 port=26393 seq=800
+status=1 port=26393 seq=800
+status=1 port=26393 seq=800
+status=1 port=26393 seq=800
+status=1 port=26393 seq=800
+status=1 port=26393 seq=800
+status=0 port=26393 seq=2000
+status=0 port=26393 seq=3600
+status=0 port=26393 seq=5200
+status=0 port=26393 seq=6800
+status=0 port=26393 seq=8400
+status=0 port=26393 seq=10000
+status=0 port=26393 seq=11600
+status=0 port=26393 seq=13200
+status=0 port=26393 seq=14800
+status=0 port=26393 seq=16400
+status=0 port=26393 seq=18000
+status=0 port=26393 seq=19600
+status=0 port=26393 seq=20800
+status=0 port=26393 seq=22400
+status=0 port=26393 seq=24000
+status=0 port=26393 seq=25600
+status=0 port=26393 seq=27600
+status=0 port=26393 seq=29200
+status=0 port=26393 seq=30800
+status=0 port=26393 seq=32400
+status=0 port=26393 seq=34000
+status=0 port=26393 seq=35600
+status=0 port=26393 seq=37600
+status=0 port=26393 seq=39200
+status=0 port=26393 seq=40800
+status=0 port=26393 seq=42400
+status=0 port=26393 seq=44000

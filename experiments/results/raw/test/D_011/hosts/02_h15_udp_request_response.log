@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/scripts/udp_rr.py", line 41, in <module>
+    client(sys.argv[2], int(sys.argv[3]), float(sys.argv[4]), int(sys.argv[5]))
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/scripts/udp_rr.py", line 28, in client
+    s.recvfrom(65535)
+KeyboardInterrupt

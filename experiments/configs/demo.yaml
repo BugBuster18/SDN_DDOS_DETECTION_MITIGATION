@@ -1,0 +1,43 @@
+# End-to-end DEMO configuration (isolated 10.0.0.0/24 Mininet lab only).
+#
+# Startup mode is DETECTION_ONLY: the controller detects and alerts but never
+# touches the data plane. Real blocking needs an explicit operator action:
+#     scripts/demo/10_enable_mitigation.sh      (REST: POST /ddos/mode MITIGATION_ENABLED)
+# which is only accepted because detection.mode is "enforce" below.
+# Override the startup mode with DDOS_MITIGATION_MODE=DRY_RUN|MITIGATION_ENABLED.
+#
+# The allowlist is deliberately EMPTY: legitimate hosts are not exempted, so
+# "legitimate traffic preserved" is a real property of the attribution policy.
+detection:
+  enabled: true
+  mode: enforce                    # permits MITIGATION_ENABLED (double opt-in)
+  method: hybrid
+  window_model: artifacts/experiments/temporal/window_model.json
+  source_model: artifacts/experiments/temporal/source_model.json
+  ml_threshold: 0.5
+  confirm_k: 2                     # 2 of the last 3 windows over threshold -> CONFIRMED
+  confirm_n: 3
+  recovery_windows: 2              # 2 quiet windows -> roll back rules
+  cooldown_windows: 2
+  min_source_pps: 50.0             # a source sending < 50 pps to the victim is never blocked ...
+  min_source_pps_strict: true      # ... even if it opens many new flows (DNS-like clients)
+  source_min_attribute_pps: 800.0  # at a CONFIRMED victim, a source >= 800 pps is attributed ...
+  rate_requires_corroboration: true  # ... only if ALSO flagged by the flow ML or churning new flows
+  corroboration_ml_prob: 0.5       #     (rate alone never blocks: a legit bulk transfer is fast too)
+  corroboration_new_flows: 10      #     new flows per 5 s window (random-port / SYN flood signature)
+
+mitigation:
+  mode: DETECTION_ONLY
+  priority: 200                    # above forwarding rules (priority 1)
+  hard_timeout_seconds: 120        # a forgotten rule disappears by itself
+  max_rules_per_window: 12
+  max_sources_per_destination: 16
+  drop_rate_threshold_pps: 50.0
+  allowlist: []
+  kill_switch_file: experiments/MITIGATION_DISABLE
+
+monitoring:
+  polling_interval_seconds: 5      # models were calibrated on 5 s windows
+  reply_timeout_seconds: 3
+  ml_api_url: http://127.0.0.1:8765/predict
+  log_jsonl: null                  # set by 02_start_controller.sh

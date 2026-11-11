@@ -1,0 +1,60 @@
+[
+ {
+  "seq": 9,
+  "ts": 1794436199.755,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "NORMAL",
+  "state": "SUSPECTED",
+  "label": "SUSPICIOUS TRAFFIC",
+  "score": 0.928,
+  "attributed": [],
+  "features": {
+   "n_sources": 9.0,
+   "n_active_flows": 20.0,
+   "n_new_flows": 17.0,
+   "pps": 3066.4223,
+   "bps": 24219731.9255,
+   "avg_pkt_size": 987.296,
+   "udp_share": 0.5213,
+   "tcp_share": 0.4771,
+   "icmp_share": 0.0017,
+   "response_ratio": 0.2224,
+   "top_source_share": 0.3948,
+   "ml_max_prob": 0.9994,
+   "ml_mean_prob": 0.1538,
+   "ml_flow_frac": 0.15,
+   "ml_pps_share": 0.5213
+  },
+  "mode": "DETECTION_ONLY"
+ },
+ {
+  "seq": 10,
+  "ts": 1794436204.702,
+  "type": "state",
+  "dst": "10.0.0.18",
+  "previous": "SUSPECTED",
+  "state": "NORMAL",
+  "label": "NORMAL TRAFFIC",
+  "score": 0.6373,
+  "attributed": [],
+  "features": {
+   "n_sources": 6.0,
+   "n_active_flows": 10.0,
+   "n_new_flows": 4.0,
+   "pps": 4153.3439,
+   "bps": 32882037.0945,
+   "avg_pkt_size": 989.6254,
+   "udp_share": 0.5267,
+   "tcp_share": 0.4722,
+   "icmp_share": 0.0011,
+   "response_ratio": 0.2176,
+   "top_source_share": 0.3934,
+   "ml_max_prob": 0.9979,
+   "ml_mean_prob": 0.2547,
+   "ml_flow_frac": 0.3,
+   "ml_pps_share": 0.5267
+  },
+  "mode": "DETECTION_ONLY"
+ }
+]

@@ -1,0 +1,28 @@
+iperf3: interrupt - the client has terminated
+Connecting to host 10.0.0.18, port 5201
+[  7] local 10.0.0.15 port 33972 connected to 10.0.0.18 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  7]   0.00-1.01   sec  0.00 Bytes  0.00 bits/sec    3   14.1 KBytes       
+[  7]   1.01-2.00   sec  0.00 Bytes  0.00 bits/sec    0   14.1 KBytes       
+[  7]   2.00-3.00   sec  7.25 MBytes  60.8 Mbits/sec    0    177 KBytes       
+[  7]   3.00-4.00   sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]   4.00-5.00   sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]   5.00-6.00   sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]   6.00-7.00   sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]   7.00-8.00   sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]   8.00-9.00   sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]   9.00-10.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  10.00-11.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  11.00-12.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  12.00-13.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  13.00-14.00  sec  2.50 MBytes  21.0 Mbits/sec    0    177 KBytes       
+[  7]  14.00-15.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  15.00-16.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  16.00-17.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  17.00-18.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  18.00-19.00  sec  2.38 MBytes  19.9 Mbits/sec    0    177 KBytes       
+[  7]  19.00-19.43  sec  1.00 MBytes  19.6 Mbits/sec    0    177 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  7]   0.00-19.43  sec  46.4 MBytes  20.0 Mbits/sec    3             sender
+[  7]   0.00-19.43  sec  0.00 Bytes  0.00 bits/sec                  receiver

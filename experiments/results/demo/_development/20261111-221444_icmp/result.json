@@ -1,0 +1,584 @@
+{
+ "scenario": "icmp",
+ "attack_kind": "icmp",
+ "mode": "MITIGATION_ENABLED",
+ "run_dir": "/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/results/demo/20261111-221444_icmp",
+ "times": {
+  "start": 1794435284.7129135,
+  "attack_start": 1794435299.7155123,
+  "attack_end": 1794435339.7848191,
+  "end": 1794435379.7864976,
+  "first_suspected": 1794435301.026,
+  "first_confirmed": 1794435307.971,
+  "first_rule": 1794435317.282
+ },
+ "phases": {
+  "before": [
+   3.0,
+   15.0
+  ],
+  "attack_unmitigated": [
+   16.0,
+   32.6
+  ],
+  "mitigated": [
+   35.6,
+   55.1
+  ],
+  "after": [
+   60.1,
+   95.1
+  ]
+ },
+ "detection": {
+  "max_state": "MITIGATING",
+  "max_score": 1.0,
+  "threshold": 0.6815617263950804,
+  "peak_window": {
+   "ctl_n_sources": 8.0,
+   "ctl_n_flows": 8.0,
+   "ctl_pps": 5333.0477,
+   "ctl_mbps": 22.5789058858,
+   "ctl_avg_pkt": 529.2215,
+   "ctl_ml_max_prob": 0.9923,
+   "ctl_ml_flagged": 0.125,
+   "score": 1.0,
+   "label": "ATTACK CONFIRMED"
+  },
+  "peak_sources": [
+   {
+    "src": "10.0.0.2",
+    "pps": 1079.0,
+    "share": 0.202,
+    "flows": 1,
+    "ml_max_prob": 0.0045,
+    "source_score": 0.7409,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.5",
+    "pps": 1073.8,
+    "share": 0.201,
+    "flows": 1,
+    "ml_max_prob": 0.001,
+    "source_score": 0.7816,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.4",
+    "pps": 856.0,
+    "share": 0.16,
+    "flows": 1,
+    "ml_max_prob": 0.002,
+    "source_score": 0.7563,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.1",
+    "pps": 841.2,
+    "share": 0.158,
+    "flows": 1,
+    "ml_max_prob": 0.002,
+    "source_score": 0.7687,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.6",
+    "pps": 707.3,
+    "share": 0.133,
+    "flows": 1,
+    "ml_max_prob": 0.002,
+    "source_score": 0.7277,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.3",
+    "pps": 594.5,
+    "share": 0.111,
+    "flows": 1,
+    "ml_max_prob": 0.002,
+    "source_score": 0.6631,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.7",
+    "pps": 177.8,
+    "share": 0.033,
+    "flows": 1,
+    "ml_max_prob": 0.9923,
+    "source_score": 0.5242,
+    "blocked": false
+   },
+   {
+    "src": "10.0.0.13",
+    "pps": 3.4,
+    "share": 0.001,
+    "flows": 1,
+    "ml_max_prob": 0.0021,
+    "source_score": 0.0224,
+    "blocked": false
+   }
+  ],
+  "n_state_events": 5
+ },
+ "mitigation": {
+  "installed": [
+   {
+    "seq": 29,
+    "ts": 1794435317.282,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000007",
+    "src": "10.0.0.1",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     1
+    ],
+    "switches": [
+     "s1"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794435317.281,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9944,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.1,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   },
+   {
+    "seq": 30,
+    "ts": 1794435317.282,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000008",
+    "src": "10.0.0.2",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     1
+    ],
+    "switches": [
+     "s1"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794435317.282,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9944,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.2,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   },
+   {
+    "seq": 31,
+    "ts": 1794435317.282,
+    "type": "rule_installed",
+    "cookie": "0xdd05000000000009",
+    "src": "10.0.0.3",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     1
+    ],
+    "switches": [
+     "s1"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794435317.282,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9944,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.3,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   },
+   {
+    "seq": 32,
+    "ts": 1794435317.283,
+    "type": "rule_installed",
+    "cookie": "0xdd0500000000000a",
+    "src": "10.0.0.4",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     2
+    ],
+    "switches": [
+     "s2"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794435317.283,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9944,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.4,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   },
+   {
+    "seq": 33,
+    "ts": 1794435317.283,
+    "type": "rule_installed",
+    "cookie": "0xdd0500000000000b",
+    "src": "10.0.0.5",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     2
+    ],
+    "switches": [
+     "s2"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794435317.283,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9944,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.5,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   },
+   {
+    "seq": 34,
+    "ts": 1794435317.284,
+    "type": "rule_installed",
+    "cookie": "0xdd0500000000000c",
+    "src": "10.0.0.6",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "dpids": [
+     2
+    ],
+    "switches": [
+     "s2"
+    ],
+    "priority": 200,
+    "hard_timeout": 120,
+    "installed": 1794435317.284,
+    "age_s": 0.0,
+    "reason": "attributed_attacker",
+    "score": 0.9944,
+    "dropped_packets": 0,
+    "dropped_pps": 0.0,
+    "match": "eth_type=0x0800,ipv4_src=10.0.0.6,ipv4_dst=10.0.0.18,ip_proto=1",
+    "action": "drop"
+   }
+  ],
+  "removed": [
+   {
+    "seq": 36,
+    "ts": 1794435349.981,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000007",
+    "src": "10.0.0.1",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 32.7,
+    "dropped_packets": 29614
+   },
+   {
+    "seq": 37,
+    "ts": 1794435349.981,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000008",
+    "src": "10.0.0.2",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 32.7,
+    "dropped_packets": 38128
+   },
+   {
+    "seq": 38,
+    "ts": 1794435349.982,
+    "type": "rule_removed",
+    "cookie": "0xdd05000000000009",
+    "src": "10.0.0.3",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 32.7,
+    "dropped_packets": 20541
+   },
+   {
+    "seq": 39,
+    "ts": 1794435349.982,
+    "type": "rule_removed",
+    "cookie": "0xdd0500000000000a",
+    "src": "10.0.0.4",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 32.7,
+    "dropped_packets": 29657
+   },
+   {
+    "seq": 40,
+    "ts": 1794435349.982,
+    "type": "rule_removed",
+    "cookie": "0xdd0500000000000b",
+    "src": "10.0.0.5",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 32.7,
+    "dropped_packets": 38098
+   },
+   {
+    "seq": 41,
+    "ts": 1794435349.982,
+    "type": "rule_removed",
+    "cookie": "0xdd0500000000000c",
+    "src": "10.0.0.6",
+    "dst": "10.0.0.18",
+    "proto": 1,
+    "proto_name": "ICMP",
+    "reason": "recovered",
+    "age_s": 32.7,
+    "dropped_packets": 24214
+   }
+  ],
+  "would_block": [],
+  "rules_on_attackers": [
+   "10.0.0.1",
+   "10.0.0.2",
+   "10.0.0.3",
+   "10.0.0.4",
+   "10.0.0.5",
+   "10.0.0.6"
+  ],
+  "rules_on_legit": [],
+  "ovs_rules_at_peak": [
+   "cookie=0xdd05000000000007, duration=0.467s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.1,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000008, duration=0.467s, table=0, n_packets=42, n_bytes=12516, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.2,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd05000000000009, duration=0.467s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.3,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd0500000000000a, duration=0.490s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.4,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd0500000000000b, duration=0.490s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.5,nw_dst=10.0.0.18 actions=drop",
+   "cookie=0xdd0500000000000c, duration=0.490s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,icmp,nw_src=10.0.0.6,nw_dst=10.0.0.18 actions=drop"
+  ]
+ },
+ "attack_traffic": {
+  "offered_pps": 6631.0,
+  "delivered_before_pps": 3021.0,
+  "delivered_after_pps": 0.0,
+  "per_attacker": {
+   "h1": {
+    "ip": "10.0.0.1",
+    "params": {
+     "proto": "ICMP",
+     "pkt_size": 512,
+     "rate_pps": 1500
+    },
+    "sent_pps": 974.0,
+    "delivered_before_pps": 494.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h2": {
+    "ip": "10.0.0.2",
+    "params": {
+     "proto": "ICMP",
+     "pkt_size": 256,
+     "rate_pps": 2000
+    },
+    "sent_pps": 1633.0,
+    "delivered_before_pps": 708.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h3": {
+    "ip": "10.0.0.3",
+    "params": {
+     "proto": "ICMP",
+     "pkt_size": 1000,
+     "rate_pps": 1000
+    },
+    "sent_pps": 677.0,
+    "delivered_before_pps": 2.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h4": {
+    "ip": "10.0.0.4",
+    "params": {
+     "proto": "ICMP",
+     "pkt_size": 512,
+     "rate_pps": 1500
+    },
+    "sent_pps": 998.0,
+    "delivered_before_pps": 381.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h5": {
+    "ip": "10.0.0.5",
+    "params": {
+     "proto": "ICMP",
+     "pkt_size": 128,
+     "rate_pps": 2000
+    },
+    "sent_pps": 1531.0,
+    "delivered_before_pps": 1125.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   },
+   "h6": {
+    "ip": "10.0.0.6",
+    "params": {
+     "proto": "ICMP",
+     "pkt_size": 768,
+     "rate_pps": 1200
+    },
+    "sent_pps": 817.0,
+    "delivered_before_pps": 312.0,
+    "delivered_after_pps": 0.0,
+    "rule_installed": true
+   }
+  },
+  "reduction_pct": 100.0
+ },
+ "legit": {
+  "h7": {
+   "host": "h7",
+   "ip": "10.0.0.7",
+   "kind": "udp_iperf3",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1000,
+    "port": 5201
+   },
+   "phases": {
+    "before": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 13
+    },
+    "attack_unmitigated": {
+     "mbps": 1.72,
+     "loss_pct": 13.82,
+     "n": 16
+    },
+    "mitigated": {
+     "mbps": 2.0,
+     "loss_pct": 0.0,
+     "n": 20
+    },
+    "after": {
+     "mbps": 1.96,
+     "loss_pct": 0.0,
+     "n": 35
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  },
+  "h13": {
+   "host": "h13",
+   "ip": "10.0.0.13",
+   "kind": "icmp_ping",
+   "params": {
+    "interval_s": 0.2
+   },
+   "phases": {
+    "before": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.05,
+     "n": 61
+    },
+    "attack_unmitigated": {
+     "loss_pct": 0.0,
+     "rtt_ms": 10.345,
+     "n": 82
+    },
+    "mitigated": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.05,
+     "n": 98
+    },
+    "after": {
+     "loss_pct": 0.0,
+     "rtt_ms": 0.052,
+     "n": 164
+    }
+   },
+   "blocked_by_rule": false,
+   "preserved": true
+  }
+ },
+ "recovery": {
+  "recovered": true,
+  "recovery_time_s": 20.9,
+  "attackers_reach_victim": true
+ },
+ "statuses": [
+  "NORMAL TRAFFIC",
+  "SUSPICIOUS TRAFFIC",
+  "ATTACK CONFIRMED",
+  "MITIGATION INSTALLED",
+  "ATTACK TRAFFIC BLOCKED",
+  "LEGITIMATE TRAFFIC PRESERVED",
+  "NETWORK RECOVERED"
+ ],
+ "row": {
+  "run_id": "20261111-221444_icmp",
+  "scenario": "icmp",
+  "start": "2026-11-11T22:14:44",
+  "end": "2026-11-11T22:16:19",
+  "mode": "MITIGATION_ENABLED",
+  "traffic_type": "ICMP",
+  "n_attack_sources": 6,
+  "attack_hosts": "h1 h2 h3 h4 h5 h6",
+  "victim_ip": "10.0.0.18",
+  "attack_pkt_sizes": "512 256 1000 512 128 768",
+  "per_source_rate_pps": "1500 2000 1000 1500 2000 1200",
+  "offered_attack_pps": 6631.0,
+  "delivered_attack_pps_before_mitigation": 3021.0,
+  "delivered_attack_pps_after_mitigation": 0.0,
+  "attack_reduction_pct": 100.0,
+  "detected": true,
+  "max_state": "MITIGATING",
+  "max_window_score": 1.0,
+  "flow_ml_max_prob": 0.992,
+  "flow_ml_flagged_pct": 12.5,
+  "detection_latency_s": 8.3,
+  "suspicious_latency_s": 1.3,
+  "mitigation_latency_s": 17.6,
+  "n_rules_installed": 6,
+  "rules_on_legit_hosts": "",
+  "legit_tcp_mbps_before": "",
+  "legit_tcp_mbps_during": "",
+  "legit_tcp_mbps_after": "",
+  "legit_udp_loss_before": 0.0,
+  "legit_udp_loss_during": 0.0,
+  "legit_udp_loss_after": 0.0,
+  "legit_ping_loss_during": 0.0,
+  "legit_status": "preserved",
+  "recovered": true,
+  "recovery_time_s": 20.9,
+  "false_alarm": false,
+  "statuses": "NORMAL TRAFFIC | SUSPICIOUS TRAFFIC | ATTACK CONFIRMED | MITIGATION INSTALLED | ATTACK TRAFFIC BLOCKED | LEGITIMATE TRAFFIC PRESERVED | NETWORK RECOVERED",
+  "result_dir": "experiments/results/demo/20261111-221444_icmp"
+ }
+}

@@ -1,0 +1,28 @@
+
+--- 10.0.0.18 hping statistic ---
+27352 packets transmitted, 23 packets received, 100% packet loss
+round-trip min/avg/max = 12.1/157.9/270.3 ms
+HPING 10.0.0.18 (h1-eth0 10.0.0.18): udp mode set, 28 headers + 1024 data bytes
+status=0 port=17425 seq=800
+status=1 port=17425 seq=800
+status=1 port=17425 seq=800
+status=1 port=17425 seq=800
+status=1 port=17425 seq=800
+status=1 port=17425 seq=800
+status=0 port=17425 seq=1600
+status=0 port=17425 seq=2800
+status=0 port=17425 seq=4800
+status=0 port=17425 seq=6400
+status=0 port=17425 seq=8000
+status=0 port=17425 seq=9200
+status=0 port=17425 seq=10800
+status=0 port=17425 seq=12400
+status=0 port=17425 seq=14000
+status=0 port=17425 seq=15200
+status=0 port=17425 seq=16400
+status=0 port=17425 seq=18000
+status=0 port=17425 seq=19600
+status=0 port=17425 seq=21200
+status=0 port=17425 seq=22800
+status=0 port=17425 seq=24400
+status=0 port=17425 seq=26000

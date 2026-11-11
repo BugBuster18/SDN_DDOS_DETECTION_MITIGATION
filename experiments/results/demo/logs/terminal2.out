@@ -1,0 +1,2315 @@
+Starting Ryu hybrid controller  mode=DETECTION_ONLY  config=/home/enkatesh/projects/ddos-cicddos2019-ready/experiments/configs/demo.yaml
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+creating context wsgi
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=hybrid poll=5.0s confirm=2/3 MODE=DETECTION_ONLY (detection.mode=enforce)
+instantiating app ryu.controller.ofp_handler of OFPHandler
+(100125) wsgi starting up on http://127.0.0.1:8080
+(100125) accepted ('127.0.0.1', 45220)
+127.0.0.1 - - [11/Nov/2026 22:29:39] "GET /ddos/mode HTTP/1.1" 200 168 0.001161
+(100125) accepted ('127.0.0.1', 45226)
+127.0.0.1 - - [11/Nov/2026 22:29:39] "GET /ddos/status HTTP/1.1" 200 540 0.000363
+Registered switch 0000000000000004 (s4) - 1 switch(es) connected
+Registered switch 0000000000000003 (s3) - 2 switch(es) connected
+Registered switch 0000000000000001 (s1) - 3 switch(es) connected
+Registered switch 0000000000000005 (s5) - 4 switch(es) connected
+Registered switch 0000000000000002 (s2) - 5 switch(es) connected
+Registered switch 0000000000000006 (s6) - 6 switch(es) connected
+(100125) accepted ('127.0.0.1', 45234)
+127.0.0.1 - - [11/Nov/2026 22:29:42] "GET /ddos/status HTTP/1.1" 200 573 0.000566
+(100125) accepted ('127.0.0.1', 58188)
+127.0.0.1 - - [11/Nov/2026 22:29:49] "GET /ddos/status HTTP/1.1" 200 578 0.000523
+[poll 4] dst=10.0.0.18  NORMAL TRAFFIC     score=0.115 (thr 0.682) sources=12 flows=12 pps=6 rate=0.00Mbps avg_pkt=98B | flow-ML max_p=0.02 flagged=0%
+(100125) accepted ('127.0.0.1', 58200)
+127.0.0.1 - - [11/Nov/2026 22:29:56] "GET /ddos/status HTTP/1.1" 200 16418 0.001528
+(100125) accepted ('127.0.0.1', 58208)
+127.0.0.1 - - [11/Nov/2026 22:29:56] "GET /ddos/status HTTP/1.1" 200 16418 0.001487
+(100125) accepted ('127.0.0.1', 58218)
+127.0.0.1 - - [11/Nov/2026 22:29:56] "GET /ddos/events?since=0 HTTP/1.1" 200 993 0.000350
+(100125) accepted ('127.0.0.1', 58222)
+127.0.0.1 - - [11/Nov/2026 22:29:56] "GET /ddos/status HTTP/1.1" 200 16418 0.001575
+(100125) accepted ('127.0.0.1', 58238)
+127.0.0.1 - - [11/Nov/2026 22:29:57] "GET /ddos/status HTTP/1.1" 200 16418 0.002211
+(100125) accepted ('127.0.0.1', 58248)
+127.0.0.1 - - [11/Nov/2026 22:29:58] "GET /ddos/status HTTP/1.1" 200 16418 0.003464
+(100125) accepted ('127.0.0.1', 49442)
+127.0.0.1 - - [11/Nov/2026 22:29:59] "GET /ddos/status HTTP/1.1" 200 16418 0.002970
+[poll 5] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.928 (thr 0.682) sources=9 flows=20 pps=3066 rate=24.22Mbps avg_pkt=987B | flow-ML max_p=1.00 flagged=15%
+[poll 5] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=3 pps=593 rate=0.31Mbps avg_pkt=66B | flow-ML max_p=0.01 flagged=0%
+[poll 5] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=421 rate=5.07Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.928 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 49452)
+127.0.0.1 - - [11/Nov/2026 22:30:00] "GET /ddos/status HTTP/1.1" 200 13635 0.004113
+(100125) accepted ('127.0.0.1', 49466)
+127.0.0.1 - - [11/Nov/2026 22:30:01] "GET /ddos/status HTTP/1.1" 200 13635 0.001498
+(100125) accepted ('127.0.0.1', 49468)
+127.0.0.1 - - [11/Nov/2026 22:30:02] "GET /ddos/status HTTP/1.1" 200 13635 0.004378
+(100125) accepted ('127.0.0.1', 49480)
+127.0.0.1 - - [11/Nov/2026 22:30:03] "GET /ddos/status HTTP/1.1" 200 13635 0.004257
+(100125) accepted ('127.0.0.1', 49494)
+127.0.0.1 - - [11/Nov/2026 22:30:04] "GET /ddos/status HTTP/1.1" 200 13635 0.007346
+[poll 6] dst=10.0.0.18  NORMAL TRAFFIC     score=0.637 (thr 0.682) sources=6 flows=10 pps=4153 rate=32.88Mbps avg_pkt=990B | flow-ML max_p=1.00 flagged=30%
+[poll 6] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=784 rate=0.42Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 6] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=559 rate=6.74Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->NORMAL score=0.637 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 49504)
+127.0.0.1 - - [11/Nov/2026 22:30:05] "GET /ddos/status HTTP/1.1" 200 7237 0.001016
+(100125) accepted ('127.0.0.1', 49514)
+127.0.0.1 - - [11/Nov/2026 22:30:06] "GET /ddos/status HTTP/1.1" 200 7237 0.001024
+(100125) accepted ('127.0.0.1', 49526)
+127.0.0.1 - - [11/Nov/2026 22:30:07] "GET /ddos/status HTTP/1.1" 200 7237 0.001438
+(100125) accepted ('127.0.0.1', 49534)
+127.0.0.1 - - [11/Nov/2026 22:30:08] "GET /ddos/status HTTP/1.1" 200 7237 0.001398
+(100125) accepted ('127.0.0.1', 59454)
+127.0.0.1 - - [11/Nov/2026 22:30:09] "GET /ddos/status HTTP/1.1" 200 7237 0.001446
+[poll 7] dst=10.0.0.18  NORMAL TRAFFIC     score=0.615 (thr 0.682) sources=6 flows=10 pps=4504 rate=35.39Mbps avg_pkt=982B | flow-ML max_p=1.00 flagged=30%
+[poll 7] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=853 rate=0.45Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 7] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=696 rate=8.37Mbps avg_pkt=1503B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 59468)
+127.0.0.1 - - [11/Nov/2026 22:30:10] "GET /ddos/status HTTP/1.1" 200 7234 0.001338
+(100125) accepted ('127.0.0.1', 59472)
+127.0.0.1 - - [11/Nov/2026 22:30:11] "GET /ddos/status HTTP/1.1" 200 7234 0.001801
+(100125) accepted ('127.0.0.1', 59486)
+127.0.0.1 - - [11/Nov/2026 22:30:12] "GET /ddos/status HTTP/1.1" 200 7234 0.001383
+(100125) accepted ('127.0.0.1', 59494)
+127.0.0.1 - - [11/Nov/2026 22:30:13] "GET /ddos/status HTTP/1.1" 200 7234 0.001125
+(100125) accepted ('127.0.0.1', 59500)
+127.0.0.1 - - [11/Nov/2026 22:30:14] "GET /ddos/status HTTP/1.1" 200 7234 0.001129
+[poll 8] dst=10.0.0.18  NORMAL TRAFFIC     score=0.584 (thr 0.682) sources=6 flows=10 pps=4494 rate=35.87Mbps avg_pkt=998B | flow-ML max_p=1.00 flagged=30%
+[poll 8] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=902 rate=0.48Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 8] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=563 rate=6.78Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 59506)
+127.0.0.1 - - [11/Nov/2026 22:30:15] "GET /ddos/status HTTP/1.1" 200 7237 0.001391
+(100125) accepted ('127.0.0.1', 59512)
+127.0.0.1 - - [11/Nov/2026 22:30:16] "GET /ddos/status HTTP/1.1" 200 7237 0.001119
+(100125) accepted ('127.0.0.1', 59516)
+127.0.0.1 - - [11/Nov/2026 22:30:17] "GET /ddos/status HTTP/1.1" 200 7237 0.001909
+(100125) accepted ('127.0.0.1', 59526)
+127.0.0.1 - - [11/Nov/2026 22:30:18] "GET /ddos/status HTTP/1.1" 200 7237 0.001020
+(100125) accepted ('127.0.0.1', 40962)
+127.0.0.1 - - [11/Nov/2026 22:30:19] "GET /ddos/status HTTP/1.1" 200 7237 0.001394
+[poll 9] dst=10.0.0.18  NORMAL TRAFFIC     score=0.583 (thr 0.682) sources=6 flows=10 pps=4490 rate=35.12Mbps avg_pkt=978B | flow-ML max_p=1.00 flagged=30%
+[poll 9] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=887 rate=0.47Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 9] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=693 rate=8.34Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 40974)
+127.0.0.1 - - [11/Nov/2026 22:30:20] "GET /ddos/status HTTP/1.1" 200 7229 0.001404
+(100125) accepted ('127.0.0.1', 40978)
+127.0.0.1 - - [11/Nov/2026 22:30:21] "GET /ddos/status HTTP/1.1" 200 7229 0.001085
+(100125) accepted ('127.0.0.1', 40990)
+127.0.0.1 - - [11/Nov/2026 22:30:22] "GET /ddos/status HTTP/1.1" 200 7229 0.001925
+(100125) accepted ('127.0.0.1', 40994)
+127.0.0.1 - - [11/Nov/2026 22:30:23] "GET /ddos/status HTTP/1.1" 200 7229 0.001577
+(100125) accepted ('127.0.0.1', 41010)
+127.0.0.1 - - [11/Nov/2026 22:30:24] "GET /ddos/status HTTP/1.1" 200 7229 0.001779
+[poll 10] dst=10.0.0.18  NORMAL TRAFFIC     score=0.568 (thr 0.682) sources=6 flows=9 pps=4404 rate=35.20Mbps avg_pkt=999B | flow-ML max_p=1.00 flagged=33%
+[poll 10] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=877 rate=0.46Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 10] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=558 rate=6.71Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 41016)
+127.0.0.1 - - [11/Nov/2026 22:30:25] "GET /ddos/status HTTP/1.1" 200 7237 0.000978
+(100125) accepted ('127.0.0.1', 41030)
+127.0.0.1 - - [11/Nov/2026 22:30:26] "GET /ddos/status HTTP/1.1" 200 7237 0.001526
+(100125) accepted ('127.0.0.1', 41046)
+127.0.0.1 - - [11/Nov/2026 22:30:27] "GET /ddos/status HTTP/1.1" 200 7237 0.005080
+(100125) accepted ('127.0.0.1', 41058)
+127.0.0.1 - - [11/Nov/2026 22:30:28] "GET /ddos/status HTTP/1.1" 200 7237 0.001754
+(100125) accepted ('127.0.0.1', 60184)
+127.0.0.1 - - [11/Nov/2026 22:30:29] "GET /ddos/status HTTP/1.1" 200 7237 0.001676
+[poll 11] dst=10.0.0.18  NORMAL TRAFFIC     score=0.535 (thr 0.682) sources=6 flows=10 pps=4088 rate=32.43Mbps avg_pkt=992B | flow-ML max_p=1.00 flagged=30%
+[poll 11] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=809 rate=0.43Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 11] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=558 rate=6.71Mbps avg_pkt=1502B | flow-ML max_p=0.01 flagged=0%
+(100125) accepted ('127.0.0.1', 60194)
+127.0.0.1 - - [11/Nov/2026 22:30:30] "GET /ddos/status HTTP/1.1" 200 7240 0.001589
+(100125) accepted ('127.0.0.1', 60208)
+127.0.0.1 - - [11/Nov/2026 22:30:31] "GET /ddos/status HTTP/1.1" 200 7240 0.001447
+(100125) accepted ('127.0.0.1', 60220)
+127.0.0.1 - - [11/Nov/2026 22:30:32] "GET /ddos/status HTTP/1.1" 200 7240 0.001423
+(100125) accepted ('127.0.0.1', 60232)
+127.0.0.1 - - [11/Nov/2026 22:30:33] "GET /ddos/status HTTP/1.1" 200 7240 0.001443
+(100125) accepted ('127.0.0.1', 60244)
+127.0.0.1 - - [11/Nov/2026 22:30:34] "GET /ddos/status HTTP/1.1" 200 7240 0.000980
+[poll 12] dst=10.0.0.18  NORMAL TRAFFIC     score=0.566 (thr 0.682) sources=6 flows=10 pps=4443 rate=34.89Mbps avg_pkt=982B | flow-ML max_p=1.00 flagged=30%
+[poll 12] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=859 rate=0.45Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 12] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=693 rate=8.33Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 60258)
+127.0.0.1 - - [11/Nov/2026 22:30:35] "GET /ddos/status HTTP/1.1" 200 7233 0.001400
+(100125) accepted ('127.0.0.1', 60262)
+127.0.0.1 - - [11/Nov/2026 22:30:36] "GET /ddos/status HTTP/1.1" 200 7233 0.001424
+(100125) accepted ('127.0.0.1', 60278)
+127.0.0.1 - - [11/Nov/2026 22:30:37] "GET /ddos/status HTTP/1.1" 200 7233 0.001004
+(100125) accepted ('127.0.0.1', 60290)
+127.0.0.1 - - [11/Nov/2026 22:30:38] "GET /ddos/status HTTP/1.1" 200 7233 0.001654
+(100125) accepted ('127.0.0.1', 49988)
+127.0.0.1 - - [11/Nov/2026 22:30:39] "GET /ddos/status HTTP/1.1" 200 7233 0.001714
+[poll 13] dst=10.0.0.18  NORMAL TRAFFIC     score=0.611 (thr 0.682) sources=6 flows=9 pps=4584 rate=36.66Mbps avg_pkt=1000B | flow-ML max_p=1.00 flagged=33%
+[poll 13] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=870 rate=0.46Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 13] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=562 rate=6.76Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 49992)
+127.0.0.1 - - [11/Nov/2026 22:30:40] "GET /ddos/status HTTP/1.1" 200 7242 0.003564
+(100125) accepted ('127.0.0.1', 50008)
+127.0.0.1 - - [11/Nov/2026 22:30:41] "GET /ddos/status HTTP/1.1" 200 7242 0.001008
+(100125) accepted ('127.0.0.1', 50012)
+127.0.0.1 - - [11/Nov/2026 22:30:42] "GET /ddos/status HTTP/1.1" 200 7242 0.001785
+(100125) accepted ('127.0.0.1', 50024)
+127.0.0.1 - - [11/Nov/2026 22:30:43] "GET /ddos/status HTTP/1.1" 200 7242 0.002567
+(100125) accepted ('127.0.0.1', 50028)
+127.0.0.1 - - [11/Nov/2026 22:30:44] "GET /ddos/status HTTP/1.1" 200 7242 0.001347
+[poll 14] dst=10.0.0.18  NORMAL TRAFFIC     score=0.489 (thr 0.682) sources=6 flows=10 pps=4110 rate=32.78Mbps avg_pkt=997B | flow-ML max_p=1.00 flagged=30%
+[poll 14] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=811 rate=0.43Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 14] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=560 rate=6.74Mbps avg_pkt=1506B | flow-ML max_p=0.01 flagged=0%
+(100125) accepted ('127.0.0.1', 50032)
+127.0.0.1 - - [11/Nov/2026 22:30:45] "GET /ddos/status HTTP/1.1" 200 7242 0.003691
+(100125) accepted ('127.0.0.1', 50044)
+127.0.0.1 - - [11/Nov/2026 22:30:46] "GET /ddos/status HTTP/1.1" 200 7242 0.005510
+(100125) accepted ('127.0.0.1', 50056)
+127.0.0.1 - - [11/Nov/2026 22:30:47] "GET /ddos/status HTTP/1.1" 200 7242 0.001495
+(100125) accepted ('127.0.0.1', 50070)
+127.0.0.1 - - [11/Nov/2026 22:30:48] "GET /ddos/status HTTP/1.1" 200 7242 0.001582
+(100125) accepted ('127.0.0.1', 57664)
+127.0.0.1 - - [11/Nov/2026 22:30:49] "GET /ddos/status HTTP/1.1" 200 7242 0.001401
+[poll 15] dst=10.0.0.18  NORMAL TRAFFIC     score=0.571 (thr 0.682) sources=6 flows=10 pps=4545 rate=35.44Mbps avg_pkt=975B | flow-ML max_p=1.00 flagged=30%
+[poll 15] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=850 rate=0.45Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 15] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=696 rate=8.39Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 57678)
+127.0.0.1 - - [11/Nov/2026 22:30:50] "GET /ddos/status HTTP/1.1" 200 7235 0.001511
+(100125) accepted ('127.0.0.1', 57688)
+127.0.0.1 - - [11/Nov/2026 22:30:51] "GET /ddos/status HTTP/1.1" 200 7235 0.001389
+(100125) accepted ('127.0.0.1', 57692)
+127.0.0.1 - - [11/Nov/2026 22:30:52] "GET /ddos/status HTTP/1.1" 200 7235 0.001348
+(100125) accepted ('127.0.0.1', 57704)
+127.0.0.1 - - [11/Nov/2026 22:30:53] "GET /ddos/status HTTP/1.1" 200 7235 0.001187
+(100125) accepted ('127.0.0.1', 57716)
+127.0.0.1 - - [11/Nov/2026 22:30:54] "GET /ddos/status HTTP/1.1" 200 7235 0.001605
+[poll 16] dst=10.0.0.18  NORMAL TRAFFIC     score=0.610 (thr 0.682) sources=6 flows=9 pps=4626 rate=37.04Mbps avg_pkt=1001B | flow-ML max_p=1.00 flagged=33%
+[poll 16] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=891 rate=0.47Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 16] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=559 rate=6.73Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 57728)
+127.0.0.1 - - [11/Nov/2026 22:30:55] "GET /ddos/status HTTP/1.1" 200 7241 0.001404
+(100125) accepted ('127.0.0.1', 57736)
+127.0.0.1 - - [11/Nov/2026 22:30:56] "GET /ddos/status HTTP/1.1" 200 7241 0.001325
+(100125) accepted ('127.0.0.1', 57744)
+127.0.0.1 - - [11/Nov/2026 22:30:57] "GET /ddos/status HTTP/1.1" 200 7241 0.001390
+(100125) accepted ('127.0.0.1', 57758)
+127.0.0.1 - - [11/Nov/2026 22:30:58] "GET /ddos/status HTTP/1.1" 200 7241 0.001171
+(100125) accepted ('127.0.0.1', 48744)
+127.0.0.1 - - [11/Nov/2026 22:30:59] "GET /ddos/status HTTP/1.1" 200 7242 0.001528
+[poll 17] dst=10.0.0.18  NORMAL TRAFFIC     score=0.496 (thr 0.682) sources=6 flows=10 pps=4214 rate=33.41Mbps avg_pkt=991B | flow-ML max_p=1.00 flagged=30%
+[poll 17] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=814 rate=0.43Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 17] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=568 rate=6.83Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 48748)
+127.0.0.1 - - [11/Nov/2026 22:31:00] "GET /ddos/status HTTP/1.1" 200 7236 0.001112
+(100125) accepted ('127.0.0.1', 48760)
+127.0.0.1 - - [11/Nov/2026 22:31:01] "GET /ddos/status HTTP/1.1" 200 7236 0.001412
+(100125) accepted ('127.0.0.1', 48766)
+127.0.0.1 - - [11/Nov/2026 22:31:01] "GET /ddos/events?since=8 HTTP/1.1" 200 1488 0.000433
+(100125) accepted ('127.0.0.1', 48770)
+127.0.0.1 - - [11/Nov/2026 22:31:01] "GET /ddos/status HTTP/1.1" 200 7236 0.000962
+(100125) accepted ('127.0.0.1', 48776)
+127.0.0.1 - - [11/Nov/2026 22:31:01] "GET /ddos/status HTTP/1.1" 200 7236 0.000811
+(100125) accepted ('127.0.0.1', 48778)
+127.0.0.1 - - [11/Nov/2026 22:31:01] "GET /ddos/events?since=0 HTTP/1.1" 200 2318 0.000417
+(100125) accepted ('127.0.0.1', 48786)
+127.0.0.1 - - [11/Nov/2026 22:31:01] "GET /ddos/status HTTP/1.1" 200 7236 0.000900
+(100125) accepted ('127.0.0.1', 48794)
+127.0.0.1 - - [11/Nov/2026 22:31:02] "GET /ddos/status HTTP/1.1" 200 7236 0.001373
+(100125) accepted ('127.0.0.1', 48798)
+127.0.0.1 - - [11/Nov/2026 22:31:03] "GET /ddos/status HTTP/1.1" 200 7236 0.001410
+(100125) accepted ('127.0.0.1', 48800)
+127.0.0.1 - - [11/Nov/2026 22:31:04] "GET /ddos/status HTTP/1.1" 200 7238 0.006291
+[poll 18] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.863 (thr 0.682) sources=9 flows=81 pps=4135 rate=32.24Mbps avg_pkt=975B | flow-ML max_p=1.00 flagged=78%
+[poll 18] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=745 rate=0.39Mbps avg_pkt=66B | flow-ML max_p=0.02 flagged=0%
+[poll 18] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=682 rate=8.21Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.863 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 48808)
+127.0.0.1 - - [11/Nov/2026 22:31:05] "GET /ddos/status HTTP/1.1" 200 13646 0.002883
+(100125) accepted ('127.0.0.1', 48824)
+127.0.0.1 - - [11/Nov/2026 22:31:06] "GET /ddos/status HTTP/1.1" 200 13646 0.002639
+(100125) accepted ('127.0.0.1', 48834)
+127.0.0.1 - - [11/Nov/2026 22:31:07] "GET /ddos/status HTTP/1.1" 200 13646 0.002802
+(100125) accepted ('127.0.0.1', 56448)
+127.0.0.1 - - [11/Nov/2026 22:31:08] "GET /ddos/status HTTP/1.1" 200 13646 0.003541
+(100125) accepted ('127.0.0.1', 56450)
+127.0.0.1 - - [11/Nov/2026 22:31:09] "GET /ddos/status HTTP/1.1" 200 13646 0.005561
+[poll 19] dst=10.0.0.18  ATTACK CONFIRMED   score=0.843 (thr 0.682) sources=9 flows=110 pps=4561 rate=36.74Mbps avg_pkt=1007B | flow-ML max_p=1.00 flagged=92%
+[poll 19] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=734 rate=0.39Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 19] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=554 rate=6.67Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->CONFIRMED score=0.843 sources=['10.0.0.15'] actions=[]
+==============================================================================
+DDoS ALERT  victim=10.0.0.18  ATTACK CONFIRMED  window score=0.843 (threshold 0.682)
+  sources=9  active flows=110  aggregate=4561 pps / 36.74 Mbps  avg pkt=1007 B
+  protocol mix: UDP 56%  TCP 44%  ICMP 0%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=1.00, 92% of flows flagged
+  strongest evidence: n_sources +7.10, new_flow_rate -2.94, pps +2.85, bps +2.78
+  top senders: 10.0.0.11(1725pps), 10.0.0.15(972pps), 10.0.0.14(711pps), 10.0.0.12(623pps), 10.0.0.9(279pps), 10.0.0.17(243pps), 10.0.0.10(5pps), 10.0.0.8(2pps)
+  mitigation mode: DETECTION_ONLY  (no OpenFlow rule will be installed)
+==============================================================================
+(100125) accepted ('127.0.0.1', 56454)
+127.0.0.1 - - [11/Nov/2026 22:31:10] "GET /ddos/status HTTP/1.1" 200 9763 0.001914
+(100125) accepted ('127.0.0.1', 56462)
+127.0.0.1 - - [11/Nov/2026 22:31:11] "GET /ddos/status HTTP/1.1" 200 9763 0.002010
+(100125) accepted ('127.0.0.1', 56464)
+127.0.0.1 - - [11/Nov/2026 22:31:12] "GET /ddos/status HTTP/1.1" 200 9763 0.001692
+(100125) accepted ('127.0.0.1', 56476)
+127.0.0.1 - - [11/Nov/2026 22:31:13] "GET /ddos/status HTTP/1.1" 200 9763 0.004886
+(100125) accepted ('127.0.0.1', 56482)
+127.0.0.1 - - [11/Nov/2026 22:31:14] "GET /ddos/status HTTP/1.1" 200 9763 0.003019
+[poll 20] dst=10.0.0.18  ATTACK CONFIRMED   score=0.843 (thr 0.682) sources=9 flows=111 pps=4531 rate=36.39Mbps avg_pkt=1004B | flow-ML max_p=1.00 flagged=93%
+[poll 20] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=750 rate=0.40Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 20] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=545 rate=6.57Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56486)
+127.0.0.1 - - [11/Nov/2026 22:31:15] "GET /ddos/status HTTP/1.1" 200 9767 0.001958
+(100125) accepted ('127.0.0.1', 56502)
+127.0.0.1 - - [11/Nov/2026 22:31:16] "GET /ddos/status HTTP/1.1" 200 9767 0.002054
+(100125) accepted ('127.0.0.1', 56516)
+127.0.0.1 - - [11/Nov/2026 22:31:17] "GET /ddos/status HTTP/1.1" 200 9767 0.003172
+(100125) accepted ('127.0.0.1', 42724)
+127.0.0.1 - - [11/Nov/2026 22:31:18] "GET /ddos/status HTTP/1.1" 200 9767 0.002070
+(100125) accepted ('127.0.0.1', 42734)
+127.0.0.1 - - [11/Nov/2026 22:31:19] "GET /ddos/status HTTP/1.1" 200 9767 0.001924
+[poll 21] dst=10.0.0.18  ATTACK CONFIRMED   score=0.851 (thr 0.682) sources=9 flows=111 pps=4727 rate=37.24Mbps avg_pkt=985B | flow-ML max_p=1.00 flagged=90%
+[poll 21] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=707 rate=0.37Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 21] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=703 rate=8.47Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 42738)
+127.0.0.1 - - [11/Nov/2026 22:31:20] "GET /ddos/status HTTP/1.1" 200 9767 0.002392
+(100125) accepted ('127.0.0.1', 42752)
+127.0.0.1 - - [11/Nov/2026 22:31:21] "GET /ddos/status HTTP/1.1" 200 9767 0.001717
+(100125) accepted ('127.0.0.1', 42762)
+127.0.0.1 - - [11/Nov/2026 22:31:22] "GET /ddos/status HTTP/1.1" 200 9767 0.001913
+(100125) accepted ('127.0.0.1', 42774)
+127.0.0.1 - - [11/Nov/2026 22:31:23] "GET /ddos/status HTTP/1.1" 200 9767 0.003984
+(100125) accepted ('127.0.0.1', 42780)
+127.0.0.1 - - [11/Nov/2026 22:31:24] "GET /ddos/status HTTP/1.1" 200 9767 0.001680
+(100125) accepted ('127.0.0.1', 42786)
+127.0.0.1 - - [11/Nov/2026 22:31:25] "GET /ddos/status HTTP/1.1" 200 9767 0.001704
+[poll 22] dst=10.0.0.18  ATTACK CONFIRMED   score=0.869 (thr 0.682) sources=9 flows=111 pps=4507 rate=36.15Mbps avg_pkt=1003B | flow-ML max_p=1.00 flagged=93%
+[poll 22] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=764 rate=0.40Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 22] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=548 rate=6.60Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 42796)
+127.0.0.1 - - [11/Nov/2026 22:31:26] "GET /ddos/status HTTP/1.1" 200 9767 0.001933
+(100125) accepted ('127.0.0.1', 42806)
+127.0.0.1 - - [11/Nov/2026 22:31:27] "GET /ddos/status HTTP/1.1" 200 9767 0.006744
+(100125) accepted ('127.0.0.1', 51244)
+127.0.0.1 - - [11/Nov/2026 22:31:28] "GET /ddos/status HTTP/1.1" 200 9767 0.002637
+(100125) accepted ('127.0.0.1', 51250)
+127.0.0.1 - - [11/Nov/2026 22:31:29] "GET /ddos/status HTTP/1.1" 200 9767 0.002580
+[poll 23] dst=10.0.0.18  ATTACK CONFIRMED   score=0.834 (thr 0.682) sources=9 flows=111 pps=4456 rate=36.28Mbps avg_pkt=1018B | flow-ML max_p=1.00 flagged=94%
+[poll 23] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=659 rate=0.35Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 23] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=544 rate=6.56Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 51262)
+127.0.0.1 - - [11/Nov/2026 22:31:30] "GET /ddos/status HTTP/1.1" 200 9759 0.006280
+(100125) accepted ('127.0.0.1', 51272)
+127.0.0.1 - - [11/Nov/2026 22:31:31] "GET /ddos/status HTTP/1.1" 200 9759 0.001931
+(100125) accepted ('127.0.0.1', 51280)
+127.0.0.1 - - [11/Nov/2026 22:31:32] "GET /ddos/status HTTP/1.1" 200 9759 0.001961
+(100125) accepted ('127.0.0.1', 51296)
+127.0.0.1 - - [11/Nov/2026 22:31:33] "GET /ddos/status HTTP/1.1" 200 9759 0.009552
+(100125) accepted ('127.0.0.1', 51298)
+127.0.0.1 - - [11/Nov/2026 22:31:34] "GET /ddos/status HTTP/1.1" 200 9759 0.001717
+[poll 24] dst=10.0.0.18  ATTACK CONFIRMED   score=0.851 (thr 0.682) sources=9 flows=112 pps=4652 rate=36.92Mbps avg_pkt=992B | flow-ML max_p=1.00 flagged=92%
+[poll 24] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=655 rate=0.35Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 24] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=578 rate=6.95Mbps avg_pkt=1503B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 51314)
+127.0.0.1 - - [11/Nov/2026 22:31:35] "GET /ddos/status HTTP/1.1" 200 9758 0.002154
+(100125) accepted ('127.0.0.1', 51330)
+127.0.0.1 - - [11/Nov/2026 22:31:36] "GET /ddos/status HTTP/1.1" 200 9758 0.001652
+(100125) accepted ('127.0.0.1', 51344)
+127.0.0.1 - - [11/Nov/2026 22:31:37] "GET /ddos/status HTTP/1.1" 200 9758 0.001618
+(100125) accepted ('127.0.0.1', 45988)
+127.0.0.1 - - [11/Nov/2026 22:31:38] "GET /ddos/status HTTP/1.1" 200 9758 0.001762
+(100125) accepted ('127.0.0.1', 45994)
+127.0.0.1 - - [11/Nov/2026 22:31:39] "GET /ddos/status HTTP/1.1" 200 9758 0.005437
+[poll 25] dst=10.0.0.18  ATTACK CONFIRMED   score=0.843 (thr 0.682) sources=9 flows=112 pps=4629 rate=36.80Mbps avg_pkt=994B | flow-ML max_p=1.00 flagged=93%
+[poll 25] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=730 rate=0.39Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 25] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=677 rate=8.16Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 46010)
+127.0.0.1 - - [11/Nov/2026 22:31:40] "GET /ddos/status HTTP/1.1" 200 9764 0.001826
+(100125) accepted ('127.0.0.1', 46024)
+127.0.0.1 - - [11/Nov/2026 22:31:41] "GET /ddos/status HTTP/1.1" 200 9764 0.002131
+(100125) accepted ('127.0.0.1', 46036)
+127.0.0.1 - - [11/Nov/2026 22:31:42] "GET /ddos/status HTTP/1.1" 200 9764 0.002125
+(100125) accepted ('127.0.0.1', 46050)
+127.0.0.1 - - [11/Nov/2026 22:31:43] "GET /ddos/status HTTP/1.1" 200 9764 0.002138
+(100125) accepted ('127.0.0.1', 46052)
+127.0.0.1 - - [11/Nov/2026 22:31:44] "GET /ddos/status HTTP/1.1" 200 9764 0.001675
+[poll 26] dst=10.0.0.18  ATTACK CONFIRMED   score=0.866 (thr 0.682) sources=9 flows=111 pps=4519 rate=36.47Mbps avg_pkt=1009B | flow-ML max_p=1.00 flagged=94%
+[poll 26] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=644 rate=0.34Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 26] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=548 rate=6.61Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 46060)
+127.0.0.1 - - [11/Nov/2026 22:31:45] "GET /ddos/status HTTP/1.1" 200 9758 0.001602
+(100125) accepted ('127.0.0.1', 46064)
+127.0.0.1 - - [11/Nov/2026 22:31:46] "GET /ddos/status HTTP/1.1" 200 9758 0.001723
+(100125) accepted ('127.0.0.1', 46072)
+127.0.0.1 - - [11/Nov/2026 22:31:47] "GET /ddos/status HTTP/1.1" 200 9758 0.002687
+(100125) accepted ('127.0.0.1', 58406)
+127.0.0.1 - - [11/Nov/2026 22:31:48] "GET /ddos/status HTTP/1.1" 200 9758 0.003235
+(100125) accepted ('127.0.0.1', 58416)
+127.0.0.1 - - [11/Nov/2026 22:31:49] "GET /ddos/status HTTP/1.1" 200 9758 0.001901
+[poll 27] dst=10.0.0.18  ATTACK CONFIRMED   score=0.842 (thr 0.682) sources=9 flows=111 pps=4556 rate=36.81Mbps avg_pkt=1010B | flow-ML max_p=1.00 flagged=93%
+[poll 27] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=681 rate=0.36Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 27] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=556 rate=6.69Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 58430)
+127.0.0.1 - - [11/Nov/2026 22:31:50] "GET /ddos/status HTTP/1.1" 200 9759 0.001646
+(100125) accepted ('127.0.0.1', 58432)
+127.0.0.1 - - [11/Nov/2026 22:31:51] "GET /ddos/status HTTP/1.1" 200 9759 0.004530
+(100125) accepted ('127.0.0.1', 58440)
+127.0.0.1 - - [11/Nov/2026 22:31:52] "GET /ddos/status HTTP/1.1" 200 9759 0.001832
+(100125) accepted ('127.0.0.1', 58446)
+127.0.0.1 - - [11/Nov/2026 22:31:53] "GET /ddos/status HTTP/1.1" 200 9759 0.001997
+(100125) accepted ('127.0.0.1', 58460)
+127.0.0.1 - - [11/Nov/2026 22:31:54] "GET /ddos/status HTTP/1.1" 200 9759 0.001758
+[poll 28] dst=10.0.0.18  ATTACK CONFIRMED   score=0.849 (thr 0.682) sources=9 flows=112 pps=4535 rate=36.12Mbps avg_pkt=996B | flow-ML max_p=1.00 flagged=92%
+[poll 28] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=728 rate=0.38Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 28] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=670 rate=8.07Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 58466)
+127.0.0.1 - - [11/Nov/2026 22:31:55] "GET /ddos/status HTTP/1.1" 200 9754 0.009005
+(100125) accepted ('127.0.0.1', 58482)
+127.0.0.1 - - [11/Nov/2026 22:31:56] "GET /ddos/status HTTP/1.1" 200 9754 0.007066
+(100125) accepted ('127.0.0.1', 58496)
+127.0.0.1 - - [11/Nov/2026 22:31:57] "GET /ddos/status HTTP/1.1" 200 9754 0.002001
+(100125) accepted ('127.0.0.1', 50566)
+127.0.0.1 - - [11/Nov/2026 22:31:58] "GET /ddos/status HTTP/1.1" 200 9754 0.001091
+(100125) accepted ('127.0.0.1', 50582)
+127.0.0.1 - - [11/Nov/2026 22:31:59] "GET /ddos/status HTTP/1.1" 200 9754 0.006801
+[poll 29] dst=10.0.0.18  ATTACK CONFIRMED   score=0.845 (thr 0.682) sources=9 flows=112 pps=4605 rate=37.10Mbps avg_pkt=1007B | flow-ML max_p=1.00 flagged=92%
+[poll 29] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=665 rate=0.35Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 29] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=568 rate=6.84Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 50592)
+127.0.0.1 - - [11/Nov/2026 22:32:00] "GET /ddos/status HTTP/1.1" 200 9772 0.002777
+(100125) accepted ('127.0.0.1', 50602)
+127.0.0.1 - - [11/Nov/2026 22:32:01] "GET /ddos/status HTTP/1.1" 200 9772 0.001718
+(100125) accepted ('127.0.0.1', 50606)
+127.0.0.1 - - [11/Nov/2026 22:32:02] "GET /ddos/status HTTP/1.1" 200 9772 0.006492
+(100125) accepted ('127.0.0.1', 50616)
+127.0.0.1 - - [11/Nov/2026 22:32:03] "GET /ddos/status HTTP/1.1" 200 9772 0.010066
+(100125) accepted ('127.0.0.1', 50620)
+127.0.0.1 - - [11/Nov/2026 22:32:04] "GET /ddos/status HTTP/1.1" 200 9772 0.012485
+[poll 30] dst=10.0.0.18  ATTACK CONFIRMED   score=0.848 (thr 0.682) sources=9 flows=111 pps=4452 rate=35.86Mbps avg_pkt=1007B | flow-ML max_p=1.00 flagged=93%
+[poll 30] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=647 rate=0.34Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 30] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=541 rate=6.52Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 50622)
+127.0.0.1 - - [11/Nov/2026 22:32:05] "GET /ddos/status HTTP/1.1" 200 9762 0.001666
+(100125) accepted ('127.0.0.1', 50626)
+127.0.0.1 - - [11/Nov/2026 22:32:06] "GET /ddos/status HTTP/1.1" 200 9762 0.001892
+(100125) accepted ('127.0.0.1', 50634)
+127.0.0.1 - - [11/Nov/2026 22:32:06] "GET /ddos/events?since=10 HTTP/1.1" 200 1524 0.000462
+(100125) accepted ('127.0.0.1', 50638)
+127.0.0.1 - - [11/Nov/2026 22:32:07] "GET /ddos/status HTTP/1.1" 200 9762 0.001082
+(100125) accepted ('127.0.0.1', 50644)
+127.0.0.1 - - [11/Nov/2026 22:32:07] "GET /ddos/status HTTP/1.1" 200 9762 0.001128
+(100125) accepted ('127.0.0.1', 50658)
+127.0.0.1 - - [11/Nov/2026 22:32:08] "GET /ddos/status HTTP/1.1" 200 9762 0.001107
+(100125) accepted ('127.0.0.1', 49978)
+127.0.0.1 - - [11/Nov/2026 22:32:09] "GET /ddos/status HTTP/1.1" 200 9762 0.001193
+[poll 31] dst=10.0.0.18  ATTACK CONFIRMED   score=0.649 (thr 0.682) sources=9 flows=57 pps=2053 rate=16.93Mbps avg_pkt=1031B | flow-ML max_p=1.00 flagged=84%
+[poll 31] dst=10.0.0.11  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=313 rate=0.17Mbps avg_pkt=66B | flow-ML max_p=0.03 flagged=0%
+[poll 31] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=142 rate=1.71Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 49992)
+127.0.0.1 - - [11/Nov/2026 22:32:10] "GET /ddos/status HTTP/1.1" 200 13624 0.001338
+(100125) accepted ('127.0.0.1', 49998)
+127.0.0.1 - - [11/Nov/2026 22:32:11] "GET /ddos/status HTTP/1.1" 200 13624 0.001326
+(100125) accepted ('127.0.0.1', 50002)
+127.0.0.1 - - [11/Nov/2026 22:32:12] "GET /ddos/status HTTP/1.1" 200 13624 0.001463
+(100125) accepted ('127.0.0.1', 50012)
+127.0.0.1 - - [11/Nov/2026 22:32:13] "GET /ddos/status HTTP/1.1" 200 13624 0.001340
+(100125) accepted ('127.0.0.1', 50026)
+127.0.0.1 - - [11/Nov/2026 22:32:14] "GET /ddos/status HTTP/1.1" 200 13624 0.001308
+dst=10.0.0.18 CONFIRMED->RECOVERING score=0.000 sources=[] actions=['rollback']
+(100125) accepted ('127.0.0.1', 50040)
+127.0.0.1 - - [11/Nov/2026 22:32:15] "GET /ddos/status HTTP/1.1" 200 2629 0.000680
+(100125) accepted ('127.0.0.1', 50056)
+127.0.0.1 - - [11/Nov/2026 22:32:16] "GET /ddos/status HTTP/1.1" 200 2629 0.000566
+(100125) accepted ('127.0.0.1', 50072)
+127.0.0.1 - - [11/Nov/2026 22:32:17] "GET /ddos/status HTTP/1.1" 200 2629 0.000558
+(100125) accepted ('127.0.0.1', 50078)
+127.0.0.1 - - [11/Nov/2026 22:32:18] "GET /ddos/status HTTP/1.1" 200 2629 0.000548
+(100125) accepted ('127.0.0.1', 35878)
+127.0.0.1 - - [11/Nov/2026 22:32:19] "GET /ddos/status HTTP/1.1" 200 2629 0.000554
+(100125) accepted ('127.0.0.1', 35882)
+127.0.0.1 - - [11/Nov/2026 22:32:20] "GET /ddos/status HTTP/1.1" 200 2629 0.000575
+(100125) accepted ('127.0.0.1', 35892)
+127.0.0.1 - - [11/Nov/2026 22:32:21] "GET /ddos/status HTTP/1.1" 200 2629 0.000579
+(100125) accepted ('127.0.0.1', 35900)
+127.0.0.1 - - [11/Nov/2026 22:32:22] "GET /ddos/status HTTP/1.1" 200 2629 0.000579
+(100125) accepted ('127.0.0.1', 35916)
+127.0.0.1 - - [11/Nov/2026 22:32:23] "GET /ddos/status HTTP/1.1" 200 2629 0.000926
+(100125) accepted ('127.0.0.1', 35922)
+127.0.0.1 - - [11/Nov/2026 22:32:24] "GET /ddos/status HTTP/1.1" 200 2629 0.000661
+dst=10.0.0.18 RECOVERING->NORMAL score=0.000 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 35932)
+127.0.0.1 - - [11/Nov/2026 22:32:25] "GET /ddos/status HTTP/1.1" 200 2629 0.000573
+(100125) accepted ('127.0.0.1', 35948)
+127.0.0.1 - - [11/Nov/2026 22:32:25] "GET /ddos/events?since=0 HTTP/1.1" 200 4190 0.000672
+(100125) accepted ('127.0.0.1', 35964)
+127.0.0.1 - - [11/Nov/2026 22:32:25] "GET /ddos/status HTTP/1.1" 200 2629 0.000730
+(100125) accepted ('127.0.0.1', 35970)
+127.0.0.1 - - [11/Nov/2026 22:32:26] "GET /ddos/status HTTP/1.1" 200 2629 0.000556
+(100125) accepted ('127.0.0.1', 35982)
+127.0.0.1 - - [11/Nov/2026 22:32:27] "GET /ddos/status HTTP/1.1" 200 2629 0.000533
+(100125) accepted ('127.0.0.1', 35986)
+127.0.0.1 - - [11/Nov/2026 22:32:28] "GET /ddos/status HTTP/1.1" 200 2629 0.000558
+(100125) accepted ('127.0.0.1', 33656)
+127.0.0.1 - - [11/Nov/2026 22:32:29] "GET /ddos/status HTTP/1.1" 200 2629 0.000573
+[poll 35] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=3 pps=206 rate=1.67Mbps avg_pkt=1018B | flow-ML max_p=1.00 flagged=33%
+(100125) accepted ('127.0.0.1', 33664)
+127.0.0.1 - - [11/Nov/2026 22:32:30] "GET /ddos/status HTTP/1.1" 200 5509 0.000865
+(100125) accepted ('127.0.0.1', 33668)
+127.0.0.1 - - [11/Nov/2026 22:32:31] "GET /ddos/status HTTP/1.1" 200 5509 0.001056
+(100125) accepted ('127.0.0.1', 33682)
+127.0.0.1 - - [11/Nov/2026 22:32:32] "GET /ddos/status HTTP/1.1" 200 5509 0.001761
+(100125) accepted ('127.0.0.1', 33690)
+127.0.0.1 - - [11/Nov/2026 22:32:33] "GET /ddos/status HTTP/1.1" 200 5509 0.001613
+(100125) accepted ('127.0.0.1', 33696)
+127.0.0.1 - - [11/Nov/2026 22:32:34] "GET /ddos/status HTTP/1.1" 200 5509 0.001158
+[poll 36] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 33712)
+127.0.0.1 - - [11/Nov/2026 22:32:35] "GET /ddos/status HTTP/1.1" 200 4550 0.000694
+(100125) accepted ('127.0.0.1', 33726)
+127.0.0.1 - - [11/Nov/2026 22:32:36] "GET /ddos/status HTTP/1.1" 200 4550 0.000684
+(100125) accepted ('127.0.0.1', 33736)
+127.0.0.1 - - [11/Nov/2026 22:32:37] "GET /ddos/status HTTP/1.1" 200 4550 0.000671
+(100125) accepted ('127.0.0.1', 33738)
+127.0.0.1 - - [11/Nov/2026 22:32:38] "GET /ddos/status HTTP/1.1" 200 4550 0.000818
+(100125) accepted ('127.0.0.1', 47918)
+127.0.0.1 - - [11/Nov/2026 22:32:39] "GET /ddos/status HTTP/1.1" 200 4550 0.000687
+[poll 37] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 47922)
+127.0.0.1 - - [11/Nov/2026 22:32:40] "GET /ddos/status HTTP/1.1" 200 4552 0.000759
+(100125) accepted ('127.0.0.1', 47930)
+127.0.0.1 - - [11/Nov/2026 22:32:41] "GET /ddos/status HTTP/1.1" 200 4552 0.001156
+(100125) accepted ('127.0.0.1', 47938)
+127.0.0.1 - - [11/Nov/2026 22:32:42] "GET /ddos/status HTTP/1.1" 200 4552 0.001710
+(100125) accepted ('127.0.0.1', 47954)
+127.0.0.1 - - [11/Nov/2026 22:32:43] "GET /ddos/status HTTP/1.1" 200 4552 0.002030
+(100125) accepted ('127.0.0.1', 47966)
+127.0.0.1 - - [11/Nov/2026 22:32:44] "GET /ddos/status HTTP/1.1" 200 4552 0.001399
+(100125) accepted ('127.0.0.1', 47968)
+127.0.0.1 - - [11/Nov/2026 22:32:45] "GET /ddos/status HTTP/1.1" 200 4553 0.001547
+(100125) accepted ('127.0.0.1', 47978)
+127.0.0.1 - - [11/Nov/2026 22:32:46] "GET /ddos/status HTTP/1.1" 200 4553 0.002856
+(100125) accepted ('127.0.0.1', 47988)
+127.0.0.1 - - [11/Nov/2026 22:32:47] "GET /ddos/status HTTP/1.1" 200 4554 0.002268
+[poll 38] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=1.000 (thr 0.682) sources=8 flows=8 pps=6778 rate=45.05Mbps avg_pkt=831B | flow-ML max_p=1.00 flagged=88%
+dst=10.0.0.18 NORMAL->SUSPECTED score=1.000 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 47996)
+127.0.0.1 - - [11/Nov/2026 22:32:48] "GET /ddos/status HTTP/1.1" 200 5680 0.001248
+(100125) accepted ('127.0.0.1', 49366)
+127.0.0.1 - - [11/Nov/2026 22:32:49] "GET /ddos/status HTTP/1.1" 200 5680 0.001093
+(100125) accepted ('127.0.0.1', 49378)
+127.0.0.1 - - [11/Nov/2026 22:32:50] "GET /ddos/status HTTP/1.1" 200 5680 0.001509
+(100125) accepted ('127.0.0.1', 49388)
+127.0.0.1 - - [11/Nov/2026 22:32:51] "GET /ddos/status HTTP/1.1" 200 5680 0.001873
+[poll 39] dst=10.0.0.18  ATTACK CONFIRMED   score=0.998 (thr 0.682) sources=8 flows=8 pps=5922 rate=36.66Mbps avg_pkt=774B | flow-ML max_p=1.00 flagged=88%
+dst=10.0.0.18 SUSPECTED->CONFIRMED score=0.998 sources=['10.0.0.1', '10.0.0.2', '10.0.0.3', '10.0.0.4', '10.0.0.5', '10.0.0.6'] actions=[]
+==============================================================================
+DDoS ALERT  victim=10.0.0.18  ATTACK CONFIRMED  window score=0.998 (threshold 0.682)
+  sources=8  active flows=8  aggregate=5922 pps / 36.66 Mbps  avg pkt=774 B
+  protocol mix: UDP 100%  TCP 0%  ICMP 0%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=1.00, 88% of flows flagged
+  strongest evidence: n_sources +6.57, packet_in_rate +4.13, pps +2.98, ml_pps_share -2.96
+  top senders: 10.0.0.5(1650pps), 10.0.0.6(1154pps), 10.0.0.4(1127pps), 10.0.0.2(652pps), 10.0.0.1(649pps), 10.0.0.3(463pps), 10.0.0.7(223pps), 10.0.0.13(4pps)
+  mitigation mode: DETECTION_ONLY  (no OpenFlow rule will be installed)
+==============================================================================
+(100125) accepted ('127.0.0.1', 49394)
+127.0.0.1 - - [11/Nov/2026 22:32:52] "GET /ddos/status HTTP/1.1" 200 5766 0.001276
+(100125) accepted ('127.0.0.1', 49396)
+127.0.0.1 - - [11/Nov/2026 22:32:53] "GET /ddos/status HTTP/1.1" 200 5766 0.001223
+(100125) accepted ('127.0.0.1', 49398)
+127.0.0.1 - - [11/Nov/2026 22:32:54] "GET /ddos/status HTTP/1.1" 200 5766 0.001213
+[poll 40] dst=10.0.0.18  ATTACK CONFIRMED   score=0.944 (thr 0.682) sources=8 flows=8 pps=8019 rate=53.38Mbps avg_pkt=832B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 49414)
+127.0.0.1 - - [11/Nov/2026 22:32:55] "GET /ddos/status HTTP/1.1" 200 5767 0.001199
+(100125) accepted ('127.0.0.1', 49428)
+127.0.0.1 - - [11/Nov/2026 22:32:56] "GET /ddos/status HTTP/1.1" 200 5767 0.000934
+(100125) accepted ('127.0.0.1', 49440)
+127.0.0.1 - - [11/Nov/2026 22:32:57] "GET /ddos/status HTTP/1.1" 200 5767 0.001399
+(100125) accepted ('127.0.0.1', 49452)
+127.0.0.1 - - [11/Nov/2026 22:32:58] "GET /ddos/status HTTP/1.1" 200 5767 0.000948
+(100125) accepted ('127.0.0.1', 54302)
+127.0.0.1 - - [11/Nov/2026 22:32:59] "GET /ddos/status HTTP/1.1" 200 5767 0.001466
+[poll 41] dst=10.0.0.18  ATTACK CONFIRMED   score=0.964 (thr 0.682) sources=8 flows=8 pps=13359 rate=88.24Mbps avg_pkt=826B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 54314)
+127.0.0.1 - - [11/Nov/2026 22:33:00] "GET /ddos/status HTTP/1.1" 200 5764 0.001240
+(100125) accepted ('127.0.0.1', 54318)
+127.0.0.1 - - [11/Nov/2026 22:33:01] "GET /ddos/status HTTP/1.1" 200 5764 0.000797
+(100125) accepted ('127.0.0.1', 54328)
+127.0.0.1 - - [11/Nov/2026 22:33:02] "GET /ddos/status HTTP/1.1" 200 5764 0.001157
+(100125) accepted ('127.0.0.1', 54336)
+127.0.0.1 - - [11/Nov/2026 22:33:03] "GET /ddos/status HTTP/1.1" 200 5764 0.001253
+(100125) accepted ('127.0.0.1', 54340)
+127.0.0.1 - - [11/Nov/2026 22:33:04] "GET /ddos/status HTTP/1.1" 200 5764 0.001103
+[poll 42] dst=10.0.0.18  ATTACK CONFIRMED   score=0.961 (thr 0.682) sources=8 flows=8 pps=13325 rate=88.01Mbps avg_pkt=826B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 54356)
+127.0.0.1 - - [11/Nov/2026 22:33:05] "GET /ddos/status HTTP/1.1" 200 5763 0.001579
+(100125) accepted ('127.0.0.1', 54362)
+127.0.0.1 - - [11/Nov/2026 22:33:06] "GET /ddos/status HTTP/1.1" 200 5763 0.000931
+(100125) accepted ('127.0.0.1', 54378)
+127.0.0.1 - - [11/Nov/2026 22:33:07] "GET /ddos/status HTTP/1.1" 200 5763 0.001818
+(100125) accepted ('127.0.0.1', 54392)
+127.0.0.1 - - [11/Nov/2026 22:33:08] "GET /ddos/status HTTP/1.1" 200 5763 0.001196
+(100125) accepted ('127.0.0.1', 55272)
+127.0.0.1 - - [11/Nov/2026 22:33:09] "GET /ddos/status HTTP/1.1" 200 5763 0.001402
+[poll 43] dst=10.0.0.18  ATTACK CONFIRMED   score=0.958 (thr 0.682) sources=8 flows=8 pps=13212 rate=87.34Mbps avg_pkt=826B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 55280)
+127.0.0.1 - - [11/Nov/2026 22:33:10] "GET /ddos/status HTTP/1.1" 200 5766 0.001271
+(100125) accepted ('127.0.0.1', 55284)
+127.0.0.1 - - [11/Nov/2026 22:33:11] "GET /ddos/status HTTP/1.1" 200 5766 0.001090
+(100125) accepted ('127.0.0.1', 55290)
+127.0.0.1 - - [11/Nov/2026 22:33:12] "GET /ddos/status HTTP/1.1" 200 5766 0.002168
+(100125) accepted ('127.0.0.1', 55294)
+127.0.0.1 - - [11/Nov/2026 22:33:13] "GET /ddos/status HTTP/1.1" 200 5766 0.001456
+(100125) accepted ('127.0.0.1', 55302)
+127.0.0.1 - - [11/Nov/2026 22:33:14] "GET /ddos/status HTTP/1.1" 200 5766 0.001008
+[poll 44] dst=10.0.0.18  ATTACK CONFIRMED   score=0.958 (thr 0.682) sources=8 flows=8 pps=13513 rate=89.29Mbps avg_pkt=826B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 55310)
+127.0.0.1 - - [11/Nov/2026 22:33:15] "GET /ddos/status HTTP/1.1" 200 5762 0.000998
+(100125) accepted ('127.0.0.1', 55316)
+127.0.0.1 - - [11/Nov/2026 22:33:16] "GET /ddos/status HTTP/1.1" 200 5762 0.001186
+(100125) accepted ('127.0.0.1', 55318)
+127.0.0.1 - - [11/Nov/2026 22:33:17] "GET /ddos/status HTTP/1.1" 200 5762 0.001189
+(100125) accepted ('127.0.0.1', 55330)
+127.0.0.1 - - [11/Nov/2026 22:33:18] "GET /ddos/status HTTP/1.1" 200 5762 0.002181
+(100125) accepted ('127.0.0.1', 40532)
+127.0.0.1 - - [11/Nov/2026 22:33:19] "GET /ddos/status HTTP/1.1" 200 5762 0.001194
+[poll 45] dst=10.0.0.18  ATTACK CONFIRMED   score=0.956 (thr 0.682) sources=8 flows=8 pps=13081 rate=86.42Mbps avg_pkt=826B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 40534)
+127.0.0.1 - - [11/Nov/2026 22:33:20] "GET /ddos/status HTTP/1.1" 200 5767 0.003562
+(100125) accepted ('127.0.0.1', 40544)
+127.0.0.1 - - [11/Nov/2026 22:33:21] "GET /ddos/status HTTP/1.1" 200 5767 0.001094
+(100125) accepted ('127.0.0.1', 40546)
+127.0.0.1 - - [11/Nov/2026 22:33:22] "GET /ddos/status HTTP/1.1" 200 5767 0.000833
+(100125) accepted ('127.0.0.1', 40550)
+127.0.0.1 - - [11/Nov/2026 22:33:23] "GET /ddos/status HTTP/1.1" 200 5767 0.001092
+(100125) accepted ('127.0.0.1', 40556)
+127.0.0.1 - - [11/Nov/2026 22:33:24] "GET /ddos/status HTTP/1.1" 200 5767 0.000793
+[poll 46] dst=10.0.0.18  ATTACK CONFIRMED   score=0.770 (thr 0.682) sources=8 flows=8 pps=2245 rate=15.18Mbps avg_pkt=845B | flow-ML max_p=1.00 flagged=88%
+(100125) accepted ('127.0.0.1', 40572)
+127.0.0.1 - - [11/Nov/2026 22:33:25] "GET /ddos/status HTTP/1.1" 200 5655 0.001611
+(100125) accepted ('127.0.0.1', 40574)
+127.0.0.1 - - [11/Nov/2026 22:33:26] "GET /ddos/status HTTP/1.1" 200 5655 0.002026
+(100125) accepted ('127.0.0.1', 40576)
+127.0.0.1 - - [11/Nov/2026 22:33:27] "GET /ddos/status HTTP/1.1" 200 5655 0.000789
+(100125) accepted ('127.0.0.1', 40582)
+127.0.0.1 - - [11/Nov/2026 22:33:28] "GET /ddos/status HTTP/1.1" 200 5655 0.000765
+(100125) accepted ('127.0.0.1', 55278)
+127.0.0.1 - - [11/Nov/2026 22:33:29] "GET /ddos/status HTTP/1.1" 200 5655 0.000845
+[poll 47] dst=10.0.0.18  ATTACK CONFIRMED   score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 55280)
+127.0.0.1 - - [11/Nov/2026 22:33:30] "GET /ddos/status HTTP/1.1" 200 4563 0.000692
+(100125) accepted ('127.0.0.1', 55286)
+127.0.0.1 - - [11/Nov/2026 22:33:31] "GET /ddos/status HTTP/1.1" 200 4563 0.000744
+(100125) accepted ('127.0.0.1', 55290)
+127.0.0.1 - - [11/Nov/2026 22:33:32] "GET /ddos/status HTTP/1.1" 200 4563 0.001703
+(100125) accepted ('127.0.0.1', 55298)
+127.0.0.1 - - [11/Nov/2026 22:33:33] "GET /ddos/status HTTP/1.1" 200 4563 0.000823
+(100125) accepted ('127.0.0.1', 55314)
+127.0.0.1 - - [11/Nov/2026 22:33:34] "GET /ddos/status HTTP/1.1" 200 4563 0.000909
+[poll 48] dst=10.0.0.18  RECOVERING         score=0.000 (thr 0.682) sources=2 flows=2 pps=256 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+dst=10.0.0.18 CONFIRMED->RECOVERING score=0.000 sources=[] actions=['rollback']
+(100125) accepted ('127.0.0.1', 55316)
+127.0.0.1 - - [11/Nov/2026 22:33:35] "GET /ddos/status HTTP/1.1" 200 4553 0.000810
+(100125) accepted ('127.0.0.1', 55328)
+127.0.0.1 - - [11/Nov/2026 22:33:36] "GET /ddos/status HTTP/1.1" 200 4553 0.000983
+(100125) accepted ('127.0.0.1', 55340)
+127.0.0.1 - - [11/Nov/2026 22:33:37] "GET /ddos/status HTTP/1.1" 200 4553 0.000680
+(100125) accepted ('127.0.0.1', 55352)
+127.0.0.1 - - [11/Nov/2026 22:33:38] "GET /ddos/status HTTP/1.1" 200 4553 0.000703
+(100125) accepted ('127.0.0.1', 49104)
+127.0.0.1 - - [11/Nov/2026 22:33:39] "GET /ddos/status HTTP/1.1" 200 4553 0.001001
+[poll 49] dst=10.0.0.18  RECOVERING         score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 49106)
+127.0.0.1 - - [11/Nov/2026 22:33:40] "GET /ddos/status HTTP/1.1" 200 4555 0.000692
+(100125) accepted ('127.0.0.1', 49110)
+127.0.0.1 - - [11/Nov/2026 22:33:41] "GET /ddos/status HTTP/1.1" 200 4555 0.000695
+(100125) accepted ('127.0.0.1', 49126)
+127.0.0.1 - - [11/Nov/2026 22:33:42] "GET /ddos/status HTTP/1.1" 200 4555 0.000717
+(100125) accepted ('127.0.0.1', 49134)
+127.0.0.1 - - [11/Nov/2026 22:33:43] "GET /ddos/status HTTP/1.1" 200 4555 0.000693
+(100125) accepted ('127.0.0.1', 49150)
+127.0.0.1 - - [11/Nov/2026 22:33:44] "GET /ddos/status HTTP/1.1" 200 4555 0.000715
+[poll 50] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+dst=10.0.0.18 RECOVERING->NORMAL score=0.000 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 49152)
+127.0.0.1 - - [11/Nov/2026 22:33:45] "GET /ddos/status HTTP/1.1" 200 4552 0.002253
+(100125) accepted ('127.0.0.1', 49162)
+127.0.0.1 - - [11/Nov/2026 22:33:46] "GET /ddos/status HTTP/1.1" 200 4552 0.001319
+(100125) accepted ('127.0.0.1', 49172)
+127.0.0.1 - - [11/Nov/2026 22:33:47] "GET /ddos/status HTTP/1.1" 200 4552 0.000942
+(100125) accepted ('127.0.0.1', 49184)
+127.0.0.1 - - [11/Nov/2026 22:33:48] "GET /ddos/status HTTP/1.1" 200 4552 0.000703
+(100125) accepted ('127.0.0.1', 52180)
+127.0.0.1 - - [11/Nov/2026 22:33:49] "GET /ddos/status HTTP/1.1" 200 4552 0.000686
+[poll 51] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 52182)
+127.0.0.1 - - [11/Nov/2026 22:33:50] "GET /ddos/status HTTP/1.1" 200 4554 0.000682
+(100125) accepted ('127.0.0.1', 52192)
+127.0.0.1 - - [11/Nov/2026 22:33:51] "GET /ddos/status HTTP/1.1" 200 4554 0.001012
+(100125) accepted ('127.0.0.1', 52202)
+127.0.0.1 - - [11/Nov/2026 22:33:52] "GET /ddos/status HTTP/1.1" 200 4554 0.000805
+(100125) accepted ('127.0.0.1', 52206)
+127.0.0.1 - - [11/Nov/2026 22:33:53] "GET /ddos/status HTTP/1.1" 200 4554 0.001285
+(100125) accepted ('127.0.0.1', 52214)
+127.0.0.1 - - [11/Nov/2026 22:33:54] "GET /ddos/status HTTP/1.1" 200 4554 0.000683
+[poll 52] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 52230)
+127.0.0.1 - - [11/Nov/2026 22:33:55] "GET /ddos/status HTTP/1.1" 200 4551 0.000784
+(100125) accepted ('127.0.0.1', 52238)
+127.0.0.1 - - [11/Nov/2026 22:33:56] "GET /ddos/status HTTP/1.1" 200 4551 0.000819
+(100125) accepted ('127.0.0.1', 52242)
+127.0.0.1 - - [11/Nov/2026 22:33:57] "GET /ddos/status HTTP/1.1" 200 4551 0.001342
+(100125) accepted ('127.0.0.1', 52258)
+127.0.0.1 - - [11/Nov/2026 22:33:58] "GET /ddos/status HTTP/1.1" 200 4551 0.001135
+(100125) accepted ('127.0.0.1', 51942)
+127.0.0.1 - - [11/Nov/2026 22:33:59] "GET /ddos/status HTTP/1.1" 200 4551 0.001023
+[poll 53] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 51956)
+127.0.0.1 - - [11/Nov/2026 22:34:00] "GET /ddos/status HTTP/1.1" 200 4555 0.000740
+(100125) accepted ('127.0.0.1', 51970)
+127.0.0.1 - - [11/Nov/2026 22:34:00] "GET /ddos/events?since=14 HTTP/1.1" 200 2893 0.000549
+(100125) accepted ('127.0.0.1', 51972)
+127.0.0.1 - - [11/Nov/2026 22:34:01] "GET /ddos/status HTTP/1.1" 200 4555 0.001817
+(100125) accepted ('127.0.0.1', 51982)
+127.0.0.1 - - [11/Nov/2026 22:34:01] "GET /ddos/status HTTP/1.1" 200 4555 0.000952
+(100125) accepted ('127.0.0.1', 51988)
+127.0.0.1 - - [11/Nov/2026 22:34:01] "GET /ddos/events?since=0 HTTP/1.1" 200 6918 0.001207
+(100125) accepted ('127.0.0.1', 51994)
+127.0.0.1 - - [11/Nov/2026 22:34:01] "GET /ddos/status HTTP/1.1" 200 4555 0.000846
+(100125) accepted ('127.0.0.1', 52008)
+127.0.0.1 - - [11/Nov/2026 22:34:02] "GET /ddos/status HTTP/1.1" 200 4555 0.000702
+(100125) accepted ('127.0.0.1', 52018)
+127.0.0.1 - - [11/Nov/2026 22:34:03] "GET /ddos/status HTTP/1.1" 200 4555 0.000729
+(100125) accepted ('127.0.0.1', 52024)
+127.0.0.1 - - [11/Nov/2026 22:34:04] "GET /ddos/status HTTP/1.1" 200 4555 0.000686
+[poll 54] dst=10.0.0.18  NORMAL TRAFFIC     score=0.007 (thr 0.682) sources=8 flows=11 pps=170 rate=1.36Mbps avg_pkt=1000B | flow-ML max_p=1.00 flagged=18%
+(100125) accepted ('127.0.0.1', 52032)
+127.0.0.1 - - [11/Nov/2026 22:34:05] "GET /ddos/status HTTP/1.1" 200 12424 0.001248
+(100125) accepted ('127.0.0.1', 52038)
+127.0.0.1 - - [11/Nov/2026 22:34:06] "GET /ddos/status HTTP/1.1" 200 12424 0.001289
+(100125) accepted ('127.0.0.1', 52048)
+127.0.0.1 - - [11/Nov/2026 22:34:07] "GET /ddos/status HTTP/1.1" 200 12424 0.001218
+(100125) accepted ('127.0.0.1', 57772)
+127.0.0.1 - - [11/Nov/2026 22:34:08] "GET /ddos/status HTTP/1.1" 200 12424 0.001344
+(100125) accepted ('127.0.0.1', 57780)
+127.0.0.1 - - [11/Nov/2026 22:34:09] "GET /ddos/status HTTP/1.1" 200 12424 0.001366
+[poll 55] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=260 rate=2.14Mbps avg_pkt=1028B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 57784)
+127.0.0.1 - - [11/Nov/2026 22:34:10] "GET /ddos/status HTTP/1.1" 200 4552 0.000715
+(100125) accepted ('127.0.0.1', 57790)
+127.0.0.1 - - [11/Nov/2026 22:34:11] "GET /ddos/status HTTP/1.1" 200 4552 0.000687
+(100125) accepted ('127.0.0.1', 57794)
+127.0.0.1 - - [11/Nov/2026 22:34:12] "GET /ddos/status HTTP/1.1" 200 4552 0.001101
+(100125) accepted ('127.0.0.1', 57804)
+127.0.0.1 - - [11/Nov/2026 22:34:13] "GET /ddos/status HTTP/1.1" 200 4552 0.000874
+(100125) accepted ('127.0.0.1', 57812)
+127.0.0.1 - - [11/Nov/2026 22:34:14] "GET /ddos/status HTTP/1.1" 200 4552 0.000779
+[poll 56] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=256 rate=2.10Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 57822)
+127.0.0.1 - - [11/Nov/2026 22:34:15] "GET /ddos/status HTTP/1.1" 200 4552 0.000712
+(100125) accepted ('127.0.0.1', 57830)
+127.0.0.1 - - [11/Nov/2026 22:34:16] "GET /ddos/status HTTP/1.1" 200 4552 0.000684
+(100125) accepted ('127.0.0.1', 57838)
+127.0.0.1 - - [11/Nov/2026 22:34:17] "GET /ddos/status HTTP/1.1" 200 4552 0.001702
+(100125) accepted ('127.0.0.1', 48102)
+127.0.0.1 - - [11/Nov/2026 22:34:18] "GET /ddos/status HTTP/1.1" 200 4552 0.001130
+(100125) accepted ('127.0.0.1', 48106)
+127.0.0.1 - - [11/Nov/2026 22:34:19] "GET /ddos/status HTTP/1.1" 200 4552 0.001693
+(100125) accepted ('127.0.0.1', 48118)
+127.0.0.1 - - [11/Nov/2026 22:34:20] "GET /ddos/status HTTP/1.1" 200 4552 0.001179
+(100125) accepted ('127.0.0.1', 48132)
+127.0.0.1 - - [11/Nov/2026 22:34:21] "GET /ddos/status HTTP/1.1" 200 4552 0.001288
+(100125) accepted ('127.0.0.1', 48144)
+127.0.0.1 - - [11/Nov/2026 22:34:22] "GET /ddos/status HTTP/1.1" 200 4552 0.001340
+[poll 57] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=1.000 (thr 0.682) sources=8 flows=8 pps=3232 rate=13.99Mbps avg_pkt=541B | flow-ML max_p=0.99 flagged=12%
+[poll 57] dst=10.0.0.2   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=173 rate=0.41Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=1.000 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 48154)
+127.0.0.1 - - [11/Nov/2026 22:34:23] "GET /ddos/status HTTP/1.1" 200 6648 0.001722
+(100125) accepted ('127.0.0.1', 48162)
+127.0.0.1 - - [11/Nov/2026 22:34:24] "GET /ddos/status HTTP/1.1" 200 6648 0.002666
+(100125) accepted ('127.0.0.1', 48172)
+127.0.0.1 - - [11/Nov/2026 22:34:25] "GET /ddos/status HTTP/1.1" 200 6648 0.001537
+(100125) accepted ('127.0.0.1', 48178)
+127.0.0.1 - - [11/Nov/2026 22:34:26] "GET /ddos/status HTTP/1.1" 200 6648 0.001153
+(100125) accepted ('127.0.0.1', 48186)
+127.0.0.1 - - [11/Nov/2026 22:34:27] "GET /ddos/status HTTP/1.1" 200 6648 0.001404
+[poll 58] dst=10.0.0.18  ATTACK CONFIRMED   score=1.000 (thr 0.682) sources=8 flows=8 pps=3868 rate=15.94Mbps avg_pkt=515B | flow-ML max_p=0.99 flagged=12%
+[poll 58] dst=10.0.0.2   NORMAL TRAFFIC     score=0.003 (thr 0.682) sources=1 flows=1 pps=611 rate=1.46Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->CONFIRMED score=1.000 sources=['10.0.0.1', '10.0.0.2', '10.0.0.3', '10.0.0.4', '10.0.0.5', '10.0.0.6'] actions=[]
+==============================================================================
+DDoS ALERT  victim=10.0.0.18  ATTACK CONFIRMED  window score=1.000 (threshold 0.682)
+  sources=8  active flows=8  aggregate=3868 pps / 15.94 Mbps  avg pkt=515 B
+  protocol mix: UDP 5%  TCP 0%  ICMP 95%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=0.99, 12% of flows flagged
+  strongest evidence: n_sources +6.57, packet_in_rate +3.70, pps +2.76, bps +2.48
+  top senders: 10.0.0.2(936pps), 10.0.0.5(789pps), 10.0.0.4(624pps), 10.0.0.6(497pps), 10.0.0.1(477pps), 10.0.0.3(336pps), 10.0.0.7(207pps), 10.0.0.13(2pps)
+  mitigation mode: DETECTION_ONLY  (no OpenFlow rule will be installed)
+==============================================================================
+(100125) accepted ('127.0.0.1', 56732)
+127.0.0.1 - - [11/Nov/2026 22:34:28] "GET /ddos/status HTTP/1.1" 200 6734 0.001053
+(100125) accepted ('127.0.0.1', 56748)
+127.0.0.1 - - [11/Nov/2026 22:34:29] "GET /ddos/status HTTP/1.1" 200 6734 0.001356
+(100125) accepted ('127.0.0.1', 56756)
+127.0.0.1 - - [11/Nov/2026 22:34:30] "GET /ddos/status HTTP/1.1" 200 6734 0.001677
+(100125) accepted ('127.0.0.1', 56768)
+127.0.0.1 - - [11/Nov/2026 22:34:31] "GET /ddos/status HTTP/1.1" 200 6734 0.001663
+(100125) accepted ('127.0.0.1', 56784)
+127.0.0.1 - - [11/Nov/2026 22:34:32] "GET /ddos/status HTTP/1.1" 200 6734 0.001549
+[poll 59] dst=10.0.0.18  ATTACK CONFIRMED   score=1.000 (thr 0.682) sources=8 flows=8 pps=7862 rate=33.35Mbps avg_pkt=530B | flow-ML max_p=0.99 flagged=12%
+[poll 59] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1752 rate=4.18Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.5   NORMAL TRAFFIC     score=0.019 (thr 0.682) sources=1 flows=1 pps=1526 rate=2.09Mbps avg_pkt=171B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.4   NORMAL TRAFFIC     score=0.058 (thr 0.682) sources=1 flows=1 pps=1208 rate=5.36Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.6   NORMAL TRAFFIC     score=0.057 (thr 0.682) sources=1 flows=1 pps=501 rate=3.25Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56798)
+127.0.0.1 - - [11/Nov/2026 22:34:33] "GET /ddos/status HTTP/1.1" 200 9600 0.001655
+(100125) accepted ('127.0.0.1', 56804)
+127.0.0.1 - - [11/Nov/2026 22:34:34] "GET /ddos/status HTTP/1.1" 200 9600 0.001331
+(100125) accepted ('127.0.0.1', 56806)
+127.0.0.1 - - [11/Nov/2026 22:34:35] "GET /ddos/status HTTP/1.1" 200 9600 0.001110
+(100125) accepted ('127.0.0.1', 56818)
+127.0.0.1 - - [11/Nov/2026 22:34:36] "GET /ddos/status HTTP/1.1" 200 9600 0.001477
+[poll 60] dst=10.0.0.18  ATTACK CONFIRMED   score=0.972 (thr 0.682) sources=8 flows=8 pps=3785 rate=15.04Mbps avg_pkt=497B | flow-ML max_p=0.99 flagged=12%
+[poll 60] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=929 rate=2.21Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=551 rate=0.75Mbps avg_pkt=171B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=437 rate=1.94Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.6   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=276 rate=1.79Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.1   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=131 rate=0.58Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56826)
+127.0.0.1 - - [11/Nov/2026 22:34:37] "GET /ddos/status HTTP/1.1" 200 11618 0.001279
+(100125) accepted ('127.0.0.1', 41946)
+127.0.0.1 - - [11/Nov/2026 22:34:38] "GET /ddos/status HTTP/1.1" 200 11618 0.001313
+(100125) accepted ('127.0.0.1', 41954)
+127.0.0.1 - - [11/Nov/2026 22:34:39] "GET /ddos/status HTTP/1.1" 200 11618 0.001504
+[poll 61] dst=10.0.0.18  ATTACK CONFIRMED   score=0.993 (thr 0.682) sources=8 flows=8 pps=7504 rate=29.94Mbps avg_pkt=499B | flow-ML max_p=0.99 flagged=12%
+[poll 61] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1614 rate=2.20Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1594 rate=3.80Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.1   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=1521 rate=6.74Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1272 rate=5.64Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1039 rate=6.73Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 41966)
+127.0.0.1 - - [11/Nov/2026 22:34:40] "GET /ddos/status HTTP/1.1" 200 11547 0.001425
+(100125) accepted ('127.0.0.1', 41972)
+127.0.0.1 - - [11/Nov/2026 22:34:41] "GET /ddos/status HTTP/1.1" 200 11547 0.001384
+(100125) accepted ('127.0.0.1', 41980)
+127.0.0.1 - - [11/Nov/2026 22:34:42] "GET /ddos/status HTTP/1.1" 200 11547 0.001872
+(100125) accepted ('127.0.0.1', 41982)
+127.0.0.1 - - [11/Nov/2026 22:34:43] "GET /ddos/status HTTP/1.1" 200 11547 0.001708
+(100125) accepted ('127.0.0.1', 41992)
+127.0.0.1 - - [11/Nov/2026 22:34:44] "GET /ddos/status HTTP/1.1" 200 11547 0.001401
+[poll 62] dst=10.0.0.18  ATTACK CONFIRMED   score=0.994 (thr 0.682) sources=8 flows=8 pps=7978 rate=33.63Mbps avg_pkt=527B | flow-ML max_p=0.99 flagged=12%
+[poll 62] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1629 rate=2.21Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1613 rate=3.84Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1278 rate=5.66Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1270 rate=5.63Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1042 rate=6.75Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 42000)
+127.0.0.1 - - [11/Nov/2026 22:34:45] "GET /ddos/status HTTP/1.1" 200 11527 0.001350
+(100125) accepted ('127.0.0.1', 42004)
+127.0.0.1 - - [11/Nov/2026 22:34:46] "GET /ddos/status HTTP/1.1" 200 11527 0.001733
+(100125) accepted ('127.0.0.1', 42016)
+127.0.0.1 - - [11/Nov/2026 22:34:47] "GET /ddos/status HTTP/1.1" 200 11527 0.003172
+(100125) accepted ('127.0.0.1', 33360)
+127.0.0.1 - - [11/Nov/2026 22:34:48] "GET /ddos/status HTTP/1.1" 200 11527 0.001302
+(100125) accepted ('127.0.0.1', 33368)
+127.0.0.1 - - [11/Nov/2026 22:34:49] "GET /ddos/status HTTP/1.1" 200 11527 0.001709
+[poll 63] dst=10.0.0.18  ATTACK CONFIRMED   score=0.994 (thr 0.682) sources=8 flows=8 pps=7939 rate=33.48Mbps avg_pkt=527B | flow-ML max_p=0.99 flagged=12%
+[poll 63] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1616 rate=2.20Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1608 rate=3.83Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1275 rate=5.65Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1261 rate=5.59Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1036 rate=6.72Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 33374)
+127.0.0.1 - - [11/Nov/2026 22:34:50] "GET /ddos/status HTTP/1.1" 200 11528 0.001417
+(100125) accepted ('127.0.0.1', 33376)
+127.0.0.1 - - [11/Nov/2026 22:34:51] "GET /ddos/status HTTP/1.1" 200 11528 0.001441
+(100125) accepted ('127.0.0.1', 33390)
+127.0.0.1 - - [11/Nov/2026 22:34:52] "GET /ddos/status HTTP/1.1" 200 11528 0.001221
+(100125) accepted ('127.0.0.1', 33392)
+127.0.0.1 - - [11/Nov/2026 22:34:53] "GET /ddos/status HTTP/1.1" 200 11528 0.002395
+(100125) accepted ('127.0.0.1', 33398)
+127.0.0.1 - - [11/Nov/2026 22:34:54] "GET /ddos/status HTTP/1.1" 200 11528 0.001548
+[poll 64] dst=10.0.0.18  ATTACK CONFIRMED   score=0.994 (thr 0.682) sources=8 flows=8 pps=7997 rate=33.70Mbps avg_pkt=527B | flow-ML max_p=0.99 flagged=12%
+[poll 64] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1630 rate=2.22Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1619 rate=3.86Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1282 rate=5.68Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1275 rate=5.65Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1043 rate=6.76Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 33414)
+127.0.0.1 - - [11/Nov/2026 22:34:55] "GET /ddos/status HTTP/1.1" 200 11524 0.001631
+(100125) accepted ('127.0.0.1', 33418)
+127.0.0.1 - - [11/Nov/2026 22:34:56] "GET /ddos/status HTTP/1.1" 200 11524 0.002040
+(100125) accepted ('127.0.0.1', 33432)
+127.0.0.1 - - [11/Nov/2026 22:34:57] "GET /ddos/status HTTP/1.1" 200 11524 0.001461
+(100125) accepted ('127.0.0.1', 56946)
+127.0.0.1 - - [11/Nov/2026 22:34:58] "GET /ddos/status HTTP/1.1" 200 11524 0.002434
+(100125) accepted ('127.0.0.1', 56948)
+127.0.0.1 - - [11/Nov/2026 22:34:59] "GET /ddos/status HTTP/1.1" 200 11524 0.001291
+[poll 65] dst=10.0.0.18  ATTACK CONFIRMED   score=0.983 (thr 0.682) sources=8 flows=8 pps=3398 rate=14.93Mbps avg_pkt=549B | flow-ML max_p=0.99 flagged=12%
+[poll 65] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=663 rate=0.90Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=654 rate=1.56Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=521 rate=2.31Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=518 rate=2.30Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=423 rate=2.74Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56958)
+127.0.0.1 - - [11/Nov/2026 22:35:00] "GET /ddos/status HTTP/1.1" 200 11511 0.001290
+(100125) accepted ('127.0.0.1', 56962)
+127.0.0.1 - - [11/Nov/2026 22:35:01] "GET /ddos/status HTTP/1.1" 200 11511 0.001584
+(100125) accepted ('127.0.0.1', 56970)
+127.0.0.1 - - [11/Nov/2026 22:35:02] "GET /ddos/status HTTP/1.1" 200 11511 0.001872
+(100125) accepted ('127.0.0.1', 56982)
+127.0.0.1 - - [11/Nov/2026 22:35:03] "GET /ddos/status HTTP/1.1" 200 11511 0.001226
+(100125) accepted ('127.0.0.1', 56984)
+127.0.0.1 - - [11/Nov/2026 22:35:04] "GET /ddos/status HTTP/1.1" 200 11511 0.001142
+[poll 66] dst=10.0.0.18  ATTACK CONFIRMED   score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 56986)
+127.0.0.1 - - [11/Nov/2026 22:35:05] "GET /ddos/status HTTP/1.1" 200 4563 0.001029
+(100125) accepted ('127.0.0.1', 56996)
+127.0.0.1 - - [11/Nov/2026 22:35:06] "GET /ddos/status HTTP/1.1" 200 4563 0.000706
+(100125) accepted ('127.0.0.1', 57010)
+127.0.0.1 - - [11/Nov/2026 22:35:07] "GET /ddos/status HTTP/1.1" 200 4563 0.000727
+(100125) accepted ('127.0.0.1', 53184)
+127.0.0.1 - - [11/Nov/2026 22:35:08] "GET /ddos/status HTTP/1.1" 200 4563 0.000684
+(100125) accepted ('127.0.0.1', 53198)
+127.0.0.1 - - [11/Nov/2026 22:35:09] "GET /ddos/status HTTP/1.1" 200 4563 0.001045
+[poll 67] dst=10.0.0.18  RECOVERING         score=0.000 (thr 0.682) sources=2 flows=2 pps=256 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+dst=10.0.0.18 CONFIRMED->RECOVERING score=0.000 sources=[] actions=['rollback']
+(100125) accepted ('127.0.0.1', 53206)
+127.0.0.1 - - [11/Nov/2026 22:35:10] "GET /ddos/status HTTP/1.1" 200 4553 0.000687
+(100125) accepted ('127.0.0.1', 53216)
+127.0.0.1 - - [11/Nov/2026 22:35:11] "GET /ddos/status HTTP/1.1" 200 4553 0.000688
+(100125) accepted ('127.0.0.1', 53228)
+127.0.0.1 - - [11/Nov/2026 22:35:12] "GET /ddos/status HTTP/1.1" 200 4553 0.000743
+(100125) accepted ('127.0.0.1', 53232)
+127.0.0.1 - - [11/Nov/2026 22:35:13] "GET /ddos/status HTTP/1.1" 200 4553 0.000726
+(100125) accepted ('127.0.0.1', 53246)
+127.0.0.1 - - [11/Nov/2026 22:35:14] "GET /ddos/status HTTP/1.1" 200 4553 0.001347
+[poll 68] dst=10.0.0.18  RECOVERING         score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 53256)
+127.0.0.1 - - [11/Nov/2026 22:35:15] "GET /ddos/status HTTP/1.1" 200 4549 0.001478
+(100125) accepted ('127.0.0.1', 53272)
+127.0.0.1 - - [11/Nov/2026 22:35:16] "GET /ddos/status HTTP/1.1" 200 4549 0.001207
+(100125) accepted ('127.0.0.1', 53286)
+127.0.0.1 - - [11/Nov/2026 22:35:17] "GET /ddos/status HTTP/1.1" 200 4549 0.000806
+(100125) accepted ('127.0.0.1', 52568)
+127.0.0.1 - - [11/Nov/2026 22:35:18] "GET /ddos/status HTTP/1.1" 200 4549 0.001384
+(100125) accepted ('127.0.0.1', 52580)
+127.0.0.1 - - [11/Nov/2026 22:35:19] "GET /ddos/status HTTP/1.1" 200 4549 0.000775
+[poll 69] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=256 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+dst=10.0.0.18 RECOVERING->NORMAL score=0.000 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 52584)
+127.0.0.1 - - [11/Nov/2026 22:35:20] "GET /ddos/status HTTP/1.1" 200 4552 0.000728
+(100125) accepted ('127.0.0.1', 52600)
+127.0.0.1 - - [11/Nov/2026 22:35:21] "GET /ddos/status HTTP/1.1" 200 4552 0.000694
+(100125) accepted ('127.0.0.1', 52614)
+127.0.0.1 - - [11/Nov/2026 22:35:22] "GET /ddos/status HTTP/1.1" 200 4552 0.000754
+(100125) accepted ('127.0.0.1', 52618)
+127.0.0.1 - - [11/Nov/2026 22:35:23] "GET /ddos/status HTTP/1.1" 200 4552 0.000835
+(100125) accepted ('127.0.0.1', 52630)
+127.0.0.1 - - [11/Nov/2026 22:35:24] "GET /ddos/status HTTP/1.1" 200 4552 0.000686
+[poll 70] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 52640)
+127.0.0.1 - - [11/Nov/2026 22:35:25] "GET /ddos/status HTTP/1.1" 200 4553 0.000730
+(100125) accepted ('127.0.0.1', 52650)
+127.0.0.1 - - [11/Nov/2026 22:35:26] "GET /ddos/status HTTP/1.1" 200 4553 0.000686
+(100125) accepted ('127.0.0.1', 52662)
+127.0.0.1 - - [11/Nov/2026 22:35:27] "GET /ddos/status HTTP/1.1" 200 4553 0.000780
+(100125) accepted ('127.0.0.1', 49958)
+127.0.0.1 - - [11/Nov/2026 22:35:28] "GET /ddos/status HTTP/1.1" 200 4553 0.000679
+(100125) accepted ('127.0.0.1', 49964)
+127.0.0.1 - - [11/Nov/2026 22:35:29] "GET /ddos/status HTTP/1.1" 200 4553 0.001289
+[poll 71] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 49974)
+127.0.0.1 - - [11/Nov/2026 22:35:30] "GET /ddos/status HTTP/1.1" 200 4550 0.000697
+(100125) accepted ('127.0.0.1', 49980)
+127.0.0.1 - - [11/Nov/2026 22:35:31] "GET /ddos/status HTTP/1.1" 200 4550 0.001351
+(100125) accepted ('127.0.0.1', 49994)
+127.0.0.1 - - [11/Nov/2026 22:35:32] "GET /ddos/status HTTP/1.1" 200 4550 0.000715
+(100125) accepted ('127.0.0.1', 49996)
+127.0.0.1 - - [11/Nov/2026 22:35:33] "GET /ddos/status HTTP/1.1" 200 4550 0.000782
+(100125) accepted ('127.0.0.1', 50008)
+127.0.0.1 - - [11/Nov/2026 22:35:34] "GET /ddos/status HTTP/1.1" 200 4550 0.001264
+[poll 72] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 50010)
+127.0.0.1 - - [11/Nov/2026 22:35:35] "GET /ddos/status HTTP/1.1" 200 4551 0.000853
+(100125) accepted ('127.0.0.1', 50022)
+127.0.0.1 - - [11/Nov/2026 22:35:36] "GET /ddos/status HTTP/1.1" 200 4551 0.000978
+(100125) accepted ('127.0.0.1', 50024)
+127.0.0.1 - - [11/Nov/2026 22:35:36] "GET /ddos/events?since=18 HTTP/1.1" 200 2890 0.000654
+(100125) accepted ('127.0.0.1', 50028)
+127.0.0.1 - - [11/Nov/2026 22:35:38] "GET /ddos/status HTTP/1.1" 200 4551 0.000746
+(100125) accepted ('127.0.0.1', 50042)
+127.0.0.1 - - [11/Nov/2026 22:35:38] "GET /ddos/status HTTP/1.1" 200 4551 0.000772
+(100125) accepted ('127.0.0.1', 50050)
+127.0.0.1 - - [11/Nov/2026 22:35:38] "GET /ddos/events?since=0 HTTP/1.1" 200 9643 0.001339
+(100125) accepted ('127.0.0.1', 50066)
+127.0.0.1 - - [11/Nov/2026 22:35:38] "GET /ddos/status HTTP/1.1" 200 4551 0.001592
+(100125) accepted ('127.0.0.1', 54210)
+127.0.0.1 - - [11/Nov/2026 22:35:39] "GET /ddos/status HTTP/1.1" 200 4551 0.001657
+[poll 73] dst=10.0.0.18  NORMAL TRAFFIC     score=0.007 (thr 0.682) sources=8 flows=11 pps=157 rate=1.26Mbps avg_pkt=998B | flow-ML max_p=1.00 flagged=18%
+(100125) accepted ('127.0.0.1', 54224)
+127.0.0.1 - - [11/Nov/2026 22:35:40] "GET /ddos/status HTTP/1.1" 200 12402 0.002208
+(100125) accepted ('127.0.0.1', 54238)
+127.0.0.1 - - [11/Nov/2026 22:35:41] "GET /ddos/status HTTP/1.1" 200 12402 0.001199
+(100125) accepted ('127.0.0.1', 54246)
+127.0.0.1 - - [11/Nov/2026 22:35:42] "GET /ddos/status HTTP/1.1" 200 12402 0.001224
+(100125) accepted ('127.0.0.1', 54250)
+127.0.0.1 - - [11/Nov/2026 22:35:43] "GET /ddos/status HTTP/1.1" 200 12402 0.002296
+(100125) accepted ('127.0.0.1', 54262)
+127.0.0.1 - - [11/Nov/2026 22:35:44] "GET /ddos/status HTTP/1.1" 200 12402 0.001410
+[poll 74] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=254 rate=2.08Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 54270)
+127.0.0.1 - - [11/Nov/2026 22:35:45] "GET /ddos/status HTTP/1.1" 200 4550 0.000701
+(100125) accepted ('127.0.0.1', 54280)
+127.0.0.1 - - [11/Nov/2026 22:35:46] "GET /ddos/status HTTP/1.1" 200 4550 0.000770
+(100125) accepted ('127.0.0.1', 54282)
+127.0.0.1 - - [11/Nov/2026 22:35:47] "GET /ddos/status HTTP/1.1" 200 4550 0.000803
+(100125) accepted ('127.0.0.1', 54298)
+127.0.0.1 - - [11/Nov/2026 22:35:48] "GET /ddos/status HTTP/1.1" 200 4550 0.000810
+(100125) accepted ('127.0.0.1', 47204)
+127.0.0.1 - - [11/Nov/2026 22:35:49] "GET /ddos/status HTTP/1.1" 200 4550 0.001030
+[poll 75] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=258 rate=2.12Mbps avg_pkt=1027B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 47206)
+127.0.0.1 - - [11/Nov/2026 22:35:50] "GET /ddos/status HTTP/1.1" 200 4550 0.000695
+(100125) accepted ('127.0.0.1', 47218)
+127.0.0.1 - - [11/Nov/2026 22:35:51] "GET /ddos/status HTTP/1.1" 200 4550 0.000709
+(100125) accepted ('127.0.0.1', 47234)
+127.0.0.1 - - [11/Nov/2026 22:35:52] "GET /ddos/status HTTP/1.1" 200 4550 0.000676
+(100125) accepted ('127.0.0.1', 47240)
+127.0.0.1 - - [11/Nov/2026 22:35:53] "GET /ddos/status HTTP/1.1" 200 4550 0.001059
+(100125) accepted ('127.0.0.1', 47250)
+127.0.0.1 - - [11/Nov/2026 22:35:54] "GET /ddos/status HTTP/1.1" 200 4550 0.001819
+(100125) accepted ('127.0.0.1', 47258)
+127.0.0.1 - - [11/Nov/2026 22:35:55] "GET /ddos/status HTTP/1.1" 200 4550 0.001425
+(100125) accepted ('127.0.0.1', 47264)
+127.0.0.1 - - [11/Nov/2026 22:35:56] "GET /ddos/status HTTP/1.1" 200 4550 0.001025
+[poll 76] dst=10.0.0.18  NORMAL TRAFFIC     score=0.013 (thr 0.682) sources=6 flows=287 pps=249 rate=1.98Mbps avg_pkt=995B | flow-ML max_p=0.99 flagged=91%
+(100125) accepted ('127.0.0.1', 47280)
+127.0.0.1 - - [11/Nov/2026 22:35:57] "GET /ddos/status HTTP/1.1" 200 9206 0.003000
+(100125) accepted ('127.0.0.1', 47286)
+127.0.0.1 - - [11/Nov/2026 22:35:58] "GET /ddos/status HTTP/1.1" 200 9206 0.002914
+(100125) accepted ('127.0.0.1', 37132)
+127.0.0.1 - - [11/Nov/2026 22:35:59] "GET /ddos/status HTTP/1.1" 200 9206 0.004372
+(100125) accepted ('127.0.0.1', 37140)
+127.0.0.1 - - [11/Nov/2026 22:36:00] "GET /ddos/status HTTP/1.1" 200 9206 0.002303
+(100125) accepted ('127.0.0.1', 37148)
+127.0.0.1 - - [11/Nov/2026 22:36:01] "GET /ddos/status HTTP/1.1" 200 9206 0.002640
+(100125) accepted ('127.0.0.1', 37158)
+127.0.0.1 - - [11/Nov/2026 22:36:02] "GET /ddos/status HTTP/1.1" 200 9206 0.008243
+[poll 77] dst=10.0.0.18  NORMAL TRAFFIC     score=0.012 (thr 0.682) sources=6 flows=722 pps=218 rate=1.67Mbps avg_pkt=959B | flow-ML max_p=0.99 flagged=90%
+(100125) accepted ('127.0.0.1', 37166)
+127.0.0.1 - - [11/Nov/2026 22:36:03] "GET /ddos/status HTTP/1.1" 200 9270 0.004745
+(100125) accepted ('127.0.0.1', 37176)
+127.0.0.1 - - [11/Nov/2026 22:36:04] "GET /ddos/status HTTP/1.1" 200 9270 0.001108
+(100125) accepted ('127.0.0.1', 37192)
+127.0.0.1 - - [11/Nov/2026 22:36:05] "GET /ddos/status HTTP/1.1" 200 9270 0.002270
+(100125) accepted ('127.0.0.1', 37204)
+127.0.0.1 - - [11/Nov/2026 22:36:06] "GET /ddos/status HTTP/1.1" 200 9270 0.001018
+(100125) accepted ('127.0.0.1', 37210)
+127.0.0.1 - - [11/Nov/2026 22:36:07] "GET /ddos/status HTTP/1.1" 200 9270 0.002024
+[poll 78] dst=10.0.0.18  NORMAL TRAFFIC     score=0.008 (thr 0.682) sources=6 flows=624 pps=215 rate=1.69Mbps avg_pkt=981B | flow-ML max_p=0.99 flagged=91%
+(100125) accepted ('127.0.0.1', 37212)
+127.0.0.1 - - [11/Nov/2026 22:36:08] "GET /ddos/status HTTP/1.1" 200 9271 0.001497
+(100125) accepted ('127.0.0.1', 32992)
+127.0.0.1 - - [11/Nov/2026 22:36:09] "GET /ddos/status HTTP/1.1" 200 9271 0.002481
+(100125) accepted ('127.0.0.1', 32996)
+127.0.0.1 - - [11/Nov/2026 22:36:10] "GET /ddos/status HTTP/1.1" 200 9271 0.002710
+(100125) accepted ('127.0.0.1', 33008)
+127.0.0.1 - - [11/Nov/2026 22:36:11] "GET /ddos/status HTTP/1.1" 200 9271 0.003355
+(100125) accepted ('127.0.0.1', 33010)
+127.0.0.1 - - [11/Nov/2026 22:36:12] "GET /ddos/status HTTP/1.1" 200 9271 0.004339
+[poll 79] dst=10.0.0.18  NORMAL TRAFFIC     score=0.009 (thr 0.682) sources=6 flows=602 pps=252 rate=2.06Mbps avg_pkt=1020B | flow-ML max_p=0.99 flagged=99%
+(100125) accepted ('127.0.0.1', 33024)
+127.0.0.1 - - [11/Nov/2026 22:36:13] "GET /ddos/status HTTP/1.1" 200 9240 0.002698
+(100125) accepted ('127.0.0.1', 33028)
+127.0.0.1 - - [11/Nov/2026 22:36:14] "GET /ddos/status HTTP/1.1" 200 9240 0.001914
+(100125) accepted ('127.0.0.1', 33040)
+127.0.0.1 - - [11/Nov/2026 22:36:15] "GET /ddos/status HTTP/1.1" 200 9240 0.001880
+(100125) accepted ('127.0.0.1', 33054)
+127.0.0.1 - - [11/Nov/2026 22:36:16] "GET /ddos/status HTTP/1.1" 200 9240 0.002906
+(100125) accepted ('127.0.0.1', 33062)
+127.0.0.1 - - [11/Nov/2026 22:36:17] "GET /ddos/status HTTP/1.1" 200 9240 0.001024
+[poll 80] dst=10.0.0.18  NORMAL TRAFFIC     score=0.008 (thr 0.682) sources=6 flows=740 pps=238 rate=1.94Mbps avg_pkt=1018B | flow-ML max_p=0.99 flagged=99%
+(100125) accepted ('127.0.0.1', 33078)
+127.0.0.1 - - [11/Nov/2026 22:36:18] "GET /ddos/status HTTP/1.1" 200 9246 0.002494
+(100125) accepted ('127.0.0.1', 49998)
+127.0.0.1 - - [11/Nov/2026 22:36:19] "GET /ddos/status HTTP/1.1" 200 9246 0.002715
+(100125) accepted ('127.0.0.1', 50014)
+127.0.0.1 - - [11/Nov/2026 22:36:20] "GET /ddos/status HTTP/1.1" 200 9246 0.001759
+(100125) accepted ('127.0.0.1', 50020)
+127.0.0.1 - - [11/Nov/2026 22:36:21] "GET /ddos/status HTTP/1.1" 200 9246 0.001587
+(100125) accepted ('127.0.0.1', 50022)
+127.0.0.1 - - [11/Nov/2026 22:36:22] "GET /ddos/status HTTP/1.1" 200 9246 0.001687
+[poll 81] dst=10.0.0.18  NORMAL TRAFFIC     score=0.010 (thr 0.682) sources=6 flows=608 pps=233 rate=1.91Mbps avg_pkt=1027B | flow-ML max_p=0.99 flagged=100%
+(100125) accepted ('127.0.0.1', 50030)
+127.0.0.1 - - [11/Nov/2026 22:36:23] "GET /ddos/status HTTP/1.1" 200 9257 0.002575
+(100125) accepted ('127.0.0.1', 50038)
+127.0.0.1 - - [11/Nov/2026 22:36:24] "GET /ddos/status HTTP/1.1" 200 9257 0.002560
+(100125) accepted ('127.0.0.1', 50052)
+127.0.0.1 - - [11/Nov/2026 22:36:25] "GET /ddos/status HTTP/1.1" 200 9257 0.002408
+(100125) accepted ('127.0.0.1', 50058)
+127.0.0.1 - - [11/Nov/2026 22:36:26] "GET /ddos/status HTTP/1.1" 200 9257 0.002780
+(100125) accepted ('127.0.0.1', 50070)
+127.0.0.1 - - [11/Nov/2026 22:36:27] "GET /ddos/status HTTP/1.1" 200 9257 0.001199
+[poll 82] dst=10.0.0.18  NORMAL TRAFFIC     score=0.005 (thr 0.682) sources=5 flows=362 pps=203 rate=1.69Mbps avg_pkt=1040B | flow-ML max_p=0.99 flagged=100%
+(100125) accepted ('127.0.0.1', 50086)
+127.0.0.1 - - [11/Nov/2026 22:36:28] "GET /ddos/status HTTP/1.1" 200 8071 0.002620
+(100125) accepted ('127.0.0.1', 48456)
+127.0.0.1 - - [11/Nov/2026 22:36:29] "GET /ddos/status HTTP/1.1" 200 8071 0.002494
+(100125) accepted ('127.0.0.1', 48460)
+127.0.0.1 - - [11/Nov/2026 22:36:30] "GET /ddos/status HTTP/1.1" 200 8071 0.003175
+(100125) accepted ('127.0.0.1', 48476)
+127.0.0.1 - - [11/Nov/2026 22:36:31] "GET /ddos/status HTTP/1.1" 200 8071 0.007329
+(100125) accepted ('127.0.0.1', 48482)
+127.0.0.1 - - [11/Nov/2026 22:36:32] "GET /ddos/status HTTP/1.1" 200 8071 0.001842
+[poll 83] dst=10.0.0.18  NORMAL TRAFFIC     score=0.016 (thr 0.682) sources=6 flows=408 pps=235 rate=1.92Mbps avg_pkt=1019B | flow-ML max_p=0.99 flagged=99%
+(100125) accepted ('127.0.0.1', 48490)
+127.0.0.1 - - [11/Nov/2026 22:36:33] "GET /ddos/status HTTP/1.1" 200 9237 0.001639
+(100125) accepted ('127.0.0.1', 48506)
+127.0.0.1 - - [11/Nov/2026 22:36:34] "GET /ddos/status HTTP/1.1" 200 9237 0.001021
+(100125) accepted ('127.0.0.1', 48510)
+127.0.0.1 - - [11/Nov/2026 22:36:35] "GET /ddos/status HTTP/1.1" 200 9237 0.001066
+(100125) accepted ('127.0.0.1', 48518)
+127.0.0.1 - - [11/Nov/2026 22:36:36] "GET /ddos/status HTTP/1.1" 200 9237 0.002901
+(100125) accepted ('127.0.0.1', 48528)
+127.0.0.1 - - [11/Nov/2026 22:36:37] "GET /ddos/status HTTP/1.1" 200 9237 0.001007
+[poll 84] dst=10.0.0.18  NORMAL TRAFFIC     score=0.007 (thr 0.682) sources=6 flows=857 pps=160 rate=1.30Mbps avg_pkt=1017B | flow-ML max_p=0.99 flagged=99%
+(100125) accepted ('127.0.0.1', 48542)
+127.0.0.1 - - [11/Nov/2026 22:36:38] "GET /ddos/status HTTP/1.1" 200 9252 0.002188
+(100125) accepted ('127.0.0.1', 50874)
+127.0.0.1 - - [11/Nov/2026 22:36:39] "GET /ddos/status HTTP/1.1" 200 9252 0.001170
+(100125) accepted ('127.0.0.1', 50882)
+127.0.0.1 - - [11/Nov/2026 22:36:40] "GET /ddos/status HTTP/1.1" 200 9252 0.001428
+(100125) accepted ('127.0.0.1', 50888)
+127.0.0.1 - - [11/Nov/2026 22:36:41] "GET /ddos/status HTTP/1.1" 200 9252 0.001020
+(100125) accepted ('127.0.0.1', 50896)
+127.0.0.1 - - [11/Nov/2026 22:36:42] "GET /ddos/status HTTP/1.1" 200 9252 0.001662
+(100125) accepted ('127.0.0.1', 50898)
+127.0.0.1 - - [11/Nov/2026 22:36:43] "GET /ddos/status HTTP/1.1" 200 9252 0.001025
+[poll 85] dst=10.0.0.18  NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=5 flows=1013 pps=23 rate=0.01Mbps avg_pkt=63B | flow-ML max_p=0.91 flagged=96%
+(100125) accepted ('127.0.0.1', 50904)
+127.0.0.1 - - [11/Nov/2026 22:36:44] "GET /ddos/status HTTP/1.1" 200 9016 0.001075
+(100125) accepted ('127.0.0.1', 50918)
+127.0.0.1 - - [11/Nov/2026 22:36:45] "GET /ddos/status HTTP/1.1" 200 9016 0.001069
+(100125) accepted ('127.0.0.1', 50932)
+127.0.0.1 - - [11/Nov/2026 22:36:46] "GET /ddos/status HTTP/1.1" 200 9016 0.001665
+(100125) accepted ('127.0.0.1', 50948)
+127.0.0.1 - - [11/Nov/2026 22:36:47] "GET /ddos/status HTTP/1.1" 200 9016 0.001375
+(100125) accepted ('127.0.0.1', 50954)
+127.0.0.1 - - [11/Nov/2026 22:36:48] "GET /ddos/status HTTP/1.1" 200 9016 0.001909
+(100125) accepted ('127.0.0.1', 47436)
+127.0.0.1 - - [11/Nov/2026 22:36:49] "GET /ddos/status HTTP/1.1" 200 9012 0.002424
+(100125) accepted ('127.0.0.1', 47452)
+127.0.0.1 - - [11/Nov/2026 22:36:50] "GET /ddos/status HTTP/1.1" 200 9012 0.001156
+(100125) accepted ('127.0.0.1', 47460)
+127.0.0.1 - - [11/Nov/2026 22:36:51] "GET /ddos/status HTTP/1.1" 200 9012 0.001006
+(100125) accepted ('127.0.0.1', 47472)
+127.0.0.1 - - [11/Nov/2026 22:36:52] "GET /ddos/status HTTP/1.1" 200 9012 0.002622
+(100125) accepted ('127.0.0.1', 47486)
+127.0.0.1 - - [11/Nov/2026 22:36:53] "GET /ddos/status HTTP/1.1" 200 9012 0.002263
+[poll 87] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=5 flows=1287 pps=22 rate=0.01Mbps avg_pkt=63B | flow-ML max_p=0.91 flagged=97%
+(100125) accepted ('127.0.0.1', 47496)
+127.0.0.1 - - [11/Nov/2026 22:36:54] "GET /ddos/status HTTP/1.1" 200 8055 0.001793
+(100125) accepted ('127.0.0.1', 47512)
+127.0.0.1 - - [11/Nov/2026 22:36:55] "GET /ddos/status HTTP/1.1" 200 8055 0.001283
+(100125) accepted ('127.0.0.1', 47520)
+127.0.0.1 - - [11/Nov/2026 22:36:56] "GET /ddos/status HTTP/1.1" 200 8055 0.001654
+(100125) accepted ('127.0.0.1', 47528)
+127.0.0.1 - - [11/Nov/2026 22:36:57] "GET /ddos/status HTTP/1.1" 200 8055 0.001828
+(100125) accepted ('127.0.0.1', 47536)
+127.0.0.1 - - [11/Nov/2026 22:36:58] "GET /ddos/status HTTP/1.1" 200 8056 0.001075
+[poll 88] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=5 flows=904 pps=20 rate=0.01Mbps avg_pkt=65B | flow-ML max_p=0.91 flagged=96%
+(100125) accepted ('127.0.0.1', 60974)
+127.0.0.1 - - [11/Nov/2026 22:36:59] "GET /ddos/status HTTP/1.1" 200 8038 0.001505
+(100125) accepted ('127.0.0.1', 60988)
+127.0.0.1 - - [11/Nov/2026 22:37:00] "GET /ddos/status HTTP/1.1" 200 8038 0.001012
+(100125) accepted ('127.0.0.1', 32768)
+127.0.0.1 - - [11/Nov/2026 22:37:01] "GET /ddos/status HTTP/1.1" 200 8038 0.001622
+(100125) accepted ('127.0.0.1', 32780)
+127.0.0.1 - - [11/Nov/2026 22:37:02] "GET /ddos/status HTTP/1.1" 200 8039 0.002407
+(100125) accepted ('127.0.0.1', 32796)
+127.0.0.1 - - [11/Nov/2026 22:37:03] "GET /ddos/status HTTP/1.1" 200 8039 0.001492
+[poll 89] dst=10.0.0.18  NORMAL TRAFFIC     score=0.015 (thr 0.682) sources=6 flows=628 pps=155 rate=1.20Mbps avg_pkt=966B | flow-ML max_p=1.00 flagged=97%
+(100125) accepted ('127.0.0.1', 32806)
+127.0.0.1 - - [11/Nov/2026 22:37:04] "GET /ddos/status HTTP/1.1" 200 8250 0.001171
+(100125) accepted ('127.0.0.1', 32822)
+127.0.0.1 - - [11/Nov/2026 22:37:05] "GET /ddos/status HTTP/1.1" 200 8250 0.001369
+(100125) accepted ('127.0.0.1', 32828)
+127.0.0.1 - - [11/Nov/2026 22:37:06] "GET /ddos/status HTTP/1.1" 200 8250 0.001049
+(100125) accepted ('127.0.0.1', 32830)
+127.0.0.1 - - [11/Nov/2026 22:37:07] "GET /ddos/status HTTP/1.1" 200 8250 0.001191
+(100125) accepted ('127.0.0.1', 32840)
+127.0.0.1 - - [11/Nov/2026 22:37:08] "GET /ddos/status HTTP/1.1" 200 8250 0.001531
+[poll 90] dst=10.0.0.18  NORMAL TRAFFIC     score=0.027 (thr 0.682) sources=6 flows=673 pps=447 rate=3.59Mbps avg_pkt=1003B | flow-ML max_p=1.00 flagged=94%
+(100125) accepted ('127.0.0.1', 57602)
+127.0.0.1 - - [11/Nov/2026 22:37:09] "GET /ddos/status HTTP/1.1" 200 8266 0.001733
+(100125) accepted ('127.0.0.1', 57618)
+127.0.0.1 - - [11/Nov/2026 22:37:10] "GET /ddos/status HTTP/1.1" 200 8266 0.000997
+(100125) accepted ('127.0.0.1', 57622)
+127.0.0.1 - - [11/Nov/2026 22:37:11] "GET /ddos/status HTTP/1.1" 200 8266 0.002034
+(100125) accepted ('127.0.0.1', 57632)
+127.0.0.1 - - [11/Nov/2026 22:37:12] "GET /ddos/status HTTP/1.1" 200 8266 0.002168
+(100125) accepted ('127.0.0.1', 57634)
+127.0.0.1 - - [11/Nov/2026 22:37:13] "GET /ddos/status HTTP/1.1" 200 8266 0.001006
+[poll 91] dst=10.0.0.18  NORMAL TRAFFIC     score=0.027 (thr 0.682) sources=6 flows=536 pps=438 rate=3.56Mbps avg_pkt=1017B | flow-ML max_p=1.00 flagged=95%
+(100125) accepted ('127.0.0.1', 57646)
+127.0.0.1 - - [11/Nov/2026 22:37:14] "GET /ddos/status HTTP/1.1" 200 8266 0.002165
+(100125) accepted ('127.0.0.1', 57656)
+127.0.0.1 - - [11/Nov/2026 22:37:15] "GET /ddos/status HTTP/1.1" 200 8266 0.001070
+(100125) accepted ('127.0.0.1', 57672)
+127.0.0.1 - - [11/Nov/2026 22:37:16] "GET /ddos/status HTTP/1.1" 200 8266 0.001846
+(100125) accepted ('127.0.0.1', 57684)
+127.0.0.1 - - [11/Nov/2026 22:37:17] "GET /ddos/status HTTP/1.1" 200 8266 0.001068
+(100125) accepted ('127.0.0.1', 57692)
+127.0.0.1 - - [11/Nov/2026 22:37:18] "GET /ddos/status HTTP/1.1" 200 8266 0.001057
+[poll 92] dst=10.0.0.18  NORMAL TRAFFIC     score=0.005 (thr 0.682) sources=6 flows=991 pps=160 rate=1.20Mbps avg_pkt=937B | flow-ML max_p=1.00 flagged=95%
+(100125) accepted ('127.0.0.1', 36138)
+127.0.0.1 - - [11/Nov/2026 22:37:19] "GET /ddos/status HTTP/1.1" 200 9242 0.001669
+(100125) accepted ('127.0.0.1', 36150)
+127.0.0.1 - - [11/Nov/2026 22:37:20] "GET /ddos/status HTTP/1.1" 200 9242 0.001090
+(100125) accepted ('127.0.0.1', 36166)
+127.0.0.1 - - [11/Nov/2026 22:37:21] "GET /ddos/status HTTP/1.1" 200 9242 0.001033
+(100125) accepted ('127.0.0.1', 36168)
+127.0.0.1 - - [11/Nov/2026 22:37:21] "GET /ddos/events?since=22 HTTP/1.1" 200 162 0.000342
+[poll 94] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=4 flows=1591 pps=23 rate=0.01Mbps avg_pkt=54B | flow-ML max_p=0.91 flagged=97%
+(100125) accepted ('127.0.0.1', 43140)
+127.0.0.1 - - [11/Nov/2026 22:37:43] "GET /ddos/status HTTP/1.1" 200 8081 0.001208
+(100125) accepted ('127.0.0.1', 43144)
+127.0.0.1 - - [11/Nov/2026 22:37:43] "GET /ddos/status HTTP/1.1" 200 8081 0.001518
+(100125) accepted ('127.0.0.1', 43158)
+127.0.0.1 - - [11/Nov/2026 22:37:43] "GET /ddos/events?since=0 HTTP/1.1" 200 9643 0.002562
+(100125) accepted ('127.0.0.1', 43164)
+127.0.0.1 - - [11/Nov/2026 22:37:43] "GET /ddos/status HTTP/1.1" 200 8081 0.002467
+[poll 97] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=4 flows=1623 pps=27 rate=0.01Mbps avg_pkt=54B | flow-ML max_p=0.91 flagged=95%
+(100125) accepted ('127.0.0.1', 43172)
+127.0.0.1 - - [11/Nov/2026 22:37:44] "GET /ddos/status HTTP/1.1" 200 7884 0.000964
+(100125) accepted ('127.0.0.1', 43182)
+127.0.0.1 - - [11/Nov/2026 22:37:45] "GET /ddos/status HTTP/1.1" 200 7884 0.000922
+(100125) accepted ('127.0.0.1', 43190)
+127.0.0.1 - - [11/Nov/2026 22:37:46] "GET /ddos/status HTTP/1.1" 200 7884 0.001048
+[poll 98] dst=10.0.0.18  NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=5 flows=637 pps=74 rate=0.46Mbps avg_pkt=775B | flow-ML max_p=1.00 flagged=94%
+(100125) accepted ('127.0.0.1', 43200)
+127.0.0.1 - - [11/Nov/2026 22:37:47] "GET /ddos/status HTTP/1.1" 200 7050 0.000940
+(100125) accepted ('127.0.0.1', 43214)
+127.0.0.1 - - [11/Nov/2026 22:37:48] "GET /ddos/status HTTP/1.1" 200 7050 0.001013
+(100125) accepted ('127.0.0.1', 35128)
+127.0.0.1 - - [11/Nov/2026 22:37:49] "GET /ddos/status HTTP/1.1" 200 7050 0.001010
+(100125) accepted ('127.0.0.1', 35136)
+127.0.0.1 - - [11/Nov/2026 22:37:50] "GET /ddos/status HTTP/1.1" 200 7050 0.001047
+[poll 99] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=264 rate=2.16Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 35148)
+127.0.0.1 - - [11/Nov/2026 22:37:51] "GET /ddos/status HTTP/1.1" 200 4557 0.000801
+(100125) accepted ('127.0.0.1', 35150)
+127.0.0.1 - - [11/Nov/2026 22:37:52] "GET /ddos/status HTTP/1.1" 200 4557 0.000896
+(100125) accepted ('127.0.0.1', 35166)
+127.0.0.1 - - [11/Nov/2026 22:37:53] "GET /ddos/status HTTP/1.1" 200 4557 0.000814
+(100125) accepted ('127.0.0.1', 35170)
+127.0.0.1 - - [11/Nov/2026 22:37:54] "GET /ddos/status HTTP/1.1" 200 4557 0.001296
+(100125) accepted ('127.0.0.1', 35184)
+127.0.0.1 - - [11/Nov/2026 22:37:55] "GET /ddos/status HTTP/1.1" 200 4557 0.001030
+[poll 100] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=262 rate=2.14Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 35194)
+127.0.0.1 - - [11/Nov/2026 22:37:56] "GET /ddos/status HTTP/1.1" 200 4561 0.000805
+(100125) accepted ('127.0.0.1', 35202)
+127.0.0.1 - - [11/Nov/2026 22:37:57] "GET /ddos/status HTTP/1.1" 200 4561 0.000702
+(100125) accepted ('127.0.0.1', 35212)
+127.0.0.1 - - [11/Nov/2026 22:37:58] "GET /ddos/status HTTP/1.1" 200 4561 0.001622
+(100125) accepted ('127.0.0.1', 55708)
+127.0.0.1 - - [11/Nov/2026 22:37:59] "GET /ddos/status HTTP/1.1" 200 4561 0.001347
+(100125) accepted ('127.0.0.1', 55710)
+127.0.0.1 - - [11/Nov/2026 22:38:00] "GET /ddos/status HTTP/1.1" 200 4561 0.002221
+(100125) accepted ('127.0.0.1', 55720)
+127.0.0.1 - - [11/Nov/2026 22:38:01] "GET /ddos/status HTTP/1.1" 200 4561 0.000725
+[poll 101] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.971 (thr 0.682) sources=6 flows=6 pps=2828 rate=3.00Mbps avg_pkt=133B | flow-ML max_p=0.99 flagged=17%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.971 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 55726)
+127.0.0.1 - - [11/Nov/2026 22:38:02] "GET /ddos/status HTTP/1.1" 200 6269 0.000847
+(100125) accepted ('127.0.0.1', 55734)
+127.0.0.1 - - [11/Nov/2026 22:38:03] "GET /ddos/status HTTP/1.1" 200 6269 0.000990
+(100125) accepted ('127.0.0.1', 55736)
+127.0.0.1 - - [11/Nov/2026 22:38:04] "GET /ddos/status HTTP/1.1" 200 6269 0.000855
+(100125) accepted ('127.0.0.1', 55752)
+127.0.0.1 - - [11/Nov/2026 22:38:05] "GET /ddos/status HTTP/1.1" 200 6269 0.001042
+[poll 102] dst=10.0.0.18  NORMAL TRAFFIC     score=0.295 (thr 0.682) sources=6 flows=6 pps=11968 rate=7.15Mbps avg_pkt=75B | flow-ML max_p=0.99 flagged=17%
+[poll 102] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1298 rate=0.60Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 102] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1289 rate=0.60Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 102] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1278 rate=0.59Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 102] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1276 rate=0.59Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->NORMAL score=0.295 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 55754)
+127.0.0.1 - - [11/Nov/2026 22:38:06] "GET /ddos/status HTTP/1.1" 200 9192 0.001313
+(100125) accepted ('127.0.0.1', 55760)
+127.0.0.1 - - [11/Nov/2026 22:38:07] "GET /ddos/status HTTP/1.1" 200 9192 0.001173
+(100125) accepted ('127.0.0.1', 55770)
+127.0.0.1 - - [11/Nov/2026 22:38:08] "GET /ddos/status HTTP/1.1" 200 9192 0.001123
+(100125) accepted ('127.0.0.1', 50176)
+127.0.0.1 - - [11/Nov/2026 22:38:09] "GET /ddos/status HTTP/1.1" 200 9192 0.001249
+(100125) accepted ('127.0.0.1', 50188)
+127.0.0.1 - - [11/Nov/2026 22:38:10] "GET /ddos/status HTTP/1.1" 200 9192 0.001302
+[poll 103] dst=10.0.0.18  NORMAL TRAFFIC     score=0.229 (thr 0.682) sources=6 flows=6 pps=12895 rate=7.55Mbps avg_pkt=73B | flow-ML max_p=0.99 flagged=17%
+[poll 103] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1587 rate=0.74Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 103] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1580 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 103] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1578 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 103] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1575 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 50198)
+127.0.0.1 - - [11/Nov/2026 22:38:11] "GET /ddos/status HTTP/1.1" 200 9199 0.001383
+(100125) accepted ('127.0.0.1', 50202)
+127.0.0.1 - - [11/Nov/2026 22:38:12] "GET /ddos/status HTTP/1.1" 200 9199 0.001093
+(100125) accepted ('127.0.0.1', 50206)
+127.0.0.1 - - [11/Nov/2026 22:38:13] "GET /ddos/status HTTP/1.1" 200 9199 0.001278
+(100125) accepted ('127.0.0.1', 50222)
+127.0.0.1 - - [11/Nov/2026 22:38:14] "GET /ddos/status HTTP/1.1" 200 9199 0.001354
+(100125) accepted ('127.0.0.1', 50230)
+127.0.0.1 - - [11/Nov/2026 22:38:15] "GET /ddos/status HTTP/1.1" 200 9199 0.001197
+[poll 104] dst=10.0.0.18  NORMAL TRAFFIC     score=0.208 (thr 0.682) sources=6 flows=6 pps=12853 rate=7.53Mbps avg_pkt=73B | flow-ML max_p=0.99 flagged=17%
+[poll 104] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1581 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 104] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1576 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 104] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1573 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 104] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1569 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 50232)
+127.0.0.1 - - [11/Nov/2026 22:38:16] "GET /ddos/status HTTP/1.1" 200 9189 0.001129
+(100125) accepted ('127.0.0.1', 50234)
+127.0.0.1 - - [11/Nov/2026 22:38:17] "GET /ddos/status HTTP/1.1" 200 9189 0.001078
+(100125) accepted ('127.0.0.1', 50244)
+127.0.0.1 - - [11/Nov/2026 22:38:18] "GET /ddos/status HTTP/1.1" 200 9189 0.001220
+(100125) accepted ('127.0.0.1', 47460)
+127.0.0.1 - - [11/Nov/2026 22:38:19] "GET /ddos/status HTTP/1.1" 200 9189 0.001093
+(100125) accepted ('127.0.0.1', 47476)
+127.0.0.1 - - [11/Nov/2026 22:38:20] "GET /ddos/status HTTP/1.1" 200 9189 0.001127
+[poll 105] dst=10.0.0.18  NORMAL TRAFFIC     score=0.198 (thr 0.682) sources=6 flows=6 pps=12877 rate=7.54Mbps avg_pkt=73B | flow-ML max_p=0.99 flagged=17%
+[poll 105] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1588 rate=0.74Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 105] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1578 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 105] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1573 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 105] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1572 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 47486)
+127.0.0.1 - - [11/Nov/2026 22:38:21] "GET /ddos/status HTTP/1.1" 200 9191 0.001291
+(100125) accepted ('127.0.0.1', 47492)
+127.0.0.1 - - [11/Nov/2026 22:38:22] "GET /ddos/status HTTP/1.1" 200 9191 0.001150
+(100125) accepted ('127.0.0.1', 47502)
+127.0.0.1 - - [11/Nov/2026 22:38:23] "GET /ddos/status HTTP/1.1" 200 9191 0.001631
+(100125) accepted ('127.0.0.1', 47518)
+127.0.0.1 - - [11/Nov/2026 22:38:24] "GET /ddos/status HTTP/1.1" 200 9191 0.001157
+(100125) accepted ('127.0.0.1', 47532)
+127.0.0.1 - - [11/Nov/2026 22:38:25] "GET /ddos/status HTTP/1.1" 200 9191 0.001186
+[poll 106] dst=10.0.0.18  NORMAL TRAFFIC     score=0.193 (thr 0.682) sources=6 flows=6 pps=12869 rate=7.54Mbps avg_pkt=73B | flow-ML max_p=0.99 flagged=17%
+[poll 106] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1579 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 106] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1577 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 106] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1576 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 106] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1574 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 47542)
+127.0.0.1 - - [11/Nov/2026 22:38:26] "GET /ddos/status HTTP/1.1" 200 9201 0.001693
+(100125) accepted ('127.0.0.1', 47546)
+127.0.0.1 - - [11/Nov/2026 22:38:27] "GET /ddos/status HTTP/1.1" 200 9201 0.001028
+(100125) accepted ('127.0.0.1', 47560)
+127.0.0.1 - - [11/Nov/2026 22:38:28] "GET /ddos/status HTTP/1.1" 200 9201 0.001164
+(100125) accepted ('127.0.0.1', 33826)
+127.0.0.1 - - [11/Nov/2026 22:38:29] "GET /ddos/status HTTP/1.1" 200 9201 0.001313
+(100125) accepted ('127.0.0.1', 33842)
+127.0.0.1 - - [11/Nov/2026 22:38:30] "GET /ddos/status HTTP/1.1" 200 9201 0.001286
+[poll 107] dst=10.0.0.18  NORMAL TRAFFIC     score=0.189 (thr 0.682) sources=6 flows=6 pps=12848 rate=7.53Mbps avg_pkt=73B | flow-ML max_p=0.99 flagged=17%
+[poll 107] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1580 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1575 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1571 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1570 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 33848)
+127.0.0.1 - - [11/Nov/2026 22:38:31] "GET /ddos/status HTTP/1.1" 200 9198 0.001023
+(100125) accepted ('127.0.0.1', 33862)
+127.0.0.1 - - [11/Nov/2026 22:38:32] "GET /ddos/status HTTP/1.1" 200 9198 0.001889
+(100125) accepted ('127.0.0.1', 33872)
+127.0.0.1 - - [11/Nov/2026 22:38:33] "GET /ddos/status HTTP/1.1" 200 9198 0.001310
+(100125) accepted ('127.0.0.1', 33878)
+127.0.0.1 - - [11/Nov/2026 22:38:34] "GET /ddos/status HTTP/1.1" 200 9198 0.001140
+(100125) accepted ('127.0.0.1', 33886)
+127.0.0.1 - - [11/Nov/2026 22:38:35] "GET /ddos/status HTTP/1.1" 200 9198 0.001069
+[poll 108] dst=10.0.0.18  NORMAL TRAFFIC     score=0.187 (thr 0.682) sources=6 flows=6 pps=12867 rate=7.53Mbps avg_pkt=73B | flow-ML max_p=0.99 flagged=17%
+[poll 108] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1582 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1577 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1576 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1571 rate=0.73Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 33890)
+127.0.0.1 - - [11/Nov/2026 22:38:36] "GET /ddos/status HTTP/1.1" 200 9198 0.001762
+(100125) accepted ('127.0.0.1', 33894)
+127.0.0.1 - - [11/Nov/2026 22:38:37] "GET /ddos/status HTTP/1.1" 200 9198 0.001148
+(100125) accepted ('127.0.0.1', 33904)
+127.0.0.1 - - [11/Nov/2026 22:38:38] "GET /ddos/status HTTP/1.1" 200 9198 0.001092
+(100125) accepted ('127.0.0.1', 56102)
+127.0.0.1 - - [11/Nov/2026 22:38:39] "GET /ddos/status HTTP/1.1" 200 9198 0.001185
+(100125) accepted ('127.0.0.1', 56106)
+127.0.0.1 - - [11/Nov/2026 22:38:40] "GET /ddos/status HTTP/1.1" 200 9198 0.001112
+[poll 109] dst=10.0.0.18  NORMAL TRAFFIC     score=0.133 (thr 0.682) sources=6 flows=6 pps=6818 rate=4.93Mbps avg_pkt=90B | flow-ML max_p=0.99 flagged=17%
+[poll 109] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=828 rate=0.38Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=818 rate=0.38Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=818 rate=0.38Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=817 rate=0.38Mbps avg_pkt=58B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56110)
+127.0.0.1 - - [11/Nov/2026 22:38:41] "GET /ddos/status HTTP/1.1" 200 9184 0.001091
+(100125) accepted ('127.0.0.1', 56126)
+127.0.0.1 - - [11/Nov/2026 22:38:42] "GET /ddos/status HTTP/1.1" 200 9184 0.001127
+(100125) accepted ('127.0.0.1', 56130)
+127.0.0.1 - - [11/Nov/2026 22:38:43] "GET /ddos/status HTTP/1.1" 200 9184 0.001237
+(100125) accepted ('127.0.0.1', 56144)
+127.0.0.1 - - [11/Nov/2026 22:38:44] "GET /ddos/status HTTP/1.1" 200 9184 0.001060
+(100125) accepted ('127.0.0.1', 56154)
+127.0.0.1 - - [11/Nov/2026 22:38:45] "GET /ddos/status HTTP/1.1" 200 9184 0.001019
+[poll 110] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 56162)
+127.0.0.1 - - [11/Nov/2026 22:38:46] "GET /ddos/status HTTP/1.1" 200 4555 0.000736
+(100125) accepted ('127.0.0.1', 56166)
+127.0.0.1 - - [11/Nov/2026 22:38:47] "GET /ddos/status HTTP/1.1" 200 4555 0.000738
+(100125) accepted ('127.0.0.1', 56172)
+127.0.0.1 - - [11/Nov/2026 22:38:48] "GET /ddos/status HTTP/1.1" 200 4555 0.000707
+(100125) accepted ('127.0.0.1', 36794)
+127.0.0.1 - - [11/Nov/2026 22:38:49] "GET /ddos/status HTTP/1.1" 200 4555 0.000708
+(100125) accepted ('127.0.0.1', 36806)
+127.0.0.1 - - [11/Nov/2026 22:38:50] "GET /ddos/status HTTP/1.1" 200 4555 0.000741
+[poll 111] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=256 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 36808)
+127.0.0.1 - - [11/Nov/2026 22:38:51] "GET /ddos/status HTTP/1.1" 200 4554 0.000701
+(100125) accepted ('127.0.0.1', 36818)
+127.0.0.1 - - [11/Nov/2026 22:38:52] "GET /ddos/status HTTP/1.1" 200 4554 0.000683
+(100125) accepted ('127.0.0.1', 36826)
+127.0.0.1 - - [11/Nov/2026 22:38:53] "GET /ddos/status HTTP/1.1" 200 4554 0.001207
+(100125) accepted ('127.0.0.1', 36840)
+127.0.0.1 - - [11/Nov/2026 22:38:54] "GET /ddos/status HTTP/1.1" 200 4554 0.000674
+(100125) accepted ('127.0.0.1', 36844)
+127.0.0.1 - - [11/Nov/2026 22:38:55] "GET /ddos/status HTTP/1.1" 200 4554 0.000678
+[poll 112] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 36856)
+127.0.0.1 - - [11/Nov/2026 22:38:56] "GET /ddos/status HTTP/1.1" 200 4557 0.001004
+(100125) accepted ('127.0.0.1', 36872)
+127.0.0.1 - - [11/Nov/2026 22:38:57] "GET /ddos/status HTTP/1.1" 200 4557 0.000690
+(100125) accepted ('127.0.0.1', 36874)
+127.0.0.1 - - [11/Nov/2026 22:38:58] "GET /ddos/status HTTP/1.1" 200 4557 0.000681
+(100125) accepted ('127.0.0.1', 37616)
+127.0.0.1 - - [11/Nov/2026 22:38:59] "GET /ddos/status HTTP/1.1" 200 4557 0.000686
+(100125) accepted ('127.0.0.1', 37630)
+127.0.0.1 - - [11/Nov/2026 22:39:00] "GET /ddos/status HTTP/1.1" 200 4557 0.001201
+[poll 113] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 37646)
+127.0.0.1 - - [11/Nov/2026 22:39:01] "GET /ddos/status HTTP/1.1" 200 4554 0.000823
+(100125) accepted ('127.0.0.1', 37656)
+127.0.0.1 - - [11/Nov/2026 22:39:02] "GET /ddos/status HTTP/1.1" 200 4554 0.001184
+(100125) accepted ('127.0.0.1', 37672)
+127.0.0.1 - - [11/Nov/2026 22:39:03] "GET /ddos/status HTTP/1.1" 200 4554 0.000844
+(100125) accepted ('127.0.0.1', 37684)
+127.0.0.1 - - [11/Nov/2026 22:39:04] "GET /ddos/status HTTP/1.1" 200 4554 0.001513
+(100125) accepted ('127.0.0.1', 37688)
+127.0.0.1 - - [11/Nov/2026 22:39:05] "GET /ddos/status HTTP/1.1" 200 4554 0.000960
+[poll 114] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 37702)
+127.0.0.1 - - [11/Nov/2026 22:39:06] "GET /ddos/status HTTP/1.1" 200 4556 0.000740
+(100125) accepted ('127.0.0.1', 37718)
+127.0.0.1 - - [11/Nov/2026 22:39:07] "GET /ddos/status HTTP/1.1" 200 4556 0.001389
+(100125) accepted ('127.0.0.1', 37732)
+127.0.0.1 - - [11/Nov/2026 22:39:08] "GET /ddos/status HTTP/1.1" 200 4556 0.001065
+(100125) accepted ('127.0.0.1', 49556)
+127.0.0.1 - - [11/Nov/2026 22:39:09] "GET /ddos/status HTTP/1.1" 200 4556 0.001240
+(100125) accepted ('127.0.0.1', 49560)
+127.0.0.1 - - [11/Nov/2026 22:39:10] "GET /ddos/status HTTP/1.1" 200 4556 0.000715
+[poll 115] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=230 rate=1.88Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 49570)
+127.0.0.1 - - [11/Nov/2026 22:39:11] "GET /ddos/status HTTP/1.1" 200 4557 0.000717
+(100125) accepted ('127.0.0.1', 49586)
+127.0.0.1 - - [11/Nov/2026 22:39:12] "GET /ddos/status HTTP/1.1" 200 4557 0.000698
+(100125) accepted ('127.0.0.1', 49590)
+127.0.0.1 - - [11/Nov/2026 22:39:13] "GET /ddos/status HTTP/1.1" 200 4557 0.000683
+(100125) accepted ('127.0.0.1', 49596)
+127.0.0.1 - - [11/Nov/2026 22:39:14] "GET /ddos/status HTTP/1.1" 200 4557 0.000678
+(100125) accepted ('127.0.0.1', 49602)
+127.0.0.1 - - [11/Nov/2026 22:39:15] "GET /ddos/status HTTP/1.1" 200 4557 0.000682
+[poll 116] dst=10.0.0.18  NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=2 flows=2 pps=255 rate=2.09Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=50%
+(100125) accepted ('127.0.0.1', 49606)
+127.0.0.1 - - [11/Nov/2026 22:39:16] "GET /ddos/status HTTP/1.1" 200 4554 0.000737
+(100125) accepted ('127.0.0.1', 49608)
+127.0.0.1 - - [11/Nov/2026 22:39:17] "GET /ddos/status HTTP/1.1" 200 4554 0.000935
+(100125) accepted ('127.0.0.1', 49614)
+127.0.0.1 - - [11/Nov/2026 22:39:18] "GET /ddos/status HTTP/1.1" 200 4554 0.000713
+(100125) accepted ('127.0.0.1', 45118)
+127.0.0.1 - - [11/Nov/2026 22:39:19] "GET /ddos/status HTTP/1.1" 200 4554 0.001138
+(100125) accepted ('127.0.0.1', 45128)
+127.0.0.1 - - [11/Nov/2026 22:39:19] "GET /ddos/events?since=22 HTTP/1.1" 200 1487 0.000508
+(100125) accepted ('127.0.0.1', 45132)
+127.0.0.1 - - [11/Nov/2026 22:39:20] "GET /ddos/status HTTP/1.1" 200 4554 0.000736
+(100125) accepted ('127.0.0.1', 45144)
+127.0.0.1 - - [11/Nov/2026 22:39:20] "GET /ddos/status HTTP/1.1" 200 4554 0.000705
+(100125) accepted ('127.0.0.1', 45146)
+127.0.0.1 - - [11/Nov/2026 22:39:20] "GET /ddos/events?since=0 HTTP/1.1" 200 10966 0.001104
+(100125) accepted ('127.0.0.1', 45160)
+127.0.0.1 - - [11/Nov/2026 22:39:20] "GET /ddos/status HTTP/1.1" 200 4554 0.001532
+[poll 117] dst=10.0.0.18  NORMAL TRAFFIC     score=0.127 (thr 0.682) sources=9 flows=18 pps=386 rate=2.50Mbps avg_pkt=811B | flow-ML max_p=1.00 flagged=44%
+[poll 117] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=139 rate=1.68Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 117] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=3 pps=41 rate=0.03Mbps avg_pkt=108B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 45176)
+127.0.0.1 - - [11/Nov/2026 22:39:21] "GET /ddos/status HTTP/1.1" 200 13582 0.001359
+(100125) accepted ('127.0.0.1', 45182)
+127.0.0.1 - - [11/Nov/2026 22:39:22] "GET /ddos/status HTTP/1.1" 200 13582 0.001400
+(100125) accepted ('127.0.0.1', 45192)
+127.0.0.1 - - [11/Nov/2026 22:39:23] "GET /ddos/status HTTP/1.1" 200 13582 0.001431
+(100125) accepted ('127.0.0.1', 45194)
+127.0.0.1 - - [11/Nov/2026 22:39:24] "GET /ddos/status HTTP/1.1" 200 13582 0.001444
+(100125) accepted ('127.0.0.1', 45204)
+127.0.0.1 - - [11/Nov/2026 22:39:25] "GET /ddos/status HTTP/1.1" 200 13582 0.002199
+[poll 118] dst=10.0.0.18  NORMAL TRAFFIC     score=0.256 (thr 0.682) sources=5 flows=107 pps=1426 rate=12.40Mbps avg_pkt=1087B | flow-ML max_p=1.00 flagged=94%
+[poll 118] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=546 rate=6.58Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 118] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=412 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 45218)
+127.0.0.1 - - [11/Nov/2026 22:39:26] "GET /ddos/status HTTP/1.1" 200 8023 0.001175
+(100125) accepted ('127.0.0.1', 45226)
+127.0.0.1 - - [11/Nov/2026 22:39:27] "GET /ddos/status HTTP/1.1" 200 8023 0.000988
+(100125) accepted ('127.0.0.1', 45230)
+127.0.0.1 - - [11/Nov/2026 22:39:28] "GET /ddos/status HTTP/1.1" 200 8023 0.001483
+(100125) accepted ('127.0.0.1', 59444)
+127.0.0.1 - - [11/Nov/2026 22:39:29] "GET /ddos/status HTTP/1.1" 200 8023 0.000997
+(100125) accepted ('127.0.0.1', 59454)
+127.0.0.1 - - [11/Nov/2026 22:39:30] "GET /ddos/status HTTP/1.1" 200 8023 0.001002
+[poll 119] dst=10.0.0.18  NORMAL TRAFFIC     score=0.248 (thr 0.682) sources=5 flows=108 pps=1480 rate=12.60Mbps avg_pkt=1064B | flow-ML max_p=0.99 flagged=94%
+[poll 119] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=619 rate=7.45Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 119] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=435 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 59456)
+127.0.0.1 - - [11/Nov/2026 22:39:31] "GET /ddos/status HTTP/1.1" 200 8031 0.001006
+(100125) accepted ('127.0.0.1', 59470)
+127.0.0.1 - - [11/Nov/2026 22:39:32] "GET /ddos/status HTTP/1.1" 200 8031 0.000931
+(100125) accepted ('127.0.0.1', 59478)
+127.0.0.1 - - [11/Nov/2026 22:39:33] "GET /ddos/status HTTP/1.1" 200 8031 0.001480
+(100125) accepted ('127.0.0.1', 59482)
+127.0.0.1 - - [11/Nov/2026 22:39:34] "GET /ddos/status HTTP/1.1" 200 8031 0.001020
+(100125) accepted ('127.0.0.1', 59488)
+127.0.0.1 - - [11/Nov/2026 22:39:35] "GET /ddos/status HTTP/1.1" 200 8031 0.000958
+(100125) accepted ('127.0.0.1', 59498)
+127.0.0.1 - - [11/Nov/2026 22:39:36] "GET /ddos/status HTTP/1.1" 200 8031 0.003118
+[poll 120] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.988 (thr 0.682) sources=11 flows=109 pps=1746 rate=13.91Mbps avg_pkt=995B | flow-ML max_p=1.00 flagged=94%
+[poll 120] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=495 rate=5.96Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 120] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=339 rate=0.18Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.988 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 59506)
+127.0.0.1 - - [11/Nov/2026 22:39:37] "GET /ddos/status HTTP/1.1" 200 9128 0.004729
+(100125) accepted ('127.0.0.1', 59520)
+127.0.0.1 - - [11/Nov/2026 22:39:38] "GET /ddos/status HTTP/1.1" 200 9128 0.001664
+(100125) accepted ('127.0.0.1', 53200)
+127.0.0.1 - - [11/Nov/2026 22:39:39] "GET /ddos/status HTTP/1.1" 200 9128 0.001667
+(100125) accepted ('127.0.0.1', 53210)
+127.0.0.1 - - [11/Nov/2026 22:39:40] "GET /ddos/status HTTP/1.1" 200 9128 0.001729
+(100125) accepted ('127.0.0.1', 53216)
+127.0.0.1 - - [11/Nov/2026 22:39:41] "GET /ddos/status HTTP/1.1" 200 9128 0.002323
+(100125) accepted ('127.0.0.1', 53222)
+127.0.0.1 - - [11/Nov/2026 22:39:42] "GET /ddos/status HTTP/1.1" 200 9128 0.001740
+(100125) accepted ('127.0.0.1', 53224)
+127.0.0.1 - - [11/Nov/2026 22:39:43] "GET /ddos/status HTTP/1.1" 200 9128 0.001917
+[poll 121] dst=10.0.0.18  ATTACK CONFIRMED   score=1.000 (thr 0.682) sources=11 flows=15 pps=8423 rate=58.81Mbps avg_pkt=873B | flow-ML max_p=1.00 flagged=80%
+[poll 121] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=256 rate=0.14Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->CONFIRMED score=1.000 sources=['10.0.0.1', '10.0.0.2', '10.0.0.3', '10.0.0.4', '10.0.0.5', '10.0.0.6'] actions=[]
+==============================================================================
+DDoS ALERT  victim=10.0.0.18  ATTACK CONFIRMED  window score=1.000 (threshold 0.682)
+  sources=11  active flows=15  aggregate=8423 pps / 58.81 Mbps  avg pkt=873 B
+  protocol mix: UDP 93%  TCP 7%  ICMP 0%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=1.00, 80% of flows flagged
+  strongest evidence: n_sources +8.03, packet_in_rate +5.03, pps +3.16, bps +2.94
+  top senders: 10.0.0.5(1643pps), 10.0.0.4(1326pps), 10.0.0.1(1324pps), 10.0.0.2(1302pps), 10.0.0.6(1151pps), 10.0.0.3(935pps), 10.0.0.7(572pps), 10.0.0.8(166pps)
+  mitigation mode: DETECTION_ONLY  (no OpenFlow rule will be installed)
+==============================================================================
+(100125) accepted ('127.0.0.1', 53230)
+127.0.0.1 - - [11/Nov/2026 22:39:44] "GET /ddos/status HTTP/1.1" 200 8272 0.001882
+(100125) accepted ('127.0.0.1', 53234)
+127.0.0.1 - - [11/Nov/2026 22:39:45] "GET /ddos/status HTTP/1.1" 200 8272 0.001927
+[poll 122] dst=10.0.0.18  ATTACK CONFIRMED   score=0.997 (thr 0.682) sources=11 flows=109 pps=12744 rate=88.29Mbps avg_pkt=866B | flow-ML max_p=1.00 flagged=94%
+[poll 122] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=458 rate=0.24Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 122] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=80 rate=0.97Mbps avg_pkt=1507B | flow-ML max_p=0.78 flagged=25%
+(100125) accepted ('127.0.0.1', 53240)
+127.0.0.1 - - [11/Nov/2026 22:39:46] "GET /ddos/status HTTP/1.1" 200 9248 0.002513
+(100125) accepted ('127.0.0.1', 53256)
+127.0.0.1 - - [11/Nov/2026 22:39:47] "GET /ddos/status HTTP/1.1" 200 9248 0.002318
+(100125) accepted ('127.0.0.1', 53272)
+127.0.0.1 - - [11/Nov/2026 22:39:48] "GET /ddos/status HTTP/1.1" 200 9248 0.001820
+(100125) accepted ('127.0.0.1', 43762)
+127.0.0.1 - - [11/Nov/2026 22:39:49] "GET /ddos/status HTTP/1.1" 200 9248 0.002391
+(100125) accepted ('127.0.0.1', 43764)
+127.0.0.1 - - [11/Nov/2026 22:39:50] "GET /ddos/status HTTP/1.1" 200 9248 0.001481
+[poll 123] dst=10.0.0.18  ATTACK CONFIRMED   score=0.975 (thr 0.682) sources=11 flows=223 pps=4828 rate=32.77Mbps avg_pkt=849B | flow-ML max_p=1.00 flagged=95%
+[poll 123] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=255 rate=3.06Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+[poll 123] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=142 rate=0.07Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 43778)
+127.0.0.1 - - [11/Nov/2026 22:39:51] "GET /ddos/status HTTP/1.1" 200 9250 0.001472
+(100125) accepted ('127.0.0.1', 43784)
+127.0.0.1 - - [11/Nov/2026 22:39:52] "GET /ddos/status HTTP/1.1" 200 9250 0.002069
+(100125) accepted ('127.0.0.1', 43792)
+127.0.0.1 - - [11/Nov/2026 22:39:53] "GET /ddos/status HTTP/1.1" 200 9250 0.002153
+(100125) accepted ('127.0.0.1', 43796)
+127.0.0.1 - - [11/Nov/2026 22:39:54] "GET /ddos/status HTTP/1.1" 200 9250 0.001633
+(100125) accepted ('127.0.0.1', 43812)
+127.0.0.1 - - [11/Nov/2026 22:39:55] "GET /ddos/status HTTP/1.1" 200 9250 0.001793
+(100125) accepted ('127.0.0.1', 43824)
+127.0.0.1 - - [11/Nov/2026 22:39:56] "GET /ddos/status HTTP/1.1" 200 9250 0.001633
+[poll 124] dst=10.0.0.18  ATTACK CONFIRMED   score=0.976 (thr 0.682) sources=11 flows=113 pps=3779 rate=25.72Mbps avg_pkt=851B | flow-ML max_p=1.00 flagged=94%
+[poll 124] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=148 rate=1.79Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 124] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 43832)
+127.0.0.1 - - [11/Nov/2026 22:39:57] "GET /ddos/status HTTP/1.1" 200 9134 0.002505
+(100125) accepted ('127.0.0.1', 43836)
+127.0.0.1 - - [11/Nov/2026 22:39:58] "GET /ddos/status HTTP/1.1" 200 9134 0.003993
+(100125) accepted ('127.0.0.1', 42744)
+127.0.0.1 - - [11/Nov/2026 22:39:59] "GET /ddos/status HTTP/1.1" 200 9134 0.001714
+(100125) accepted ('127.0.0.1', 42758)
+127.0.0.1 - - [11/Nov/2026 22:40:00] "GET /ddos/status HTTP/1.1" 200 9134 0.001662
+[poll 125] dst=10.0.0.18  ATTACK CONFIRMED   score=0.990 (thr 0.682) sources=11 flows=111 pps=13453 rate=91.86Mbps avg_pkt=854B | flow-ML max_p=1.00 flagged=91%
+[poll 125] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=562 rate=6.77Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+[poll 125] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=400 rate=0.21Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 42768)
+127.0.0.1 - - [11/Nov/2026 22:40:01] "GET /ddos/status HTTP/1.1" 200 9258 0.001798
+(100125) accepted ('127.0.0.1', 42776)
+127.0.0.1 - - [11/Nov/2026 22:40:02] "GET /ddos/status HTTP/1.1" 200 9258 0.002297
+(100125) accepted ('127.0.0.1', 42788)
+127.0.0.1 - - [11/Nov/2026 22:40:03] "GET /ddos/status HTTP/1.1" 200 9258 0.002338
+(100125) accepted ('127.0.0.1', 42804)
+127.0.0.1 - - [11/Nov/2026 22:40:04] "GET /ddos/status HTTP/1.1" 200 9258 0.001652
+(100125) accepted ('127.0.0.1', 42814)
+127.0.0.1 - - [11/Nov/2026 22:40:05] "GET /ddos/status HTTP/1.1" 200 9258 0.002629
+[poll 126] dst=10.0.0.18  ATTACK CONFIRMED   score=0.990 (thr 0.682) sources=11 flows=115 pps=13483 rate=91.85Mbps avg_pkt=852B | flow-ML max_p=1.00 flagged=94%
+[poll 126] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=540 rate=6.51Mbps avg_pkt=1506B | flow-ML max_p=0.78 flagged=20%
+[poll 126] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=383 rate=0.20Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 42818)
+127.0.0.1 - - [11/Nov/2026 22:40:06] "GET /ddos/status HTTP/1.1" 200 9257 0.001735
+(100125) accepted ('127.0.0.1', 42822)
+127.0.0.1 - - [11/Nov/2026 22:40:07] "GET /ddos/status HTTP/1.1" 200 9257 0.002331
+(100125) accepted ('127.0.0.1', 42834)
+127.0.0.1 - - [11/Nov/2026 22:40:08] "GET /ddos/status HTTP/1.1" 200 9257 0.002792
+(100125) accepted ('127.0.0.1', 57706)
+127.0.0.1 - - [11/Nov/2026 22:40:09] "GET /ddos/status HTTP/1.1" 200 9257 0.003409
+(100125) accepted ('127.0.0.1', 57708)
+127.0.0.1 - - [11/Nov/2026 22:40:10] "GET /ddos/status HTTP/1.1" 200 9257 0.002151
+[poll 127] dst=10.0.0.18  ATTACK CONFIRMED   score=0.990 (thr 0.682) sources=11 flows=114 pps=12864 rate=87.48Mbps avg_pkt=850B | flow-ML max_p=1.00 flagged=94%
+[poll 127] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=610 rate=7.36Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 127] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=368 rate=0.19Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 57710)
+127.0.0.1 - - [11/Nov/2026 22:40:11] "GET /ddos/status HTTP/1.1" 200 9251 0.001973
+(100125) accepted ('127.0.0.1', 57722)
+127.0.0.1 - - [11/Nov/2026 22:40:12] "GET /ddos/status HTTP/1.1" 200 9251 0.002149
+(100125) accepted ('127.0.0.1', 57732)
+127.0.0.1 - - [11/Nov/2026 22:40:13] "GET /ddos/status HTTP/1.1" 200 9251 0.001731
+(100125) accepted ('127.0.0.1', 57746)
+127.0.0.1 - - [11/Nov/2026 22:40:14] "GET /ddos/status HTTP/1.1" 200 9251 0.001371
+(100125) accepted ('127.0.0.1', 57748)
+127.0.0.1 - - [11/Nov/2026 22:40:15] "GET /ddos/status HTTP/1.1" 200 9251 0.001697
+[poll 128] dst=10.0.0.18  ATTACK CONFIRMED   score=0.989 (thr 0.682) sources=11 flows=114 pps=13238 rate=89.91Mbps avg_pkt=849B | flow-ML max_p=1.00 flagged=94%
+[poll 128] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=634 rate=7.64Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 128] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=412 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 57758)
+127.0.0.1 - - [11/Nov/2026 22:40:16] "GET /ddos/status HTTP/1.1" 200 9247 0.001598
+(100125) accepted ('127.0.0.1', 57772)
+127.0.0.1 - - [11/Nov/2026 22:40:17] "GET /ddos/status HTTP/1.1" 200 9247 0.001215
+(100125) accepted ('127.0.0.1', 57778)
+127.0.0.1 - - [11/Nov/2026 22:40:18] "GET /ddos/status HTTP/1.1" 200 9247 0.001143
+(100125) accepted ('127.0.0.1', 32886)
+127.0.0.1 - - [11/Nov/2026 22:40:19] "GET /ddos/status HTTP/1.1" 200 9247 0.001652
+(100125) accepted ('127.0.0.1', 32898)
+127.0.0.1 - - [11/Nov/2026 22:40:20] "GET /ddos/status HTTP/1.1" 200 9247 0.002287
+[poll 129] dst=10.0.0.18  ATTACK CONFIRMED   score=0.143 (thr 0.682) sources=5 flows=106 pps=1440 rate=12.68Mbps avg_pkt=1101B | flow-ML max_p=0.99 flagged=92%
+[poll 129] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=558 rate=6.72Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 129] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=417 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 32908)
+127.0.0.1 - - [11/Nov/2026 22:40:21] "GET /ddos/status HTTP/1.1" 200 8051 0.000959
+(100125) accepted ('127.0.0.1', 32912)
+127.0.0.1 - - [11/Nov/2026 22:40:22] "GET /ddos/status HTTP/1.1" 200 8051 0.000999
+(100125) accepted ('127.0.0.1', 32916)
+127.0.0.1 - - [11/Nov/2026 22:40:23] "GET /ddos/status HTTP/1.1" 200 8051 0.000971
+(100125) accepted ('127.0.0.1', 32932)
+127.0.0.1 - - [11/Nov/2026 22:40:24] "GET /ddos/status HTTP/1.1" 200 8051 0.001420
+(100125) accepted ('127.0.0.1', 32938)
+127.0.0.1 - - [11/Nov/2026 22:40:25] "GET /ddos/status HTTP/1.1" 200 8051 0.000966
+[poll 130] dst=10.0.0.18  RECOVERING         score=0.159 (thr 0.682) sources=5 flows=108 pps=1451 rate=12.52Mbps avg_pkt=1079B | flow-ML max_p=0.99 flagged=93%
+[poll 130] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=558 rate=6.70Mbps avg_pkt=1502B | flow-ML max_p=0.00 flagged=0%
+[poll 130] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=427 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 CONFIRMED->RECOVERING score=0.159 sources=[] actions=['rollback']
+(100125) accepted ('127.0.0.1', 32942)
+127.0.0.1 - - [11/Nov/2026 22:40:26] "GET /ddos/status HTTP/1.1" 200 8034 0.001414
+(100125) accepted ('127.0.0.1', 32954)
+127.0.0.1 - - [11/Nov/2026 22:40:27] "GET /ddos/status HTTP/1.1" 200 8034 0.000941
+(100125) accepted ('127.0.0.1', 32966)
+127.0.0.1 - - [11/Nov/2026 22:40:28] "GET /ddos/status HTTP/1.1" 200 8034 0.001544
+(100125) accepted ('127.0.0.1', 38284)
+127.0.0.1 - - [11/Nov/2026 22:40:29] "GET /ddos/status HTTP/1.1" 200 8034 0.001937
+(100125) accepted ('127.0.0.1', 38288)
+127.0.0.1 - - [11/Nov/2026 22:40:30] "GET /ddos/status HTTP/1.1" 200 8034 0.001393
+[poll 131] dst=10.0.0.18  RECOVERING         score=0.165 (thr 0.682) sources=5 flows=107 pps=1518 rate=12.85Mbps avg_pkt=1058B | flow-ML max_p=0.99 flagged=89%
+[poll 131] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=692 rate=8.34Mbps avg_pkt=1508B | flow-ML max_p=0.00 flagged=0%
+[poll 131] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=439 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 38304)
+127.0.0.1 - - [11/Nov/2026 22:40:31] "GET /ddos/status HTTP/1.1" 200 8050 0.001009
+(100125) accepted ('127.0.0.1', 38320)
+127.0.0.1 - - [11/Nov/2026 22:40:32] "GET /ddos/status HTTP/1.1" 200 8050 0.001787
+(100125) accepted ('127.0.0.1', 38324)
+127.0.0.1 - - [11/Nov/2026 22:40:33] "GET /ddos/status HTTP/1.1" 200 8050 0.001785
+(100125) accepted ('127.0.0.1', 38338)
+127.0.0.1 - - [11/Nov/2026 22:40:34] "GET /ddos/status HTTP/1.1" 200 8050 0.001931
+(100125) accepted ('127.0.0.1', 38340)
+127.0.0.1 - - [11/Nov/2026 22:40:35] "GET /ddos/status HTTP/1.1" 200 8050 0.001500
+[poll 132] dst=10.0.0.18  NORMAL TRAFFIC     score=0.176 (thr 0.682) sources=5 flows=107 pps=1459 rate=12.74Mbps avg_pkt=1092B | flow-ML max_p=0.99 flagged=92%
+[poll 132] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=558 rate=6.72Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 132] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=427 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 RECOVERING->NORMAL score=0.176 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 38356)
+127.0.0.1 - - [11/Nov/2026 22:40:36] "GET /ddos/status HTTP/1.1" 200 8043 0.000940
+(100125) accepted ('127.0.0.1', 38370)
+127.0.0.1 - - [11/Nov/2026 22:40:37] "GET /ddos/status HTTP/1.1" 200 8043 0.001514
+(100125) accepted ('127.0.0.1', 38380)
+127.0.0.1 - - [11/Nov/2026 22:40:38] "GET /ddos/status HTTP/1.1" 200 8043 0.002798
+(100125) accepted ('127.0.0.1', 46648)
+127.0.0.1 - - [11/Nov/2026 22:40:39] "GET /ddos/status HTTP/1.1" 200 8043 0.001003
+(100125) accepted ('127.0.0.1', 46662)
+127.0.0.1 - - [11/Nov/2026 22:40:40] "GET /ddos/status HTTP/1.1" 200 8043 0.001275
+[poll 133] dst=10.0.0.18  NORMAL TRAFFIC     score=0.201 (thr 0.682) sources=5 flows=108 pps=1534 rate=12.72Mbps avg_pkt=1037B | flow-ML max_p=0.99 flagged=93%
+[poll 133] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=703 rate=8.47Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 133] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=421 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 46666)
+127.0.0.1 - - [11/Nov/2026 22:40:41] "GET /ddos/status HTTP/1.1" 200 8035 0.001515
+(100125) accepted ('127.0.0.1', 46674)
+127.0.0.1 - - [11/Nov/2026 22:40:42] "GET /ddos/status HTTP/1.1" 200 8035 0.001484
+(100125) accepted ('127.0.0.1', 46678)
+127.0.0.1 - - [11/Nov/2026 22:40:43] "GET /ddos/status HTTP/1.1" 200 8035 0.001515
+(100125) accepted ('127.0.0.1', 46692)
+127.0.0.1 - - [11/Nov/2026 22:40:44] "GET /ddos/status HTTP/1.1" 200 8035 0.002242
+(100125) accepted ('127.0.0.1', 46696)
+127.0.0.1 - - [11/Nov/2026 22:40:45] "GET /ddos/status HTTP/1.1" 200 8035 0.000946
+[poll 134] dst=10.0.0.18  NORMAL TRAFFIC     score=0.185 (thr 0.682) sources=5 flows=107 pps=1435 rate=12.67Mbps avg_pkt=1104B | flow-ML max_p=0.99 flagged=93%
+[poll 134] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=554 rate=6.66Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+[poll 134] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=432 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 46702)
+127.0.0.1 - - [11/Nov/2026 22:40:46] "GET /ddos/status HTTP/1.1" 200 8041 0.001419
+(100125) accepted ('127.0.0.1', 46708)
+127.0.0.1 - - [11/Nov/2026 22:40:47] "GET /ddos/status HTTP/1.1" 200 8041 0.001435
+(100125) accepted ('127.0.0.1', 46718)
+127.0.0.1 - - [11/Nov/2026 22:40:48] "GET /ddos/status HTTP/1.1" 200 8041 0.000934
+(100125) accepted ('127.0.0.1', 46966)
+127.0.0.1 - - [11/Nov/2026 22:40:49] "GET /ddos/status HTTP/1.1" 200 8041 0.001071
+(100125) accepted ('127.0.0.1', 46980)
+127.0.0.1 - - [11/Nov/2026 22:40:50] "GET /ddos/status HTTP/1.1" 200 8041 0.001155
+[poll 135] dst=10.0.0.18  NORMAL TRAFFIC     score=0.207 (thr 0.682) sources=5 flows=108 pps=1487 rate=12.82Mbps avg_pkt=1077B | flow-ML max_p=0.99 flagged=93%
+[poll 135] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=610 rate=7.35Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 135] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=436 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 46986)
+127.0.0.1 - - [11/Nov/2026 22:40:51] "GET /ddos/status HTTP/1.1" 200 8028 0.000998
+(100125) accepted ('127.0.0.1', 46992)
+127.0.0.1 - - [11/Nov/2026 22:40:52] "GET /ddos/status HTTP/1.1" 200 8028 0.000950
+(100125) accepted ('127.0.0.1', 46994)
+127.0.0.1 - - [11/Nov/2026 22:40:53] "GET /ddos/status HTTP/1.1" 200 8028 0.001488
+(100125) accepted ('127.0.0.1', 47000)
+127.0.0.1 - - [11/Nov/2026 22:40:54] "GET /ddos/status HTTP/1.1" 200 8028 0.001261
+(100125) accepted ('127.0.0.1', 47006)
+127.0.0.1 - - [11/Nov/2026 22:40:55] "GET /ddos/status HTTP/1.1" 200 8028 0.001550
+(100125) accepted ('127.0.0.1', 47008)
+127.0.0.1 - - [11/Nov/2026 22:40:55] "GET /ddos/events?since=24 HTTP/1.1" 200 2936 0.000601
+[poll 136] dst=10.0.0.18  NORMAL TRAFFIC     score=0.502 (thr 0.682) sources=7 flows=103 pps=1393 rate=11.82Mbps avg_pkt=1061B | flow-ML max_p=0.99 flagged=88%
+[poll 136] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=512 rate=6.16Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 136] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=396 rate=0.21Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 47020)
+MODE CHANGE DETECTION_ONLY -> MITIGATION_ENABLED (removed 0 rules, demoted [])
+127.0.0.1 - - [11/Nov/2026 22:40:56] "POST /ddos/mode HTTP/1.1" 200 194 0.000568
+(100125) accepted ('127.0.0.1', 47034)
+127.0.0.1 - - [11/Nov/2026 22:40:56] "GET /ddos/mode HTTP/1.1" 200 172 0.000280
+(100125) accepted ('127.0.0.1', 47046)
+127.0.0.1 - - [11/Nov/2026 22:40:56] "GET /ddos/status HTTP/1.1" 200 11298 0.001138
+(100125) accepted ('127.0.0.1', 47054)
+127.0.0.1 - - [11/Nov/2026 22:40:56] "GET /ddos/status HTTP/1.1" 200 11298 0.001130
+(100125) accepted ('127.0.0.1', 47060)
+127.0.0.1 - - [11/Nov/2026 22:40:56] "GET /ddos/events?since=0 HTTP/1.1" 200 13910 0.001298
+(100125) accepted ('127.0.0.1', 47072)
+127.0.0.1 - - [11/Nov/2026 22:40:56] "GET /ddos/status HTTP/1.1" 200 11298 0.003166
+(100125) accepted ('127.0.0.1', 47086)
+127.0.0.1 - - [11/Nov/2026 22:40:57] "GET /ddos/status HTTP/1.1" 200 11298 0.001309
+(100125) accepted ('127.0.0.1', 54232)
+127.0.0.1 - - [11/Nov/2026 22:40:58] "GET /ddos/status HTTP/1.1" 200 11298 0.001373
+(100125) accepted ('127.0.0.1', 54238)
+127.0.0.1 - - [11/Nov/2026 22:40:59] "GET /ddos/status HTTP/1.1" 200 11298 0.001287
+[poll 137] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.803 (thr 0.682) sources=10 flows=88 pps=1172 rate=9.31Mbps avg_pkt=993B | flow-ML max_p=1.00 flagged=84%
+[poll 137] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=555 rate=6.68Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 137] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=343 rate=0.18Mbps avg_pkt=66B | flow-ML max_p=0.02 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.803 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 54248)
+127.0.0.1 - - [11/Nov/2026 22:41:00] "GET /ddos/status HTTP/1.1" 200 14747 0.001936
+(100125) accepted ('127.0.0.1', 54260)
+127.0.0.1 - - [11/Nov/2026 22:41:01] "GET /ddos/status HTTP/1.1" 200 14747 0.001431
+(100125) accepted ('127.0.0.1', 54268)
+127.0.0.1 - - [11/Nov/2026 22:41:02] "GET /ddos/status HTTP/1.1" 200 14747 0.002437
+(100125) accepted ('127.0.0.1', 54274)
+127.0.0.1 - - [11/Nov/2026 22:41:03] "GET /ddos/status HTTP/1.1" 200 14747 0.002039
+(100125) accepted ('127.0.0.1', 54278)
+127.0.0.1 - - [11/Nov/2026 22:41:04] "GET /ddos/status HTTP/1.1" 200 14747 0.002202
+[poll 138] dst=10.0.0.18  NORMAL TRAFFIC     score=0.217 (thr 0.682) sources=5 flows=107 pps=1443 rate=12.78Mbps avg_pkt=1107B | flow-ML max_p=0.99 flagged=94%
+[poll 138] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=560 rate=6.75Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+[poll 138] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=431 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->NORMAL score=0.217 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 54280)
+127.0.0.1 - - [11/Nov/2026 22:41:05] "GET /ddos/status HTTP/1.1" 200 8039 0.001081
+(100125) accepted ('127.0.0.1', 54292)
+127.0.0.1 - - [11/Nov/2026 22:41:06] "GET /ddos/status HTTP/1.1" 200 8039 0.000945
+(100125) accepted ('127.0.0.1', 54302)
+127.0.0.1 - - [11/Nov/2026 22:41:07] "GET /ddos/status HTTP/1.1" 200 8039 0.001016
+(100125) accepted ('127.0.0.1', 54988)
+127.0.0.1 - - [11/Nov/2026 22:41:08] "GET /ddos/status HTTP/1.1" 200 8039 0.001528
+(100125) accepted ('127.0.0.1', 54994)
+127.0.0.1 - - [11/Nov/2026 22:41:09] "GET /ddos/status HTTP/1.1" 200 8039 0.001016
+[poll 139] dst=10.0.0.18  NORMAL TRAFFIC     score=0.222 (thr 0.682) sources=5 flows=107 pps=1439 rate=12.69Mbps avg_pkt=1102B | flow-ML max_p=0.99 flagged=94%
+[poll 139] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=554 rate=6.68Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+[poll 139] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=438 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 54998)
+127.0.0.1 - - [11/Nov/2026 22:41:10] "GET /ddos/status HTTP/1.1" 200 8035 0.001005
+(100125) accepted ('127.0.0.1', 55004)
+127.0.0.1 - - [11/Nov/2026 22:41:11] "GET /ddos/status HTTP/1.1" 200 8035 0.001544
+(100125) accepted ('127.0.0.1', 55008)
+127.0.0.1 - - [11/Nov/2026 22:41:12] "GET /ddos/status HTTP/1.1" 200 8035 0.001828
+(100125) accepted ('127.0.0.1', 55010)
+127.0.0.1 - - [11/Nov/2026 22:41:13] "GET /ddos/status HTTP/1.1" 200 8035 0.001514
+(100125) accepted ('127.0.0.1', 55026)
+127.0.0.1 - - [11/Nov/2026 22:41:14] "GET /ddos/status HTTP/1.1" 200 8035 0.001547
+(100125) accepted ('127.0.0.1', 55038)
+127.0.0.1 - - [11/Nov/2026 22:41:15] "GET /ddos/status HTTP/1.1" 200 8035 0.002423
+(100125) accepted ('127.0.0.1', 55052)
+127.0.0.1 - - [11/Nov/2026 22:41:16] "GET /ddos/status HTTP/1.1" 200 8035 0.001302
+(100125) accepted ('127.0.0.1', 55062)
+127.0.0.1 - - [11/Nov/2026 22:41:17] "GET /ddos/status HTTP/1.1" 200 8035 0.001488
+[poll 140] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=1.000 (thr 0.682) sources=11 flows=41 pps=5844 rate=41.58Mbps avg_pkt=889B | flow-ML max_p=1.00 flagged=88%
+[poll 140] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=225 rate=0.12Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 140] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=89 rate=1.08Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=1.000 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 39592)
+127.0.0.1 - - [11/Nov/2026 22:41:18] "GET /ddos/status HTTP/1.1" 200 9155 0.001954
+(100125) accepted ('127.0.0.1', 39596)
+127.0.0.1 - - [11/Nov/2026 22:41:19] "GET /ddos/status HTTP/1.1" 200 9155 0.001699
+(100125) accepted ('127.0.0.1', 39606)
+127.0.0.1 - - [11/Nov/2026 22:41:20] "GET /ddos/status HTTP/1.1" 200 9155 0.001770
+(100125) accepted ('127.0.0.1', 39608)
+127.0.0.1 - - [11/Nov/2026 22:41:21] "GET /ddos/status HTTP/1.1" 200 9155 0.001686
+(100125) accepted ('127.0.0.1', 39620)
+127.0.0.1 - - [11/Nov/2026 22:41:22] "GET /ddos/status HTTP/1.1" 200 9155 0.003731
+[poll 141] dst=10.0.0.18  MITIGATION ACTIVE  score=1.000 (thr 0.682) sources=11 flows=20 pps=9099 rate=64.61Mbps avg_pkt=888B | flow-ML max_p=1.00 flagged=78%
+[poll 141] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=368 rate=0.19Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 141] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=70 rate=0.85Mbps avg_pkt=1503B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->MITIGATING score=1.000 sources=['10.0.0.1', '10.0.0.2', '10.0.0.3', '10.0.0.4', '10.0.0.5', '10.0.0.6'] actions=['block']
+==============================================================================
+DDoS ALERT  victim=10.0.0.18  ATTACK CONFIRMED  window score=1.000 (threshold 0.682)
+  sources=11  active flows=20  aggregate=9099 pps / 64.61 Mbps  avg pkt=888 B
+  protocol mix: UDP 90%  TCP 10%  ICMP 0%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=1.00, 78% of flows flagged
+  strongest evidence: n_sources +8.03, packet_in_rate +4.49, pps +3.21, bps +2.98
+  top senders: 10.0.0.5(1795pps), 10.0.0.4(1715pps), 10.0.0.6(1254pps), 10.0.0.1(1200pps), 10.0.0.2(1103pps), 10.0.0.3(868pps), 10.0.0.7(865pps), 10.0.0.8(251pps)
+  mitigation mode: MITIGATION_ENABLED
+==============================================================================
+MITIGATION INSTALLED: DROP 10.0.0.1 -> 10.0.0.18 UDP at ['s1'] priority=200 hard_timeout=120s cookie=0xdd05000000000001
+MITIGATION INSTALLED: DROP 10.0.0.2 -> 10.0.0.18 UDP at ['s1'] priority=200 hard_timeout=120s cookie=0xdd05000000000002
+MITIGATION INSTALLED: DROP 10.0.0.3 -> 10.0.0.18 UDP at ['s1'] priority=200 hard_timeout=120s cookie=0xdd05000000000003
+MITIGATION INSTALLED: DROP 10.0.0.4 -> 10.0.0.18 UDP at ['s2'] priority=200 hard_timeout=120s cookie=0xdd05000000000004
+MITIGATION INSTALLED: DROP 10.0.0.5 -> 10.0.0.18 UDP at ['s2'] priority=200 hard_timeout=120s cookie=0xdd05000000000005
+MITIGATION INSTALLED: DROP 10.0.0.6 -> 10.0.0.18 UDP at ['s2'] priority=200 hard_timeout=120s cookie=0xdd05000000000006
+(100125) accepted ('127.0.0.1', 39630)
+127.0.0.1 - - [11/Nov/2026 22:41:23] "GET /ddos/status HTTP/1.1" 200 9226 0.002218
+(100125) accepted ('127.0.0.1', 39634)
+127.0.0.1 - - [11/Nov/2026 22:41:23] "GET /ddos/rules HTTP/1.1" 200 3097 0.001003
+(100125) accepted ('127.0.0.1', 39646)
+127.0.0.1 - - [11/Nov/2026 22:41:24] "GET /ddos/status HTTP/1.1" 200 9226 0.001484
+(100125) accepted ('127.0.0.1', 39652)
+127.0.0.1 - - [11/Nov/2026 22:41:25] "GET /ddos/status HTTP/1.1" 200 9226 0.001694
+[poll 142] dst=10.0.0.18  MITIGATION ACTIVE  score=0.986 (thr 0.682) sources=11 flows=168 pps=8376 rate=58.85Mbps avg_pkt=878B | flow-ML max_p=1.00 flagged=95%
+[poll 142] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=359 rate=0.19Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 142] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=278 rate=3.34Mbps avg_pkt=1503B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 MITIGATING->MITIGATING score=0.986 sources=['10.0.0.1', '10.0.0.2', '10.0.0.3', '10.0.0.4', '10.0.0.5', '10.0.0.6'] actions=['block']
+(100125) accepted ('127.0.0.1', 39668)
+127.0.0.1 - - [11/Nov/2026 22:41:26] "GET /ddos/status HTTP/1.1" 200 9266 0.001906
+(100125) accepted ('127.0.0.1', 39684)
+127.0.0.1 - - [11/Nov/2026 22:41:27] "GET /ddos/status HTTP/1.1" 200 9266 0.001939
+(100125) accepted ('127.0.0.1', 50966)
+127.0.0.1 - - [11/Nov/2026 22:41:28] "GET /ddos/status HTTP/1.1" 200 9266 0.001260
+(100125) accepted ('127.0.0.1', 50976)
+127.0.0.1 - - [11/Nov/2026 22:41:29] "GET /ddos/status HTTP/1.1" 200 9266 0.001992
+(100125) accepted ('127.0.0.1', 50988)
+127.0.0.1 - - [11/Nov/2026 22:41:31] "GET /ddos/status HTTP/1.1" 200 9266 0.001637
+[poll 143] dst=10.0.0.18  MITIGATION ACTIVE  score=0.157 (thr 0.682) sources=5 flows=219 pps=1399 rate=12.27Mbps avg_pkt=1096B | flow-ML max_p=0.99 flagged=96%
+[poll 143] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=536 rate=6.45Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+[poll 143] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=358 rate=0.19Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 50994)
+127.0.0.1 - - [11/Nov/2026 22:41:31] "GET /ddos/status HTTP/1.1" 200 8062 0.001402
+(100125) accepted ('127.0.0.1', 51010)
+127.0.0.1 - - [11/Nov/2026 22:41:32] "GET /ddos/status HTTP/1.1" 200 8062 0.001347
+(100125) accepted ('127.0.0.1', 51020)
+127.0.0.1 - - [11/Nov/2026 22:41:33] "GET /ddos/status HTTP/1.1" 200 8062 0.001584
+(100125) accepted ('127.0.0.1', 51036)
+127.0.0.1 - - [11/Nov/2026 22:41:34] "GET /ddos/status HTTP/1.1" 200 8062 0.001185
+(100125) accepted ('127.0.0.1', 51044)
+127.0.0.1 - - [11/Nov/2026 22:41:36] "GET /ddos/status HTTP/1.1" 200 8062 0.001696
+[poll 144] dst=10.0.0.18  MITIGATION ACTIVE  score=0.173 (thr 0.682) sources=5 flows=107 pps=1430 rate=12.54Mbps avg_pkt=1096B | flow-ML max_p=0.99 flagged=93%
+[poll 144] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=558 rate=6.72Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 144] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=366 rate=0.19Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 51050)
+127.0.0.1 - - [11/Nov/2026 22:41:36] "GET /ddos/status HTTP/1.1" 200 8059 0.001510
+(100125) accepted ('127.0.0.1', 51052)
+127.0.0.1 - - [11/Nov/2026 22:41:37] "GET /ddos/status HTTP/1.1" 200 8059 0.001541
+(100125) accepted ('127.0.0.1', 53278)
+127.0.0.1 - - [11/Nov/2026 22:41:38] "GET /ddos/status HTTP/1.1" 200 8059 0.001254
+(100125) accepted ('127.0.0.1', 53280)
+127.0.0.1 - - [11/Nov/2026 22:41:39] "GET /ddos/status HTTP/1.1" 200 8059 0.001382
+(100125) accepted ('127.0.0.1', 53296)
+127.0.0.1 - - [11/Nov/2026 22:41:40] "GET /ddos/status HTTP/1.1" 200 8059 0.004082
+[poll 145] dst=10.0.0.18  MITIGATION ACTIVE  score=0.179 (thr 0.682) sources=5 flows=107 pps=1428 rate=12.63Mbps avg_pkt=1106B | flow-ML max_p=0.99 flagged=93%
+[poll 145] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=549 rate=6.62Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 145] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=396 rate=0.21Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 53300)
+127.0.0.1 - - [11/Nov/2026 22:41:41] "GET /ddos/status HTTP/1.1" 200 8059 0.001539
+(100125) accepted ('127.0.0.1', 53312)
+127.0.0.1 - - [11/Nov/2026 22:41:42] "GET /ddos/status HTTP/1.1" 200 8059 0.001678
+(100125) accepted ('127.0.0.1', 53324)
+127.0.0.1 - - [11/Nov/2026 22:41:43] "GET /ddos/status HTTP/1.1" 200 8059 0.001533
+(100125) accepted ('127.0.0.1', 53338)
+127.0.0.1 - - [11/Nov/2026 22:41:44] "GET /ddos/status HTTP/1.1" 200 8059 0.001417
+(100125) accepted ('127.0.0.1', 53354)
+127.0.0.1 - - [11/Nov/2026 22:41:45] "GET /ddos/status HTTP/1.1" 200 8060 0.001934
+[poll 146] dst=10.0.0.18  MITIGATION ACTIVE  score=0.197 (thr 0.682) sources=5 flows=108 pps=1466 rate=12.45Mbps avg_pkt=1061B | flow-ML max_p=0.99 flagged=93%
+[poll 146] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=678 rate=8.17Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 146] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=365 rate=0.19Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 53364)
+127.0.0.1 - - [11/Nov/2026 22:41:46] "GET /ddos/status HTTP/1.1" 200 8054 0.001425
+(100125) accepted ('127.0.0.1', 53374)
+127.0.0.1 - - [11/Nov/2026 22:41:47] "GET /ddos/status HTTP/1.1" 200 8054 0.001353
+(100125) accepted ('127.0.0.1', 48536)
+127.0.0.1 - - [11/Nov/2026 22:41:48] "GET /ddos/status HTTP/1.1" 200 8054 0.001521
+(100125) accepted ('127.0.0.1', 48546)
+127.0.0.1 - - [11/Nov/2026 22:41:49] "GET /ddos/status HTTP/1.1" 200 8054 0.001165
+(100125) accepted ('127.0.0.1', 48562)
+127.0.0.1 - - [11/Nov/2026 22:41:50] "GET /ddos/status HTTP/1.1" 200 8054 0.001735
+[poll 147] dst=10.0.0.18  MITIGATION ACTIVE  score=0.202 (thr 0.682) sources=5 flows=107 pps=1432 rate=12.68Mbps avg_pkt=1107B | flow-ML max_p=0.99 flagged=93%
+[poll 147] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=557 rate=6.71Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 147] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=403 rate=0.21Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 48578)
+127.0.0.1 - - [11/Nov/2026 22:41:51] "GET /ddos/status HTTP/1.1" 200 8055 0.001580
+(100125) accepted ('127.0.0.1', 48590)
+127.0.0.1 - - [11/Nov/2026 22:41:52] "GET /ddos/status HTTP/1.1" 200 8055 0.000926
+(100125) accepted ('127.0.0.1', 48598)
+127.0.0.1 - - [11/Nov/2026 22:41:53] "GET /ddos/status HTTP/1.1" 200 8055 0.000940
+(100125) accepted ('127.0.0.1', 48614)
+127.0.0.1 - - [11/Nov/2026 22:41:54] "GET /ddos/status HTTP/1.1" 200 8055 0.001853
+[poll 148] dst=10.0.0.18  MITIGATION ACTIVE  score=0.202 (thr 0.682) sources=5 flows=107 pps=1447 rate=12.79Mbps avg_pkt=1105B | flow-ML max_p=0.99 flagged=94%
+[poll 148] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=560 rate=6.74Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 148] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=425 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 48624)
+127.0.0.1 - - [11/Nov/2026 22:41:55] "GET /ddos/status HTTP/1.1" 200 8055 0.001194
+(100125) accepted ('127.0.0.1', 48632)
+127.0.0.1 - - [11/Nov/2026 22:41:56] "GET /ddos/status HTTP/1.1" 200 8055 0.001512
+(100125) accepted ('127.0.0.1', 48640)
+127.0.0.1 - - [11/Nov/2026 22:41:57] "GET /ddos/status HTTP/1.1" 200 8055 0.001067
+(100125) accepted ('127.0.0.1', 37706)
+127.0.0.1 - - [11/Nov/2026 22:41:58] "GET /ddos/status HTTP/1.1" 200 8055 0.001069
+(100125) accepted ('127.0.0.1', 37722)
+127.0.0.1 - - [11/Nov/2026 22:41:59] "GET /ddos/status HTTP/1.1" 200 8055 0.001437
+[poll 149] dst=10.0.0.18  MITIGATION ACTIVE  score=0.215 (thr 0.682) sources=5 flows=108 pps=1515 rate=12.73Mbps avg_pkt=1050B | flow-ML max_p=0.99 flagged=92%
+[poll 149] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=696 rate=8.38Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 149] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=441 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 37732)
+127.0.0.1 - - [11/Nov/2026 22:42:00] "GET /ddos/status HTTP/1.1" 200 8058 0.001062
+(100125) accepted ('127.0.0.1', 37740)
+127.0.0.1 - - [11/Nov/2026 22:42:01] "GET /ddos/status HTTP/1.1" 200 8058 0.000954
+(100125) accepted ('127.0.0.1', 37756)
+127.0.0.1 - - [11/Nov/2026 22:42:02] "GET /ddos/status HTTP/1.1" 200 8058 0.001276
+(100125) accepted ('127.0.0.1', 37770)
+127.0.0.1 - - [11/Nov/2026 22:42:03] "GET /ddos/status HTTP/1.1" 200 8058 0.001483
+(100125) accepted ('127.0.0.1', 37786)
+127.0.0.1 - - [11/Nov/2026 22:42:04] "GET /ddos/status HTTP/1.1" 200 8058 0.001153
+[poll 150] dst=10.0.0.18  RECOVERING         score=0.230 (thr 0.682) sources=5 flows=107 pps=1493 rate=12.84Mbps avg_pkt=1075B | flow-ML max_p=0.99 flagged=94%
+[poll 150] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=561 rate=6.76Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 150] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=430 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 MITIGATING->RECOVERING score=0.230 sources=[] actions=['rollback']
+MITIGATION REMOVED: DROP 10.0.0.1 -> 10.0.0.18 UDP (recovered, active 42.2s, 64204 packets dropped)
+MITIGATION REMOVED: DROP 10.0.0.2 -> 10.0.0.18 UDP (recovered, active 42.2s, 64505 packets dropped)
+MITIGATION REMOVED: DROP 10.0.0.3 -> 10.0.0.18 UDP (recovered, active 42.2s, 46188 packets dropped)
+MITIGATION REMOVED: DROP 10.0.0.4 -> 10.0.0.18 UDP (recovered, active 42.2s, 64358 packets dropped)
+MITIGATION REMOVED: DROP 10.0.0.5 -> 10.0.0.18 UDP (recovered, active 42.2s, 81198 packets dropped)
+MITIGATION REMOVED: DROP 10.0.0.6 -> 10.0.0.18 UDP (recovered, active 42.2s, 55272 packets dropped)
+(100125) accepted ('127.0.0.1', 37792)
+127.0.0.1 - - [11/Nov/2026 22:42:05] "GET /ddos/status HTTP/1.1" 200 8033 0.001810
+(100125) accepted ('127.0.0.1', 37800)
+127.0.0.1 - - [11/Nov/2026 22:42:06] "GET /ddos/status HTTP/1.1" 200 8033 0.001322
+(100125) accepted ('127.0.0.1', 37804)
+127.0.0.1 - - [11/Nov/2026 22:42:07] "GET /ddos/status HTTP/1.1" 200 8033 0.001585
+(100125) accepted ('127.0.0.1', 37942)
+127.0.0.1 - - [11/Nov/2026 22:42:08] "GET /ddos/status HTTP/1.1" 200 8033 0.002249
+(100125) accepted ('127.0.0.1', 37954)
+127.0.0.1 - - [11/Nov/2026 22:42:09] "GET /ddos/status HTTP/1.1" 200 8033 0.001282
+(100125) accepted ('127.0.0.1', 37964)
+127.0.0.1 - - [11/Nov/2026 22:42:10] "GET /ddos/status HTTP/1.1" 200 8033 0.001410
+[poll 151] dst=10.0.0.18  RECOVERING         score=0.212 (thr 0.682) sources=5 flows=107 pps=1415 rate=12.57Mbps avg_pkt=1110B | flow-ML max_p=0.99 flagged=93%
+[poll 151] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=551 rate=6.64Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 151] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=423 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 37966)
+127.0.0.1 - - [11/Nov/2026 22:42:11] "GET /ddos/status HTTP/1.1" 200 8040 0.001421
+(100125) accepted ('127.0.0.1', 37970)
+127.0.0.1 - - [11/Nov/2026 22:42:12] "GET /ddos/status HTTP/1.1" 200 8040 0.001044
+(100125) accepted ('127.0.0.1', 37978)
+127.0.0.1 - - [11/Nov/2026 22:42:13] "GET /ddos/status HTTP/1.1" 200 8040 0.000925
+(100125) accepted ('127.0.0.1', 37980)
+127.0.0.1 - - [11/Nov/2026 22:42:14] "GET /ddos/status HTTP/1.1" 200 8040 0.000906
+[poll 152] dst=10.0.0.18  NORMAL TRAFFIC     score=0.222 (thr 0.682) sources=5 flows=108 pps=1536 rate=12.85Mbps avg_pkt=1046B | flow-ML max_p=0.99 flagged=92%
+[poll 152] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=700 rate=8.43Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 152] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=434 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 RECOVERING->NORMAL score=0.222 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 37986)
+127.0.0.1 - - [11/Nov/2026 22:42:15] "GET /ddos/status HTTP/1.1" 200 8045 0.001009
+(100125) accepted ('127.0.0.1', 37998)
+127.0.0.1 - - [11/Nov/2026 22:42:16] "GET /ddos/status HTTP/1.1" 200 8045 0.001133
+(100125) accepted ('127.0.0.1', 38004)
+127.0.0.1 - - [11/Nov/2026 22:42:17] "GET /ddos/status HTTP/1.1" 200 8045 0.001039
+(100125) accepted ('127.0.0.1', 43048)
+127.0.0.1 - - [11/Nov/2026 22:42:18] "GET /ddos/status HTTP/1.1" 200 8045 0.001061
+(100125) accepted ('127.0.0.1', 43060)
+127.0.0.1 - - [11/Nov/2026 22:42:19] "GET /ddos/status HTTP/1.1" 200 8045 0.001057
+[poll 153] dst=10.0.0.18  NORMAL TRAFFIC     score=0.218 (thr 0.682) sources=5 flows=107 pps=1444 rate=12.77Mbps avg_pkt=1106B | flow-ML max_p=0.99 flagged=93%
+[poll 153] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=558 rate=6.73Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 153] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=442 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 43068)
+127.0.0.1 - - [11/Nov/2026 22:42:20] "GET /ddos/status HTTP/1.1" 200 8047 0.001571
+(100125) accepted ('127.0.0.1', 43070)
+127.0.0.1 - - [11/Nov/2026 22:42:21] "GET /ddos/status HTTP/1.1" 200 8047 0.001489
+(100125) accepted ('127.0.0.1', 43086)
+127.0.0.1 - - [11/Nov/2026 22:42:22] "GET /ddos/status HTTP/1.1" 200 8047 0.001447
+(100125) accepted ('127.0.0.1', 43098)
+127.0.0.1 - - [11/Nov/2026 22:42:23] "GET /ddos/status HTTP/1.1" 200 8047 0.001528
+(100125) accepted ('127.0.0.1', 43106)
+127.0.0.1 - - [11/Nov/2026 22:42:24] "GET /ddos/status HTTP/1.1" 200 8047 0.001524
+[poll 154] dst=10.0.0.18  NORMAL TRAFFIC     score=0.219 (thr 0.682) sources=5 flows=108 pps=1500 rate=12.55Mbps avg_pkt=1046B | flow-ML max_p=0.99 flagged=92%
+[poll 154] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=693 rate=8.35Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 154] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=419 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 43110)
+127.0.0.1 - - [11/Nov/2026 22:42:25] "GET /ddos/status HTTP/1.1" 200 8044 0.002151
+(100125) accepted ('127.0.0.1', 43120)
+127.0.0.1 - - [11/Nov/2026 22:42:26] "GET /ddos/status HTTP/1.1" 200 8044 0.001589
+(100125) accepted ('127.0.0.1', 43124)
+127.0.0.1 - - [11/Nov/2026 22:42:27] "GET /ddos/status HTTP/1.1" 200 8044 0.001069
+(100125) accepted ('127.0.0.1', 43794)
+127.0.0.1 - - [11/Nov/2026 22:42:28] "GET /ddos/status HTTP/1.1" 200 8044 0.001389
+(100125) accepted ('127.0.0.1', 43808)
+127.0.0.1 - - [11/Nov/2026 22:42:29] "GET /ddos/status HTTP/1.1" 200 8044 0.001142
+(100125) accepted ('127.0.0.1', 43818)
+127.0.0.1 - - [11/Nov/2026 22:42:30] "GET /ddos/status HTTP/1.1" 200 8044 0.001442
+[poll 155] dst=10.0.0.18  NORMAL TRAFFIC     score=0.230 (thr 0.682) sources=5 flows=108 pps=1449 rate=12.75Mbps avg_pkt=1100B | flow-ML max_p=0.99 flagged=93%
+[poll 155] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=563 rate=6.78Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 155] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=431 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 43822)
+127.0.0.1 - - [11/Nov/2026 22:42:31] "GET /ddos/status HTTP/1.1" 200 8035 0.001597
+(100125) accepted ('127.0.0.1', 43836)
+127.0.0.1 - - [11/Nov/2026 22:42:32] "GET /ddos/events?since=29 HTTP/1.1" 200 9211 0.000901
+(100125) accepted ('127.0.0.1', 43844)
+127.0.0.1 - - [11/Nov/2026 22:42:33] "GET /ddos/status HTTP/1.1" 200 8035 0.001013
+(100125) accepted ('127.0.0.1', 43858)
+127.0.0.1 - - [11/Nov/2026 22:42:33] "GET /ddos/status HTTP/1.1" 200 8035 0.000899
+(100125) accepted ('127.0.0.1', 43866)
+127.0.0.1 - - [11/Nov/2026 22:42:33] "GET /ddos/events?since=0 HTTP/1.1" 200 22956 0.001664
+(100125) accepted ('127.0.0.1', 43872)
+127.0.0.1 - - [11/Nov/2026 22:42:33] "GET /ddos/status HTTP/1.1" 200 8035 0.000838
+(100125) accepted ('127.0.0.1', 43878)
+127.0.0.1 - - [11/Nov/2026 22:42:34] "GET /ddos/status HTTP/1.1" 200 8035 0.001452
+(100125) accepted ('127.0.0.1', 43882)
+127.0.0.1 - - [11/Nov/2026 22:42:35] "GET /ddos/status HTTP/1.1" 200 8035 0.000963
+[poll 156] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.824 (thr 0.682) sources=11 flows=85 pps=931 rate=8.53Mbps avg_pkt=1145B | flow-ML max_p=1.00 flagged=81%
+[poll 156] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=327 rate=0.17Mbps avg_pkt=66B | flow-ML max_p=0.03 flagged=0%
+[poll 156] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=279 rate=3.37Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.824 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 43884)
+127.0.0.1 - - [11/Nov/2026 22:42:36] "GET /ddos/status HTTP/1.1" 200 15894 0.001829
+(100125) accepted ('127.0.0.1', 43890)
+127.0.0.1 - - [11/Nov/2026 22:42:37] "GET /ddos/status HTTP/1.1" 200 15894 0.003279
+(100125) accepted ('127.0.0.1', 43900)
+127.0.0.1 - - [11/Nov/2026 22:42:38] "GET /ddos/status HTTP/1.1" 200 15894 0.001615
+(100125) accepted ('127.0.0.1', 40302)
+127.0.0.1 - - [11/Nov/2026 22:42:39] "GET /ddos/status HTTP/1.1" 200 15894 0.002730
+(100125) accepted ('127.0.0.1', 40310)
+127.0.0.1 - - [11/Nov/2026 22:42:40] "GET /ddos/status HTTP/1.1" 200 15894 0.003373
+[poll 157] dst=10.0.0.18  NORMAL TRAFFIC     score=0.241 (thr 0.682) sources=5 flows=108 pps=1531 rate=12.84Mbps avg_pkt=1049B | flow-ML max_p=0.99 flagged=93%
+[poll 157] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=701 rate=8.43Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+[poll 157] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=434 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->NORMAL score=0.241 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 40322)
+127.0.0.1 - - [11/Nov/2026 22:42:41] "GET /ddos/status HTTP/1.1" 200 8031 0.001156
+(100125) accepted ('127.0.0.1', 40338)
+127.0.0.1 - - [11/Nov/2026 22:42:42] "GET /ddos/status HTTP/1.1" 200 8031 0.001022
+(100125) accepted ('127.0.0.1', 40350)
+127.0.0.1 - - [11/Nov/2026 22:42:43] "GET /ddos/status HTTP/1.1" 200 8031 0.001511
+(100125) accepted ('127.0.0.1', 40352)
+127.0.0.1 - - [11/Nov/2026 22:42:44] "GET /ddos/status HTTP/1.1" 200 8031 0.000984
+(100125) accepted ('127.0.0.1', 40360)
+127.0.0.1 - - [11/Nov/2026 22:42:45] "GET /ddos/status HTTP/1.1" 200 8031 0.001147
+[poll 158] dst=10.0.0.18  NORMAL TRAFFIC     score=0.222 (thr 0.682) sources=5 flows=107 pps=1407 rate=12.42Mbps avg_pkt=1103B | flow-ML max_p=0.99 flagged=94%
+[poll 158] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=541 rate=6.51Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 158] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=431 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 40364)
+127.0.0.1 - - [11/Nov/2026 22:42:46] "GET /ddos/status HTTP/1.1" 200 8032 0.001069
+(100125) accepted ('127.0.0.1', 40378)
+127.0.0.1 - - [11/Nov/2026 22:42:47] "GET /ddos/status HTTP/1.1" 200 8032 0.001045
+(100125) accepted ('127.0.0.1', 40380)
+127.0.0.1 - - [11/Nov/2026 22:42:48] "GET /ddos/status HTTP/1.1" 200 8032 0.000977
+(100125) accepted ('127.0.0.1', 40190)
+127.0.0.1 - - [11/Nov/2026 22:42:49] "GET /ddos/status HTTP/1.1" 200 8032 0.002254
+(100125) accepted ('127.0.0.1', 40202)
+127.0.0.1 - - [11/Nov/2026 22:42:50] "GET /ddos/status HTTP/1.1" 200 8032 0.002425
+(100125) accepted ('127.0.0.1', 40204)
+127.0.0.1 - - [11/Nov/2026 22:42:51] "GET /ddos/status HTTP/1.1" 200 8032 0.002901
+(100125) accepted ('127.0.0.1', 40208)
+127.0.0.1 - - [11/Nov/2026 22:42:52] "GET /ddos/status HTTP/1.1" 200 8032 0.001498
+[poll 159] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=1.000 (thr 0.682) sources=11 flows=71 pps=3236 rate=18.54Mbps avg_pkt=716B | flow-ML max_p=0.99 flagged=83%
+[poll 159] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=3 pps=307 rate=3.71Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=300 rate=0.16Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=88 rate=0.22Mbps avg_pkt=308B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=68 rate=0.30Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=35 rate=0.29Mbps avg_pkt=1042B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=1.000 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 40224)
+127.0.0.1 - - [11/Nov/2026 22:42:53] "GET /ddos/status HTTP/1.1" 200 12086 0.003098
+(100125) accepted ('127.0.0.1', 40238)
+127.0.0.1 - - [11/Nov/2026 22:42:54] "GET /ddos/status HTTP/1.1" 200 12086 0.002568
+(100125) accepted ('127.0.0.1', 40240)
+127.0.0.1 - - [11/Nov/2026 22:42:55] "GET /ddos/status HTTP/1.1" 200 12086 0.002502
+(100125) accepted ('127.0.0.1', 40248)
+127.0.0.1 - - [11/Nov/2026 22:42:56] "GET /ddos/status HTTP/1.1" 200 12086 0.003452
+(100125) accepted ('127.0.0.1', 40252)
+127.0.0.1 - - [11/Nov/2026 22:42:57] "GET /ddos/status HTTP/1.1" 200 12086 0.002472
+(100125) accepted ('127.0.0.1', 40256)
+127.0.0.1 - - [11/Nov/2026 22:42:58] "GET /ddos/status HTTP/1.1" 200 12086 0.002060
+[poll 160] dst=10.0.0.18  ATTACK CONFIRMED   score=1.000 (thr 0.682) sources=9 flows=10 pps=6870 rate=34.65Mbps avg_pkt=630B | flow-ML max_p=0.99 flagged=10%
+[poll 160] dst=10.0.0.2   NORMAL TRAFFIC     score=0.004 (thr 0.682) sources=1 flows=1 pps=928 rate=2.22Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.1   NORMAL TRAFFIC     score=0.005 (thr 0.682) sources=1 flows=1 pps=721 rate=3.20Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=327 rate=0.17Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.3   NORMAL TRAFFIC     score=0.005 (thr 0.682) sources=1 flows=1 pps=237 rate=1.98Mbps avg_pkt=1042B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 SUSPECTED->CONFIRMED score=1.000 sources=[] actions=[]
+==============================================================================
+DDoS ALERT  victim=10.0.0.18  ATTACK CONFIRMED  window score=1.000 (threshold 0.682)
+  sources=9  active flows=10  aggregate=6870 pps / 34.65 Mbps  avg pkt=630 B
+  protocol mix: UDP 3%  TCP 10%  ICMP 87%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=0.99, 10% of flows flagged
+  strongest evidence: n_sources +7.10, packet_in_rate +3.29, pps +3.06, bps +2.76
+  top senders: 10.0.0.5(1250pps), 10.0.0.2(1244pps), 10.0.0.4(977pps), 10.0.0.1(977pps), 10.0.0.6(812pps), 10.0.0.7(710pps), 10.0.0.3(693pps), 10.0.0.8(208pps)
+  mitigation mode: MITIGATION_ENABLED
+==============================================================================
+(100125) accepted ('127.0.0.1', 45808)
+127.0.0.1 - - [11/Nov/2026 22:42:59] "GET /ddos/status HTTP/1.1" 200 8799 0.001564
+(100125) accepted ('127.0.0.1', 45814)
+127.0.0.1 - - [11/Nov/2026 22:43:00] "GET /ddos/status HTTP/1.1" 200 8799 0.002024
+(100125) accepted ('127.0.0.1', 45830)
+127.0.0.1 - - [11/Nov/2026 22:43:01] "GET /ddos/status HTTP/1.1" 200 8799 0.004945
+(100125) accepted ('127.0.0.1', 45838)
+127.0.0.1 - - [11/Nov/2026 22:43:02] "GET /ddos/status HTTP/1.1" 200 8799 0.001655
+(100125) accepted ('127.0.0.1', 45846)
+127.0.0.1 - - [11/Nov/2026 22:43:03] "GET /ddos/status HTTP/1.1" 200 8799 0.001814
+[poll 161] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=9 flows=9 pps=8242 rate=41.77Mbps avg_pkt=633B | flow-ML max_p=0.99 flagged=11%
+[poll 161] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1492 rate=3.56Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1190 rate=5.27Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.3   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=1010 rate=8.42Mbps avg_pkt=1042B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.4   NORMAL TRAFFIC     score=0.011 (thr 0.682) sources=1 flows=1 pps=827 rate=3.67Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.6   NORMAL TRAFFIC     score=0.009 (thr 0.682) sources=1 flows=1 pps=409 rate=2.65Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 45862)
+127.0.0.1 - - [11/Nov/2026 22:43:04] "GET /ddos/status HTTP/1.1" 200 10766 0.001959
+(100125) accepted ('127.0.0.1', 45866)
+127.0.0.1 - - [11/Nov/2026 22:43:05] "GET /ddos/status HTTP/1.1" 200 10766 0.001863
+(100125) accepted ('127.0.0.1', 45880)
+127.0.0.1 - - [11/Nov/2026 22:43:06] "GET /ddos/status HTTP/1.1" 200 10766 0.001616
+(100125) accepted ('127.0.0.1', 45882)
+127.0.0.1 - - [11/Nov/2026 22:43:07] "GET /ddos/status HTTP/1.1" 200 10766 0.001700
+[poll 162] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=11 flows=40 pps=4565 rate=23.08Mbps avg_pkt=632B | flow-ML max_p=0.99 flagged=64%
+[poll 162] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=824 rate=1.97Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=653 rate=2.89Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=631 rate=2.80Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.6   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=520 rate=3.37Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.5   NORMAL TRAFFIC     score=0.001 (thr 0.682) sources=1 flows=1 pps=506 rate=0.69Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 45892)
+127.0.0.1 - - [11/Nov/2026 22:43:08] "GET /ddos/status HTTP/1.1" 200 14972 0.002547
+(100125) accepted ('127.0.0.1', 51980)
+127.0.0.1 - - [11/Nov/2026 22:43:09] "GET /ddos/status HTTP/1.1" 200 14972 0.002786
+(100125) accepted ('127.0.0.1', 51994)
+127.0.0.1 - - [11/Nov/2026 22:43:10] "GET /ddos/status HTTP/1.1" 200 14972 0.003350
+[poll 163] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=11 flows=199 pps=8084 rate=40.18Mbps avg_pkt=621B | flow-ML max_p=0.99 flagged=90%
+[poll 163] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=2106 rate=2.86Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1531 rate=3.65Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1222 rate=5.42Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1005 rate=6.51Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=856 rate=7.13Mbps avg_pkt=1042B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 52006)
+127.0.0.1 - - [11/Nov/2026 22:43:11] "GET /ddos/status HTTP/1.1" 200 15040 0.002697
+(100125) accepted ('127.0.0.1', 52022)
+127.0.0.1 - - [11/Nov/2026 22:43:12] "GET /ddos/status HTTP/1.1" 200 15040 0.002655
+(100125) accepted ('127.0.0.1', 52024)
+127.0.0.1 - - [11/Nov/2026 22:43:13] "GET /ddos/status HTTP/1.1" 200 15040 0.002446
+(100125) accepted ('127.0.0.1', 52030)
+127.0.0.1 - - [11/Nov/2026 22:43:14] "GET /ddos/status HTTP/1.1" 200 15040 0.002666
+(100125) accepted ('127.0.0.1', 52040)
+127.0.0.1 - - [11/Nov/2026 22:43:15] "GET /ddos/status HTTP/1.1" 200 15040 0.002537
+[poll 164] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=11 flows=289 pps=7832 rate=38.22Mbps avg_pkt=610B | flow-ML max_p=0.99 flagged=94%
+[poll 164] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1349 rate=1.84Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1347 rate=3.21Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1063 rate=4.71Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1055 rate=4.68Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=894 rate=5.79Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 52046)
+127.0.0.1 - - [11/Nov/2026 22:43:16] "GET /ddos/status HTTP/1.1" 200 15031 0.002812
+(100125) accepted ('127.0.0.1', 52050)
+127.0.0.1 - - [11/Nov/2026 22:43:17] "GET /ddos/status HTTP/1.1" 200 15031 0.002930
+(100125) accepted ('127.0.0.1', 52066)
+127.0.0.1 - - [11/Nov/2026 22:43:18] "GET /ddos/status HTTP/1.1" 200 15031 0.002735
+(100125) accepted ('127.0.0.1', 56396)
+127.0.0.1 - - [11/Nov/2026 22:43:19] "GET /ddos/status HTTP/1.1" 200 15031 0.002355
+(100125) accepted ('127.0.0.1', 56402)
+127.0.0.1 - - [11/Nov/2026 22:43:20] "GET /ddos/status HTTP/1.1" 200 15031 0.002501
+[poll 165] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=11 flows=188 pps=7992 rate=39.01Mbps avg_pkt=610B | flow-ML max_p=0.99 flagged=93%
+[poll 165] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1386 rate=1.89Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1386 rate=3.30Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1107 rate=4.91Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1090 rate=4.83Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=928 rate=6.01Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56412)
+127.0.0.1 - - [11/Nov/2026 22:43:21] "GET /ddos/status HTTP/1.1" 200 15027 0.002199
+(100125) accepted ('127.0.0.1', 56428)
+127.0.0.1 - - [11/Nov/2026 22:43:22] "GET /ddos/status HTTP/1.1" 200 15027 0.003087
+(100125) accepted ('127.0.0.1', 56432)
+127.0.0.1 - - [11/Nov/2026 22:43:23] "GET /ddos/status HTTP/1.1" 200 15027 0.002719
+(100125) accepted ('127.0.0.1', 56440)
+127.0.0.1 - - [11/Nov/2026 22:43:24] "GET /ddos/status HTTP/1.1" 200 15027 0.003677
+(100125) accepted ('127.0.0.1', 56450)
+127.0.0.1 - - [11/Nov/2026 22:43:25] "GET /ddos/status HTTP/1.1" 200 15027 0.002750
+[poll 166] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=11 flows=114 pps=8244 rate=40.20Mbps avg_pkt=609B | flow-ML max_p=0.99 flagged=88%
+[poll 166] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1445 rate=1.96Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1444 rate=3.44Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1130 rate=5.01Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=1111 rate=4.92Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.6   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=948 rate=6.14Mbps avg_pkt=810B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 56462)
+127.0.0.1 - - [11/Nov/2026 22:43:26] "GET /ddos/status HTTP/1.1" 200 15014 0.003585
+(100125) accepted ('127.0.0.1', 56474)
+127.0.0.1 - - [11/Nov/2026 22:43:27] "GET /ddos/status HTTP/1.1" 200 15014 0.002555
+(100125) accepted ('127.0.0.1', 56486)
+127.0.0.1 - - [11/Nov/2026 22:43:28] "GET /ddos/status HTTP/1.1" 200 15014 0.002878
+(100125) accepted ('127.0.0.1', 41876)
+127.0.0.1 - - [11/Nov/2026 22:43:29] "GET /ddos/status HTTP/1.1" 200 15014 0.003242
+(100125) accepted ('127.0.0.1', 41886)
+127.0.0.1 - - [11/Nov/2026 22:43:30] "GET /ddos/status HTTP/1.1" 200 15014 0.002461
+[poll 167] dst=10.0.0.18  ATTACK CONFIRMED   score=0.999 (thr 0.682) sources=11 flows=113 pps=5303 rate=28.26Mbps avg_pkt=666B | flow-ML max_p=0.99 flagged=89%
+[poll 167] dst=10.0.0.5   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=825 rate=1.12Mbps avg_pkt=170B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.2   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=816 rate=1.95Mbps avg_pkt=298B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.4   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=644 rate=2.85Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.1   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=643 rate=2.85Mbps avg_pkt=554B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=543 rate=6.54Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 41900)
+127.0.0.1 - - [11/Nov/2026 22:43:31] "GET /ddos/status HTTP/1.1" 200 14996 0.001473
+(100125) accepted ('127.0.0.1', 41904)
+127.0.0.1 - - [11/Nov/2026 22:43:32] "GET /ddos/status HTTP/1.1" 200 14996 0.001553
+(100125) accepted ('127.0.0.1', 41914)
+127.0.0.1 - - [11/Nov/2026 22:43:33] "GET /ddos/status HTTP/1.1" 200 14996 0.002392
+(100125) accepted ('127.0.0.1', 41928)
+127.0.0.1 - - [11/Nov/2026 22:43:34] "GET /ddos/status HTTP/1.1" 200 14996 0.001462
+(100125) accepted ('127.0.0.1', 41936)
+127.0.0.1 - - [11/Nov/2026 22:43:35] "GET /ddos/status HTTP/1.1" 200 14996 0.001528
+[poll 168] dst=10.0.0.18  ATTACK CONFIRMED   score=0.166 (thr 0.682) sources=5 flows=108 pps=1488 rate=12.52Mbps avg_pkt=1052B | flow-ML max_p=0.99 flagged=93%
+[poll 168] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=681 rate=8.19Mbps avg_pkt=1503B | flow-ML max_p=0.00 flagged=0%
+[poll 168] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=420 rate=0.22Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 41940)
+127.0.0.1 - - [11/Nov/2026 22:43:36] "GET /ddos/status HTTP/1.1" 200 8060 0.001090
+(100125) accepted ('127.0.0.1', 41946)
+127.0.0.1 - - [11/Nov/2026 22:43:37] "GET /ddos/status HTTP/1.1" 200 8060 0.001574
+(100125) accepted ('127.0.0.1', 41948)
+127.0.0.1 - - [11/Nov/2026 22:43:38] "GET /ddos/status HTTP/1.1" 200 8060 0.000934
+(100125) accepted ('127.0.0.1', 42788)
+127.0.0.1 - - [11/Nov/2026 22:43:39] "GET /ddos/status HTTP/1.1" 200 8060 0.001546
+(100125) accepted ('127.0.0.1', 42798)
+127.0.0.1 - - [11/Nov/2026 22:43:40] "GET /ddos/status HTTP/1.1" 200 8060 0.000973
+[poll 169] dst=10.0.0.18  RECOVERING         score=0.173 (thr 0.682) sources=5 flows=107 pps=1448 rate=12.80Mbps avg_pkt=1105B | flow-ML max_p=0.99 flagged=94%
+[poll 169] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=563 rate=6.78Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 169] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=430 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 CONFIRMED->RECOVERING score=0.173 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 42814)
+127.0.0.1 - - [11/Nov/2026 22:43:41] "GET /ddos/status HTTP/1.1" 200 8042 0.000972
+(100125) accepted ('127.0.0.1', 42816)
+127.0.0.1 - - [11/Nov/2026 22:43:42] "GET /ddos/status HTTP/1.1" 200 8042 0.001490
+(100125) accepted ('127.0.0.1', 42820)
+127.0.0.1 - - [11/Nov/2026 22:43:43] "GET /ddos/status HTTP/1.1" 200 8042 0.001339
+(100125) accepted ('127.0.0.1', 42828)
+127.0.0.1 - - [11/Nov/2026 22:43:44] "GET /ddos/status HTTP/1.1" 200 8042 0.001043
+(100125) accepted ('127.0.0.1', 42840)
+127.0.0.1 - - [11/Nov/2026 22:43:45] "GET /ddos/status HTTP/1.1" 200 8042 0.000995
+[poll 170] dst=10.0.0.18  RECOVERING         score=0.185 (thr 0.682) sources=5 flows=108 pps=1508 rate=12.82Mbps avg_pkt=1063B | flow-ML max_p=0.99 flagged=92%
+[poll 170] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=697 rate=8.39Mbps avg_pkt=1504B | flow-ML max_p=0.00 flagged=0%
+[poll 170] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=436 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 42854)
+127.0.0.1 - - [11/Nov/2026 22:43:46] "GET /ddos/status HTTP/1.1" 200 8046 0.001587
+(100125) accepted ('127.0.0.1', 42866)
+127.0.0.1 - - [11/Nov/2026 22:43:47] "GET /ddos/status HTTP/1.1" 200 8046 0.001143
+(100125) accepted ('127.0.0.1', 42876)
+127.0.0.1 - - [11/Nov/2026 22:43:48] "GET /ddos/status HTTP/1.1" 200 8046 0.001503
+(100125) accepted ('127.0.0.1', 53388)
+127.0.0.1 - - [11/Nov/2026 22:43:49] "GET /ddos/status HTTP/1.1" 200 8046 0.001078
+(100125) accepted ('127.0.0.1', 53402)
+127.0.0.1 - - [11/Nov/2026 22:43:50] "GET /ddos/status HTTP/1.1" 200 8046 0.001436
+[poll 171] dst=10.0.0.18  NORMAL TRAFFIC     score=0.184 (thr 0.682) sources=5 flows=107 pps=1434 rate=12.56Mbps avg_pkt=1095B | flow-ML max_p=0.99 flagged=93%
+[poll 171] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=554 rate=6.67Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 171] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=433 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.18 RECOVERING->NORMAL score=0.184 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC
+(100125) accepted ('127.0.0.1', 53404)
+127.0.0.1 - - [11/Nov/2026 22:43:51] "GET /ddos/status HTTP/1.1" 200 8049 0.002167
+(100125) accepted ('127.0.0.1', 53420)
+127.0.0.1 - - [11/Nov/2026 22:43:52] "GET /ddos/status HTTP/1.1" 200 8049 0.001917
+(100125) accepted ('127.0.0.1', 53432)
+127.0.0.1 - - [11/Nov/2026 22:43:53] "GET /ddos/status HTTP/1.1" 200 8049 0.003447
+(100125) accepted ('127.0.0.1', 53444)
+127.0.0.1 - - [11/Nov/2026 22:43:54] "GET /ddos/status HTTP/1.1" 200 8049 0.001799
+(100125) accepted ('127.0.0.1', 53448)
+127.0.0.1 - - [11/Nov/2026 22:43:55] "GET /ddos/status HTTP/1.1" 200 8049 0.001073
+[poll 172] dst=10.0.0.18  NORMAL TRAFFIC     score=0.197 (thr 0.682) sources=5 flows=106 pps=1463 rate=12.80Mbps avg_pkt=1094B | flow-ML max_p=0.99 flagged=92%
+[poll 172] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=4 pps=558 rate=6.72Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 172] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=437 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 53456)
+127.0.0.1 - - [11/Nov/2026 22:43:56] "GET /ddos/status HTTP/1.1" 200 8049 0.001345
+(100125) accepted ('127.0.0.1', 53472)
+127.0.0.1 - - [11/Nov/2026 22:43:57] "GET /ddos/status HTTP/1.1" 200 8049 0.001488
+(100125) accepted ('127.0.0.1', 53474)
+127.0.0.1 - - [11/Nov/2026 22:43:58] "GET /ddos/status HTTP/1.1" 200 8049 0.001152
+(100125) accepted ('127.0.0.1', 41594)
+127.0.0.1 - - [11/Nov/2026 22:43:59] "GET /ddos/status HTTP/1.1" 200 8049 0.001707
+(100125) accepted ('127.0.0.1', 41604)
+127.0.0.1 - - [11/Nov/2026 22:44:00] "GET /ddos/status HTTP/1.1" 200 8049 0.001567
+[poll 173] dst=10.0.0.18  NORMAL TRAFFIC     score=0.220 (thr 0.682) sources=5 flows=108 pps=1514 rate=12.58Mbps avg_pkt=1038B | flow-ML max_p=0.99 flagged=93%
+[poll 173] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=650 rate=7.83Mbps avg_pkt=1506B | flow-ML max_p=0.00 flagged=0%
+[poll 173] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=429 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 41616)
+127.0.0.1 - - [11/Nov/2026 22:44:01] "GET /ddos/status HTTP/1.1" 200 8036 0.001500
+(100125) accepted ('127.0.0.1', 41632)
+127.0.0.1 - - [11/Nov/2026 22:44:02] "GET /ddos/status HTTP/1.1" 200 8036 0.001006
+(100125) accepted ('127.0.0.1', 41638)
+127.0.0.1 - - [11/Nov/2026 22:44:03] "GET /ddos/status HTTP/1.1" 200 8036 0.001430
+(100125) accepted ('127.0.0.1', 41646)
+127.0.0.1 - - [11/Nov/2026 22:44:04] "GET /ddos/status HTTP/1.1" 200 8036 0.001189
+(100125) accepted ('127.0.0.1', 41654)
+127.0.0.1 - - [11/Nov/2026 22:44:05] "GET /ddos/status HTTP/1.1" 200 8036 0.001022
+[poll 174] dst=10.0.0.18  NORMAL TRAFFIC     score=0.208 (thr 0.682) sources=5 flows=107 pps=1484 rate=12.71Mbps avg_pkt=1070B | flow-ML max_p=0.99 flagged=91%
+[poll 174] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=5 pps=601 rate=7.24Mbps avg_pkt=1505B | flow-ML max_p=0.00 flagged=0%
+[poll 174] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=1 pps=428 rate=0.23Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(100125) accepted ('127.0.0.1', 41658)
+127.0.0.1 - - [11/Nov/2026 22:44:06] "GET /ddos/status HTTP/1.1" 200 8046 0.000998
+(100125) accepted ('127.0.0.1', 41672)
+127.0.0.1 - - [11/Nov/2026 22:44:07] "GET /ddos/status HTTP/1.1" 200 8046 0.001003
+(100125) accepted ('127.0.0.1', 41682)
+127.0.0.1 - - [11/Nov/2026 22:44:08] "GET /ddos/status HTTP/1.1" 200 8046 0.001035
+(100125) accepted ('127.0.0.1', 41694)
+127.0.0.1 - - [11/Nov/2026 22:44:08] "GET /ddos/events?since=47 HTTP/1.1" 200 4182 0.000731
+(100125) accepted ('127.0.0.1', 44310)
+MODE CHANGE MITIGATION_ENABLED -> DETECTION_ONLY (removed 0 rules, demoted [])
+127.0.0.1 - - [11/Nov/2026 22:44:09] "POST /ddos/mode HTTP/1.1" 200 194 0.000534
+(100125) accepted ('127.0.0.1', 44324)
+Operator removed ALL mitigation rules (0)
+127.0.0.1 - - [11/Nov/2026 22:44:09] "DELETE /ddos/rules HTTP/1.1" 200 141 0.000837
+[poll 175] dst=10.0.0.18  SUSPICIOUS TRAFFIC score=0.796 (thr 0.682) sources=11 flows=69 pps=795 rate=7.16Mbps avg_pkt=1126B | flow-ML max_p=0.99 flagged=82%
+[poll 175] dst=10.0.0.9   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=278 rate=3.35Mbps avg_pkt=1507B | flow-ML max_p=0.00 flagged=0%
+[poll 175] dst=10.0.0.7   NORMAL TRAFFIC     score=0.000 (thr 0.682) sources=1 flows=2 pps=250 rate=0.13Mbps avg_pkt=66B | flow-ML max_p=0.03 flagged=0%
+dst=10.0.0.18 NORMAL->SUSPECTED score=0.796 sources=[] actions=[]
+(100125) accepted ('127.0.0.1', 44336)
+127.0.0.1 - - [11/Nov/2026 22:44:11] "GET /ddos/status HTTP/1.1" 200 15867 0.001496
+(100125) accepted ('127.0.0.1', 44352)
+127.0.0.1 - - [11/Nov/2026 22:44:11] "GET /ddos/rules HTTP/1.1" 200 186 0.000251
+dst=10.0.0.18 SUSPECTED->NORMAL score=0.000 sources=[] actions=[]
+dst=10.0.0.18 back to NORMAL TRAFFIC

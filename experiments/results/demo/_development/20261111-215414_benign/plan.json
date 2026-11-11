@@ -1,0 +1,162 @@
+{
+ "scenario": "benign",
+ "attack_kind": null,
+ "mode_at_start": "DETECTION_ONLY",
+ "victim_ip": "10.0.0.18",
+ "timeline_s": {
+  "warmup": 15.0,
+  "attack": 0,
+  "recovery_wait": 0
+ },
+ "t_start": 1794434054.646603,
+ "t_attack": null,
+ "t_attack_end": null,
+ "t_end": 1794434119.8295038,
+ "generators": [
+  {
+   "host": "h11",
+   "src_ip": "10.0.0.11",
+   "role": "legit",
+   "kind": "tcp_iperf3",
+   "cmd": "iperf3 -c 10.0.0.18 -p 5204 -b 20M -t 65 -i 1 -J",
+   "params": {
+    "mbps_cap": 20,
+    "port": 5204
+   },
+   "dst": "10.0.0.18",
+   "pid": 90906,
+   "start": 1794434054.647,
+   "stop": 1794434119.829,
+   "log": "legit_h11_tcp_iperf3.log"
+  },
+  {
+   "host": "h12",
+   "src_ip": "10.0.0.12",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5205 -b 1M -l 200 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 1,
+    "pkt_size": 200,
+    "port": 5205
+   },
+   "dst": "10.0.0.18",
+   "pid": 90907,
+   "start": 1794434054.648,
+   "stop": 1794434119.829,
+   "log": "legit_h12_udp_iperf3.log"
+  },
+  {
+   "host": "h14",
+   "src_ip": "10.0.0.14",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5206 -b 8M -l 1400 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 8,
+    "pkt_size": 1400,
+    "port": 5206
+   },
+   "dst": "10.0.0.18",
+   "pid": 90908,
+   "start": 1794434054.649,
+   "stop": 1794434119.829,
+   "log": "legit_h14_udp_iperf3.log"
+  },
+  {
+   "host": "h15",
+   "src_ip": "10.0.0.15",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5207 -b 4M -l 512 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 4,
+    "pkt_size": 512,
+    "port": 5207
+   },
+   "dst": "10.0.0.18",
+   "pid": 90909,
+   "start": 1794434054.651,
+   "stop": 1794434119.829,
+   "log": "legit_h15_udp_iperf3.log"
+  },
+  {
+   "host": "h17",
+   "src_ip": "10.0.0.17",
+   "role": "legit",
+   "kind": "udp_iperf3",
+   "cmd": "iperf3 -u -c 10.0.0.18 -p 5208 -b 2M -l 1024 -t 65 -i 1 -J --get-server-output",
+   "params": {
+    "mbps": 2,
+    "pkt_size": 1024,
+    "port": 5208
+   },
+   "dst": "10.0.0.18",
+   "pid": 90910,
+   "start": 1794434054.652,
+   "stop": 1794434119.829,
+   "log": "legit_h17_udp_iperf3.log"
+  },
+  {
+   "host": "h16",
+   "src_ip": "10.0.0.16",
+   "role": "legit",
+   "kind": "udp_request_response",
+   "cmd": "python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/udp_probe.py 10.0.0.18 --port 5353 --qps 20 --size 256 --duration 65",
+   "params": {
+    "qps": 20,
+    "pkt_size": 256
+   },
+   "dst": "10.0.0.18",
+   "pid": 90911,
+   "start": 1794434054.654,
+   "stop": 1794434119.829,
+   "log": "legit_h16_udp_request_response.log"
+  },
+  {
+   "host": "h9",
+   "src_ip": "10.0.0.9",
+   "role": "legit",
+   "kind": "http",
+   "cmd": "end=$((SECONDS+65)); while [ $SECONDS -lt $end ]; do echo \"$(date +%s.%N) $(curl -s -o /dev/null --max-time 3 -w '%{http_code} %{time_total}' http://10.0.0.18/medium.bin)\"; sleep 1; done",
+   "params": {
+    "object": "medium.bin (1 MB)"
+   },
+   "dst": "10.0.0.18",
+   "pid": 90912,
+   "start": 1794434054.655,
+   "stop": 1794434119.829,
+   "log": "legit_h9_http.log"
+  },
+  {
+   "host": "h10",
+   "src_ip": "10.0.0.10",
+   "role": "legit",
+   "kind": "icmp_ping",
+   "cmd": "ping -D -i 0.2 -w 65 10.0.0.18",
+   "params": {
+    "interval_s": 0.2
+   },
+   "dst": "10.0.0.18",
+   "pid": 90913,
+   "start": 1794434054.657,
+   "stop": 1794434119.829,
+   "log": "legit_h10_icmp_ping.log"
+  },
+  {
+   "host": "h8",
+   "src_ip": "10.0.0.8",
+   "role": "legit",
+   "kind": "icmp_ping",
+   "cmd": "ping -D -i 0.5 -w 65 10.0.0.18",
+   "params": {
+    "interval_s": 0.5
+   },
+   "dst": "10.0.0.18",
+   "pid": 90914,
+   "start": 1794434054.66,
+   "stop": 1794434119.829,
+   "log": "legit_h8_icmp_ping.log"
+  }
+ ]
+}

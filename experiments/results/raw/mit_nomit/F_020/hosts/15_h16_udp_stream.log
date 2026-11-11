@@ -1,0 +1,60 @@
+Connecting to host 10.0.0.18, port 5206
+[  7] local 10.0.0.16 port 51402 connected to 10.0.0.18 port 5206
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  7]   0.00-1.00   sec  2.36 MBytes  19.8 Mbits/sec  12397  
+[  7]   1.00-2.00   sec  2.40 MBytes  20.1 Mbits/sec  12582  
+[  7]   2.00-3.00   sec  2.38 MBytes  20.0 Mbits/sec  12499  
+[  7]   3.00-4.00   sec  2.39 MBytes  20.0 Mbits/sec  12513  
+[  7]   4.00-5.00   sec  2.39 MBytes  20.0 Mbits/sec  12506  
+[  7]   5.00-6.00   sec  2.38 MBytes  20.0 Mbits/sec  12494  
+[  7]   6.00-7.00   sec  2.38 MBytes  20.0 Mbits/sec  12504  
+[  7]   7.00-8.00   sec  2.38 MBytes  19.9 Mbits/sec  12483  
+[  7]   8.00-9.00   sec  2.39 MBytes  20.1 Mbits/sec  12521  
+[  7]   9.00-10.00  sec  2.38 MBytes  20.0 Mbits/sec  12492  
+[  7]  10.00-11.00  sec  2.38 MBytes  20.0 Mbits/sec  12484  
+[  7]  11.00-12.00  sec  2.38 MBytes  20.0 Mbits/sec  12483  
+[  7]  12.00-13.00  sec  2.39 MBytes  20.1 Mbits/sec  12535  
+[  7]  13.00-14.00  sec  2.38 MBytes  20.0 Mbits/sec  12485  
+[  7]  14.00-15.00  sec  2.39 MBytes  20.0 Mbits/sec  12513  
+[  7]  15.00-16.00  sec  2.35 MBytes  19.7 Mbits/sec  12329  
+[  7]  16.00-17.00  sec  2.40 MBytes  20.2 Mbits/sec  12597  
+[  7]  17.00-18.00  sec  2.35 MBytes  19.8 Mbits/sec  12346  
+[  7]  18.00-19.00  sec  2.42 MBytes  20.3 Mbits/sec  12680  
+[  7]  19.00-20.00  sec  2.39 MBytes  20.1 Mbits/sec  12546  
+[  7]  20.00-21.00  sec  2.38 MBytes  20.0 Mbits/sec  12475  
+[  7]  21.00-22.00  sec  2.39 MBytes  20.0 Mbits/sec  12528  
+[  7]  22.00-23.00  sec  2.38 MBytes  20.0 Mbits/sec  12486  
+[  7]  23.00-24.00  sec  2.37 MBytes  19.9 Mbits/sec  12427  
+[  7]  24.00-25.00  sec  2.40 MBytes  20.1 Mbits/sec  12585  
+[  7]  25.00-26.00  sec  2.38 MBytes  20.0 Mbits/sec  12499  
+[  7]  26.00-27.00  sec  2.36 MBytes  19.8 Mbits/sec  12363  
+[  7]  27.00-28.00  sec  2.40 MBytes  20.1 Mbits/sec  12561  
+[  7]  28.00-29.00  sec  2.40 MBytes  20.1 Mbits/sec  12577  
+[  7]  29.00-30.00  sec  2.37 MBytes  19.9 Mbits/sec  12420  
+[  7]  30.00-31.00  sec  2.40 MBytes  20.1 Mbits/sec  12568  
+[  7]  31.00-32.00  sec  2.39 MBytes  20.0 Mbits/sec  12517  
+[  7]  32.00-33.00  sec  2.38 MBytes  20.0 Mbits/sec  12495  
+[  7]  33.00-34.00  sec  2.38 MBytes  20.0 Mbits/sec  12504  
+[  7]  34.00-35.00  sec  2.38 MBytes  20.0 Mbits/sec  12498  
+[  7]  35.00-36.00  sec  2.38 MBytes  20.0 Mbits/sec  12502  
+[  7]  36.00-37.00  sec  2.38 MBytes  20.0 Mbits/sec  12498  
+[  7]  37.00-38.00  sec  2.38 MBytes  20.0 Mbits/sec  12504  
+[  7]  38.00-39.00  sec  2.38 MBytes  20.0 Mbits/sec  12499  
+[  7]  39.00-40.00  sec  2.38 MBytes  20.0 Mbits/sec  12497  
+[  7]  40.00-41.00  sec  2.38 MBytes  20.0 Mbits/sec  12497  
+[  7]  41.00-42.00  sec  2.38 MBytes  20.0 Mbits/sec  12502  
+[  7]  42.00-43.00  sec  2.39 MBytes  20.0 Mbits/sec  12506  
+[  7]  43.00-44.00  sec  2.38 MBytes  20.0 Mbits/sec  12494  
+[  7]  44.00-45.00  sec  2.38 MBytes  20.0 Mbits/sec  12500  
+[  7]  45.00-46.00  sec  2.38 MBytes  20.0 Mbits/sec  12499  
+[  7]  46.00-47.00  sec  2.38 MBytes  20.0 Mbits/sec  12500  
+[  7]  47.00-48.00  sec  2.38 MBytes  20.0 Mbits/sec  12503  
+[  7]  48.00-49.00  sec  2.38 MBytes  20.0 Mbits/sec  12497  
+[  7]  49.00-50.00  sec  2.37 MBytes  19.9 Mbits/sec  12431  
+[  7]  50.00-51.00  sec  2.40 MBytes  20.1 Mbits/sec  12569  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  7]   0.00-51.00  sec   122 MBytes  20.0 Mbits/sec  0.000 ms  0/637490 (0%)  sender
+[  7]   0.00-51.20  sec   121 MBytes  19.8 Mbits/sec  0.026 ms  3117/637490 (0.49%)  receiver
+
+iperf Done.
