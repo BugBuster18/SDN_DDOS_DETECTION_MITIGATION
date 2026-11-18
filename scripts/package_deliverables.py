@@ -31,7 +31,7 @@ readme = """SDN DDoS Detection and Mitigation - Group SDN_29 - submission packag
 02_Paper/IEEE_Paper.pdf            IEEE conference paper (IEEEtran)
 02_Paper/IEEE_Paper_Overleaf.zip   LaTeX source + figures; Overleaf: New Project > Upload Project
 03_Code/source_code.zip            full source at the submitted commit (also on GitHub,
-                                   https://github.com/BugBuster18/SDN_DDOS_DETECTION_MITIGATION, branch review-revision)
+                                   https://github.com/BugBuster18/SDN_DDOS_DETECTION_MITIGATION, branch main)
 04_Results/                        processed metrics, flow-model tables, and per-session evidence of the
                                    200-host testbed (ground truth, rule/event log, controller log,
                                    legitimate-traffic summaries). Raw per-poll telemetry (~1 GB) is not
