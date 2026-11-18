@@ -1,0 +1,29 @@
+# 2026-11-13 10:53:45  attack + 20 s - rules known to the controller
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py list
+mode=MITIGATION_ENABLED  active mitigation rules=6
+  0xdd05000000000001  DROP 10.0.0.1   -> 10.0.0.18  UDP  at s1  priority=200 age=10.6s timeout=120s  dropped=23645 pkts (2231 pps)
+  0xdd05000000000002  DROP 10.0.0.2   -> 10.0.0.18  UDP  at s1  priority=200 age=10.6s timeout=120s  dropped=23854 pkts (2246 pps)
+  0xdd05000000000003  DROP 10.0.0.3   -> 10.0.0.18  UDP  at s1  priority=200 age=10.6s timeout=120s  dropped=16849 pkts (1591 pps)
+  0xdd05000000000004  DROP 10.0.0.4   -> 10.0.0.18  UDP  at s2  priority=200 age=10.6s timeout=120s  dropped=23727 pkts (2231 pps)
+  0xdd05000000000005  DROP 10.0.0.5   -> 10.0.0.18  UDP  at s2  priority=200 age=10.6s timeout=120s  dropped=29815 pkts (2806 pps)
+  0xdd05000000000006  DROP 10.0.0.6   -> 10.0.0.18  UDP  at s2  priority=200 age=10.6s timeout=120s  dropped=20288 pkts (1908 pps)
+
+# 2026-11-13 10:53:45  the same rules read directly from Open vSwitch
+$ ovs-ofctl -O OpenFlow13 dump-flows s1 | grep priority=200
+ cookie=0xdd05000000000001, duration=10.619s, table=0, n_packets=26116, n_bytes=27839656, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.1,nw_dst=10.0.0.18 actions=drop
+ cookie=0xdd05000000000002, duration=10.619s, table=0, n_packets=26312, n_bytes=14576848, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.2,nw_dst=10.0.0.18 actions=drop
+ cookie=0xdd05000000000003, duration=10.619s, table=0, n_packets=18609, n_bytes=26834178, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.3,nw_dst=10.0.0.18 actions=drop
+$ ovs-ofctl -O OpenFlow13 dump-flows s2 | grep priority=200
+ cookie=0xdd05000000000004, duration=10.625s, table=0, n_packets=26184, n_bytes=27912144, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.4,nw_dst=10.0.0.18 actions=drop
+ cookie=0xdd05000000000005, duration=10.625s, table=0, n_packets=32833, n_bytes=9784234, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.5,nw_dst=10.0.0.18 actions=drop
+ cookie=0xdd05000000000006, duration=10.625s, table=0, n_packets=22387, n_bytes=18133470, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.6,nw_dst=10.0.0.18 actions=drop
+
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=16  ML-API=ok  rules=6
+  10.0.0.1     NORMAL TRAFFIC
+  10.0.0.13    NORMAL TRAFFIC
+  10.0.0.18    MITIGATION ACTIVE
+  10.0.0.7     NORMAL TRAFFIC
+  10.0.0.8     NORMAL TRAFFIC
+  10.0.0.9     NORMAL TRAFFIC
+

@@ -1,0 +1,105 @@
+[H[2J[3J10:12:48  mode=MITIGATION_ENABLED  switches=6/6  poll=16  ML-API=ok  rules=6
+----------------------------------------------------------------------------------------------------
+10.0.0.18   MITIGATION ACTIVE   score=0.018/0.682 sources=4 flows=7 pps=1060 Mbps=11.8 flowML max_p=0.99
+     from   h7 10.0.0.7        818 pps  flowML=0.00 src_score=0.10  [32mACCEPTED[0m
+     from   h8 10.0.0.8        236 pps  flowML=0.99 src_score=0.14  [32mACCEPTED[0m
+     from   h9 10.0.0.9          4 pps  flowML=0.03 src_score=0.01  [32mACCEPTED[0m
+     from  h13 10.0.0.13         2 pps  flowML=0.00 src_score=0.00  [32mACCEPTED[0m
+10.0.0.7    NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=1 pps=411 Mbps=0.2 flowML max_p=0.00
+     from  h18 10.0.0.18       411 pps  flowML=0.00 src_score=0.06  [32mACCEPTED[0m
+10.0.0.9    NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=4 pps=4 Mbps=0.0 flowML max_p=0.03
+     from  h18 10.0.0.18         4 pps  flowML=0.03 src_score=0.16  [32mACCEPTED[0m
+10.0.0.13   NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=1 pps=2 Mbps=0.0 flowML max_p=0.00
+     from  h18 10.0.0.18         2 pps  flowML=0.00 src_score=0.00  [32mACCEPTED[0m
+----------------------------------------------------------------------------------------------------
+mode=MITIGATION_ENABLED  active mitigation rules=6
+  0xdd05000000000001  DROP 10.0.0.1   -> 10.0.0.18  UDP  at s1  priority=200 age=10.2s timeout=120s  dropped=21359 pkts (2252 pps)
+  0xdd05000000000002  DROP 10.0.0.2   -> 10.0.0.18  UDP  at s1  priority=200 age=10.2s timeout=120s  dropped=21385 pkts (2249 pps)
+  0xdd05000000000003  DROP 10.0.0.3   -> 10.0.0.18  UDP  at s1  priority=200 age=10.2s timeout=120s  dropped=15037 pkts (1596 pps)
+  0xdd05000000000004  DROP 10.0.0.4   -> 10.0.0.18  UDP  at s2  priority=200 age=10.2s timeout=120s  dropped=21311 pkts (2252 pps)
+  0xdd05000000000005  DROP 10.0.0.5   -> 10.0.0.18  UDP  at s2  priority=200 age=10.2s timeout=120s  dropped=26675 pkts (2806 pps)
+  0xdd05000000000006  DROP 10.0.0.6   -> 10.0.0.18  UDP  at s2  priority=200 age=10.2s timeout=120s  dropped=18368 pkts (1937 pps)
+----------------------------------------------------------------------------------------------------
+recent events:
+10:11:34 SWITCH_CONNECTED {'dpid': 1, 'n_switches': 4}
+10:11:34 SWITCH_CONNECTED {'dpid': 5, 'n_switches': 5}
+10:11:34 SWITCH_CONNECTED {'dpid': 2, 'n_switches': 6}
+10:11:52 ML_API_OK {}
+10:12:35 STATE  10.0.0.18  NORMAL -> SUSPECTED (SUSPICIOUS TRAFFIC)  score=1.000 
+10:12:37 STATE  10.0.0.18  SUSPECTED -> MITIGATING (MITIGATION ACTIVE)  score=0.999 attributed=10.0.0.1,10.0.0.2,10.0.0.3,10.0.0.4,10.0.0.5,10.0.0.6
+10:12:37 RULE_INSTALLED 0xdd05000000000001 10.0.0.1 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000002 10.0.0.2 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000003 10.0.0.3 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000004 10.0.0.4 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000005 10.0.0.5 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000006 10.0.0.6 -> 10.0.0.18 UDP attributed_attacker
+[H[2J[3J10:12:50  mode=MITIGATION_ENABLED  switches=6/6  poll=16  ML-API=ok  rules=6
+----------------------------------------------------------------------------------------------------
+10.0.0.18   MITIGATION ACTIVE   score=0.018/0.682 sources=4 flows=7 pps=1060 Mbps=11.8 flowML max_p=0.99
+     from   h7 10.0.0.7        818 pps  flowML=0.00 src_score=0.10  [32mACCEPTED[0m
+     from   h8 10.0.0.8        236 pps  flowML=0.99 src_score=0.14  [32mACCEPTED[0m
+     from   h9 10.0.0.9          4 pps  flowML=0.03 src_score=0.01  [32mACCEPTED[0m
+     from  h13 10.0.0.13         2 pps  flowML=0.00 src_score=0.00  [32mACCEPTED[0m
+10.0.0.7    NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=1 pps=411 Mbps=0.2 flowML max_p=0.00
+     from  h18 10.0.0.18       411 pps  flowML=0.00 src_score=0.06  [32mACCEPTED[0m
+10.0.0.9    NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=4 pps=4 Mbps=0.0 flowML max_p=0.03
+     from  h18 10.0.0.18         4 pps  flowML=0.03 src_score=0.16  [32mACCEPTED[0m
+10.0.0.13   NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=1 pps=2 Mbps=0.0 flowML max_p=0.00
+     from  h18 10.0.0.18         2 pps  flowML=0.00 src_score=0.00  [32mACCEPTED[0m
+----------------------------------------------------------------------------------------------------
+mode=MITIGATION_ENABLED  active mitigation rules=6
+  0xdd05000000000001  DROP 10.0.0.1   -> 10.0.0.18  UDP  at s1  priority=200 age=12.2s timeout=120s  dropped=21359 pkts (2252 pps)
+  0xdd05000000000002  DROP 10.0.0.2   -> 10.0.0.18  UDP  at s1  priority=200 age=12.2s timeout=120s  dropped=21385 pkts (2249 pps)
+  0xdd05000000000003  DROP 10.0.0.3   -> 10.0.0.18  UDP  at s1  priority=200 age=12.2s timeout=120s  dropped=15037 pkts (1596 pps)
+  0xdd05000000000004  DROP 10.0.0.4   -> 10.0.0.18  UDP  at s2  priority=200 age=12.2s timeout=120s  dropped=21311 pkts (2252 pps)
+  0xdd05000000000005  DROP 10.0.0.5   -> 10.0.0.18  UDP  at s2  priority=200 age=12.2s timeout=120s  dropped=26675 pkts (2806 pps)
+  0xdd05000000000006  DROP 10.0.0.6   -> 10.0.0.18  UDP  at s2  priority=200 age=12.2s timeout=120s  dropped=18368 pkts (1937 pps)
+----------------------------------------------------------------------------------------------------
+recent events:
+10:11:34 SWITCH_CONNECTED {'dpid': 1, 'n_switches': 4}
+10:11:34 SWITCH_CONNECTED {'dpid': 5, 'n_switches': 5}
+10:11:34 SWITCH_CONNECTED {'dpid': 2, 'n_switches': 6}
+10:11:52 ML_API_OK {}
+10:12:35 STATE  10.0.0.18  NORMAL -> SUSPECTED (SUSPICIOUS TRAFFIC)  score=1.000 
+10:12:37 STATE  10.0.0.18  SUSPECTED -> MITIGATING (MITIGATION ACTIVE)  score=0.999 attributed=10.0.0.1,10.0.0.2,10.0.0.3,10.0.0.4,10.0.0.5,10.0.0.6
+10:12:37 RULE_INSTALLED 0xdd05000000000001 10.0.0.1 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000002 10.0.0.2 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000003 10.0.0.3 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000004 10.0.0.4 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000005 10.0.0.5 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000006 10.0.0.6 -> 10.0.0.18 UDP attributed_attacker
+[H[2J[3J10:12:52  mode=MITIGATION_ENABLED  switches=6/6  poll=16  ML-API=ok  rules=6
+----------------------------------------------------------------------------------------------------
+10.0.0.18   MITIGATION ACTIVE   score=0.018/0.682 sources=4 flows=7 pps=1060 Mbps=11.8 flowML max_p=0.99
+     from   h7 10.0.0.7        818 pps  flowML=0.00 src_score=0.10  [32mACCEPTED[0m
+     from   h8 10.0.0.8        236 pps  flowML=0.99 src_score=0.14  [32mACCEPTED[0m
+     from   h9 10.0.0.9          4 pps  flowML=0.03 src_score=0.01  [32mACCEPTED[0m
+     from  h13 10.0.0.13         2 pps  flowML=0.00 src_score=0.00  [32mACCEPTED[0m
+10.0.0.7    NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=1 pps=411 Mbps=0.2 flowML max_p=0.00
+     from  h18 10.0.0.18       411 pps  flowML=0.00 src_score=0.06  [32mACCEPTED[0m
+10.0.0.9    NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=4 pps=4 Mbps=0.0 flowML max_p=0.03
+     from  h18 10.0.0.18         4 pps  flowML=0.03 src_score=0.16  [32mACCEPTED[0m
+10.0.0.13   NORMAL TRAFFIC      score=0.000/0.682 sources=1 flows=1 pps=2 Mbps=0.0 flowML max_p=0.00
+     from  h18 10.0.0.18         2 pps  flowML=0.00 src_score=0.00  [32mACCEPTED[0m
+----------------------------------------------------------------------------------------------------
+mode=MITIGATION_ENABLED  active mitigation rules=6
+  0xdd05000000000001  DROP 10.0.0.1   -> 10.0.0.18  UDP  at s1  priority=200 age=14.2s timeout=120s  dropped=21359 pkts (2252 pps)
+  0xdd05000000000002  DROP 10.0.0.2   -> 10.0.0.18  UDP  at s1  priority=200 age=14.2s timeout=120s  dropped=21385 pkts (2249 pps)
+  0xdd05000000000003  DROP 10.0.0.3   -> 10.0.0.18  UDP  at s1  priority=200 age=14.2s timeout=120s  dropped=15037 pkts (1596 pps)
+  0xdd05000000000004  DROP 10.0.0.4   -> 10.0.0.18  UDP  at s2  priority=200 age=14.2s timeout=120s  dropped=21311 pkts (2252 pps)
+  0xdd05000000000005  DROP 10.0.0.5   -> 10.0.0.18  UDP  at s2  priority=200 age=14.2s timeout=120s  dropped=26675 pkts (2806 pps)
+  0xdd05000000000006  DROP 10.0.0.6   -> 10.0.0.18  UDP  at s2  priority=200 age=14.2s timeout=120s  dropped=18368 pkts (1937 pps)
+----------------------------------------------------------------------------------------------------
+recent events:
+10:11:34 SWITCH_CONNECTED {'dpid': 1, 'n_switches': 4}
+10:11:34 SWITCH_CONNECTED {'dpid': 5, 'n_switches': 5}
+10:11:34 SWITCH_CONNECTED {'dpid': 2, 'n_switches': 6}
+10:11:52 ML_API_OK {}
+10:12:35 STATE  10.0.0.18  NORMAL -> SUSPECTED (SUSPICIOUS TRAFFIC)  score=1.000 
+10:12:37 STATE  10.0.0.18  SUSPECTED -> MITIGATING (MITIGATION ACTIVE)  score=0.999 attributed=10.0.0.1,10.0.0.2,10.0.0.3,10.0.0.4,10.0.0.5,10.0.0.6
+10:12:37 RULE_INSTALLED 0xdd05000000000001 10.0.0.1 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000002 10.0.0.2 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000003 10.0.0.3 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000004 10.0.0.4 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000005 10.0.0.5 -> 10.0.0.18 UDP attributed_attacker
+10:12:37 RULE_INSTALLED 0xdd05000000000006 10.0.0.6 -> 10.0.0.18 UDP attributed_attacker

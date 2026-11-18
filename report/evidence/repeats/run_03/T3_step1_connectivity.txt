@@ -1,0 +1,27 @@
+# 2026-11-13 10:58:36  STEP 1 - connectivity check (direct commands)
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=3  ML-API=unknown  rules=0
+
+mininet> h1 ping -c 3 10.0.0.18
+PING 10.0.0.18 (10.0.0.18) 56(84) bytes of data.
+64 bytes from 10.0.0.18: icmp_seq=1 ttl=64 time=19.4 ms
+64 bytes from 10.0.0.18: icmp_seq=2 ttl=64 time=1.98 ms
+64 bytes from 10.0.0.18: icmp_seq=3 ttl=64 time=0.090 ms
+
+--- 10.0.0.18 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 0.090/7.168/19.433/8.706 ms
+
+mininet> h7 ping -c 3 10.0.0.18
+PING 10.0.0.18 (10.0.0.18) 56(84) bytes of data.
+64 bytes from 10.0.0.18: icmp_seq=1 ttl=64 time=12.7 ms
+64 bytes from 10.0.0.18: icmp_seq=2 ttl=64 time=1.43 ms
+64 bytes from 10.0.0.18: icmp_seq=3 ttl=64 time=0.068 ms
+
+--- 10.0.0.18 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 0.068/4.722/12.670/5.647 ms
+
+mininet> h9 curl -s -o /dev/null -m 3 -w 'HTTP %{http_code} in %{time_total}s\n' http://10.0.0.18/
+HTTP 200 in 0.014811s
+

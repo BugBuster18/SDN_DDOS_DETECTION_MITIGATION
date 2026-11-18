@@ -1,0 +1,19 @@
+== Preflight checks (/home/enkatesh/projects/ddos-cicddos2019-ready)
+  [OK]   ML venv (.venv, Python 3.12) imports sklearn/joblib
+  [OK]   Ryu venv (.venv-ryu39, Python 3.9) imports ryu
+  [OK]   production model present
+  [OK]   temporal window model present
+  [OK]   temporal source model present
+  [OK]   tool: mn
+  [OK]   tool: mnexec
+  [OK]   tool: ovs-vsctl
+  [OK]   tool: ovs-ofctl
+  [OK]   tool: hping3
+  [OK]   tool: iperf
+  [OK]   tool: iperf3
+  [OK]   tool: curl
+  [OK]   tool: ethtool
+  [OK]   Open vSwitch running
+== Cleaning old Mininet state (mn -c) - safe now because Ryu is not running
+  [OK]   mn -c done
+== PREFLIGHT PASSED

@@ -1,0 +1,6 @@
+cookie=0xdd05000000000001, duration=0.778s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.1,nw_dst=10.0.0.18 actions=drop
+cookie=0xdd05000000000002, duration=0.778s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.2,nw_dst=10.0.0.18 actions=drop
+cookie=0xdd05000000000003, duration=0.778s, table=0, n_packets=0, n_bytes=0, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.3,nw_dst=10.0.0.18 actions=drop
+cookie=0xdd05000000000004, duration=0.805s, table=0, n_packets=200, n_bytes=213200, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.4,nw_dst=10.0.0.18 actions=drop
+cookie=0xdd05000000000005, duration=0.805s, table=0, n_packets=2357, n_bytes=702386, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.5,nw_dst=10.0.0.18 actions=drop
+cookie=0xdd05000000000006, duration=0.805s, table=0, n_packets=1603, n_bytes=1298430, hard_timeout=120, send_flow_rem priority=200,udp,nw_src=10.0.0.6,nw_dst=10.0.0.18 actions=drop

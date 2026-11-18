@@ -1,0 +1,23 @@
+system ready
+RUN COMPLETE
+total 988
+drwxr-xr-x 2 enkatesh enkatesh   4096 Nov 13 10:57 .
+drwxr-xr-x 4 enkatesh enkatesh   4096 Nov 13 10:55 ..
+-rw-r--r-- 1 enkatesh enkatesh   3441 Nov 13 10:58 T1_system.txt
+-rw-r--r-- 1 enkatesh enkatesh   9621 Nov 13 10:56 T2_dashboard_attack.txt
+-rw-r--r-- 1 enkatesh enkatesh   1924 Nov 13 10:57 T2_events.txt
+-rw-r--r-- 1 enkatesh enkatesh   2661 Nov 13 10:56 T2_rules_during_attack.txt
+-rw-r--r-- 1 enkatesh enkatesh   1184 Nov 13 10:55 T3_step1_connectivity.txt
+-rw-r--r-- 1 enkatesh enkatesh   1009 Nov 13 10:56 T3_step2_normal.txt
+-rw-r--r-- 1 enkatesh enkatesh   1403 Nov 13 10:56 T3_step3_attack.txt
+-rw-r--r-- 1 enkatesh enkatesh   1756 Nov 13 10:57 T3_step4_recovery.txt
+-rw-r--r-- 1 enkatesh enkatesh   4582 Nov 13 10:57 T3_step5_legit_reports.txt
+-rw-r--r-- 1 enkatesh enkatesh  18269 Nov 13 10:57 legit_h13_ping.txt
+-rw-r--r-- 1 enkatesh enkatesh   2265 Nov 13 10:57 legit_h7_tcp.txt
+-rw-r--r-- 1 enkatesh enkatesh   1898 Nov 13 10:57 legit_h8_udp.txt
+-rw-r--r-- 1 enkatesh enkatesh   3740 Nov 13 10:57 legit_h9_http.txt
+-rw-r--r-- 1 enkatesh enkatesh    141 Nov 13 10:57 phases.csv
+-rw-r--r-- 1 enkatesh enkatesh   8778 Nov 13 10:57 port_counters.csv
+-rw-r--r-- 1 enkatesh enkatesh  47468 Nov 13 10:57 ryu.log
+-rw-r--r-- 1 enkatesh enkatesh 672751 Nov 13 10:57 status_timeline.jsonl
+-rw-r--r-- 1 enkatesh enkatesh 179521 Nov 13 10:57 telemetry.jsonl

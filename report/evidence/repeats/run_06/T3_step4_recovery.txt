@@ -1,0 +1,45 @@
+# 2026-11-13 11:08:42  STEP 4 - attack stopped (attack ran 40 s)
+mininet> sh pkill hping3
+
+# 2026-11-13 11:08:54  stop + 12 s
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=21  ML-API=ok  rules=6
+  10.0.0.1     NORMAL TRAFFIC
+  10.0.0.13    NORMAL TRAFFIC
+  10.0.0.18    MITIGATION ACTIVE
+  10.0.0.7     NORMAL TRAFFIC
+  10.0.0.8     NORMAL TRAFFIC
+  10.0.0.9     NORMAL TRAFFIC
+
+# 2026-11-13 11:09:08  stop + 26 s
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=24  ML-API=ok  rules=0
+  10.0.0.1     NORMAL TRAFFIC
+  10.0.0.13    NORMAL TRAFFIC
+  10.0.0.18    NORMAL TRAFFIC
+  10.0.0.7     NORMAL TRAFFIC
+  10.0.0.8     NORMAL TRAFFIC
+  10.0.0.9     NORMAL TRAFFIC
+
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py list
+mode=MITIGATION_ENABLED  active mitigation rules=0
+
+$ ovs-ofctl -O OpenFlow13 dump-flows s1 | grep -c priority=200
+0
+$ ovs-ofctl -O OpenFlow13 dump-flows s2 | grep -c priority=200
+0
+
+# 2026-11-13 11:09:08  former attackers can reach the victim again
+mininet> h1 ping -c 3 10.0.0.18
+PING 10.0.0.18 (10.0.0.18) 56(84) bytes of data.
+64 bytes from 10.0.0.18: icmp_seq=1 ttl=64 time=21.6 ms
+64 bytes from 10.0.0.18: icmp_seq=2 ttl=64 time=4.92 ms
+64 bytes from 10.0.0.18: icmp_seq=3 ttl=64 time=0.083 ms
+
+--- 10.0.0.18 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 0.083/8.852/21.560/9.199 ms
+
+mininet> h5 curl -s -o /dev/null -m 3 -w 'HTTP %{http_code} in %{time_total}s\n' http://10.0.0.18/
+HTTP 200 in 0.019211s
+

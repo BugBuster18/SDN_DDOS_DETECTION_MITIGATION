@@ -1,0 +1,48 @@
+[H[2J[3J[1m[1/5] Cleaning old state + preflight checks[0m
+      [32mOK[0m
+[1m[2/5] Starting ML prediction API (flow model, 127.0.0.1:8765)[0m
+      [32mOK[0m
+[1m[3/5] Starting Ryu hybrid controller (mode MITIGATION_ENABLED)[0m
+      [32mOK[0m
+[1m[4/5] Starting Mininet lab (6 switches, 18 hosts, victim h18)[0m
+      [32mOK[0m
+[1m[5/5] Checking switches[0m
+      [32mOK - 6/6 switches connected[0m
+
+[32m[1m=====================================================================[0m
+[32m[1m SYSTEM READY   (mode: MITIGATION_ENABLED)[0m
+   Network: s1..s6 chain, 18 hosts, victim h18 = 10.0.0.18
+   Attackers in the demo: h1-h6      Legitimate users: h7 h8 h9 h10 h13
+   Terminal 2:  scripts/demo/T2_dashboard.sh
+   Terminal 3:  sudo scripts/demo/T3_run_demo.sh
+   Ctrl-C here = stop everything
+[32m[1m=====================================================================[0m
+
+[1mController decisions (live)[0m  - legend: [32mNORMAL[0m [33mSUSPECTED[0m [31mCONFIRMED/BLOCK[0m [35mMITIGATING[0m [36mRECOVERING[0m
+
+[2mconnected: mode=MITIGATION_ENABLED  switches=6/6  ML-API=unknown[0m
+[2m10:55:47[0m  [32m[1mML-API    [0m ml api ok
+[2m10:56:24[0m  [33m[1mSUSPECTED [0m victim h18 (10.0.0.18): NORMAL -> SUSPECTED  score=1.00  [1544 pps, 14.6 Mbps, 10 sources]
+[2m10:56:30[0m  [35m[1mMITIGATING[0m victim h18 (10.0.0.18): SUSPECTED -> MITIGATING  score=1.00  [8559 pps, 59.9 Mbps, 10 sources]
+[31m[1m          >>> DDoS ATTACK CONFIRMED on h18 (10.0.0.18) - attackers identified: h1 (10.0.0.1), h2 (10.0.0.2), h3 (10.0.0.3), h4 (10.0.0.4), h5 (10.0.0.5), h6 (10.0.0.6)[0m
+[2m10:56:30[0m  [31m[1mBLOCK     [0m DROP h1 (10.0.0.1) -> h18 (10.0.0.18) UDP at switch s1  (attacker's ingress switch)
+[2m10:56:30[0m  [31m[1mBLOCK     [0m DROP h2 (10.0.0.2) -> h18 (10.0.0.18) UDP at switch s1  (attacker's ingress switch)
+[2m10:56:30[0m  [31m[1mBLOCK     [0m DROP h3 (10.0.0.3) -> h18 (10.0.0.18) UDP at switch s1  (attacker's ingress switch)
+[2m10:56:30[0m  [31m[1mBLOCK     [0m DROP h4 (10.0.0.4) -> h18 (10.0.0.18) UDP at switch s2  (attacker's ingress switch)
+[2m10:56:30[0m  [31m[1mBLOCK     [0m DROP h5 (10.0.0.5) -> h18 (10.0.0.18) UDP at switch s2  (attacker's ingress switch)
+[2m10:56:30[0m  [31m[1mBLOCK     [0m DROP h6 (10.0.0.6) -> h18 (10.0.0.18) UDP at switch s2  (attacker's ingress switch)
+[2m10:57:12[0m  [36m[1mRECOVERING[0m victim h18 (10.0.0.18): MITIGATING -> RECOVERING  score=0.02  [1053 pps, 11.8 Mbps, 4 sources]
+[2m10:57:12[0m  [32m[1mUNBLOCK   [0m h1 (10.0.0.1) -> h18 (10.0.0.18) rule removed (recovered)
+[2m10:57:12[0m  [32m[1mUNBLOCK   [0m h2 (10.0.0.2) -> h18 (10.0.0.18) rule removed (recovered)
+[2m10:57:12[0m  [32m[1mUNBLOCK   [0m h3 (10.0.0.3) -> h18 (10.0.0.18) rule removed (recovered)
+[2m10:57:12[0m  [32m[1mUNBLOCK   [0m h4 (10.0.0.4) -> h18 (10.0.0.18) rule removed (recovered)
+[2m10:57:12[0m  [32m[1mUNBLOCK   [0m h5 (10.0.0.5) -> h18 (10.0.0.18) rule removed (recovered)
+[2m10:57:12[0m  [32m[1mUNBLOCK   [0m h6 (10.0.0.6) -> h18 (10.0.0.18) rule removed (recovered)
+[2m10:57:22[0m  [32m[1mNORMAL    [0m victim h18 (10.0.0.18): RECOVERING -> NORMAL  score=0.03  [1156 pps, 12.9 Mbps, 4 sources]
+[32m[1m          >>> h18 (10.0.0.18) back to NORMAL[0m
+Terminated
+
+[1mStopping everything ...[0m
+All lab traffic generators stopped.
+Cleanup done. Remaining related processes:
+  none

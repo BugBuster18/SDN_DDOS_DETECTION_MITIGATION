@@ -1,0 +1,2389 @@
+{
+ "last_seq": 154,
+ "events": [
+  {
+   "seq": 1,
+   "ts": 1794990439.446,
+   "type": "start",
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 2,
+   "ts": 1794990458.633,
+   "type": "switch_connected",
+   "dpid": 19,
+   "n_switches": 1
+  },
+  {
+   "seq": 3,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 12,
+   "n_switches": 2
+  },
+  {
+   "seq": 4,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 8,
+   "n_switches": 3
+  },
+  {
+   "seq": 5,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 18,
+   "n_switches": 4
+  },
+  {
+   "seq": 6,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 1,
+   "n_switches": 5
+  },
+  {
+   "seq": 7,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 25,
+   "n_switches": 6
+  },
+  {
+   "seq": 8,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 10,
+   "n_switches": 7
+  },
+  {
+   "seq": 9,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 13,
+   "n_switches": 8
+  },
+  {
+   "seq": 10,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 11,
+   "n_switches": 9
+  },
+  {
+   "seq": 11,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 7,
+   "n_switches": 10
+  },
+  {
+   "seq": 12,
+   "ts": 1794990458.642,
+   "type": "switch_connected",
+   "dpid": 2,
+   "n_switches": 11
+  },
+  {
+   "seq": 13,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 3,
+   "n_switches": 12
+  },
+  {
+   "seq": 14,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 15,
+   "n_switches": 13
+  },
+  {
+   "seq": 15,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 21,
+   "n_switches": 14
+  },
+  {
+   "seq": 16,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 5,
+   "n_switches": 15
+  },
+  {
+   "seq": 17,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 24,
+   "n_switches": 16
+  },
+  {
+   "seq": 18,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 16,
+   "n_switches": 17
+  },
+  {
+   "seq": 19,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 9,
+   "n_switches": 18
+  },
+  {
+   "seq": 20,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 20,
+   "n_switches": 19
+  },
+  {
+   "seq": 21,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 23,
+   "n_switches": 20
+  },
+  {
+   "seq": 22,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 22,
+   "n_switches": 21
+  },
+  {
+   "seq": 23,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 6,
+   "n_switches": 22
+  },
+  {
+   "seq": 24,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 14,
+   "n_switches": 23
+  },
+  {
+   "seq": 25,
+   "ts": 1794990458.643,
+   "type": "switch_connected",
+   "dpid": 4,
+   "n_switches": 24
+  },
+  {
+   "seq": 26,
+   "ts": 1794990458.644,
+   "type": "switch_connected",
+   "dpid": 17,
+   "n_switches": 25
+  },
+  {
+   "seq": 27,
+   "ts": 1794990487.69,
+   "type": "ml_api_ok"
+  },
+  {
+   "seq": 28,
+   "ts": 1794990487.699,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "NORMAL",
+   "state": "SUSPECTED",
+   "label": "SUSPICIOUS TRAFFIC",
+   "score": 0.9461,
+   "attributed": [],
+   "features": {
+    "n_sources": 52.0,
+    "n_active_flows": 52.0,
+    "n_new_flows": 52.0,
+    "pps": 2.0,
+    "bps": 1568.0,
+    "avg_pkt_size": 98.0,
+    "udp_share": 0.0,
+    "tcp_share": 0.0,
+    "icmp_share": 1.0,
+    "response_ratio": 1.75,
+    "top_source_share": 0.5,
+    "ml_max_prob": 0.0173,
+    "ml_mean_prob": 0.0038,
+    "ml_flow_frac": 0.0,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 29,
+   "ts": 1794990489.791,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "SUSPECTED",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9997,
+   "attributed": [],
+   "features": {
+    "n_sources": 94.0,
+    "n_active_flows": 94.0,
+    "n_new_flows": 94.0,
+    "pps": 6.0507,
+    "bps": 4743.7506,
+    "avg_pkt_size": 98.0,
+    "udp_share": 0.0,
+    "tcp_share": 0.0,
+    "icmp_share": 1.0,
+    "response_ratio": 0.1538,
+    "top_source_share": 0.3077,
+    "ml_max_prob": 0.0234,
+    "ml_mean_prob": 0.0041,
+    "ml_flow_frac": 0.0,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 30,
+   "ts": 1794990499.46,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "NORMAL",
+   "state": "SUSPECTED",
+   "label": "SUSPICIOUS TRAFFIC",
+   "score": 0.8086,
+   "attributed": [],
+   "features": {
+    "n_sources": 34.0,
+    "n_active_flows": 36.0,
+    "n_new_flows": 33.0,
+    "pps": 57.0424,
+    "bps": 47108.4425,
+    "avg_pkt_size": 103.2311,
+    "udp_share": 0.4764,
+    "tcp_share": 0.3962,
+    "icmp_share": 0.1274,
+    "response_ratio": 5.1861,
+    "top_source_share": 0.1132,
+    "ml_max_prob": 0.905,
+    "ml_mean_prob": 0.2657,
+    "ml_flow_frac": 0.2778,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 31,
+   "ts": 1794990501.454,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "SUSPECTED",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9146,
+   "attributed": [],
+   "features": {
+    "n_sources": 42.0,
+    "n_active_flows": 47.0,
+    "n_new_flows": 21.0,
+    "pps": 200.7511,
+    "bps": 144964.4027,
+    "avg_pkt_size": 90.2638,
+    "udp_share": 0.3119,
+    "tcp_share": 0.6353,
+    "icmp_share": 0.0528,
+    "response_ratio": 9.1942,
+    "top_source_share": 0.1628,
+    "ml_max_prob": 0.7846,
+    "ml_mean_prob": 0.0603,
+    "ml_flow_frac": 0.0426,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 32,
+   "ts": 1794990561.18,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 33,
+   "ts": 1794990561.18,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 34,
+   "ts": 1794990567.467,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "RECOVERING",
+   "state": "NORMAL",
+   "label": "NORMAL TRAFFIC",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 35,
+   "ts": 1794990567.467,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "RECOVERING",
+   "state": "NORMAL",
+   "label": "NORMAL TRAFFIC",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 36,
+   "ts": 1794990573.982,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "NORMAL",
+   "state": "SUSPECTED",
+   "label": "SUSPICIOUS TRAFFIC",
+   "score": 0.9021,
+   "attributed": [],
+   "features": {
+    "n_sources": 9.0,
+    "n_active_flows": 26.0,
+    "n_new_flows": 24.0,
+    "pps": 525.1501,
+    "bps": 3513362.0836,
+    "avg_pkt_size": 836.2757,
+    "udp_share": 0.9923,
+    "tcp_share": 0.0,
+    "icmp_share": 0.0077,
+    "response_ratio": 0.0009,
+    "top_source_share": 0.4964,
+    "ml_max_prob": 0.9994,
+    "ml_mean_prob": 0.8372,
+    "ml_flow_frac": 0.9231,
+    "ml_pps_share": 0.9923
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 37,
+   "ts": 1794990576.133,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "SUSPECTED",
+   "state": "MITIGATING",
+   "label": "MITIGATION ACTIVE",
+   "score": 0.9451,
+   "attributed": [
+    "10.0.0.61",
+    "10.0.0.70"
+   ],
+   "features": {
+    "n_sources": 9.0,
+    "n_active_flows": 10.0,
+    "n_new_flows": 6.0,
+    "pps": 369.3071,
+    "bps": 2453297.7267,
+    "avg_pkt_size": 830.3718,
+    "udp_share": 0.9845,
+    "tcp_share": 0.0042,
+    "icmp_share": 0.0113,
+    "response_ratio": 0.0013,
+    "top_source_share": 0.4958,
+    "ml_max_prob": 0.9994,
+    "ml_mean_prob": 0.4716,
+    "ml_flow_frac": 0.5,
+    "ml_pps_share": 0.9845
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 38,
+   "ts": 1794990576.134,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000001",
+   "src": "10.0.0.61",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    12
+   ],
+   "switches": [
+    "s12"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990576.133,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9451,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.61,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 39,
+   "ts": 1794990576.134,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000002",
+   "src": "10.0.0.70",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    12
+   ],
+   "switches": [
+    "s12"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990576.134,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9451,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.70,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 40,
+   "ts": 1794990578.198,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000003",
+   "src": "10.0.0.12",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    7
+   ],
+   "switches": [
+    "s7"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990578.198,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9991,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.12,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 41,
+   "ts": 1794990578.199,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000004",
+   "src": "10.0.0.165",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    22
+   ],
+   "switches": [
+    "s22"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990578.199,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9991,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.165,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 42,
+   "ts": 1794990578.199,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000005",
+   "src": "10.0.0.166",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    22
+   ],
+   "switches": [
+    "s22"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990578.199,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9991,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.166,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 43,
+   "ts": 1794990578.199,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000006",
+   "src": "10.0.0.181",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    24
+   ],
+   "switches": [
+    "s24"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990578.199,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9991,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.181,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 44,
+   "ts": 1794990578.2,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000007",
+   "src": "10.0.0.183",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    24
+   ],
+   "switches": [
+    "s24"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990578.2,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9991,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.183,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 45,
+   "ts": 1794990578.2,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000008",
+   "src": "10.0.0.19",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    7
+   ],
+   "switches": [
+    "s7"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990578.2,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 0.9991,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.19,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 46,
+   "ts": 1794990580.276,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000009",
+   "src": "10.0.0.122",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    18
+   ],
+   "switches": [
+    "s18"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.276,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.122,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 47,
+   "ts": 1794990580.277,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000000a",
+   "src": "10.0.0.125",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    18
+   ],
+   "switches": [
+    "s18"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.277,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.125,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 48,
+   "ts": 1794990580.277,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000000b",
+   "src": "10.0.0.149",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    20
+   ],
+   "switches": [
+    "s20"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.277,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.149,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 49,
+   "ts": 1794990580.277,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000000c",
+   "src": "10.0.0.150",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    20
+   ],
+   "switches": [
+    "s20"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.277,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.150,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 50,
+   "ts": 1794990580.278,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000000d",
+   "src": "10.0.0.152",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    21
+   ],
+   "switches": [
+    "s21"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.277,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.152,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 51,
+   "ts": 1794990580.278,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000000e",
+   "src": "10.0.0.157",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    21
+   ],
+   "switches": [
+    "s21"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.278,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.157,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 52,
+   "ts": 1794990580.278,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000000f",
+   "src": "10.0.0.23",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    8
+   ],
+   "switches": [
+    "s8"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.278,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.23,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 53,
+   "ts": 1794990580.278,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000010",
+   "src": "10.0.0.27",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    8
+   ],
+   "switches": [
+    "s8"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.278,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.27,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 54,
+   "ts": 1794990580.279,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000011",
+   "src": "10.0.0.54",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    11
+   ],
+   "switches": [
+    "s11"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.279,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.54,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 55,
+   "ts": 1794990580.279,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000012",
+   "src": "10.0.0.60",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    11
+   ],
+   "switches": [
+    "s11"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.279,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.60,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 56,
+   "ts": 1794990580.279,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000013",
+   "src": "10.0.0.71",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    13
+   ],
+   "switches": [
+    "s13"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.279,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.71,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 57,
+   "ts": 1794990580.28,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000014",
+   "src": "10.0.0.78",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    13
+   ],
+   "switches": [
+    "s13"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.279,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.78,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 58,
+   "ts": 1794990580.28,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000015",
+   "src": "10.0.0.93",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    15
+   ],
+   "switches": [
+    "s15"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.28,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.93,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 59,
+   "ts": 1794990580.28,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000016",
+   "src": "10.0.0.99",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    15
+   ],
+   "switches": [
+    "s15"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990580.28,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.99,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 60,
+   "ts": 1794990580.28,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "NORMAL",
+   "state": "SUSPECTED",
+   "label": "SUSPICIOUS TRAFFIC",
+   "score": 0.9682,
+   "attributed": [],
+   "features": {
+    "n_sources": 25.0,
+    "n_active_flows": 57.0,
+    "n_new_flows": 44.0,
+    "pps": 28.9189,
+    "bps": 28093.8003,
+    "avg_pkt_size": 121.4336,
+    "udp_share": 0.9893,
+    "tcp_share": 0.0,
+    "icmp_share": 0.0107,
+    "response_ratio": 1.0,
+    "top_source_share": 0.1356,
+    "ml_max_prob": 0.9081,
+    "ml_mean_prob": 0.5839,
+    "ml_flow_frac": 0.6491,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 61,
+   "ts": 1794990582.439,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000017",
+   "src": "10.0.0.1",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    6
+   ],
+   "switches": [
+    "s6"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.439,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.1,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 62,
+   "ts": 1794990582.439,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000018",
+   "src": "10.0.0.101",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    16
+   ],
+   "switches": [
+    "s16"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.439,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.101,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 63,
+   "ts": 1794990582.44,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000019",
+   "src": "10.0.0.102",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    16
+   ],
+   "switches": [
+    "s16"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.44,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.102,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 64,
+   "ts": 1794990582.44,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000001a",
+   "src": "10.0.0.113",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    17
+   ],
+   "switches": [
+    "s17"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.44,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.113,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 65,
+   "ts": 1794990582.441,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000001b",
+   "src": "10.0.0.117",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    17
+   ],
+   "switches": [
+    "s17"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.441,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.117,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 66,
+   "ts": 1794990582.441,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000001c",
+   "src": "10.0.0.132",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    19
+   ],
+   "switches": [
+    "s19"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.441,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.132,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 67,
+   "ts": 1794990582.442,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000001d",
+   "src": "10.0.0.137",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    19
+   ],
+   "switches": [
+    "s19"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.442,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.137,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 68,
+   "ts": 1794990582.443,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000001e",
+   "src": "10.0.0.173",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    23
+   ],
+   "switches": [
+    "s23"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.442,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.173,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 69,
+   "ts": 1794990582.443,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000001f",
+   "src": "10.0.0.177",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    23
+   ],
+   "switches": [
+    "s23"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.443,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.177,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 70,
+   "ts": 1794990582.444,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000020",
+   "src": "10.0.0.36",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    9
+   ],
+   "switches": [
+    "s9"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.444,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.36,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 71,
+   "ts": 1794990582.444,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000021",
+   "src": "10.0.0.37",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    9
+   ],
+   "switches": [
+    "s9"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.444,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.37,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 72,
+   "ts": 1794990582.445,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000022",
+   "src": "10.0.0.4",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    6
+   ],
+   "switches": [
+    "s6"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.445,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.4,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 73,
+   "ts": 1794990582.445,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000023",
+   "src": "10.0.0.47",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    10
+   ],
+   "switches": [
+    "s10"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.445,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.47,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 74,
+   "ts": 1794990582.446,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000024",
+   "src": "10.0.0.50",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    10
+   ],
+   "switches": [
+    "s10"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.446,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.50,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 75,
+   "ts": 1794990582.447,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000025",
+   "src": "10.0.0.84",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    14
+   ],
+   "switches": [
+    "s14"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.447,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.84,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 76,
+   "ts": 1794990582.448,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000026",
+   "src": "10.0.0.90",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    14
+   ],
+   "switches": [
+    "s14"
+   ],
+   "priority": 200,
+   "hard_timeout": 300,
+   "installed": 1794990582.448,
+   "age_s": 0.0,
+   "reason": "attributed_attacker",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=10.0.0.90,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 77,
+   "ts": 1794990582.449,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "SUSPECTED",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9908,
+   "attributed": [],
+   "features": {
+    "n_sources": 42.0,
+    "n_active_flows": 118.0,
+    "n_new_flows": 95.0,
+    "pps": 32.3374,
+    "bps": 29668.6605,
+    "avg_pkt_size": 114.6841,
+    "udp_share": 0.7387,
+    "tcp_share": 0.0058,
+    "icmp_share": 0.2555,
+    "response_ratio": 0.9971,
+    "top_source_share": 0.1266,
+    "ml_max_prob": 0.9081,
+    "ml_mean_prob": 0.6846,
+    "ml_flow_frac": 0.7627,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 78,
+   "ts": 1794990594.516,
+   "type": "spoofing_detected",
+   "switch": "s6",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 49,
+   "bound_ip": "10.0.0.1"
+  },
+  {
+   "seq": 79,
+   "ts": 1794990594.516,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000027",
+   "src": "spoof@s6-eth2",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    6
+   ],
+   "switches": [
+    "s6"
+   ],
+   "priority": 205,
+   "hard_timeout": 300,
+   "installed": 1794990594.516,
+   "age_s": 0.0,
+   "reason": "spoofed_source_port",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=spoof@s6-eth2,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 80,
+   "ts": 1794990594.516,
+   "type": "spoofing_detected",
+   "switch": "s6",
+   "port": 5,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 48,
+   "bound_ip": "10.0.0.4"
+  },
+  {
+   "seq": 81,
+   "ts": 1794990594.517,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000028",
+   "src": "spoof@s6-eth5",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    6
+   ],
+   "switches": [
+    "s6"
+   ],
+   "priority": 205,
+   "hard_timeout": 300,
+   "installed": 1794990594.517,
+   "age_s": 0.0,
+   "reason": "spoofed_source_port",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=spoof@s6-eth5,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 82,
+   "ts": 1794990594.517,
+   "type": "spoofing_detected",
+   "switch": "s7",
+   "port": 3,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 48,
+   "bound_ip": "10.0.0.12"
+  },
+  {
+   "seq": 83,
+   "ts": 1794990594.517,
+   "type": "rule_installed",
+   "cookie": "0xdd05000000000029",
+   "src": "spoof@s7-eth3",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    7
+   ],
+   "switches": [
+    "s7"
+   ],
+   "priority": 205,
+   "hard_timeout": 300,
+   "installed": 1794990594.517,
+   "age_s": 0.0,
+   "reason": "spoofed_source_port",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=spoof@s7-eth3,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 84,
+   "ts": 1794990594.518,
+   "type": "spoofing_detected",
+   "switch": "s7",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 48,
+   "bound_ip": "10.0.0.19"
+  },
+  {
+   "seq": 85,
+   "ts": 1794990594.518,
+   "type": "rule_installed",
+   "cookie": "0xdd0500000000002a",
+   "src": "spoof@s7-eth10",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "dpids": [
+    7
+   ],
+   "switches": [
+    "s7"
+   ],
+   "priority": 205,
+   "hard_timeout": 300,
+   "installed": 1794990594.518,
+   "age_s": 0.0,
+   "reason": "spoofed_source_port",
+   "score": 1.0,
+   "dropped_packets": 0,
+   "dropped_pps": 0.0,
+   "match": "eth_type=0x0800,ipv4_src=spoof@s7-eth10,ipv4_dst=10.0.0.200",
+   "action": "drop"
+  },
+  {
+   "seq": 86,
+   "ts": 1794990632.735,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "MITIGATING",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {
+    "n_sources": 1.0,
+    "n_active_flows": 1.0,
+    "n_new_flows": 1.0,
+    "pps": 0.0,
+    "bps": 0.0,
+    "avg_pkt_size": 0.0,
+    "udp_share": 0.0,
+    "tcp_share": 0.0,
+    "icmp_share": 0.0,
+    "response_ratio": 0.0,
+    "top_source_share": 0.0,
+    "ml_max_prob": 0.8859,
+    "ml_mean_prob": 0.8859,
+    "ml_flow_frac": 1.0,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 87,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000001",
+   "src": "10.0.0.61",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 56.6,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 88,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000002",
+   "src": "10.0.0.70",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 56.6,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 89,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000003",
+   "src": "10.0.0.12",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 54.54,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 90,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000004",
+   "src": "10.0.0.165",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 54.54,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 91,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000005",
+   "src": "10.0.0.166",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 54.54,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 92,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000006",
+   "src": "10.0.0.181",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 54.54,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 93,
+   "ts": 1794990632.736,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000007",
+   "src": "10.0.0.183",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 54.54,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 94,
+   "ts": 1794990632.737,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000008",
+   "src": "10.0.0.19",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 54.54,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 95,
+   "ts": 1794990632.737,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000009",
+   "src": "10.0.0.122",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 96,
+   "ts": 1794990632.737,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000000a",
+   "src": "10.0.0.125",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 97,
+   "ts": 1794990632.737,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000000b",
+   "src": "10.0.0.149",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 98,
+   "ts": 1794990632.737,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000000c",
+   "src": "10.0.0.150",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 99,
+   "ts": 1794990632.737,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000000d",
+   "src": "10.0.0.152",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 100,
+   "ts": 1794990632.738,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000000e",
+   "src": "10.0.0.157",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 101,
+   "ts": 1794990632.738,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000000f",
+   "src": "10.0.0.23",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 102,
+   "ts": 1794990632.738,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000010",
+   "src": "10.0.0.27",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 103,
+   "ts": 1794990632.738,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000011",
+   "src": "10.0.0.54",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 104,
+   "ts": 1794990632.738,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000012",
+   "src": "10.0.0.60",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 105,
+   "ts": 1794990632.739,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000013",
+   "src": "10.0.0.71",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 106,
+   "ts": 1794990632.739,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000014",
+   "src": "10.0.0.78",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 107,
+   "ts": 1794990632.739,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000015",
+   "src": "10.0.0.93",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 108,
+   "ts": 1794990632.739,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000016",
+   "src": "10.0.0.99",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 52.46,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 109,
+   "ts": 1794990632.739,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000017",
+   "src": "10.0.0.1",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 110,
+   "ts": 1794990632.739,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000018",
+   "src": "10.0.0.101",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 111,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000019",
+   "src": "10.0.0.102",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 112,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000001a",
+   "src": "10.0.0.113",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 113,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000001b",
+   "src": "10.0.0.117",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 114,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000001c",
+   "src": "10.0.0.132",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 115,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000001d",
+   "src": "10.0.0.137",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 116,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000001e",
+   "src": "10.0.0.173",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 117,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000001f",
+   "src": "10.0.0.177",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 118,
+   "ts": 1794990632.74,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000020",
+   "src": "10.0.0.36",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 119,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000021",
+   "src": "10.0.0.37",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 120,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000022",
+   "src": "10.0.0.4",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 121,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000023",
+   "src": "10.0.0.47",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.3,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 122,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000024",
+   "src": "10.0.0.50",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.29,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 123,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000025",
+   "src": "10.0.0.84",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.29,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 124,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000026",
+   "src": "10.0.0.90",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 50.29,
+   "dropped_packets": 0
+  },
+  {
+   "seq": 125,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000027",
+   "src": "spoof@s6-eth2",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 38.22,
+   "dropped_packets": 2056
+  },
+  {
+   "seq": 126,
+   "ts": 1794990632.741,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000028",
+   "src": "spoof@s6-eth5",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 38.22,
+   "dropped_packets": 2058
+  },
+  {
+   "seq": 127,
+   "ts": 1794990632.742,
+   "type": "rule_removed",
+   "cookie": "0xdd05000000000029",
+   "src": "spoof@s7-eth3",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 38.22,
+   "dropped_packets": 2054
+  },
+  {
+   "seq": 128,
+   "ts": 1794990632.742,
+   "type": "rule_removed",
+   "cookie": "0xdd0500000000002a",
+   "src": "spoof@s7-eth10",
+   "dst": "10.0.0.200",
+   "proto": 0,
+   "proto_name": "ANY",
+   "reason": "recovered",
+   "age_s": 38.22,
+   "dropped_packets": 2061
+  },
+  {
+   "seq": 129,
+   "ts": 1794990632.742,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {
+    "n_sources": 1.0,
+    "n_active_flows": 1.0,
+    "n_new_flows": 0.0,
+    "pps": 0.4925,
+    "bps": 212.7649,
+    "avg_pkt_size": 54.0,
+    "udp_share": 0.0,
+    "tcp_share": 1.0,
+    "icmp_share": 0.0,
+    "response_ratio": 1.3704,
+    "top_source_share": 1.0,
+    "ml_max_prob": 0.0019,
+    "ml_mean_prob": 0.0019,
+    "ml_flow_frac": 0.0,
+    "ml_pps_share": 0.0
+   },
+   "mode": "MITIGATION_ENABLED"
+  },
+  {
+   "seq": 130,
+   "ts": 1794990634.227,
+   "type": "switch_disconnected",
+   "dpid": 19,
+   "n_switches": 24
+  },
+  {
+   "seq": 131,
+   "ts": 1794990634.299,
+   "type": "switch_disconnected",
+   "dpid": 1,
+   "n_switches": 23
+  },
+  {
+   "seq": 132,
+   "ts": 1794990634.366,
+   "type": "switch_disconnected",
+   "dpid": 6,
+   "n_switches": 22
+  },
+  {
+   "seq": 133,
+   "ts": 1794990634.418,
+   "type": "switch_disconnected",
+   "dpid": 14,
+   "n_switches": 21
+  },
+  {
+   "seq": 134,
+   "ts": 1794990634.494,
+   "type": "switch_disconnected",
+   "dpid": 10,
+   "n_switches": 20
+  },
+  {
+   "seq": 135,
+   "ts": 1794990634.554,
+   "type": "switch_disconnected",
+   "dpid": 3,
+   "n_switches": 19
+  },
+  {
+   "seq": 136,
+   "ts": 1794990634.601,
+   "type": "switch_disconnected",
+   "dpid": 13,
+   "n_switches": 18
+  },
+  {
+   "seq": 137,
+   "ts": 1794990634.654,
+   "type": "switch_disconnected",
+   "dpid": 8,
+   "n_switches": 17
+  },
+  {
+   "seq": 138,
+   "ts": 1794990634.701,
+   "type": "switch_disconnected",
+   "dpid": 15,
+   "n_switches": 16
+  },
+  {
+   "seq": 139,
+   "ts": 1794990634.761,
+   "type": "switch_disconnected",
+   "dpid": 7,
+   "n_switches": 15
+  },
+  {
+   "seq": 140,
+   "ts": 1794990634.825,
+   "type": "switch_disconnected",
+   "dpid": 4,
+   "n_switches": 14
+  },
+  {
+   "seq": 141,
+   "ts": 1794990634.881,
+   "type": "switch_disconnected",
+   "dpid": 23,
+   "n_switches": 13
+  },
+  {
+   "seq": 142,
+   "ts": 1794990634.933,
+   "type": "switch_disconnected",
+   "dpid": 20,
+   "n_switches": 12
+  },
+  {
+   "seq": 143,
+   "ts": 1794990634.988,
+   "type": "switch_disconnected",
+   "dpid": 5,
+   "n_switches": 11
+  },
+  {
+   "seq": 144,
+   "ts": 1794990635.041,
+   "type": "switch_disconnected",
+   "dpid": 12,
+   "n_switches": 10
+  },
+  {
+   "seq": 145,
+   "ts": 1794990635.093,
+   "type": "switch_disconnected",
+   "dpid": 22,
+   "n_switches": 9
+  },
+  {
+   "seq": 146,
+   "ts": 1794990635.166,
+   "type": "switch_disconnected",
+   "dpid": 17,
+   "n_switches": 8
+  },
+  {
+   "seq": 147,
+   "ts": 1794990635.237,
+   "type": "switch_disconnected",
+   "dpid": 18,
+   "n_switches": 7
+  },
+  {
+   "seq": 148,
+   "ts": 1794990635.297,
+   "type": "switch_disconnected",
+   "dpid": 2,
+   "n_switches": 6
+  },
+  {
+   "seq": 149,
+   "ts": 1794990635.373,
+   "type": "switch_disconnected",
+   "dpid": 11,
+   "n_switches": 5
+  },
+  {
+   "seq": 150,
+   "ts": 1794990635.429,
+   "type": "switch_disconnected",
+   "dpid": 16,
+   "n_switches": 4
+  },
+  {
+   "seq": 151,
+   "ts": 1794990635.485,
+   "type": "switch_disconnected",
+   "dpid": 9,
+   "n_switches": 3
+  },
+  {
+   "seq": 152,
+   "ts": 1794990635.533,
+   "type": "switch_disconnected",
+   "dpid": 24,
+   "n_switches": 2
+  },
+  {
+   "seq": 153,
+   "ts": 1794990635.589,
+   "type": "switch_disconnected",
+   "dpid": 21,
+   "n_switches": 1
+  },
+  {
+   "seq": 154,
+   "ts": 1794990635.679,
+   "type": "switch_disconnected",
+   "dpid": 25,
+   "n_switches": 0
+  }
+ ]
+}

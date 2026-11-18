@@ -21,6 +21,10 @@ class SimpleSwitch13(app_manager.RyuApp):
     # Forwarding-rule timeouts (seconds). Defaults preserve the original 20/100 behaviour.
     FLOW_IDLE_TIMEOUT = int(os.environ.get("DDOS_FLOW_IDLE_TIMEOUT", "20"))
     FLOW_HARD_TIMEOUT = int(os.environ.get("DDOS_FLOW_HARD_TIMEOUT", "100"))
+    # "5tuple" (default, original behaviour) or "pair": one forwarding entry per
+    # (ipv4_src, ipv4_dst, ip_proto). "pair" removes the per-connection packet-in cost,
+    # which is what limits a single Python controller in the 200-host testbed.
+    FLOW_GRANULARITY = os.environ.get("DDOS_FLOW_GRANULARITY", "5tuple")
 
     def __init__(self, *args, **kwargs):
         super(SimpleSwitch13, self).__init__(*args, **kwargs)
@@ -104,7 +108,10 @@ class SimpleSwitch13(app_manager.RyuApp):
                     dstip = ip.dst
                     protocol = ip.proto
 
-                    if protocol == in_proto.IPPROTO_ICMP:
+                    if self.FLOW_GRANULARITY == "pair":
+                        match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_IP, ipv4_src=srcip,
+                                                ipv4_dst=dstip, ip_proto=protocol)
+                    elif protocol == in_proto.IPPROTO_ICMP:
                         t = pkt.get_protocol(icmp.icmp)
                         if t is not None:
                             match = parser.OFPMatch(eth_type=ether_types.ETH_TYPE_IP,

@@ -1,0 +1,19 @@
+# 2026-11-13 11:13:30  STEP 2 - legitimate traffic only (h7 TCP, h8 UDP, h9 HTTP, h13 ping)
+mininet> h7 iperf3 -c 10.0.0.18 -p 5202 -b 10M -t 115 -i 5 --forceflush &
+mininet> h8 iperf3 -u -c 10.0.0.18 -p 5203 -b 2M -l 1000 -t 115 -i 5 --forceflush &
+mininet> h13 ping -D -i 0.5 -c 230 10.0.0.18 &
+mininet> h9 for i in $(seq 1 110); do echo "$(date +%s.%N) $(curl -s -o /dev/null -m 2 -w '%{http_code} %{time_total}' http://10.0.0.18/)"; sleep 1; done &
+
+# 2026-11-13 11:13:54  after 24 s of normal traffic
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=11  ML-API=ok  rules=0
+  10.0.0.1     NORMAL TRAFFIC
+  10.0.0.13    NORMAL TRAFFIC
+  10.0.0.18    NORMAL TRAFFIC
+  10.0.0.7     NORMAL TRAFFIC
+  10.0.0.8     NORMAL TRAFFIC
+  10.0.0.9     NORMAL TRAFFIC
+
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py list
+mode=MITIGATION_ENABLED  active mitigation rules=0
+

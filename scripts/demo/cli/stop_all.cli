@@ -1,0 +1,3 @@
+sh pkill hping3
+sh pkill -f "iperf3 -c"
+sh pkill -f "ping -i 0.5"

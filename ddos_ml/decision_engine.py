@@ -147,6 +147,13 @@ class DecisionEngine:
         corroboration_ml_prob: float = 0.5,
         corroboration_new_flows: float = 10.0,
         min_source_pps_strict: bool = False,
+        fast_confirm_score: Optional[float] = None,
+        offender_memory_seconds: float = 0.0,
+        recovery_backoff: bool = False,
+        max_backoff_exponent: int = 3,
+        baseline_factor: Optional[float] = None,
+        new_source_corroborates: bool = False,
+        source_confirm_windows: int = 1,
     ):
         self.window_scorer = window_scorer
         self.source_scorer = source_scorer
@@ -178,7 +185,61 @@ class DecisionEngine:
         self.rate_requires_corroboration = bool(rate_requires_corroboration)
         self.corroboration_ml_prob = float(corroboration_ml_prob)
         self.corroboration_new_flows = float(corroboration_new_flows)
+        # Latency: a single window whose score is at least this is confirmed at once
+        # (k-of-n still applies to scores between threshold and this value). None = off.
+        self.fast_confirm_score = None if fast_confirm_score is None else float(fast_confirm_score)
+        # Re-attack / pulsing: sources blocked at a destination are remembered for this long.
+        # If one of them reappears while the destination is over threshold, the destination is
+        # confirmed in that window (no k-of-n wait). 0 disables.
+        self.offender_memory = float(offender_memory_seconds)
+        # Each further attack episode on a destination doubles the quiet windows needed
+        # before its rules are removed (capped at 2**max_backoff_exponent).
+        self.recovery_backoff = bool(recovery_backoff)
+        self.max_backoff_exponent = int(max_backoff_exponent)
+        self.offenders: Dict[str, Dict[str, float]] = {}
+        self.episodes: Dict[str, int] = {}
+        # Baseline-aware attribution: per (source, destination) EWMA of the rate, learned ONLY in
+        # windows where the destination is NORMAL and under threshold. At a confirmed victim, a
+        # source that already sent at a similar rate before the attack (a video stream, a bulk
+        # transfer) is attributed only if its rate rose by at least this factor. None = off.
+        self.baseline_factor = None if baseline_factor is None else float(baseline_factor)
+        self.src_baseline: Dict[Tuple[str, str], float] = {}
+        # A source never seen sending to d in normal windows that appears at >= the rate threshold
+        # during a confirmed attack counts as corroborated (ICMP / fixed-port floods give no flow
+        # churn and the flow model does not flag ICMP). Known steady clients are excluded.
+        self.new_source_corroborates = bool(new_source_corroborates)
+        self.source_confirm_windows = max(int(source_confirm_windows), 1)
+        self.src_hits: Dict[Tuple[str, str], int] = {}
         self.states: Dict[str, DestinationState] = {}
+
+    def _learn_baseline(self, dst: str, src_feats: Dict[Tuple[str, str], dict]) -> None:
+        for (s, d), f in src_feats.items():
+            if d == dst:
+                prev = self.src_baseline.get((s, d))
+                v = float(f.get("src_pps", 0.0))
+                # peak-hold with slow decay (half-life ~23 windows): a stall caused by congestion
+                # does not erase what the source normally sends
+                self.src_baseline[(s, d)] = v if prev is None else max(v, 0.97 * prev)
+
+    def above_baseline(self, src: str, dst: str, feats: dict) -> bool:
+        if self.baseline_factor is None:
+            return True
+        base = self.src_baseline.get((src, dst), 0.0)
+        return base <= 0.0 or feats.get("src_pps", 0.0) >= self.baseline_factor * base
+
+    def repeat_offenders(self, dst: str, src_feats: Dict[Tuple[str, str], dict], ts: float) -> List[str]:
+        if self.offender_memory <= 0:
+            return []
+        known = self.offenders.get(dst, {})
+        return sorted(s for (s, d), f in src_feats.items()
+                      if d == dst and s in known and ts - known[s] <= self.offender_memory
+                      and f.get("src_pps", 0.0) >= self.min_source_pps)
+
+    def recovery_needed(self, dst: str) -> int:
+        if not self.recovery_backoff:
+            return self.recovery_windows
+        e = max(self.episodes.get(dst, 1) - 1, 0)
+        return self.recovery_windows * (2 ** min(e, self.max_backoff_exponent))
 
     def _rate_corroborated(self, feats: dict) -> bool:
         if not self.rate_requires_corroboration:
@@ -195,17 +256,34 @@ class DecisionEngine:
             if feats.get("src_pps", 0.0) < self.min_source_pps and (
                     self.min_source_pps_strict or feats.get("src_new_flows", 0.0) < 1):
                 continue  # not a material contributor to the load on this destination
+            if not self.above_baseline(src, dst, feats):
+                continue  # was already sending like this before the attack: not an attacker
             if self.source_scorer is None:
                 s = 1.0 if feats.get("src_share", 0.0) >= 0.5 / max(len(src_feats), 1) else 0.0
                 thr = 0.5
             else:
                 s = self.source_scorer.score(feats)
                 thr = self.source_scorer.threshold
+            new_heavy = (self.baseline_factor is not None and self.new_source_corroborates
+                         and (src, dst) not in self.src_baseline)
             rate_hit = (self.source_min_attribute_pps is not None
                         and feats.get("src_pps", 0.0) >= self.source_min_attribute_pps
-                        and self._rate_corroborated(feats))
+                        and (self._rate_corroborated(feats) or new_heavy))
             if s >= thr or rate_hit:
                 scored[src] = max(s, 1.0 if rate_hit else s)
+        if self.source_confirm_windows > 1:
+            # Persistence: a source must qualify in consecutive windows (counter artefacts and
+            # short bursts of legitimate senders last one window; floods do not). Known repeat
+            # offenders at this destination are exempt (re-blocked at once).
+            known = self.offenders.get(dst, {})
+            for (s_, d_) in [k for k in self.src_hits if k[1] == dst and k[0] not in scored]:
+                del self.src_hits[(s_, d_)]
+            confirmed = {}
+            for src, sc in scored.items():
+                self.src_hits[(src, dst)] = self.src_hits.get((src, dst), 0) + 1
+                if self.src_hits[(src, dst)] >= self.source_confirm_windows or src in known:
+                    confirmed[src] = sc
+            scored = confirmed
         top = sorted(scored.items(), key=lambda kv: -kv[1])[: self.max_sources]
         return dict(top)
 
@@ -234,8 +312,16 @@ class DecisionEngine:
             actions: List[str] = []
             attributed: Dict[str, float] = {}
 
+            fast = self.fast_confirm_score is not None and score >= self.fast_confirm_score
+            repeat = self.repeat_offenders(dst, src_feats, ts) if over and st.state not in (
+                CONFIRMED, MITIGATING) else []
+            if dropped >= self.drop_rate_threshold and dst in self.offenders:
+                for s in self.offenders[dst]:  # still sending into the drop rule: keep remembering
+                    self.offenders[dst][s] = ts
+            if self.baseline_factor is not None and st.state == NORMAL and not over and feats:
+                self._learn_baseline(dst, src_feats)
             if st.state in (NORMAL, SUSPECTED):
-                if sum(recent) >= self.k:
+                if sum(recent) >= self.k or (over and (fast or repeat)):
                     st.state = CONFIRMED
                 elif over:
                     st.state = SUSPECTED
@@ -251,7 +337,7 @@ class DecisionEngine:
                         st.history.clear()
             elif st.state in (CONFIRMED, MITIGATING):
                 st.quiet_windows = 0 if over else st.quiet_windows + 1
-                if st.quiet_windows >= self.recovery_windows:
+                if st.quiet_windows >= self.recovery_needed(dst):
                     if st.state == MITIGATING or st.attributed:
                         actions.append("rollback")
                     st.state = RECOVERING
@@ -266,7 +352,12 @@ class DecisionEngine:
                     if self.mitigation_enabled:
                         actions.append("block" if not self.dry_run else "block_dry_run")
                         if not self.dry_run:
+                            if prev_state != MITIGATING:
+                                self.episodes[dst] = self.episodes.get(dst, 0) + 1
                             st.state = MITIGATING
+                        mem = self.offenders.setdefault(dst, {})
+                        for s in attributed:
+                            mem[s] = ts
             if st.state != prev_state:
                 st.since = ts
             evidence = {}
@@ -323,4 +414,11 @@ class DecisionEngine:
             corroboration_ml_prob=det.get("corroboration_ml_prob", 0.5),
             corroboration_new_flows=det.get("corroboration_new_flows", 10.0),
             min_source_pps_strict=bool(det.get("min_source_pps_strict", False)),
+            fast_confirm_score=det.get("fast_confirm_score"),
+            offender_memory_seconds=float(det.get("offender_memory_seconds", 0.0) or 0.0),
+            recovery_backoff=bool(det.get("recovery_backoff", False)),
+            max_backoff_exponent=int(det.get("max_backoff_exponent", 3)),
+            baseline_factor=det.get("attribution_baseline_factor"),
+            new_source_corroborates=bool(det.get("new_source_corroborates", False)),
+            source_confirm_windows=int(det.get("source_confirm_windows", 1)),
         )

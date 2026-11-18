@@ -1,0 +1,2019 @@
+{
+ "last_seq": 192,
+ "events": [
+  {
+   "seq": 1,
+   "ts": 1794991051.543,
+   "type": "start",
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 2,
+   "ts": 1794991070.078,
+   "type": "switch_connected",
+   "dpid": 19,
+   "n_switches": 1
+  },
+  {
+   "seq": 3,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 3,
+   "n_switches": 2
+  },
+  {
+   "seq": 4,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 15,
+   "n_switches": 3
+  },
+  {
+   "seq": 5,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 13,
+   "n_switches": 4
+  },
+  {
+   "seq": 6,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 23,
+   "n_switches": 5
+  },
+  {
+   "seq": 7,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 5,
+   "n_switches": 6
+  },
+  {
+   "seq": 8,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 17,
+   "n_switches": 7
+  },
+  {
+   "seq": 9,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 10,
+   "n_switches": 8
+  },
+  {
+   "seq": 10,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 8,
+   "n_switches": 9
+  },
+  {
+   "seq": 11,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 18,
+   "n_switches": 10
+  },
+  {
+   "seq": 12,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 7,
+   "n_switches": 11
+  },
+  {
+   "seq": 13,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 14,
+   "n_switches": 12
+  },
+  {
+   "seq": 14,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 12,
+   "n_switches": 13
+  },
+  {
+   "seq": 15,
+   "ts": 1794991070.089,
+   "type": "switch_connected",
+   "dpid": 22,
+   "n_switches": 14
+  },
+  {
+   "seq": 16,
+   "ts": 1794991070.09,
+   "type": "switch_connected",
+   "dpid": 1,
+   "n_switches": 15
+  },
+  {
+   "seq": 17,
+   "ts": 1794991070.09,
+   "type": "switch_connected",
+   "dpid": 6,
+   "n_switches": 16
+  },
+  {
+   "seq": 18,
+   "ts": 1794991070.09,
+   "type": "switch_connected",
+   "dpid": 20,
+   "n_switches": 17
+  },
+  {
+   "seq": 19,
+   "ts": 1794991070.09,
+   "type": "switch_connected",
+   "dpid": 4,
+   "n_switches": 18
+  },
+  {
+   "seq": 20,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 25,
+   "n_switches": 19
+  },
+  {
+   "seq": 21,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 11,
+   "n_switches": 20
+  },
+  {
+   "seq": 22,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 9,
+   "n_switches": 21
+  },
+  {
+   "seq": 23,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 2,
+   "n_switches": 22
+  },
+  {
+   "seq": 24,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 16,
+   "n_switches": 23
+  },
+  {
+   "seq": 25,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 21,
+   "n_switches": 24
+  },
+  {
+   "seq": 26,
+   "ts": 1794991070.092,
+   "type": "switch_connected",
+   "dpid": 24,
+   "n_switches": 25
+  },
+  {
+   "seq": 27,
+   "ts": 1794991097.777,
+   "type": "ml_api_ok"
+  },
+  {
+   "seq": 28,
+   "ts": 1794991099.876,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "NORMAL",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9995,
+   "attributed": [],
+   "features": {
+    "n_sources": 90.0,
+    "n_active_flows": 90.0,
+    "n_new_flows": 90.0,
+    "pps": 2.8505,
+    "bps": 2234.793,
+    "avg_pkt_size": 98.0,
+    "udp_share": 0.0,
+    "tcp_share": 0.0,
+    "icmp_share": 1.0,
+    "response_ratio": 0.8333,
+    "top_source_share": 0.1667,
+    "ml_max_prob": 0.0234,
+    "ml_mean_prob": 0.0042,
+    "ml_flow_frac": 0.0,
+    "ml_pps_share": 0.0
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 29,
+   "ts": 1794991108.102,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "NORMAL",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9803,
+   "attributed": [],
+   "features": {
+    "n_sources": 17.0,
+    "n_active_flows": 17.0,
+    "n_new_flows": 17.0,
+    "pps": 299.9702,
+    "bps": 3012391.2486,
+    "avg_pkt_size": 1255.2877,
+    "udp_share": 0.4277,
+    "tcp_share": 0.5597,
+    "icmp_share": 0.0126,
+    "response_ratio": 0.0454,
+    "top_source_share": 0.3239,
+    "ml_max_prob": 0.9977,
+    "ml_mean_prob": 0.2249,
+    "ml_flow_frac": 0.2353,
+    "ml_pps_share": 0.4041
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 30,
+   "ts": 1794991332.679,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.2375,
+   "attributed": [],
+   "features": {
+    "n_sources": 12.0,
+    "n_active_flows": 12.0,
+    "n_new_flows": 0.0,
+    "pps": 196.2498,
+    "bps": 1045512.4826,
+    "avg_pkt_size": 665.9321,
+    "udp_share": 0.5513,
+    "tcp_share": 0.4389,
+    "icmp_share": 0.0098,
+    "response_ratio": 0.8916,
+    "top_source_share": 0.5053,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.0847,
+    "ml_flow_frac": 0.0833,
+    "ml_pps_share": 0.5053
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 31,
+   "ts": 1794991337.734,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9987,
+   "attributed": [],
+   "features": {
+    "n_sources": 23.0,
+    "n_active_flows": 23.0,
+    "n_new_flows": 0.0,
+    "pps": 772.7452,
+    "bps": 8026240.9022,
+    "avg_pkt_size": 1298.3324,
+    "udp_share": 0.2968,
+    "tcp_share": 0.7025,
+    "icmp_share": 0.0006,
+    "response_ratio": 0.0511,
+    "top_source_share": 0.2216,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.1312,
+    "ml_flow_frac": 0.1304,
+    "ml_pps_share": 0.2837
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 32,
+   "ts": 1794991401.729,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 33,
+   "ts": 1794991401.729,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 34,
+   "ts": 1794991408.851,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9795,
+   "attributed": [],
+   "features": {
+    "n_sources": 13.0,
+    "n_active_flows": 13.0,
+    "n_new_flows": 0.0,
+    "pps": 654.2965,
+    "bps": 6709305.9026,
+    "avg_pkt_size": 1281.7786,
+    "udp_share": 0.1724,
+    "tcp_share": 0.8276,
+    "icmp_share": 0.0,
+    "response_ratio": 0.0873,
+    "top_source_share": 0.2571,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.0787,
+    "ml_flow_frac": 0.0769,
+    "ml_pps_share": 0.1445
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 35,
+   "ts": 1794991408.853,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 1.0,
+   "attributed": [],
+   "features": {
+    "n_sources": 25.0,
+    "n_active_flows": 25.0,
+    "n_new_flows": 8.0,
+    "pps": 1958.5039,
+    "bps": 12847548.0518,
+    "avg_pkt_size": 819.9848,
+    "udp_share": 0.0539,
+    "tcp_share": 0.2175,
+    "icmp_share": 0.7286,
+    "response_ratio": 0.0694,
+    "top_source_share": 0.1012,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.0418,
+    "ml_flow_frac": 0.04,
+    "ml_pps_share": 0.0483
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 36,
+   "ts": 1794991419.369,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.2012,
+   "attributed": [],
+   "features": {
+    "n_sources": 21.0,
+    "n_active_flows": 21.0,
+    "n_new_flows": 6.0,
+    "pps": 10.2573,
+    "bps": 89547.9533,
+    "avg_pkt_size": 1091.2724,
+    "udp_share": 0.9377,
+    "tcp_share": 0.0545,
+    "icmp_share": 0.0078,
+    "response_ratio": 0.0098,
+    "top_source_share": 0.8677,
+    "ml_max_prob": 0.9977,
+    "ml_mean_prob": 0.0552,
+    "ml_flow_frac": 0.0476,
+    "ml_pps_share": 0.8677
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 37,
+   "ts": 1794991421.588,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9863,
+   "attributed": [
+    "10.0.0.162"
+   ],
+   "features": {
+    "n_sources": 28.0,
+    "n_active_flows": 28.0,
+    "n_new_flows": 6.0,
+    "pps": 118.984,
+    "bps": 1130530.4848,
+    "avg_pkt_size": 1187.6921,
+    "udp_share": 0.9722,
+    "tcp_share": 0.0223,
+    "icmp_share": 0.0056,
+    "response_ratio": 0.0,
+    "top_source_share": 0.7621,
+    "ml_max_prob": 0.9977,
+    "ml_mean_prob": 0.0742,
+    "ml_flow_frac": 0.0714,
+    "ml_pps_share": 0.9475
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 38,
+   "ts": 1794991552.898,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.5139,
+   "attributed": [],
+   "features": {
+    "n_sources": 13.0,
+    "n_active_flows": 13.0,
+    "n_new_flows": 0.0,
+    "pps": 83.5118,
+    "bps": 464603.1279,
+    "avg_pkt_size": 695.4155,
+    "udp_share": 0.3699,
+    "tcp_share": 0.6005,
+    "icmp_share": 0.0296,
+    "response_ratio": 0.7888,
+    "top_source_share": 0.2552,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.0784,
+    "ml_flow_frac": 0.0769,
+    "ml_pps_share": 0.2552
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 39,
+   "ts": 1794991554.941,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 1.0,
+   "attributed": [],
+   "features": {
+    "n_sources": 44.0,
+    "n_active_flows": 44.0,
+    "n_new_flows": 0.0,
+    "pps": 1021.3983,
+    "bps": 9532757.1194,
+    "avg_pkt_size": 1166.6308,
+    "udp_share": 0.4206,
+    "tcp_share": 0.5732,
+    "icmp_share": 0.0062,
+    "response_ratio": 0.1116,
+    "top_source_share": 0.1632,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.1147,
+    "ml_flow_frac": 0.1136,
+    "ml_pps_share": 0.3888
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 40,
+   "ts": 1794991646.183,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 438,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 41,
+   "ts": 1794991646.183,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 441,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 42,
+   "ts": 1794991646.183,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 448,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 43,
+   "ts": 1794991646.183,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 219,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 44,
+   "ts": 1794991648.172,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 238,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 45,
+   "ts": 1794991648.172,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 238,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 46,
+   "ts": 1794991648.172,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 238,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 47,
+   "ts": 1794991648.173,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 133,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 48,
+   "ts": 1794991650.353,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 287,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 49,
+   "ts": 1794991650.353,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 287,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 50,
+   "ts": 1794991650.353,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 287,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 51,
+   "ts": 1794991650.354,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 153,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 52,
+   "ts": 1794991652.298,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 198,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 53,
+   "ts": 1794991652.298,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 197,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 54,
+   "ts": 1794991652.298,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 197,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 55,
+   "ts": 1794991652.298,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 105,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 56,
+   "ts": 1794991654.359,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 189,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 57,
+   "ts": 1794991654.36,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 189,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 58,
+   "ts": 1794991654.36,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 191,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 59,
+   "ts": 1794991654.36,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 102,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 60,
+   "ts": 1794991656.624,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 61,
+   "ts": 1794991656.624,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 167,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 62,
+   "ts": 1794991656.624,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 173,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 63,
+   "ts": 1794991656.624,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 90,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 64,
+   "ts": 1794991658.767,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 141,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 65,
+   "ts": 1794991658.767,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 140,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 66,
+   "ts": 1794991658.767,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 143,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 67,
+   "ts": 1794991658.767,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 68,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 68,
+   "ts": 1794991660.619,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 106,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 69,
+   "ts": 1794991660.619,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 111,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 70,
+   "ts": 1794991660.619,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 110,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 71,
+   "ts": 1794991660.619,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 48,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 72,
+   "ts": 1794991662.67,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 73,
+   "ts": 1794991662.67,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 74,
+   "ts": 1794991662.67,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 75,
+   "ts": 1794991662.671,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 107,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 76,
+   "ts": 1794991664.989,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 108,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 77,
+   "ts": 1794991664.989,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 108,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 78,
+   "ts": 1794991664.989,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 108,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 79,
+   "ts": 1794991664.989,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 73,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 80,
+   "ts": 1794991666.953,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 192,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 81,
+   "ts": 1794991666.953,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 191,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 82,
+   "ts": 1794991666.953,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 187,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 83,
+   "ts": 1794991666.953,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 98,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 84,
+   "ts": 1794991668.94,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 132,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 85,
+   "ts": 1794991668.94,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 132,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 86,
+   "ts": 1794991668.94,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 135,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 87,
+   "ts": 1794991668.94,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 59,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 88,
+   "ts": 1794991671.02,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 159,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 89,
+   "ts": 1794991671.02,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 160,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 90,
+   "ts": 1794991671.02,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 157,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 91,
+   "ts": 1794991671.02,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 84,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 92,
+   "ts": 1794991672.95,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 156,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 93,
+   "ts": 1794991672.95,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 156,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 94,
+   "ts": 1794991672.95,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 159,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 95,
+   "ts": 1794991672.95,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 97,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 96,
+   "ts": 1794991675.199,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 176,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 97,
+   "ts": 1794991675.199,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 98,
+   "ts": 1794991675.199,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 172,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 99,
+   "ts": 1794991675.2,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 111,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 100,
+   "ts": 1794991677.404,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 172,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 101,
+   "ts": 1794991677.404,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 172,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 102,
+   "ts": 1794991677.404,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 103,
+   "ts": 1794991677.404,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 102,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 104,
+   "ts": 1794991679.301,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 199,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 105,
+   "ts": 1794991679.301,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 199,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 106,
+   "ts": 1794991679.301,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 197,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 107,
+   "ts": 1794991679.301,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 130,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 108,
+   "ts": 1794991681.377,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 132,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 109,
+   "ts": 1794991681.377,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 132,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 110,
+   "ts": 1794991681.377,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 135,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 111,
+   "ts": 1794991681.377,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 85,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 112,
+   "ts": 1794991683.753,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 255,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 113,
+   "ts": 1794991683.753,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 252,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 114,
+   "ts": 1794991683.753,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 252,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 115,
+   "ts": 1794991683.753,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 155,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 116,
+   "ts": 1794991685.84,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 138,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 117,
+   "ts": 1794991685.84,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 141,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 118,
+   "ts": 1794991685.84,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 143,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 119,
+   "ts": 1794991685.84,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 109,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 120,
+   "ts": 1794991687.874,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 191,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 121,
+   "ts": 1794991687.874,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 192,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 122,
+   "ts": 1794991687.874,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 189,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 123,
+   "ts": 1794991687.874,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 143,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 124,
+   "ts": 1794991689.975,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 174,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 125,
+   "ts": 1794991689.975,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 173,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 126,
+   "ts": 1794991689.975,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 170,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 127,
+   "ts": 1794991689.975,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 103,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 128,
+   "ts": 1794991692.162,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 157,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 129,
+   "ts": 1794991692.162,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 158,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 130,
+   "ts": 1794991692.162,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 156,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 131,
+   "ts": 1794991692.162,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 107,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 132,
+   "ts": 1794991694.155,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 157,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 133,
+   "ts": 1794991694.155,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 150,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 134,
+   "ts": 1794991694.155,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 159,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 135,
+   "ts": 1794991694.155,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 88,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 136,
+   "ts": 1794991696.126,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 175,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 137,
+   "ts": 1794991696.126,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 174,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 138,
+   "ts": 1794991696.126,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 173,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 139,
+   "ts": 1794991696.126,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 120,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 140,
+   "ts": 1794991698.188,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 198,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 141,
+   "ts": 1794991698.188,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 197,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 142,
+   "ts": 1794991698.188,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 197,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 143,
+   "ts": 1794991698.189,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 159,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 144,
+   "ts": 1794991701.596,
+   "type": "spoofing_detected",
+   "switch": "s8",
+   "port": 4,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 92,
+   "bound_ip": "10.0.0.23"
+  },
+  {
+   "seq": 145,
+   "ts": 1794991701.596,
+   "type": "spoofing_detected",
+   "switch": "s10",
+   "port": 11,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 94,
+   "bound_ip": "10.0.0.50"
+  },
+  {
+   "seq": 146,
+   "ts": 1794991701.596,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 103,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 147,
+   "ts": 1794991701.597,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 65,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 148,
+   "ts": 1794991705.778,
+   "type": "spoofing_detected",
+   "switch": "s20",
+   "port": 10,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 125,
+   "bound_ip": "10.0.0.149"
+  },
+  {
+   "seq": 149,
+   "ts": 1794991705.778,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 71,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 150,
+   "ts": 1794991708.015,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 122,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 151,
+   "ts": 1794991709.87,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 157,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 152,
+   "ts": 1794991712.052,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 207,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 153,
+   "ts": 1794991714.445,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 79,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 154,
+   "ts": 1794991716.185,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 34,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 155,
+   "ts": 1794991718.25,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 45,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 156,
+   "ts": 1794991720.292,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 157,
+   "ts": 1794991720.292,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 158,
+   "ts": 1794991720.292,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 27,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 159,
+   "ts": 1794991723.303,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9999,
+   "attributed": [
+    "10.0.0.173",
+    "10.0.0.177"
+   ],
+   "features": {
+    "n_sources": 26.0,
+    "n_active_flows": 26.0,
+    "n_new_flows": 8.0,
+    "pps": 2123.4656,
+    "bps": 5746890.1259,
+    "avg_pkt_size": 338.2966,
+    "udp_share": 0.3029,
+    "tcp_share": 0.6954,
+    "icmp_share": 0.0016,
+    "response_ratio": 0.1057,
+    "top_source_share": 0.1225,
+    "ml_max_prob": 0.9994,
+    "ml_mean_prob": 0.1525,
+    "ml_flow_frac": 0.1538,
+    "ml_pps_share": 0.3019
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 160,
+   "ts": 1794991723.304,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 47,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 161,
+   "ts": 1794991725.357,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "RECOVERING",
+   "state": "CONFIRMED",
+   "label": "ATTACK CONFIRMED",
+   "score": 0.9061,
+   "attributed": [
+    "10.0.0.182"
+   ],
+   "features": {
+    "n_sources": 14.0,
+    "n_active_flows": 14.0,
+    "n_new_flows": 1.0,
+    "pps": 229.536,
+    "bps": 2211215.1797,
+    "avg_pkt_size": 1204.1765,
+    "udp_share": 0.9708,
+    "tcp_share": 0.0115,
+    "icmp_share": 0.0178,
+    "response_ratio": 0.0039,
+    "top_source_share": 0.436,
+    "ml_max_prob": 0.9923,
+    "ml_mean_prob": 0.2139,
+    "ml_flow_frac": 0.2143,
+    "ml_pps_share": 0.9671
+   },
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 162,
+   "ts": 1794991725.358,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 31,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 163,
+   "ts": 1794991727.52,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 44,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 164,
+   "ts": 1794991729.802,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 54,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 165,
+   "ts": 1794991731.834,
+   "type": "spoofing_detected",
+   "switch": "s25",
+   "port": 2,
+   "dst": "10.0.0.200",
+   "spoofed_packet_ins": 65,
+   "bound_ip": "10.0.0.191"
+  },
+  {
+   "seq": 166,
+   "ts": 1794991850.533,
+   "type": "state",
+   "dst": "10.0.0.200",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 167,
+   "ts": 1794991850.533,
+   "type": "state",
+   "dst": "10.0.0.199",
+   "previous": "CONFIRMED",
+   "state": "RECOVERING",
+   "label": "RECOVERING",
+   "score": 0.0,
+   "attributed": [],
+   "features": {},
+   "mode": "DETECTION_ONLY"
+  },
+  {
+   "seq": 168,
+   "ts": 1794991852.813,
+   "type": "switch_disconnected",
+   "dpid": 19,
+   "n_switches": 24
+  },
+  {
+   "seq": 169,
+   "ts": 1794991852.929,
+   "type": "switch_disconnected",
+   "dpid": 6,
+   "n_switches": 23
+  },
+  {
+   "seq": 170,
+   "ts": 1794991852.979,
+   "type": "switch_disconnected",
+   "dpid": 1,
+   "n_switches": 22
+  },
+  {
+   "seq": 171,
+   "ts": 1794991853.038,
+   "type": "switch_disconnected",
+   "dpid": 3,
+   "n_switches": 21
+  },
+  {
+   "seq": 172,
+   "ts": 1794991853.097,
+   "type": "switch_disconnected",
+   "dpid": 14,
+   "n_switches": 20
+  },
+  {
+   "seq": 173,
+   "ts": 1794991853.166,
+   "type": "switch_disconnected",
+   "dpid": 10,
+   "n_switches": 19
+  },
+  {
+   "seq": 174,
+   "ts": 1794991853.213,
+   "type": "switch_disconnected",
+   "dpid": 8,
+   "n_switches": 18
+  },
+  {
+   "seq": 175,
+   "ts": 1794991853.265,
+   "type": "switch_disconnected",
+   "dpid": 15,
+   "n_switches": 17
+  },
+  {
+   "seq": 176,
+   "ts": 1794991853.325,
+   "type": "switch_disconnected",
+   "dpid": 13,
+   "n_switches": 16
+  },
+  {
+   "seq": 177,
+   "ts": 1794991853.377,
+   "type": "switch_disconnected",
+   "dpid": 7,
+   "n_switches": 15
+  },
+  {
+   "seq": 178,
+   "ts": 1794991853.437,
+   "type": "switch_disconnected",
+   "dpid": 23,
+   "n_switches": 14
+  },
+  {
+   "seq": 179,
+   "ts": 1794991853.514,
+   "type": "switch_disconnected",
+   "dpid": 4,
+   "n_switches": 13
+  },
+  {
+   "seq": 180,
+   "ts": 1794991853.573,
+   "type": "switch_disconnected",
+   "dpid": 20,
+   "n_switches": 12
+  },
+  {
+   "seq": 181,
+   "ts": 1794991853.645,
+   "type": "switch_disconnected",
+   "dpid": 12,
+   "n_switches": 11
+  },
+  {
+   "seq": 182,
+   "ts": 1794991853.707,
+   "type": "switch_disconnected",
+   "dpid": 5,
+   "n_switches": 10
+  },
+  {
+   "seq": 183,
+   "ts": 1794991853.761,
+   "type": "switch_disconnected",
+   "dpid": 22,
+   "n_switches": 9
+  },
+  {
+   "seq": 184,
+   "ts": 1794991853.833,
+   "type": "switch_disconnected",
+   "dpid": 18,
+   "n_switches": 8
+  },
+  {
+   "seq": 185,
+   "ts": 1794991853.905,
+   "type": "switch_disconnected",
+   "dpid": 17,
+   "n_switches": 7
+  },
+  {
+   "seq": 186,
+   "ts": 1794991853.974,
+   "type": "switch_disconnected",
+   "dpid": 2,
+   "n_switches": 6
+  },
+  {
+   "seq": 187,
+   "ts": 1794991854.049,
+   "type": "switch_disconnected",
+   "dpid": 9,
+   "n_switches": 5
+  },
+  {
+   "seq": 188,
+   "ts": 1794991854.109,
+   "type": "switch_disconnected",
+   "dpid": 24,
+   "n_switches": 4
+  },
+  {
+   "seq": 189,
+   "ts": 1794991854.165,
+   "type": "switch_disconnected",
+   "dpid": 16,
+   "n_switches": 3
+  },
+  {
+   "seq": 190,
+   "ts": 1794991854.237,
+   "type": "switch_disconnected",
+   "dpid": 11,
+   "n_switches": 2
+  },
+  {
+   "seq": 191,
+   "ts": 1794991854.287,
+   "type": "switch_disconnected",
+   "dpid": 25,
+   "n_switches": 1
+  },
+  {
+   "seq": 192,
+   "ts": 1794991854.385,
+   "type": "switch_disconnected",
+   "dpid": 21,
+   "n_switches": 0
+  }
+ ]
+}

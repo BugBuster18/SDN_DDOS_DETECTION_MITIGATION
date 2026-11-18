@@ -140,10 +140,17 @@ class FlowCounterTracker:
             prev = self._state.get(sk)
             if prev is not None:
                 elapsed = max(ts - prev.ts, 1e-6)
-                if pk < prev.packets or by < prev.bytes or dur + 0.5 < prev.duration:
-                    # Entry was re-installed (timeout + new packet) or counter wrapped:
-                    # everything counted now accumulated since re-installation.
-                    status, dp, db, el = "reset", pk, by, max(min(dur, elapsed), 1e-6)
+                if pk < prev.packets or by < prev.bytes:
+                    # Entry was re-installed (timeout + new packet) or counter wrapped: the
+                    # counters accumulated over the new entry's lifetime `dur`. Only the part that
+                    # falls inside this interval is a delta (otherwise a re-installed steady flow
+                    # shows a fake rate spike of pk / elapsed).
+                    frac = min(1.0, elapsed / dur) if dur > 1e-6 else 1.0
+                    status, dp, db, el = "reset", int(round(pk * frac)), int(round(by * frac)), elapsed
+                elif dur + 0.5 < prev.duration:
+                    # Same match re-added (OpenFlow ADD keeps the counters but restarts the
+                    # duration): counters are continuous, so the plain difference is the delta.
+                    status, dp, db, el = "ok", pk - prev.packets, by - prev.bytes, elapsed
                 else:
                     status, dp, db, el = "ok", pk - prev.packets, by - prev.bytes, elapsed
             else:

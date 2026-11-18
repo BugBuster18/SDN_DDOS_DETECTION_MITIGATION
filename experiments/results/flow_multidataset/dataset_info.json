@@ -1,0 +1,10 @@
+{
+  "cic2019_rows": 1831822,
+  "cic2019_benign": 16733,
+  "cic2019_ambiguous_removed": 1338471,
+  "cic2018_rows": 3654924,
+  "cic2018_benign": 2557308,
+  "cic2018_ambiguous_removed": 524061,
+  "cic2018_benign_udp": 647892,
+  "cic2019_benign_udp": 7302
+}

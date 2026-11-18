@@ -1,0 +1,74 @@
+# 2026-11-13 11:09:38  legitimate clients - their own reports
+mininet> h7 iperf3 -c 10.0.0.18 -p 5202 -b 10M -t 115 -i 5     (TCP)
+Connecting to host 10.0.0.18, port 5202
+[  8] local 10.0.0.7 port 37818 connected to 10.0.0.18 port 5202
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  8]   0.00-5.00   sec  6.00 MBytes  10.1 Mbits/sec    0    103 KBytes       
+[  8]   5.00-10.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  10.00-15.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  15.00-20.00  sec  5.88 MBytes  9.86 Mbits/sec    0    115 KBytes       
+[  8]  20.00-25.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  25.00-30.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  30.00-35.00  sec  5.88 MBytes  9.86 Mbits/sec    0    115 KBytes       
+[  8]  35.00-40.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  40.00-45.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  45.00-50.00  sec  5.88 MBytes  9.86 Mbits/sec    0    115 KBytes       
+[  8]  50.00-55.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  55.00-60.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  60.00-65.00  sec  5.88 MBytes  9.86 Mbits/sec    0    115 KBytes       
+[  8]  65.00-70.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  70.00-75.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  75.00-80.00  sec  5.88 MBytes  9.86 Mbits/sec    0    115 KBytes       
+[  8]  80.00-85.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  85.00-90.00  sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8]  90.00-95.00  sec  5.88 MBytes  9.86 Mbits/sec    0    115 KBytes       
+[  8]  95.00-100.00 sec  6.00 MBytes  10.1 Mbits/sec    0    115 KBytes       
+[  8] 100.00-105.00 sec  6.00 MBytes  10.1 Mbits/sec    1   97.6 KBytes       
+[  8] 105.00-110.00 sec  6.00 MBytes  10.1 Mbits/sec    0   97.6 KBytes       
+[  8] 110.00-115.00 sec  5.88 MBytes  9.86 Mbits/sec    0   97.6 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  8]   0.00-115.00 sec   137 MBytes  10.0 Mbits/sec    1             sender
+[  8]   0.00-115.01 sec   137 MBytes  10.0 Mbits/sec                  receiver
+
+iperf Done.
+
+mininet> h8 iperf3 -u -c 10.0.0.18 -p 5203 -b 2M -l 1000 -t 115 -i 5     (UDP)
+Connecting to host 10.0.0.18, port 5203
+[  8] local 10.0.0.8 port 33240 connected to 10.0.0.18 port 5203
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  8]   0.00-5.00   sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]   5.00-10.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  10.00-15.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  15.00-20.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  20.00-25.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  25.00-30.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  30.00-35.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  35.00-40.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  40.00-45.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  45.00-50.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  50.00-55.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  55.00-60.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  60.00-65.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  65.00-70.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  70.00-75.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  75.00-80.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  80.00-85.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  85.00-90.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  90.00-95.00  sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8]  95.00-100.00 sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8] 100.00-105.00 sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8] 105.00-110.00 sec  1.19 MBytes  2.00 Mbits/sec  1250  
+[  8] 110.00-115.00 sec  1.19 MBytes  2.00 Mbits/sec  1250  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  8]   0.00-115.00 sec  27.4 MBytes  2.00 Mbits/sec  0.000 ms  0/28750 (0%)  sender
+[  8]   0.00-115.02 sec  27.4 MBytes  2.00 Mbits/sec  0.219 ms  0/28750 (0%)  receiver
+
+iperf Done.
+
+mininet> h13 ping -i 0.5 -c 230 10.0.0.18
+
+--- 10.0.0.18 ping statistics ---
+230 packets transmitted, 230 received, 0% packet loss, time 117220ms
+rtt min/avg/max/mdev = 0.032/0.341/32.325/2.429 ms

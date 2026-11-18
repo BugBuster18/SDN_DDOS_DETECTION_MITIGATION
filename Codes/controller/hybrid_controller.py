@@ -103,6 +103,18 @@ class HybridDetector(switch.SimpleSwitch13):
             p.parent.mkdir(parents=True, exist_ok=True)
             self.log_fh = p.open("a", encoding="utf-8")
         self.kill_switch = PROJECT_ROOT / mit["kill_switch_file"]
+        # Source-address validation (anti-spoofing). A host-facing edge port is bound to the IP
+        # of the host behind it (read from the lab's state file). Packets entering that port
+        # with another source address are spoofed; when a port emits >= min_packets of them
+        # towards one destination in a window, the port is quarantined for that destination.
+        asp = mit.get("anti_spoofing") or {}
+        self.asp_enabled = bool(asp.get("enabled", False))
+        self.asp_min = int(asp.get("min_packets", 20))
+        self.asp_file = Path(asp["bindings_file"]) if asp.get("bindings_file") else None
+        if self.asp_file is not None and not self.asp_file.is_absolute():
+            self.asp_file = PROJECT_ROOT / self.asp_file
+        self.port_binding = {}           # (dpid, port_no) -> bound ip
+        self.spoof_evidence = {}         # (dpid, port_no, dst) -> spoofed packet-ins this window
         kwargs["wsgi"].register(DdosRestController, {REST_INSTANCE: self})
         self.logger.warning(
             "HybridDetector: method=%s poll=%.1fs confirm=%s/%s MODE=%s (detection.mode=%s)",
@@ -140,6 +152,13 @@ class HybridDetector(switch.SimpleSwitch13):
             if ip is not None:
                 src, dst = ip.src, ip.dst
                 self.packet_in_by_dst[dst] = self.packet_in_by_dst.get(dst, 0) + 1
+                if self.asp_enabled and self.port_binding:
+                    k = (ev.msg.datapath.id, ev.msg.match["in_port"])
+                    bound = self.port_binding.get(k)
+                    if bound is not None and src != bound:
+                        kk = k + (dst,)
+                        self.spoof_evidence[kk] = self.spoof_evidence.get(kk, 0) + 1
+                        src = None  # never learn a spoofed address as a host location
             else:
                 a = pkt.get_protocol(arp.arp)
                 if a is not None:
@@ -258,6 +277,7 @@ class HybridDetector(switch.SimpleSwitch13):
             if d.state != d.previous_state:
                 self._on_transition(d)
             self._apply_actions(d, flows)
+        self._anti_spoofing()
         if self.kill_switch.exists() and len(self.rules):
             self.logger.warning("Kill-switch file present: rolling back all drop rules")
             self._rollback(None, reason="kill_switch")
@@ -410,6 +430,57 @@ class HybridDetector(switch.SimpleSwitch13):
             self.logger.warning("dst=%s back to NORMAL TRAFFIC", d.dst)
 
     # ----------------------------------------------------------- mitigation
+    def _load_bindings(self):
+        if self.port_binding or self.asp_file is None or not self.asp_file.exists():
+            return
+        try:
+            st = json.loads(self.asp_file.read_text())
+            for h in st["hosts"].values():
+                sw, port = h["switch_port"].split("-eth")
+                self.port_binding[(int(sw.lstrip("s")), int(port))] = h["ip"]
+            self.logger.warning("Anti-spoofing: %d host ports bound to their IPs", len(self.port_binding))
+        except Exception as exc:
+            self.logger.error("Anti-spoofing: cannot read %s (%s)", self.asp_file, exc)
+
+    def _anti_spoofing(self):
+        if not self.asp_enabled:
+            return
+        self._load_bindings()
+        ev, self.spoof_evidence = self.spoof_evidence, {}
+        for (dpid, port, dst), n in sorted(ev.items()):
+            if n < self.asp_min:
+                continue
+            label = "spoof@s%d-eth%d" % (dpid, port)
+            key = (label, dst, 0)
+            if key in self.rules:
+                continue
+            self._emit({"event": "spoofing", "dpid": dpid, "port": port, "dst": dst, "packets": n,
+                        "bound_ip": self.port_binding.get((dpid, port))})
+            self._event("spoofing_detected", switch="s%d" % dpid, port=port, dst=dst, spoofed_packet_ins=n,
+                        bound_ip=self.port_binding.get((dpid, port)))
+            self.logger.warning("SPOOFING: s%d port %d sent %d packets to %s with foreign source IPs",
+                                dpid, port, n, dst)
+            if self.mode != MITIGATION_ENABLED or dpid not in self.datapaths:
+                continue
+            dp = self.datapaths[dpid]
+            parser, ofp = dp.ofproto_parser, dp.ofproto
+            mit = self.cfg["mitigation"]
+            cookie = self.rules.next_cookie()
+            match = parser.OFPMatch(in_port=port, eth_type=0x0800, ipv4_dst=dst)
+            dp.send_msg(parser.OFPFlowMod(datapath=dp, cookie=cookie, command=ofp.OFPFC_ADD,
+                                          priority=int(mit["priority"]) + 5, match=match, instructions=[],
+                                          hard_timeout=int(mit["hard_timeout_seconds"]),
+                                          flags=ofp.OFPFF_SEND_FLOW_REM))
+            self.counters["flow_mod"] += 1
+            rule = DropRule(label, dst, 0, cookie, [dpid], time.time(), int(mit["hard_timeout_seconds"]),
+                            int(mit["priority"]) + 5, "spoofed_source_port", 1.0)
+            self.rules.add(rule)
+            self._emit({"event": "mitigation", "action": "install", "src": label, "dst": dst, "proto": 0,
+                        "dpids": [dpid], "cookie": cookie, "kind": "port_quarantine"})
+            self._event("rule_installed", **rule.to_dict())
+            self.logger.warning("MITIGATION INSTALLED: QUARANTINE s%d port %d -> %s (spoofed sources)",
+                                dpid, port, dst)
+
     def _apply_actions(self, d, flows):
         mit = self.cfg["mitigation"]
         if "rollback" in d.actions:
@@ -418,10 +489,14 @@ class HybridDetector(switch.SimpleSwitch13):
             return
         dry = "block_dry_run" in d.actions
         installed = 0
+        any_proto = mit.get("rule_scope", "src_dst_proto") == "src_dst"
         for src in d.attributed_sources:
             if src in mit["allowlist"]:
                 continue
-            protos = sorted({r.proto for r in flows.values() if r.src == src and r.dst == d.dst})
+            if any_proto:   # one rule per (src, dst): switching protocol does not bypass it
+                protos = [0]
+            else:
+                protos = sorted({r.proto for r in flows.values() if r.src == src and r.dst == d.dst})
             for proto in protos:
                 key = (src, d.dst, proto)
                 if key in self.rules or installed >= int(mit["max_rules_per_window"]):
@@ -446,7 +521,10 @@ class HybridDetector(switch.SimpleSwitch13):
         for t in targets:
             dp = self.datapaths[t]
             parser, ofp = dp.ofproto_parser, dp.ofproto
-            match = parser.OFPMatch(eth_type=0x0800, ipv4_src=src, ipv4_dst=dst, ip_proto=proto)
+            if int(proto):
+                match = parser.OFPMatch(eth_type=0x0800, ipv4_src=src, ipv4_dst=dst, ip_proto=int(proto))
+            else:
+                match = parser.OFPMatch(eth_type=0x0800, ipv4_src=src, ipv4_dst=dst)
             # Empty instruction list = drop. Higher priority than forwarding (1).
             dp.send_msg(parser.OFPFlowMod(datapath=dp, cookie=cookie, command=ofp.OFPFC_ADD,
                                           priority=int(mit["priority"]), match=match, instructions=[],

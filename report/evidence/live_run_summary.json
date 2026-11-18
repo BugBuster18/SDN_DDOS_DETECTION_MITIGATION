@@ -1,0 +1,275 @@
+{
+ "attack_duration_s": 37.91365098953247,
+ "t_suspected_s": 8.261130571365356,
+ "t_mitigating_s": 10.849324941635132,
+ "t_rules_removed_after_stop_s": 12.273967266082764,
+ "t_normal_after_stop_s": 22.263068437576294,
+ "legit_baseline_pps_at_victim": 1127.5602884839302,
+ "attack_offered_pps_mean": 12807.993479533026,
+ "victim_pps_unmitigated": 8412.893755669305,
+ "victim_pps_mitigated": 1125.46868815942,
+ "victim_pps_after": 1126.8886923122936,
+ "attack_delivered_unmitigated_pps": 7285.333467185375,
+ "attack_delivered_mitigated_pps": -2.091600324510182,
+ "reduction_pct": 100.0,
+ "legit": [
+  {
+   "phase": "before attack",
+   "tcp_mbps": 10.05,
+   "udp_mbps": 2.0,
+   "http_requests": 24,
+   "http_failed": 0,
+   "http_mean_ms": 20.9,
+   "ping_sent": 48,
+   "ping_lost": 0,
+   "ping_rtt_ms": 0.28,
+   "ping_rtt_max_ms": 9.92
+  },
+  {
+   "phase": "attack, not yet blocked",
+   "tcp_mbps": 9.98,
+   "udp_mbps": 2.0,
+   "http_requests": 4,
+   "http_failed": 3,
+   "http_mean_ms": 1126.2,
+   "ping_sent": 21,
+   "ping_lost": 0,
+   "ping_rtt_ms": 2.589,
+   "ping_rtt_max_ms": 39.3
+  },
+  {
+   "phase": "attack, blocked",
+   "tcp_mbps": 10.05,
+   "udp_mbps": 2.0,
+   "http_requests": 25,
+   "http_failed": 0,
+   "http_mean_ms": 30.3,
+   "ping_sent": 53,
+   "ping_lost": 0,
+   "ping_rtt_ms": 0.064,
+   "ping_rtt_max_ms": 0.28
+  },
+  {
+   "phase": "after attack",
+   "tcp_mbps": 10.02,
+   "udp_mbps": 2.0,
+   "http_requests": 44,
+   "http_failed": 0,
+   "http_mean_ms": 26.1,
+   "ping_sent": 88,
+   "ping_lost": 0,
+   "ping_rtt_ms": 4.447,
+   "ping_rtt_max_ms": 386.0
+  }
+ ],
+ "ping_total_received": 230,
+ "windows": [
+  {
+   "t": -19.863,
+   "score": 0.094,
+   "state": "NORMAL",
+   "pps": 944.0,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.998,
+   "drop_pps": 0.0
+  },
+  {
+   "t": -14.863,
+   "score": 0.039,
+   "state": "NORMAL",
+   "pps": 1154.36,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": -9.866,
+   "score": 0.025,
+   "state": "NORMAL",
+   "pps": 1059.824,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": -4.857,
+   "score": 0.031,
+   "state": "NORMAL",
+   "pps": 1156.521,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 0.246,
+   "score": 0.087,
+   "state": "NORMAL",
+   "pps": 1039.203,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 8.261,
+   "score": 1.0,
+   "state": "SUSPECTED",
+   "pps": 8099.589,
+   "n_sources": 10.0,
+   "flow_ml_max_prob": 0.999,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 10.849,
+   "score": 0.999,
+   "state": "MITIGATING",
+   "pps": 8520.838,
+   "n_sources": 10.0,
+   "flow_ml_max_prob": 0.998,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 15.175,
+   "score": 0.911,
+   "state": "MITIGATING",
+   "pps": 3044.958,
+   "n_sources": 10.0,
+   "flow_ml_max_prob": 0.998,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 20.181,
+   "score": 0.018,
+   "state": "MITIGATING",
+   "pps": 1060.376,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 13090.622
+  },
+  {
+   "t": 25.177,
+   "score": 0.021,
+   "state": "MITIGATING",
+   "pps": 1165.966,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 14539.778
+  },
+  {
+   "t": 30.176,
+   "score": 0.022,
+   "state": "MITIGATING",
+   "pps": 1171.371,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 14601.272
+  },
+  {
+   "t": 35.18,
+   "score": 0.022,
+   "state": "MITIGATING",
+   "pps": 1083.984,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 12795.41
+  },
+  {
+   "t": 40.177,
+   "score": 0.026,
+   "state": "MITIGATING",
+   "pps": 1061.064,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 8384.086
+  },
+  {
+   "t": 45.174,
+   "score": 0.021,
+   "state": "MITIGATING",
+   "pps": 1157.35,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 50.188,
+   "score": 0.026,
+   "state": "RECOVERING",
+   "pps": 1171.08,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 55.177,
+   "score": 0.023,
+   "state": "RECOVERING",
+   "pps": 1041.416,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 60.177,
+   "score": 0.027,
+   "state": "NORMAL",
+   "pps": 1175.518,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 65.179,
+   "score": 0.069,
+   "state": "NORMAL",
+   "pps": 1156.444,
+   "n_sources": 5.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 70.184,
+   "score": 0.152,
+   "state": "NORMAL",
+   "pps": 1154.531,
+   "n_sources": 6.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 75.178,
+   "score": 0.021,
+   "state": "NORMAL",
+   "pps": 1061.521,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 80.178,
+   "score": 0.122,
+   "state": "NORMAL",
+   "pps": 872.52,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.998,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 85.178,
+   "score": 0.028,
+   "state": "NORMAL",
+   "pps": 1156.242,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  },
+  {
+   "t": 90.179,
+   "score": 0.028,
+   "state": "NORMAL",
+   "pps": 1165.434,
+   "n_sources": 4.0,
+   "flow_ml_max_prob": 0.992,
+   "drop_pps": 0.0
+  }
+ ]
+}

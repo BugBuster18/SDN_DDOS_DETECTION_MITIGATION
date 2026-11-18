@@ -26,3 +26,19 @@ results/**
 # Transient demo runtime state (written while the Mininet lab is running)
 experiments/results/demo/run/
 experiments/MITIGATION_DISABLE
+
+# Large-testbed raw telemetry (hundreds of MB; regenerate with experiments/large/run_*.sh).
+# Summaries, ground truth, event logs and controller logs of every session ARE committed.
+experiments/results/large/*/telemetry.jsonl
+experiments/results/large/*/port_counters.csv
+experiments/results/large/*/legit/
+experiments/results/large/current_lab_state.json
+experiments/results/raw/large_*/
+# Build outputs of the paper
+paper/**/*.aux
+paper/**/*.log
+paper/**/*.out
+paper/**/*.blg
+
+# Packaged submission zips (built from the repo)
+deliverables/

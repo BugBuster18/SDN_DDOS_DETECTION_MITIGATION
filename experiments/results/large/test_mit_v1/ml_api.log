@@ -1,0 +1,204 @@
+ML prediction API listening on http://127.0.0.1:8765
+Model: Hist Gradient Boosting (hist_gradient_boosting.joblib)
+[ML API] "GET /health HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+Prediction request failed: [Errno 32] Broken pipe
+[ML API] "POST /predict HTTP/1.1" 500 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 41786)
+Traceback (most recent call last):
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/ddos_ml/predict_api.py", line 76, in do_POST
+    self._send_json(200, {"predictions": predictions})
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/ddos_ml/predict_api.py", line 25, in _send_json
+    self.wfile.write(body)
+  File "/usr/lib/python3.12/socketserver.py", line 840, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/ddos_ml/predict_api.py", line 80, in do_POST
+    self._send_json(500, {"error": "Prediction failed"})
+  File "/home/enkatesh/projects/ddos-cicddos2019-ready/ddos_ml/predict_api.py", line 24, in _send_json
+    self.end_headers()
+  File "/usr/lib/python3.12/http/server.py", line 538, in end_headers
+    self.flush_headers()
+  File "/usr/lib/python3.12/http/server.py", line 542, in flush_headers
+    self.wfile.write(b"".join(self._headers_buffer))
+  File "/usr/lib/python3.12/socketserver.py", line 840, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -
+[ML API] "POST /predict HTTP/1.1" 200 -

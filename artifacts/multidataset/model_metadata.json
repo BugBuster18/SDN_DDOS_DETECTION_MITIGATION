@@ -1,0 +1,30 @@
+{
+  "feature_columns": [
+    "protocol",
+    "duration_sec",
+    "packet_count",
+    "byte_count",
+    "packet_rate",
+    "byte_rate",
+    "avg_packet_size"
+  ],
+  "label_0": "BENIGN",
+  "label_1": "DoS/DDoS",
+  "demo_synthetic_data": false,
+  "selected_model": "Hist Gradient Boosting",
+  "model_file": "hist_gradient_boosting.joblib",
+  "training_source": "CIC-DDoS2019 (01-12) + CSE-CIC-IDS2018 (4 days), balanced 20000/class/dataset",
+  "training_rows": 73386,
+  "train_test_group_overlap": 0,
+  "ambiguous_rows_removed": 1862532,
+  "datasets": {
+    "cic2019_rows": 1831822,
+    "cic2019_benign": 16733,
+    "cic2019_ambiguous_removed": 1338471,
+    "cic2018_rows": 3654924,
+    "cic2018_benign": 2557308,
+    "cic2018_ambiguous_removed": 524061,
+    "cic2018_benign_udp": 647892,
+    "cic2019_benign_udp": 7302
+  }
+}

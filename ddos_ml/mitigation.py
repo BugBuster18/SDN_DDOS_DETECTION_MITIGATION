@@ -33,7 +33,7 @@ STATUS_LABELS = {
     "RECOVERING": "RECOVERING",
 }
 
-PROTO_NAMES = {1: "ICMP", 6: "TCP", 17: "UDP"}
+PROTO_NAMES = {0: "ANY", 1: "ICMP", 6: "TCP", 17: "UDP"}   # 0 = rule matches every IP protocol
 
 
 def status_label(state: str) -> str:
@@ -114,7 +114,8 @@ class DropRule:
             "hard_timeout": self.hard_timeout, "installed": round(self.installed, 3),
             "age_s": round(now - self.installed, 1), "reason": self.reason, "score": round(self.score, 4),
             "dropped_packets": self.dropped_packets, "dropped_pps": round(self.dropped_pps, 1),
-            "match": f"eth_type=0x0800,ipv4_src={self.src},ipv4_dst={self.dst},ip_proto={self.proto}",
+            "match": (f"eth_type=0x0800,ipv4_src={self.src},ipv4_dst={self.dst}"
+                      + (f",ip_proto={self.proto}" if self.proto else "")),
             "action": "drop",
         }
 

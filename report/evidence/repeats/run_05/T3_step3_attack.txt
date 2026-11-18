@@ -1,0 +1,29 @@
+# 2026-11-13 11:05:09  STEP 3 - UDP flood from h1..h6 to h18, legitimate clients keep running
+mininet> h1 hping3 --udp -d 1024 -i u333 -k -s 40001 -p 9999 -q 10.0.0.18 &
+mininet> h2 hping3 --udp -d 512 -i u333 -k -s 40002 -p 9999 -q 10.0.0.18 &
+mininet> h3 hping3 --udp -d 1400 -i u500 -k -s 40003 -p 9999 -q 10.0.0.18 &
+mininet> h4 hping3 --udp -d 1024 -i u333 -k -s 40004 -p 9999 -q 10.0.0.18 &
+mininet> h5 hping3 --udp -d 256 -i u250 -k -s 40005 -p 9999 -q 10.0.0.18 &
+mininet> h6 hping3 --udp -d 768 -i u400 -k -s 40006 -p 9999 -q 10.0.0.18 &
+
+# 2026-11-13 11:05:16  attack + 7 s
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=12  ML-API=ok  rules=0
+  10.0.0.1     NORMAL TRAFFIC
+  10.0.0.13    NORMAL TRAFFIC
+  10.0.0.18    SUSPICIOUS TRAFFIC
+  10.0.0.7     NORMAL TRAFFIC
+  10.0.0.8     NORMAL TRAFFIC
+  10.0.0.9     NORMAL TRAFFIC
+
+# 2026-11-13 11:05:23  attack + 14 s
+$ python3 /home/enkatesh/projects/ddos-cicddos2019-ready/scripts/demo/ctl.py status
+mode=MITIGATION_ENABLED  switches=6/6 ['s1', 's2', 's3', 's4', 's5', 's6']  poll=14  ML-API=ok  rules=6
+  10.0.0.1     NORMAL TRAFFIC
+  10.0.0.13    NORMAL TRAFFIC
+  10.0.0.18    MITIGATION ACTIVE
+  10.0.0.7     NORMAL TRAFFIC
+  10.0.0.8     NORMAL TRAFFIC
+  10.0.0.9     NORMAL TRAFFIC
+
+# 2026-11-13 11:05:29  attack + 20 s

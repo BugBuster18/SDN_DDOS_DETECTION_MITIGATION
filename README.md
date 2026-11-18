@@ -4,6 +4,24 @@ This repository implements a flow-based DDoS detector for an OpenFlow 1.3 networ
 
 > **Important data note:** the uploaded repository did not contain the 10,000-flow dataset claimed in its old README. The two `FlowStatsfile.csv` files were broken path placeholders, and the documented `generate_realistic_dataset.py` was absent. This version does not claim those metrics as results. A clearly-labelled synthetic demo dataset is included only to test that the software pipeline works end to end.
 
+## Revision after the project review (November 2026)
+
+Revised report: `report/v2/Results_Report_v2.pdf` (source `report/v2/Results_Report_v2.html`).
+Formal problem formulation: `docs/problem_formulation.md`.
+
+| What | Command (from the project root) |
+|---|---|
+| Flow model on CIC-DDoS2019 + CSE-CIC-IDS2018, cross-dataset + McNemar | `.venv/bin/python experiments/scripts/flow_multidataset.py` |
+| Classic SDN baselines (pps, source/destination entropy) on the chain test set | `.venv/bin/python experiments/large/large_eval.py eval calibration test artifacts/experiments/temporal chain_baselines` |
+| 200-host / 25-switch campaign (calibration, test without and with mitigation) | `sudo bash experiments/large/run_campaign.sh` (~60 min) |
+| One large session only | `sudo bash experiments/large/run_session.sh NAME MITIGATION_ENABLED 2 test artifacts/experiments/large` |
+| Analysis + figures after the campaign | `bash experiments/large/finalize.sh` |
+
+New controller options (all off by default, enabled in `experiments/configs/large.yaml`): `mitigation.rule_scope: src_dst`
+(one rule per attacker for all protocols), `mitigation.anti_spoofing` (source-address validation, port quarantine),
+`detection.fast_confirm_score`, `detection.offender_memory_seconds`, `detection.recovery_backoff`, and
+`DDOS_FLOW_GRANULARITY=pair` in `Codes/controller/switch.py`.
+
 ## Hybrid temporal detector + staged mitigation (new)
 
 A second, destination-centric temporal detection layer and a staged, reversible

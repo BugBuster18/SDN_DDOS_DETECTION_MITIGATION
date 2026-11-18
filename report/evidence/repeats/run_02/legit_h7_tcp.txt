@@ -1,0 +1,32 @@
+Connecting to host 10.0.0.18, port 5202
+[  8] local 10.0.0.7 port 34892 connected to 10.0.0.18 port 5202
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  8]   0.00-5.00   sec  6.00 MBytes  10.1 Mbits/sec    2   96.2 KBytes       
+[  8]   5.00-10.00  sec  6.00 MBytes  10.1 Mbits/sec    0   97.6 KBytes       
+[  8]  10.00-15.00  sec  6.00 MBytes  10.1 Mbits/sec    0   97.6 KBytes       
+[  8]  15.00-20.00  sec  5.88 MBytes  9.86 Mbits/sec    0    100 KBytes       
+[  8]  20.00-25.00  sec  6.00 MBytes  10.1 Mbits/sec    0    100 KBytes       
+[  8]  25.00-30.00  sec  6.00 MBytes  10.1 Mbits/sec    0    100 KBytes       
+[  8]  30.00-35.00  sec  5.88 MBytes  9.86 Mbits/sec    0    100 KBytes       
+[  8]  35.00-40.00  sec  6.00 MBytes  10.1 Mbits/sec    0    100 KBytes       
+[  8]  40.00-45.00  sec  6.00 MBytes  10.1 Mbits/sec    0    100 KBytes       
+[  8]  45.00-50.00  sec  5.88 MBytes  9.86 Mbits/sec    0    103 KBytes       
+[  8]  50.00-55.00  sec  6.00 MBytes  10.1 Mbits/sec   18    103 KBytes       
+[  8]  55.00-60.00  sec  6.00 MBytes  10.1 Mbits/sec    0    103 KBytes       
+[  8]  60.00-65.00  sec  5.88 MBytes  9.86 Mbits/sec    2    103 KBytes       
+[  8]  65.00-70.00  sec  6.00 MBytes  10.1 Mbits/sec    0    103 KBytes       
+[  8]  70.00-75.00  sec  6.00 MBytes  10.1 Mbits/sec    2    103 KBytes       
+[  8]  75.00-80.00  sec  5.88 MBytes  9.86 Mbits/sec    0    103 KBytes       
+[  8]  80.00-85.00  sec  6.00 MBytes  10.1 Mbits/sec    0    103 KBytes       
+[  8]  85.00-90.00  sec  6.00 MBytes  10.1 Mbits/sec    0    103 KBytes       
+[  8]  90.00-95.00  sec  5.88 MBytes  9.86 Mbits/sec    0    103 KBytes       
+[  8]  95.00-100.00 sec  6.00 MBytes  10.1 Mbits/sec    0    103 KBytes       
+[  8] 100.00-105.00 sec  6.00 MBytes  10.1 Mbits/sec    1    139 KBytes       
+[  8] 105.00-110.00 sec  6.00 MBytes  10.1 Mbits/sec    0    139 KBytes       
+[  8] 110.00-115.00 sec  5.88 MBytes  9.86 Mbits/sec    0    139 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  8]   0.00-115.00 sec   137 MBytes  10.0 Mbits/sec   25             sender
+[  8]   0.00-115.01 sec   137 MBytes  10.0 Mbits/sec                  receiver
+
+iperf Done.

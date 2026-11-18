@@ -1,0 +1,6 @@
+h1 hping3 --udp -d 1024 -i u333 -k -s 40001 -p 9999 -q 10.0.0.18 > /dev/null 2>&1 &
+h2 hping3 --udp -d 512 -i u333 -k -s 40002 -p 9999 -q 10.0.0.18 > /dev/null 2>&1 &
+h3 hping3 --udp -d 1400 -i u500 -k -s 40003 -p 9999 -q 10.0.0.18 > /dev/null 2>&1 &
+h4 hping3 --udp -d 1024 -i u333 -k -s 40004 -p 9999 -q 10.0.0.18 > /dev/null 2>&1 &
+h5 hping3 --udp -d 256 -i u250 -k -s 40005 -p 9999 -q 10.0.0.18 > /dev/null 2>&1 &
+h6 hping3 --udp -d 768 -i u400 -k -s 40006 -p 9999 -q 10.0.0.18 > /dev/null 2>&1 &

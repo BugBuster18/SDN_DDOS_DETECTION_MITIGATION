@@ -65,10 +65,14 @@ def watch():
                   f"sources={f.get('n_sources', 0):.0f} flows={f.get('n_active_flows', 0):.0f} "
                   f"pps={f.get('pps', 0):.0f} Mbps={(f.get('bps', 0) or 0) / 1e6:.1f} "
                   f"flowML max_p={f.get('ml_max_prob', 0):.2f}")
-            for src in w.get("sources", [])[:8]:
-                print(f"     from {src['src']:<10} {src['pps']:>8.0f} pps  flowML={src['ml_max_prob']:.2f} "
-                      f"src_score={src['source_score'] if src['source_score'] is not None else '-'}"
-                      f"{'  BLOCKED' if src['blocked'] else ''}")
+            for src in w.get("sources", [])[:10]:
+                ip = src["src"]
+                name = f"h{ip.rsplit('.', 1)[1]}" if ip.count(".") == 3 else ""
+                verdict = ("\033[31;1mBLOCKED (dropped at its switch)\033[0m" if src["blocked"]
+                           else "\033[32mACCEPTED\033[0m")
+                sc = src["source_score"]
+                print(f"     from {name:>4} {ip:<10} {src['pps']:>8.0f} pps  flowML={src['ml_max_prob']:.2f} "
+                      f"src_score={'%.2f' % sc if sc is not None else '-':<5} {verdict}")
         print("-" * 100)
         if r["rules"]:
             fmt_rules(r)

@@ -1,0 +1,1068 @@
+loading app hybrid_controller.py
+loading app ryu.controller.ofp_handler
+creating context wsgi
+instantiating app hybrid_controller.py of HybridDetector
+HybridDetector: method=hybrid poll=2.0s confirm=2/3 MODE=MITIGATION_ENABLED (detection.mode=enforce)
+instantiating app ryu.controller.ofp_handler of OFPHandler
+(168567) wsgi starting up on http://127.0.0.1:8080
+(168567) accepted ('127.0.0.1', 37360)
+127.0.0.1 - - [18/Nov/2026 09:11:03] "GET /ddos/mode HTTP/1.1" 200 172 0.001247
+(168567) accepted ('127.0.0.1', 37372)
+127.0.0.1 - - [18/Nov/2026 09:11:03] "GET /ddos/mode HTTP/1.1" 200 172 0.000291
+Registered switch 0000000000000013 (s19) - 1 switch(es) connected
+Registered switch 0000000000000005 (s5) - 2 switch(es) connected
+Registered switch 0000000000000001 (s1) - 3 switch(es) connected
+Registered switch 000000000000000a (s10) - 4 switch(es) connected
+Registered switch 000000000000000e (s14) - 5 switch(es) connected
+Registered switch 0000000000000009 (s9) - 6 switch(es) connected
+Registered switch 0000000000000018 (s24) - 7 switch(es) connected
+Registered switch 000000000000000f (s15) - 8 switch(es) connected
+Registered switch 0000000000000016 (s22) - 9 switch(es) connected
+Registered switch 0000000000000017 (s23) - 10 switch(es) connected
+Registered switch 0000000000000015 (s21) - 11 switch(es) connected
+Registered switch 000000000000000c (s12) - 12 switch(es) connected
+Registered switch 0000000000000006 (s6) - 13 switch(es) connected
+Registered switch 0000000000000010 (s16) - 14 switch(es) connected
+Registered switch 0000000000000012 (s18) - 15 switch(es) connected
+Registered switch 0000000000000014 (s20) - 16 switch(es) connected
+Registered switch 000000000000000b (s11) - 17 switch(es) connected
+Registered switch 0000000000000003 (s3) - 18 switch(es) connected
+Registered switch 0000000000000019 (s25) - 19 switch(es) connected
+Registered switch 000000000000000d (s13) - 20 switch(es) connected
+Registered switch 0000000000000011 (s17) - 21 switch(es) connected
+Registered switch 0000000000000008 (s8) - 22 switch(es) connected
+Registered switch 0000000000000007 (s7) - 23 switch(es) connected
+Registered switch 0000000000000004 (s4) - 24 switch(es) connected
+Registered switch 0000000000000002 (s2) - 25 switch(es) connected
+Anti-spoofing: 200 host ports bound to their IPs
+ML API unavailable (timed out); continuing without Level-1 evidence
+[poll 28] dst=10.0.0.200 NORMAL TRAFFIC     score=0.009 (thr 0.844) sources=5 flows=5 pps=43 rate=0.47Mbps avg_pkt=1371B | flow-ML max_p=0.00 flagged=0%
+[poll 28] dst=10.0.0.199 NORMAL TRAFFIC     score=0.071 (thr 0.844) sources=7 flows=7 pps=30 rate=0.28Mbps avg_pkt=1168B | flow-ML max_p=0.00 flagged=0%
+[poll 29] dst=10.0.0.200 SUSPICIOUS TRAFFIC score=0.911 (thr 0.844) sources=48 flows=48 pps=812 rate=8.19Mbps avg_pkt=1262B | flow-ML max_p=1.00 flagged=21%
+[poll 29] dst=10.0.0.199 SUSPICIOUS TRAFFIC score=0.959 (thr 0.844) sources=26 flows=26 pps=691 rate=7.03Mbps avg_pkt=1271B | flow-ML max_p=1.00 flagged=19%
+[poll 29] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=70 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 29] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=65 rate=0.03Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 29] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=63 rate=0.03Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 29] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=62 rate=0.03Mbps avg_pkt=67B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 NORMAL->SUSPECTED score=0.911 sources=[] actions=[]
+dst=10.0.0.199 NORMAL->SUSPECTED score=0.959 sources=[] actions=[]
+[poll 30] dst=10.0.0.200 NORMAL TRAFFIC     score=0.061 (thr 0.844) sources=95 flows=95 pps=1866 rate=16.69Mbps avg_pkt=1118B | flow-ML max_p=1.00 flagged=15%
+[poll 30] dst=10.0.0.199 NORMAL TRAFFIC     score=0.655 (thr 0.844) sources=39 flows=39 pps=1642 rate=16.96Mbps avg_pkt=1291B | flow-ML max_p=1.00 flagged=21%
+[poll 30] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 30] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 30] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 30] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 SUSPECTED->NORMAL score=0.061 sources=[] actions=[]
+dst=10.0.0.200 back to NORMAL TRAFFIC
+dst=10.0.0.199 SUSPECTED->NORMAL score=0.655 sources=[] actions=[]
+dst=10.0.0.199 back to NORMAL TRAFFIC
+[poll 31] dst=10.0.0.200 NORMAL TRAFFIC     score=0.012 (thr 0.844) sources=100 flows=100 pps=2063 rate=16.52Mbps avg_pkt=1001B | flow-ML max_p=1.00 flagged=7%
+[poll 31] dst=10.0.0.199 NORMAL TRAFFIC     score=0.233 (thr 0.844) sources=42 flows=42 pps=1764 rate=17.83Mbps avg_pkt=1263B | flow-ML max_p=1.00 flagged=14%
+[poll 31] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 31] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 31] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=97 rate=0.05Mbps avg_pkt=71B | flow-ML max_p=0.01 flagged=0%
+[poll 31] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 32] dst=10.0.0.200 NORMAL TRAFFIC     score=0.157 (thr 0.844) sources=91 flows=91 pps=2263 rate=17.22Mbps avg_pkt=951B | flow-ML max_p=1.00 flagged=7%
+[poll 32] dst=10.0.0.199 NORMAL TRAFFIC     score=0.059 (thr 0.844) sources=41 flows=41 pps=1765 rate=16.97Mbps avg_pkt=1202B | flow-ML max_p=1.00 flagged=15%
+[poll 32] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=140 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 32] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 32] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 32] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 33] dst=10.0.0.200 NORMAL TRAFFIC     score=0.091 (thr 0.844) sources=84 flows=84 pps=1934 rate=15.40Mbps avg_pkt=995B | flow-ML max_p=0.99 flagged=7%
+[poll 33] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=42 flows=42 pps=1545 rate=15.16Mbps avg_pkt=1227B | flow-ML max_p=0.99 flagged=14%
+[poll 33] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=11 flows=11 pps=133 rate=0.08Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 33] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 33] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 33] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=82 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 34] dst=10.0.0.200 NORMAL TRAFFIC     score=0.140 (thr 0.844) sources=93 flows=93 pps=2225 rate=16.70Mbps avg_pkt=938B | flow-ML max_p=0.99 flagged=6%
+[poll 34] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=40 flows=40 pps=1686 rate=16.31Mbps avg_pkt=1210B | flow-ML max_p=0.99 flagged=15%
+[poll 34] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=111 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 34] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 34] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 34] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 35] dst=10.0.0.200 NORMAL TRAFFIC     score=0.161 (thr 0.844) sources=96 flows=96 pps=2311 rate=16.71Mbps avg_pkt=904B | flow-ML max_p=0.99 flagged=6%
+[poll 35] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=41 flows=41 pps=1658 rate=16.35Mbps avg_pkt=1233B | flow-ML max_p=0.99 flagged=15%
+[poll 35] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=158 rate=0.09Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 35] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 35] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 35] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 36] dst=10.0.0.200 NORMAL TRAFFIC     score=0.127 (thr 0.844) sources=92 flows=92 pps=2243 rate=17.21Mbps avg_pkt=959B | flow-ML max_p=0.99 flagged=7%
+[poll 36] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=41 flows=41 pps=1685 rate=16.81Mbps avg_pkt=1248B | flow-ML max_p=0.99 flagged=15%
+[poll 36] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 36] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 36] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=100 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 36] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 37] dst=10.0.0.200 NORMAL TRAFFIC     score=0.115 (thr 0.844) sources=92 flows=92 pps=2171 rate=16.92Mbps avg_pkt=975B | flow-ML max_p=0.99 flagged=7%
+[poll 37] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=41 flows=41 pps=1683 rate=16.65Mbps avg_pkt=1236B | flow-ML max_p=0.99 flagged=15%
+[poll 37] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=149 rate=0.09Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 37] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 37] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 37] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 38] dst=10.0.0.200 NORMAL TRAFFIC     score=0.138 (thr 0.844) sources=92 flows=92 pps=2227 rate=16.57Mbps avg_pkt=930B | flow-ML max_p=0.99 flagged=7%
+[poll 38] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=41 flows=41 pps=1637 rate=16.18Mbps avg_pkt=1235B | flow-ML max_p=0.99 flagged=15%
+[poll 38] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=126 rate=0.07Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 38] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 38] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 38] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 39] dst=10.0.0.200 NORMAL TRAFFIC     score=0.115 (thr 0.844) sources=91 flows=91 pps=2019 rate=15.36Mbps avg_pkt=951B | flow-ML max_p=0.99 flagged=7%
+[poll 39] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=40 flows=40 pps=1544 rate=15.08Mbps avg_pkt=1221B | flow-ML max_p=0.99 flagged=15%
+[poll 39] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=187 rate=0.11Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 39] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 39] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 39] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 40] dst=10.0.0.200 NORMAL TRAFFIC     score=0.150 (thr 0.844) sources=94 flows=94 pps=2117 rate=15.13Mbps avg_pkt=893B | flow-ML max_p=0.99 flagged=6%
+[poll 40] dst=10.0.0.199 NORMAL TRAFFIC     score=0.029 (thr 0.844) sources=40 flows=40 pps=1496 rate=14.77Mbps avg_pkt=1234B | flow-ML max_p=0.99 flagged=15%
+[poll 40] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=183 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 40] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 40] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 40] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 41] dst=10.0.0.200 NORMAL TRAFFIC     score=0.110 (thr 0.844) sources=92 flows=92 pps=2083 rate=16.04Mbps avg_pkt=963B | flow-ML max_p=0.99 flagged=7%
+[poll 41] dst=10.0.0.199 NORMAL TRAFFIC     score=0.027 (thr 0.844) sources=41 flows=41 pps=1572 rate=15.70Mbps avg_pkt=1249B | flow-ML max_p=0.99 flagged=15%
+[poll 41] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 41] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 41] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 41] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 42] dst=10.0.0.200 NORMAL TRAFFIC     score=0.125 (thr 0.844) sources=91 flows=91 pps=2179 rate=16.57Mbps avg_pkt=951B | flow-ML max_p=0.99 flagged=7%
+[poll 42] dst=10.0.0.199 NORMAL TRAFFIC     score=0.042 (thr 0.844) sources=42 flows=42 pps=1733 rate=16.31Mbps avg_pkt=1177B | flow-ML max_p=0.99 flagged=14%
+[poll 42] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=193 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 42] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 42] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 42] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 43] dst=10.0.0.200 NORMAL TRAFFIC     score=0.174 (thr 0.844) sources=93 flows=93 pps=2405 rate=17.10Mbps avg_pkt=889B | flow-ML max_p=0.99 flagged=6%
+[poll 43] dst=10.0.0.199 NORMAL TRAFFIC     score=0.027 (thr 0.844) sources=42 flows=42 pps=1661 rate=16.60Mbps avg_pkt=1249B | flow-ML max_p=0.99 flagged=14%
+[poll 43] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=173 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 43] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 43] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 43] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 44] dst=10.0.0.200 NORMAL TRAFFIC     score=0.119 (thr 0.844) sources=90 flows=90 pps=2145 rate=16.44Mbps avg_pkt=958B | flow-ML max_p=0.99 flagged=7%
+[poll 44] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=41 flows=41 pps=1656 rate=16.15Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=15%
+[poll 44] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 44] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 44] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 44] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 45] dst=10.0.0.200 NORMAL TRAFFIC     score=0.174 (thr 0.844) sources=95 flows=95 pps=2289 rate=16.13Mbps avg_pkt=881B | flow-ML max_p=0.99 flagged=6%
+[poll 45] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=40 flows=40 pps=1606 rate=15.67Mbps avg_pkt=1220B | flow-ML max_p=0.99 flagged=15%
+[poll 45] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=152 rate=0.09Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 45] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 45] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 45] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 46] dst=10.0.0.200 NORMAL TRAFFIC     score=0.152 (thr 0.844) sources=96 flows=96 pps=2294 rate=16.87Mbps avg_pkt=919B | flow-ML max_p=0.99 flagged=6%
+[poll 46] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=40 flows=40 pps=1665 rate=16.52Mbps avg_pkt=1240B | flow-ML max_p=0.99 flagged=15%
+[poll 46] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=209 rate=0.12Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 46] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 46] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 46] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 47] dst=10.0.0.200 NORMAL TRAFFIC     score=0.108 (thr 0.844) sources=93 flows=93 pps=2133 rate=16.74Mbps avg_pkt=981B | flow-ML max_p=0.99 flagged=6%
+[poll 47] dst=10.0.0.199 NORMAL TRAFFIC     score=0.042 (thr 0.844) sources=42 flows=42 pps=1745 rate=16.49Mbps avg_pkt=1181B | flow-ML max_p=0.99 flagged=14%
+[poll 47] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=150 rate=0.09Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 47] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 47] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 47] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 48] dst=10.0.0.200 NORMAL TRAFFIC     score=0.144 (thr 0.844) sources=89 flows=89 pps=2280 rate=16.74Mbps avg_pkt=918B | flow-ML max_p=0.99 flagged=7%
+[poll 48] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=42 flows=42 pps=1680 rate=16.36Mbps avg_pkt=1218B | flow-ML max_p=0.99 flagged=14%
+[poll 48] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=141 rate=0.08Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 48] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 48] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 48] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 49] dst=10.0.0.200 NORMAL TRAFFIC     score=0.132 (thr 0.844) sources=86 flows=86 pps=2240 rate=16.66Mbps avg_pkt=930B | flow-ML max_p=0.99 flagged=7%
+[poll 49] dst=10.0.0.199 NORMAL TRAFFIC     score=0.028 (thr 0.844) sources=41 flows=41 pps=1636 rate=16.31Mbps avg_pkt=1246B | flow-ML max_p=0.99 flagged=15%
+[poll 49] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=137 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 49] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 49] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 49] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 50] dst=10.0.0.200 NORMAL TRAFFIC     score=0.126 (thr 0.844) sources=93 flows=93 pps=2183 rate=16.52Mbps avg_pkt=946B | flow-ML max_p=0.99 flagged=6%
+[poll 50] dst=10.0.0.199 NORMAL TRAFFIC     score=0.029 (thr 0.844) sources=41 flows=41 pps=1633 rate=16.15Mbps avg_pkt=1236B | flow-ML max_p=0.99 flagged=15%
+[poll 50] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=170 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 50] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 50] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 50] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 51] dst=10.0.0.200 NORMAL TRAFFIC     score=0.119 (thr 0.844) sources=92 flows=92 pps=2187 rate=16.78Mbps avg_pkt=959B | flow-ML max_p=0.99 flagged=7%
+[poll 51] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=42 flows=42 pps=1721 rate=16.52Mbps avg_pkt=1200B | flow-ML max_p=0.99 flagged=14%
+[poll 51] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=111 rate=0.07Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 51] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 51] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 51] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 52] dst=10.0.0.200 NORMAL TRAFFIC     score=0.135 (thr 0.844) sources=96 flows=96 pps=2189 rate=16.48Mbps avg_pkt=941B | flow-ML max_p=0.99 flagged=6%
+[poll 52] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=40 flows=40 pps=1635 rate=16.14Mbps avg_pkt=1234B | flow-ML max_p=0.99 flagged=15%
+[poll 52] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=185 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 52] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 52] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 52] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 53] dst=10.0.0.200 NORMAL TRAFFIC     score=0.106 (thr 0.844) sources=90 flows=90 pps=2163 rate=17.00Mbps avg_pkt=982B | flow-ML max_p=0.99 flagged=7%
+[poll 53] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=42 flows=42 pps=1710 rate=16.63Mbps avg_pkt=1216B | flow-ML max_p=0.99 flagged=14%
+[poll 53] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=194 rate=0.11Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 53] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 53] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 53] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 54] dst=10.0.0.200 NORMAL TRAFFIC     score=0.139 (thr 0.844) sources=95 flows=95 pps=2200 rate=16.32Mbps avg_pkt=927B | flow-ML max_p=0.99 flagged=6%
+[poll 54] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=39 flows=39 pps=1625 rate=15.98Mbps avg_pkt=1229B | flow-ML max_p=0.99 flagged=15%
+[poll 54] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=185 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 54] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 54] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 54] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 55] dst=10.0.0.200 NORMAL TRAFFIC     score=0.102 (thr 0.844) sources=89 flows=89 pps=2054 rate=16.14Mbps avg_pkt=982B | flow-ML max_p=0.99 flagged=7%
+[poll 55] dst=10.0.0.199 NORMAL TRAFFIC     score=0.028 (thr 0.844) sources=41 flows=41 pps=1590 rate=15.82Mbps avg_pkt=1244B | flow-ML max_p=0.99 flagged=15%
+[poll 55] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=128 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 55] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 55] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 55] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 56] dst=10.0.0.200 NORMAL TRAFFIC     score=0.151 (thr 0.844) sources=96 flows=96 pps=2314 rate=16.97Mbps avg_pkt=917B | flow-ML max_p=0.99 flagged=6%
+[poll 56] dst=10.0.0.199 NORMAL TRAFFIC     score=0.037 (thr 0.844) sources=41 flows=41 pps=1727 rate=16.62Mbps avg_pkt=1203B | flow-ML max_p=0.99 flagged=15%
+[poll 56] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=148 rate=0.09Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 56] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 56] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 56] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 57] dst=10.0.0.200 NORMAL TRAFFIC     score=0.148 (thr 0.844) sources=92 flows=92 pps=2292 rate=16.84Mbps avg_pkt=918B | flow-ML max_p=0.99 flagged=7%
+[poll 57] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=41 flows=41 pps=1684 rate=16.42Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=15%
+[poll 57] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=134 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 57] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 57] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 57] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 58] dst=10.0.0.200 NORMAL TRAFFIC     score=0.132 (thr 0.844) sources=92 flows=92 pps=2275 rate=17.05Mbps avg_pkt=937B | flow-ML max_p=0.99 flagged=7%
+[poll 58] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=41 flows=41 pps=1690 rate=16.72Mbps avg_pkt=1237B | flow-ML max_p=0.99 flagged=15%
+[poll 58] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=121 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 58] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 58] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 58] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.200 NORMAL TRAFFIC     score=0.142 (thr 0.844) sources=92 flows=92 pps=2275 rate=16.86Mbps avg_pkt=926B | flow-ML max_p=0.99 flagged=7%
+[poll 59] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=38 flows=38 pps=1674 rate=16.49Mbps avg_pkt=1232B | flow-ML max_p=0.99 flagged=16%
+[poll 59] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=142 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 59] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.200 NORMAL TRAFFIC     score=0.107 (thr 0.844) sources=91 flows=91 pps=2114 rate=16.40Mbps avg_pkt=970B | flow-ML max_p=0.99 flagged=7%
+[poll 60] dst=10.0.0.199 NORMAL TRAFFIC     score=0.035 (thr 0.844) sources=39 flows=39 pps=1640 rate=16.08Mbps avg_pkt=1226B | flow-ML max_p=0.99 flagged=15%
+[poll 60] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=154 rate=0.09Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 60] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.200 NORMAL TRAFFIC     score=0.127 (thr 0.844) sources=91 flows=91 pps=2256 rate=17.18Mbps avg_pkt=952B | flow-ML max_p=0.99 flagged=7%
+[poll 61] dst=10.0.0.199 NORMAL TRAFFIC     score=0.042 (thr 0.844) sources=41 flows=41 pps=1775 rate=16.92Mbps avg_pkt=1191B | flow-ML max_p=0.99 flagged=15%
+[poll 61] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=10 flows=10 pps=115 rate=0.07Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 61] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.200 NORMAL TRAFFIC     score=0.143 (thr 0.844) sources=95 flows=95 pps=2278 rate=16.91Mbps avg_pkt=928B | flow-ML max_p=0.99 flagged=6%
+[poll 62] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=40 flows=40 pps=1709 rate=16.52Mbps avg_pkt=1208B | flow-ML max_p=0.99 flagged=15%
+[poll 62] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=147 rate=0.09Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 62] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.200 NORMAL TRAFFIC     score=0.161 (thr 0.844) sources=97 flows=97 pps=2286 rate=16.50Mbps avg_pkt=902B | flow-ML max_p=0.99 flagged=6%
+[poll 63] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=42 flows=42 pps=1648 rate=16.12Mbps avg_pkt=1223B | flow-ML max_p=0.99 flagged=14%
+[poll 63] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 63] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.200 NORMAL TRAFFIC     score=0.113 (thr 0.844) sources=92 flows=92 pps=2183 rate=16.87Mbps avg_pkt=966B | flow-ML max_p=0.99 flagged=7%
+[poll 64] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=40 flows=40 pps=1684 rate=16.55Mbps avg_pkt=1229B | flow-ML max_p=0.99 flagged=15%
+[poll 64] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=151 rate=0.09Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 64] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.200 NORMAL TRAFFIC     score=0.144 (thr 0.844) sources=93 flows=93 pps=2255 rate=16.56Mbps avg_pkt=918B | flow-ML max_p=0.99 flagged=6%
+[poll 65] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=41 flows=41 pps=1656 rate=16.15Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=15%
+[poll 65] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=108 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=103 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 65] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 66] dst=10.0.0.200 NORMAL TRAFFIC     score=0.105 (thr 0.844) sources=95 flows=95 pps=2092 rate=16.48Mbps avg_pkt=984B | flow-ML max_p=0.99 flagged=6%
+[poll 66] dst=10.0.0.199 NORMAL TRAFFIC     score=0.042 (thr 0.844) sources=40 flows=40 pps=1713 rate=16.25Mbps avg_pkt=1186B | flow-ML max_p=0.99 flagged=15%
+[poll 66] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=139 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 66] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 66] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 66] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 67] dst=10.0.0.200 NORMAL TRAFFIC     score=0.085 (thr 0.844) sources=90 flows=90 pps=2041 rate=16.73Mbps avg_pkt=1024B | flow-ML max_p=0.99 flagged=7%
+[poll 67] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=41 flows=41 pps=1675 rate=16.47Mbps avg_pkt=1229B | flow-ML max_p=0.99 flagged=15%
+[poll 67] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=10 flows=10 pps=152 rate=0.09Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 67] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 67] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 67] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 68] dst=10.0.0.200 NORMAL TRAFFIC     score=0.119 (thr 0.844) sources=90 flows=90 pps=2183 rate=16.79Mbps avg_pkt=962B | flow-ML max_p=0.99 flagged=7%
+[poll 68] dst=10.0.0.199 NORMAL TRAFFIC     score=0.045 (thr 0.844) sources=42 flows=42 pps=1766 rate=16.47Mbps avg_pkt=1166B | flow-ML max_p=0.99 flagged=14%
+[poll 68] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=129 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 68] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 68] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 68] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 69] dst=10.0.0.200 NORMAL TRAFFIC     score=0.110 (thr 0.844) sources=92 flows=92 pps=2152 rate=16.83Mbps avg_pkt=978B | flow-ML max_p=0.99 flagged=7%
+[poll 69] dst=10.0.0.199 NORMAL TRAFFIC     score=0.041 (thr 0.844) sources=41 flows=41 pps=1745 rate=16.58Mbps avg_pkt=1188B | flow-ML max_p=0.99 flagged=15%
+[poll 69] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=117 rate=0.07Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 69] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 69] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 69] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 70] dst=10.0.0.200 NORMAL TRAFFIC     score=0.125 (thr 0.844) sources=92 flows=92 pps=2165 rate=16.29Mbps avg_pkt=940B | flow-ML max_p=0.99 flagged=7%
+[poll 70] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=42 flows=42 pps=1680 rate=15.93Mbps avg_pkt=1186B | flow-ML max_p=0.99 flagged=14%
+[poll 70] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=14 flows=14 pps=131 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 70] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 70] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 70] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 71] dst=10.0.0.200 NORMAL TRAFFIC     score=0.149 (thr 0.844) sources=97 flows=97 pps=2352 rate=17.30Mbps avg_pkt=919B | flow-ML max_p=0.99 flagged=6%
+[poll 71] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=42 flows=42 pps=1734 rate=16.94Mbps avg_pkt=1221B | flow-ML max_p=0.99 flagged=14%
+[poll 71] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=11 flows=11 pps=136 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 71] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 71] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 71] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 72] dst=10.0.0.200 NORMAL TRAFFIC     score=0.367 (thr 0.844) sources=100 flows=100 pps=2874 rate=17.42Mbps avg_pkt=758B | flow-ML max_p=0.99 flagged=6%
+[poll 72] dst=10.0.0.199 NORMAL TRAFFIC     score=0.090 (thr 0.844) sources=42 flows=42 pps=2050 rate=17.10Mbps avg_pkt=1042B | flow-ML max_p=0.99 flagged=14%
+[poll 72] dst=10.0.0.198 NORMAL TRAFFIC     score=0.003 (thr 0.844) sources=15 flows=15 pps=768 rate=0.43Mbps avg_pkt=69B | flow-ML max_p=0.00 flagged=0%
+[poll 72] dst=10.0.0.66  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=154 rate=1.73Mbps avg_pkt=1405B | flow-ML max_p=0.00 flagged=0%
+[poll 72] dst=10.0.0.188 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=123 rate=1.35Mbps avg_pkt=1371B | flow-ML max_p=0.00 flagged=0%
+[poll 72] dst=10.0.0.39  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=117 rate=1.31Mbps avg_pkt=1400B | flow-ML max_p=0.00 flagged=0%
+[poll 73] dst=10.0.0.200 NORMAL TRAFFIC     score=0.318 (thr 0.844) sources=100 flows=100 pps=2705 rate=16.31Mbps avg_pkt=753B | flow-ML max_p=0.99 flagged=6%
+[poll 73] dst=10.0.0.199 NORMAL TRAFFIC     score=0.180 (thr 0.844) sources=42 flows=42 pps=2409 rate=15.95Mbps avg_pkt=828B | flow-ML max_p=0.99 flagged=14%
+[poll 73] dst=10.0.0.198 NORMAL TRAFFIC     score=0.003 (thr 0.844) sources=15 flows=15 pps=813 rate=0.44Mbps avg_pkt=68B | flow-ML max_p=0.00 flagged=0%
+[poll 73] dst=10.0.0.88  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=176 rate=1.98Mbps avg_pkt=1401B | flow-ML max_p=0.00 flagged=0%
+[poll 73] dst=10.0.0.12  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=176 rate=1.97Mbps avg_pkt=1404B | flow-ML max_p=0.00 flagged=0%
+[poll 73] dst=10.0.0.188 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=142 rate=1.59Mbps avg_pkt=1401B | flow-ML max_p=0.00 flagged=0%
+[poll 74] dst=10.0.0.200 NORMAL TRAFFIC     score=0.683 (thr 0.844) sources=100 flows=100 pps=2858 rate=15.63Mbps avg_pkt=684B | flow-ML max_p=0.99 flagged=6%
+[poll 74] dst=10.0.0.199 NORMAL TRAFFIC     score=0.111 (thr 0.844) sources=42 flows=42 pps=2021 rate=15.16Mbps avg_pkt=937B | flow-ML max_p=0.99 flagged=14%
+[poll 74] dst=10.0.0.198 NORMAL TRAFFIC     score=0.003 (thr 0.844) sources=15 flows=15 pps=728 rate=0.40Mbps avg_pkt=69B | flow-ML max_p=0.00 flagged=0%
+[poll 74] dst=10.0.0.134 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=151 rate=1.70Mbps avg_pkt=1401B | flow-ML max_p=0.00 flagged=0%
+[poll 74] dst=10.0.0.72  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=115 rate=1.28Mbps avg_pkt=1394B | flow-ML max_p=0.00 flagged=0%
+[poll 74] dst=10.0.0.114 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=115 rate=1.28Mbps avg_pkt=1394B | flow-ML max_p=0.00 flagged=0%
+[poll 75] dst=10.0.0.200 NORMAL TRAFFIC     score=0.619 (thr 0.844) sources=100 flows=100 pps=3534 rate=19.84Mbps avg_pkt=702B | flow-ML max_p=0.99 flagged=6%
+[poll 75] dst=10.0.0.199 NORMAL TRAFFIC     score=0.083 (thr 0.844) sources=42 flows=42 pps=2203 rate=19.13Mbps avg_pkt=1085B | flow-ML max_p=0.99 flagged=14%
+[poll 75] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=538 rate=0.30Mbps avg_pkt=69B | flow-ML max_p=0.00 flagged=0%
+[poll 75] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=112 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 75] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=112 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 75] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=112 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 76] dst=10.0.0.200 NORMAL TRAFFIC     score=0.365 (thr 0.844) sources=100 flows=100 pps=2583 rate=14.35Mbps avg_pkt=694B | flow-ML max_p=0.99 flagged=6%
+[poll 76] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=40 flows=40 pps=1432 rate=13.71Mbps avg_pkt=1196B | flow-ML max_p=0.99 flagged=15%
+[poll 76] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=251 rate=0.14Mbps avg_pkt=70B | flow-ML max_p=0.00 flagged=0%
+[poll 76] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 76] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 76] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 77] dst=10.0.0.200 NORMAL TRAFFIC     score=0.438 (thr 0.844) sources=100 flows=100 pps=3118 rate=17.28Mbps avg_pkt=693B | flow-ML max_p=0.99 flagged=6%
+[poll 77] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=40 flows=40 pps=1660 rate=16.42Mbps avg_pkt=1237B | flow-ML max_p=0.99 flagged=15%
+[poll 77] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=108 rate=0.06Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 77] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 77] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 77] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 78] dst=10.0.0.200 ATTACK CONFIRMED   score=0.982 (thr 0.844) sources=98 flows=98 pps=2601 rate=12.59Mbps avg_pkt=605B | flow-ML max_p=1.00 flagged=6%
+[poll 78] dst=10.0.0.199 NORMAL TRAFFIC     score=0.359 (thr 0.844) sources=40 flows=40 pps=1100 rate=10.40Mbps avg_pkt=1182B | flow-ML max_p=1.00 flagged=16%
+[poll 78] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=121 rate=0.07Mbps avg_pkt=70B | flow-ML max_p=0.00 flagged=0%
+[poll 78] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 78] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=14 flows=14 pps=105 rate=0.06Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 78] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=69B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 NORMAL->CONFIRMED score=0.982 sources=[] actions=[]
+==============================================================================
+DDoS ALERT  victim=10.0.0.200  ATTACK CONFIRMED  window score=0.982 (threshold 0.844)
+  sources=98  active flows=98  aggregate=2601 pps / 12.59 Mbps  avg pkt=605 B
+  protocol mix: UDP 20%  TCP 80%  ICMP 1%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=1.00, 6% of flows flagged
+  strongest evidence: new_flow_rate -10.95, top_source_share -10.51, source_entropy +8.25, n_new_flows +7.53
+  top senders: 10.0.0.187(179pps), 10.0.0.3(157pps), 10.0.0.20(139pps), 10.0.0.127(107pps), 10.0.0.142(107pps), 10.0.0.166(107pps), 10.0.0.36(100pps), 10.0.0.27(77pps)
+  mitigation mode: MITIGATION_ENABLED
+==============================================================================
+[poll 79] dst=10.0.0.200 ATTACK CONFIRMED   score=0.396 (thr 0.844) sources=100 flows=100 pps=3128 rate=17.15Mbps avg_pkt=685B | flow-ML max_p=1.00 flagged=6%
+[poll 79] dst=10.0.0.199 NORMAL TRAFFIC     score=0.604 (thr 0.844) sources=41 flows=41 pps=1770 rate=17.66Mbps avg_pkt=1247B | flow-ML max_p=1.00 flagged=15%
+[poll 79] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=157 rate=0.08Mbps avg_pkt=67B | flow-ML max_p=0.00 flagged=0%
+[poll 79] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=124 rate=0.07Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 79] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 79] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 80] dst=10.0.0.200 ATTACK CONFIRMED   score=0.198 (thr 0.844) sources=99 flows=99 pps=3139 rate=18.16Mbps avg_pkt=723B | flow-ML max_p=1.00 flagged=6%
+[poll 80] dst=10.0.0.199 NORMAL TRAFFIC     score=0.141 (thr 0.844) sources=41 flows=41 pps=1619 rate=15.52Mbps avg_pkt=1198B | flow-ML max_p=1.00 flagged=15%
+[poll 80] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=190 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 80] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=151 rate=0.08Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 80] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 80] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=108 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 81] dst=10.0.0.200 RECOVERING         score=0.093 (thr 0.844) sources=93 flows=93 pps=2549 rate=16.59Mbps avg_pkt=814B | flow-ML max_p=1.00 flagged=7%
+[poll 81] dst=10.0.0.199 NORMAL TRAFFIC     score=0.083 (thr 0.844) sources=42 flows=42 pps=1721 rate=16.08Mbps avg_pkt=1168B | flow-ML max_p=1.00 flagged=14%
+[poll 81] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=12 flows=12 pps=130 rate=0.08Mbps avg_pkt=76B | flow-ML max_p=0.01 flagged=0%
+[poll 81] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 81] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 81] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 CONFIRMED->RECOVERING score=0.093 sources=[] actions=[]
+[poll 82] dst=10.0.0.200 RECOVERING         score=0.049 (thr 0.844) sources=92 flows=92 pps=2187 rate=16.40Mbps avg_pkt=937B | flow-ML max_p=1.00 flagged=7%
+[poll 82] dst=10.0.0.199 NORMAL TRAFFIC     score=0.075 (thr 0.844) sources=38 flows=38 pps=1590 rate=16.01Mbps avg_pkt=1259B | flow-ML max_p=1.00 flagged=16%
+[poll 82] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=140 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.01 flagged=0%
+[poll 82] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 82] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 82] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 83] dst=10.0.0.200 RECOVERING         score=0.089 (thr 0.844) sources=86 flows=86 pps=1912 rate=14.26Mbps avg_pkt=932B | flow-ML max_p=0.99 flagged=7%
+[poll 83] dst=10.0.0.199 NORMAL TRAFFIC     score=0.042 (thr 0.844) sources=42 flows=42 pps=1518 rate=13.99Mbps avg_pkt=1152B | flow-ML max_p=0.99 flagged=14%
+[poll 83] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=171 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 83] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 83] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 83] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=81 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 84] dst=10.0.0.200 NORMAL TRAFFIC     score=0.105 (thr 0.844) sources=91 flows=91 pps=2087 rate=16.41Mbps avg_pkt=983B | flow-ML max_p=0.99 flagged=7%
+[poll 84] dst=10.0.0.199 NORMAL TRAFFIC     score=0.035 (thr 0.844) sources=40 flows=40 pps=1655 rate=16.12Mbps avg_pkt=1217B | flow-ML max_p=0.99 flagged=15%
+[poll 84] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=11 flows=11 pps=104 rate=0.06Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 84] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 84] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 84] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 RECOVERING->NORMAL score=0.105 sources=[] actions=[]
+dst=10.0.0.200 back to NORMAL TRAFFIC
+[poll 85] dst=10.0.0.200 NORMAL TRAFFIC     score=0.141 (thr 0.844) sources=93 flows=93 pps=2283 rate=17.04Mbps avg_pkt=933B | flow-ML max_p=0.99 flagged=6%
+[poll 85] dst=10.0.0.199 NORMAL TRAFFIC     score=0.035 (thr 0.844) sources=40 flows=40 pps=1702 rate=16.65Mbps avg_pkt=1223B | flow-ML max_p=0.99 flagged=15%
+[poll 85] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=106 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 85] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 85] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 85] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 86] dst=10.0.0.200 NORMAL TRAFFIC     score=0.140 (thr 0.844) sources=88 flows=88 pps=2268 rate=16.74Mbps avg_pkt=923B | flow-ML max_p=0.99 flagged=7%
+[poll 86] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=39 flows=39 pps=1663 rate=16.41Mbps avg_pkt=1234B | flow-ML max_p=0.99 flagged=15%
+[poll 86] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=11 flows=11 pps=98 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 86] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 86] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 86] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 87] dst=10.0.0.200 NORMAL TRAFFIC     score=0.186 (thr 0.844) sources=97 flows=97 pps=2449 rate=17.35Mbps avg_pkt=886B | flow-ML max_p=0.99 flagged=6%
+[poll 87] dst=10.0.0.199 NORMAL TRAFFIC     score=0.039 (thr 0.844) sources=42 flows=42 pps=1765 rate=16.89Mbps avg_pkt=1196B | flow-ML max_p=0.99 flagged=14%
+[poll 87] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=141 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 87] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 87] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 87] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 88] dst=10.0.0.200 NORMAL TRAFFIC     score=0.114 (thr 0.844) sources=94 flows=94 pps=2167 rate=16.84Mbps avg_pkt=971B | flow-ML max_p=0.99 flagged=6%
+[poll 88] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=41 flows=41 pps=1700 rate=16.57Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=15%
+[poll 88] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=139 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 88] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 88] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 88] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 89] dst=10.0.0.200 NORMAL TRAFFIC     score=0.096 (thr 0.844) sources=88 flows=88 pps=2078 rate=16.53Mbps avg_pkt=995B | flow-ML max_p=0.99 flagged=7%
+[poll 89] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=40 flows=40 pps=1675 rate=16.24Mbps avg_pkt=1212B | flow-ML max_p=0.99 flagged=15%
+[poll 89] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=11 flows=11 pps=107 rate=0.06Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 89] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 89] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 89] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 90] dst=10.0.0.200 NORMAL TRAFFIC     score=0.121 (thr 0.844) sources=92 flows=92 pps=2203 rate=16.95Mbps avg_pkt=962B | flow-ML max_p=0.99 flagged=7%
+[poll 90] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=42 flows=42 pps=1710 rate=16.67Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=14%
+[poll 90] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=175 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 90] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 90] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 90] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 91] dst=10.0.0.200 NORMAL TRAFFIC     score=0.124 (thr 0.844) sources=89 flows=89 pps=2158 rate=16.27Mbps avg_pkt=943B | flow-ML max_p=0.99 flagged=7%
+[poll 91] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=40 flows=40 pps=1615 rate=15.94Mbps avg_pkt=1233B | flow-ML max_p=0.99 flagged=15%
+[poll 91] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=157 rate=0.09Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 91] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 91] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 91] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 92] dst=10.0.0.200 NORMAL TRAFFIC     score=0.130 (thr 0.844) sources=91 flows=91 pps=2287 rate=17.41Mbps avg_pkt=951B | flow-ML max_p=0.99 flagged=7%
+[poll 92] dst=10.0.0.199 NORMAL TRAFFIC     score=0.035 (thr 0.844) sources=40 flows=40 pps=1742 rate=17.08Mbps avg_pkt=1226B | flow-ML max_p=0.99 flagged=15%
+[poll 92] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 92] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 92] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 92] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 93] dst=10.0.0.200 NORMAL TRAFFIC     score=0.120 (thr 0.844) sources=92 flows=92 pps=2165 rate=16.54Mbps avg_pkt=955B | flow-ML max_p=0.99 flagged=7%
+[poll 93] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=39 flows=39 pps=1657 rate=16.27Mbps avg_pkt=1228B | flow-ML max_p=0.99 flagged=15%
+[poll 93] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=178 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 93] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 93] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 93] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 94] dst=10.0.0.200 NORMAL TRAFFIC     score=0.113 (thr 0.844) sources=91 flows=91 pps=2171 rate=16.97Mbps avg_pkt=977B | flow-ML max_p=0.99 flagged=7%
+[poll 94] dst=10.0.0.199 NORMAL TRAFFIC     score=0.039 (thr 0.844) sources=42 flows=42 pps=1748 rate=16.67Mbps avg_pkt=1192B | flow-ML max_p=0.99 flagged=14%
+[poll 94] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=193 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 94] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 94] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 94] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 95] dst=10.0.0.200 NORMAL TRAFFIC     score=0.128 (thr 0.844) sources=94 flows=94 pps=2214 rate=16.74Mbps avg_pkt=945B | flow-ML max_p=0.99 flagged=6%
+[poll 95] dst=10.0.0.199 NORMAL TRAFFIC     score=0.043 (thr 0.844) sources=42 flows=42 pps=1752 rate=16.47Mbps avg_pkt=1176B | flow-ML max_p=0.99 flagged=14%
+[poll 95] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=118 rate=0.07Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 95] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 95] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 95] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 96] dst=10.0.0.200 NORMAL TRAFFIC     score=0.118 (thr 0.844) sources=91 flows=91 pps=2152 rate=16.48Mbps avg_pkt=958B | flow-ML max_p=0.99 flagged=7%
+[poll 96] dst=10.0.0.199 NORMAL TRAFFIC     score=0.027 (thr 0.844) sources=40 flows=40 pps=1604 rate=16.09Mbps avg_pkt=1253B | flow-ML max_p=0.99 flagged=15%
+[poll 96] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=119 rate=0.07Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 96] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 96] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 96] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 97] dst=10.0.0.200 NORMAL TRAFFIC     score=0.113 (thr 0.844) sources=93 flows=93 pps=2078 rate=16.09Mbps avg_pkt=968B | flow-ML max_p=0.99 flagged=6%
+[poll 97] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=42 flows=42 pps=1625 rate=15.82Mbps avg_pkt=1217B | flow-ML max_p=0.99 flagged=14%
+[poll 97] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=261 rate=0.15Mbps avg_pkt=71B | flow-ML max_p=0.00 flagged=0%
+[poll 97] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 97] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 97] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 98] dst=10.0.0.200 NORMAL TRAFFIC     score=0.110 (thr 0.844) sources=90 flows=90 pps=2156 rate=16.87Mbps avg_pkt=978B | flow-ML max_p=0.99 flagged=7%
+[poll 98] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=41 flows=41 pps=1676 rate=16.58Mbps avg_pkt=1237B | flow-ML max_p=0.99 flagged=15%
+[poll 98] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=14 flows=14 pps=177 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 98] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 98] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 98] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 99] dst=10.0.0.200 NORMAL TRAFFIC     score=0.133 (thr 0.844) sources=93 flows=93 pps=2264 rate=16.98Mbps avg_pkt=937B | flow-ML max_p=0.99 flagged=6%
+[poll 99] dst=10.0.0.199 NORMAL TRAFFIC     score=0.029 (thr 0.844) sources=40 flows=40 pps=1655 rate=16.53Mbps avg_pkt=1249B | flow-ML max_p=0.99 flagged=15%
+[poll 99] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=194 rate=0.11Mbps avg_pkt=71B | flow-ML max_p=0.00 flagged=0%
+[poll 99] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 99] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 99] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 100] dst=10.0.0.200 NORMAL TRAFFIC     score=0.134 (thr 0.844) sources=97 flows=97 pps=2193 rate=16.50Mbps avg_pkt=941B | flow-ML max_p=0.99 flagged=6%
+[poll 100] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=41 flows=41 pps=1682 rate=16.17Mbps avg_pkt=1202B | flow-ML max_p=0.99 flagged=15%
+[poll 100] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=159 rate=0.09Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 100] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 100] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 100] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 101] dst=10.0.0.200 NORMAL TRAFFIC     score=0.112 (thr 0.844) sources=92 flows=92 pps=2177 rate=16.98Mbps avg_pkt=975B | flow-ML max_p=0.99 flagged=7%
+[poll 101] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=42 flows=42 pps=1679 rate=16.63Mbps avg_pkt=1238B | flow-ML max_p=0.99 flagged=14%
+[poll 101] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=196 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 101] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 101] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 101] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 102] dst=10.0.0.200 SUSPICIOUS TRAFFIC score=0.868 (thr 0.844) sources=9 flows=9 pps=305 rate=1.78Mbps avg_pkt=730B | flow-ML max_p=1.00 flagged=22%
+dst=10.0.0.200 NORMAL->SUSPECTED score=0.868 sources=[] actions=[]
+[poll 103] dst=10.0.0.200 MITIGATION ACTIVE  score=0.999 (thr 0.844) sources=36 flows=36 pps=2302 rate=17.43Mbps avg_pkt=947B | flow-ML max_p=1.00 flagged=33%
+[poll 103] dst=10.0.0.199 NORMAL TRAFFIC     score=0.019 (thr 0.844) sources=7 flows=7 pps=367 rate=3.70Mbps avg_pkt=1262B | flow-ML max_p=0.99 flagged=29%
+[poll 103] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 103] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 103] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=73 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 103] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=5 flows=5 pps=56 rate=0.03Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 SUSPECTED->MITIGATING score=0.999 sources=['10.0.0.162', '10.0.0.166', '10.0.0.167', '10.0.0.33', '10.0.0.38', '10.0.0.61', '10.0.0.64', '10.0.0.71', '10.0.0.74', '10.0.0.76', '10.0.0.81', '10.0.0.87'] actions=['block']
+==============================================================================
+DDoS ALERT  victim=10.0.0.200  ATTACK CONFIRMED  window score=0.999 (threshold 0.844)
+  sources=36  active flows=36  aggregate=2302 pps / 17.43 Mbps  avg pkt=947 B
+  protocol mix: UDP 79%  TCP 21%  ICMP 0%
+  flow-level ML (CIC-DDoS2019 model): max attack prob=1.00, 33% of flows flagged
+  strongest evidence: ml_mean_prob +17.26, ml_flow_frac -11.83, top_source_share -10.32, source_entropy +7.42
+  top senders: 10.0.0.162(196pps), 10.0.0.61(188pps), 10.0.0.71(180pps), 10.0.0.74(169pps), 10.0.0.38(168pps), 10.0.0.167(165pps), 10.0.0.36(163pps), 10.0.0.68(163pps)
+  mitigation mode: MITIGATION_ENABLED
+==============================================================================
+MITIGATION INSTALLED: DROP 10.0.0.162 -> 10.0.0.200 ANY at ['s22'] priority=200 hard_timeout=300s cookie=0xdd05000000000001
+MITIGATION INSTALLED: DROP 10.0.0.166 -> 10.0.0.200 ANY at ['s22'] priority=200 hard_timeout=300s cookie=0xdd05000000000002
+MITIGATION INSTALLED: DROP 10.0.0.167 -> 10.0.0.200 ANY at ['s22'] priority=200 hard_timeout=300s cookie=0xdd05000000000003
+MITIGATION INSTALLED: DROP 10.0.0.33 -> 10.0.0.200 ANY at ['s9'] priority=200 hard_timeout=300s cookie=0xdd05000000000004
+MITIGATION INSTALLED: DROP 10.0.0.38 -> 10.0.0.200 ANY at ['s9'] priority=200 hard_timeout=300s cookie=0xdd05000000000005
+MITIGATION INSTALLED: DROP 10.0.0.61 -> 10.0.0.200 ANY at ['s12'] priority=200 hard_timeout=300s cookie=0xdd05000000000006
+MITIGATION INSTALLED: DROP 10.0.0.64 -> 10.0.0.200 ANY at ['s12'] priority=200 hard_timeout=300s cookie=0xdd05000000000007
+MITIGATION INSTALLED: DROP 10.0.0.71 -> 10.0.0.200 ANY at ['s13'] priority=200 hard_timeout=300s cookie=0xdd05000000000008
+MITIGATION INSTALLED: DROP 10.0.0.74 -> 10.0.0.200 ANY at ['s13'] priority=200 hard_timeout=300s cookie=0xdd05000000000009
+MITIGATION INSTALLED: DROP 10.0.0.76 -> 10.0.0.200 ANY at ['s13'] priority=200 hard_timeout=300s cookie=0xdd0500000000000a
+MITIGATION INSTALLED: DROP 10.0.0.81 -> 10.0.0.200 ANY at ['s14'] priority=200 hard_timeout=300s cookie=0xdd0500000000000b
+MITIGATION INSTALLED: DROP 10.0.0.87 -> 10.0.0.200 ANY at ['s14'] priority=200 hard_timeout=300s cookie=0xdd0500000000000c
+[poll 104] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=85 flows=85 pps=4006 rate=24.89Mbps avg_pkt=777B | flow-ML max_p=1.00 flagged=31%
+[poll 104] dst=10.0.0.199 NORMAL TRAFFIC     score=0.023 (thr 0.844) sources=22 flows=22 pps=574 rate=5.53Mbps avg_pkt=1204B | flow-ML max_p=0.99 flagged=23%
+[poll 104] dst=10.0.0.187 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=80 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 104] dst=10.0.0.20  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=77 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 104] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=72 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 104] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=10 flows=10 pps=47 rate=0.03Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 MITIGATING->MITIGATING score=1.000 sources=['10.0.0.100', '10.0.0.103', '10.0.0.110', '10.0.0.13', '10.0.0.138', '10.0.0.139', '10.0.0.14', '10.0.0.152', '10.0.0.160', '10.0.0.162', '10.0.0.167', '10.0.0.183', '10.0.0.186', '10.0.0.187', '10.0.0.20', '10.0.0.33', '10.0.0.38', '10.0.0.57', '10.0.0.59', '10.0.0.61', '10.0.0.64', '10.0.0.71', '10.0.0.74', '10.0.0.81', '10.0.0.87', '10.0.0.99'] actions=['block']
+MITIGATION INSTALLED: DROP 10.0.0.100 -> 10.0.0.200 ANY at ['s15'] priority=200 hard_timeout=300s cookie=0xdd0500000000000d
+MITIGATION INSTALLED: DROP 10.0.0.103 -> 10.0.0.200 ANY at ['s16'] priority=200 hard_timeout=300s cookie=0xdd0500000000000e
+MITIGATION INSTALLED: DROP 10.0.0.110 -> 10.0.0.200 ANY at ['s16'] priority=200 hard_timeout=300s cookie=0xdd0500000000000f
+MITIGATION INSTALLED: DROP 10.0.0.13 -> 10.0.0.200 ANY at ['s7'] priority=200 hard_timeout=300s cookie=0xdd05000000000010
+MITIGATION INSTALLED: DROP 10.0.0.138 -> 10.0.0.200 ANY at ['s19'] priority=200 hard_timeout=300s cookie=0xdd05000000000011
+MITIGATION INSTALLED: DROP 10.0.0.139 -> 10.0.0.200 ANY at ['s19'] priority=200 hard_timeout=300s cookie=0xdd05000000000012
+MITIGATION INSTALLED: DROP 10.0.0.14 -> 10.0.0.200 ANY at ['s7'] priority=200 hard_timeout=300s cookie=0xdd05000000000013
+MITIGATION INSTALLED: DROP 10.0.0.152 -> 10.0.0.200 ANY at ['s21'] priority=200 hard_timeout=300s cookie=0xdd05000000000014
+MITIGATION INSTALLED: DROP 10.0.0.160 -> 10.0.0.200 ANY at ['s21'] priority=200 hard_timeout=300s cookie=0xdd05000000000015
+MITIGATION INSTALLED: DROP 10.0.0.183 -> 10.0.0.200 ANY at ['s24'] priority=200 hard_timeout=300s cookie=0xdd05000000000016
+MITIGATION INSTALLED: DROP 10.0.0.186 -> 10.0.0.200 ANY at ['s24'] priority=200 hard_timeout=300s cookie=0xdd05000000000017
+MITIGATION INSTALLED: DROP 10.0.0.187 -> 10.0.0.200 ANY at ['s24'] priority=200 hard_timeout=300s cookie=0xdd05000000000018
+MITIGATION INSTALLED: DROP 10.0.0.20 -> 10.0.0.200 ANY at ['s7'] priority=200 hard_timeout=300s cookie=0xdd05000000000019
+MITIGATION INSTALLED: DROP 10.0.0.57 -> 10.0.0.200 ANY at ['s11'] priority=200 hard_timeout=300s cookie=0xdd0500000000001a
+MITIGATION INSTALLED: DROP 10.0.0.59 -> 10.0.0.200 ANY at ['s11'] priority=200 hard_timeout=300s cookie=0xdd0500000000001b
+MITIGATION INSTALLED: DROP 10.0.0.99 -> 10.0.0.200 ANY at ['s15'] priority=200 hard_timeout=300s cookie=0xdd0500000000001c
+[poll 105] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=117 flows=117 pps=4892 rate=32.11Mbps avg_pkt=821B | flow-ML max_p=1.00 flagged=27%
+[poll 105] dst=10.0.0.199 NORMAL TRAFFIC     score=0.037 (thr 0.844) sources=41 flows=41 pps=721 rate=6.85Mbps avg_pkt=1187B | flow-ML max_p=0.99 flagged=15%
+[poll 105] dst=10.0.0.3   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 105] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=77 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 105] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=77 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 105] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=53 rate=0.03Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 MITIGATING->MITIGATING score=1.000 sources=['10.0.0.100', '10.0.0.103', '10.0.0.110', '10.0.0.115', '10.0.0.118', '10.0.0.122', '10.0.0.125', '10.0.0.127', '10.0.0.13', '10.0.0.138', '10.0.0.139', '10.0.0.14', '10.0.0.142', '10.0.0.145', '10.0.0.150', '10.0.0.152', '10.0.0.160', '10.0.0.172', '10.0.0.177', '10.0.0.183', '10.0.0.186', '10.0.0.23', '10.0.0.25', '10.0.0.27', '10.0.0.3', '10.0.0.42', '10.0.0.46', '10.0.0.50', '10.0.0.57', '10.0.0.59', '10.0.0.7', '10.0.0.9', '10.0.0.99'] actions=['block']
+MITIGATION INSTALLED: DROP 10.0.0.115 -> 10.0.0.200 ANY at ['s17'] priority=200 hard_timeout=300s cookie=0xdd0500000000001d
+MITIGATION INSTALLED: DROP 10.0.0.118 -> 10.0.0.200 ANY at ['s17'] priority=200 hard_timeout=300s cookie=0xdd0500000000001e
+MITIGATION INSTALLED: DROP 10.0.0.122 -> 10.0.0.200 ANY at ['s18'] priority=200 hard_timeout=300s cookie=0xdd0500000000001f
+MITIGATION INSTALLED: DROP 10.0.0.125 -> 10.0.0.200 ANY at ['s18'] priority=200 hard_timeout=300s cookie=0xdd05000000000020
+MITIGATION INSTALLED: DROP 10.0.0.127 -> 10.0.0.200 ANY at ['s18'] priority=200 hard_timeout=300s cookie=0xdd05000000000021
+MITIGATION INSTALLED: DROP 10.0.0.142 -> 10.0.0.200 ANY at ['s20'] priority=200 hard_timeout=300s cookie=0xdd05000000000022
+MITIGATION INSTALLED: DROP 10.0.0.145 -> 10.0.0.200 ANY at ['s20'] priority=200 hard_timeout=300s cookie=0xdd05000000000023
+MITIGATION INSTALLED: DROP 10.0.0.150 -> 10.0.0.200 ANY at ['s20'] priority=200 hard_timeout=300s cookie=0xdd05000000000024
+MITIGATION INSTALLED: DROP 10.0.0.172 -> 10.0.0.200 ANY at ['s23'] priority=200 hard_timeout=300s cookie=0xdd05000000000025
+MITIGATION INSTALLED: DROP 10.0.0.177 -> 10.0.0.200 ANY at ['s23'] priority=200 hard_timeout=300s cookie=0xdd05000000000026
+MITIGATION INSTALLED: DROP 10.0.0.23 -> 10.0.0.200 ANY at ['s8'] priority=200 hard_timeout=300s cookie=0xdd05000000000027
+MITIGATION INSTALLED: DROP 10.0.0.25 -> 10.0.0.200 ANY at ['s8'] priority=200 hard_timeout=300s cookie=0xdd05000000000028
+MITIGATION INSTALLED: DROP 10.0.0.27 -> 10.0.0.200 ANY at ['s8'] priority=200 hard_timeout=300s cookie=0xdd05000000000029
+MITIGATION INSTALLED: DROP 10.0.0.3 -> 10.0.0.200 ANY at ['s6'] priority=200 hard_timeout=300s cookie=0xdd0500000000002a
+MITIGATION INSTALLED: DROP 10.0.0.42 -> 10.0.0.200 ANY at ['s10'] priority=200 hard_timeout=300s cookie=0xdd0500000000002b
+MITIGATION INSTALLED: DROP 10.0.0.46 -> 10.0.0.200 ANY at ['s10'] priority=200 hard_timeout=300s cookie=0xdd0500000000002c
+MITIGATION INSTALLED: DROP 10.0.0.50 -> 10.0.0.200 ANY at ['s10'] priority=200 hard_timeout=300s cookie=0xdd0500000000002d
+MITIGATION INSTALLED: DROP 10.0.0.7 -> 10.0.0.200 ANY at ['s6'] priority=200 hard_timeout=300s cookie=0xdd0500000000002e
+MITIGATION INSTALLED: DROP 10.0.0.9 -> 10.0.0.200 ANY at ['s6'] priority=200 hard_timeout=300s cookie=0xdd0500000000002f
+[poll 106] dst=10.0.0.200 MITIGATION ACTIVE  score=0.999 (thr 0.844) sources=98 flows=98 pps=4904 rate=31.44Mbps avg_pkt=801B | flow-ML max_p=1.00 flagged=18%
+[poll 106] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=38 flows=38 pps=1461 rate=14.07Mbps avg_pkt=1204B | flow-ML max_p=0.99 flagged=16%
+[poll 106] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=152 rate=0.09Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 106] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 106] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 106] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 MITIGATING->MITIGATING score=0.999 sources=['10.0.0.115', '10.0.0.118', '10.0.0.122', '10.0.0.125', '10.0.0.145', '10.0.0.150', '10.0.0.172', '10.0.0.177', '10.0.0.23', '10.0.0.25', '10.0.0.42', '10.0.0.50', '10.0.0.7', '10.0.0.9'] actions=['block']
+[poll 107] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=41 flows=41 pps=1574 rate=14.43Mbps avg_pkt=1145B | flow-ML max_p=0.99 flagged=15%
+[poll 107] dst=10.0.0.200 MITIGATION ACTIVE  score=0.989 (thr 0.844) sources=80 flows=80 pps=1167 rate=4.68Mbps avg_pkt=501B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=82 rate=0.05Mbps avg_pkt=77B | flow-ML max_p=0.00 flagged=0%
+[poll 107] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=80 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=40 flows=40 pps=1608 rate=15.55Mbps avg_pkt=1209B | flow-ML max_p=0.99 flagged=15%
+[poll 108] dst=10.0.0.200 MITIGATION ACTIVE  score=0.992 (thr 0.844) sources=78 flows=78 pps=1020 rate=4.82Mbps avg_pkt=590B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=15 flows=15 pps=166 rate=0.10Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 108] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=40 flows=40 pps=1512 rate=14.41Mbps avg_pkt=1191B | flow-ML max_p=0.99 flagged=15%
+[poll 109] dst=10.0.0.200 MITIGATION ACTIVE  score=0.991 (thr 0.844) sources=78 flows=78 pps=1035 rate=4.47Mbps avg_pkt=540B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=11 flows=11 pps=128 rate=0.07Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 109] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 110] dst=10.0.0.199 NORMAL TRAFFIC     score=0.027 (thr 0.844) sources=40 flows=40 pps=1492 rate=14.26Mbps avg_pkt=1194B | flow-ML max_p=0.99 flagged=15%
+[poll 110] dst=10.0.0.200 MITIGATION ACTIVE  score=0.992 (thr 0.844) sources=84 flows=84 pps=1067 rate=4.54Mbps avg_pkt=532B | flow-ML max_p=0.00 flagged=0%
+[poll 110] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=107 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 110] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 110] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 110] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 111] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=40 flows=40 pps=1484 rate=13.89Mbps avg_pkt=1170B | flow-ML max_p=0.99 flagged=15%
+[poll 111] dst=10.0.0.200 MITIGATION ACTIVE  score=0.989 (thr 0.844) sources=78 flows=78 pps=981 rate=4.33Mbps avg_pkt=552B | flow-ML max_p=0.00 flagged=0%
+[poll 111] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=141 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 111] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 111] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 111] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 112] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=40 flows=40 pps=1618 rate=15.55Mbps avg_pkt=1201B | flow-ML max_p=0.99 flagged=15%
+[poll 112] dst=10.0.0.200 MITIGATION ACTIVE  score=0.995 (thr 0.844) sources=83 flows=83 pps=1145 rate=4.93Mbps avg_pkt=538B | flow-ML max_p=0.00 flagged=0%
+[poll 112] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 112] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 112] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 112] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 113] dst=10.0.0.199 NORMAL TRAFFIC     score=0.026 (thr 0.844) sources=39 flows=39 pps=1491 rate=14.46Mbps avg_pkt=1212B | flow-ML max_p=0.99 flagged=15%
+[poll 113] dst=10.0.0.200 MITIGATION ACTIVE  score=0.992 (thr 0.844) sources=80 flows=80 pps=1165 rate=4.58Mbps avg_pkt=492B | flow-ML max_p=0.00 flagged=0%
+[poll 113] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=108 rate=0.06Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 113] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 113] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 113] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 114] dst=10.0.0.199 NORMAL TRAFFIC     score=0.028 (thr 0.844) sources=39 flows=39 pps=1504 rate=14.51Mbps avg_pkt=1206B | flow-ML max_p=0.99 flagged=15%
+[poll 114] dst=10.0.0.200 MITIGATION ACTIVE  score=0.992 (thr 0.844) sources=79 flows=79 pps=1040 rate=4.56Mbps avg_pkt=548B | flow-ML max_p=0.00 flagged=0%
+[poll 114] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=208 rate=0.12Mbps avg_pkt=71B | flow-ML max_p=0.00 flagged=0%
+[poll 114] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 114] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 114] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 115] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=39 flows=39 pps=1552 rate=14.64Mbps avg_pkt=1179B | flow-ML max_p=0.99 flagged=15%
+[poll 115] dst=10.0.0.200 MITIGATION ACTIVE  score=0.993 (thr 0.844) sources=81 flows=81 pps=1016 rate=4.58Mbps avg_pkt=564B | flow-ML max_p=0.00 flagged=0%
+[poll 115] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=136 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 115] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 115] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 115] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 116] dst=10.0.0.199 NORMAL TRAFFIC     score=0.026 (thr 0.844) sources=40 flows=40 pps=1432 rate=13.83Mbps avg_pkt=1207B | flow-ML max_p=0.99 flagged=15%
+[poll 116] dst=10.0.0.200 MITIGATION ACTIVE  score=0.992 (thr 0.844) sources=79 flows=79 pps=1098 rate=4.46Mbps avg_pkt=508B | flow-ML max_p=0.00 flagged=0%
+[poll 116] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=152 rate=0.09Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 116] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 116] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 116] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 117] dst=10.0.0.199 NORMAL TRAFFIC     score=0.023 (thr 0.844) sources=40 flows=40 pps=587 rate=5.68Mbps avg_pkt=1208B | flow-ML max_p=0.99 flagged=15%
+[poll 117] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=98 flows=98 pps=465 rate=0.52Mbps avg_pkt=139B | flow-ML max_p=0.91 flagged=13%
+[poll 117] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 117] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 117] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=11 flows=11 pps=44 rate=0.03Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 118] dst=10.0.0.199 NORMAL TRAFFIC     score=0.014 (thr 0.844) sources=41 flows=41 pps=631 rate=5.83Mbps avg_pkt=1154B | flow-ML max_p=0.99 flagged=15%
+[poll 118] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=86 flows=86 pps=336 rate=2.32Mbps avg_pkt=864B | flow-ML max_p=0.91 flagged=8%
+[poll 118] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 118] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 118] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=74 rate=0.04Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 119] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=41 flows=41 pps=1554 rate=14.75Mbps avg_pkt=1187B | flow-ML max_p=0.99 flagged=15%
+[poll 119] dst=10.0.0.200 MITIGATION ACTIVE  score=0.997 (thr 0.844) sources=81 flows=81 pps=1104 rate=4.63Mbps avg_pkt=524B | flow-ML max_p=0.00 flagged=0%
+[poll 119] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=137 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 119] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 119] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 119] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 120] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=41 flows=41 pps=1582 rate=14.78Mbps avg_pkt=1168B | flow-ML max_p=0.99 flagged=15%
+[poll 120] dst=10.0.0.200 MITIGATION ACTIVE  score=0.994 (thr 0.844) sources=77 flows=77 pps=965 rate=4.58Mbps avg_pkt=594B | flow-ML max_p=0.00 flagged=0%
+[poll 120] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=137 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 120] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 120] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 120] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 121] dst=10.0.0.199 NORMAL TRAFFIC     score=0.021 (thr 0.844) sources=41 flows=41 pps=1123 rate=10.59Mbps avg_pkt=1179B | flow-ML max_p=0.99 flagged=15%
+[poll 121] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=111 flows=111 pps=759 rate=2.69Mbps avg_pkt=442B | flow-ML max_p=1.00 flagged=23%
+[poll 121] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=109 rate=0.06Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 121] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 121] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 121] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 122] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=42 flows=42 pps=1704 rate=16.59Mbps avg_pkt=1217B | flow-ML max_p=0.99 flagged=14%
+[poll 122] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=125 flows=125 pps=1529 rate=7.53Mbps avg_pkt=616B | flow-ML max_p=1.00 flagged=27%
+[poll 122] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=132 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 122] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 122] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 122] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+dst=10.0.0.200 MITIGATING->MITIGATING score=1.000 sources=['10.0.0.194', '10.0.0.195'] actions=['block']
+MITIGATION INSTALLED: DROP 10.0.0.194 -> 10.0.0.200 ANY at ['s25'] priority=200 hard_timeout=300s cookie=0xdd05000000000030
+MITIGATION INSTALLED: DROP 10.0.0.195 -> 10.0.0.200 ANY at ['s25'] priority=200 hard_timeout=300s cookie=0xdd05000000000031
+[poll 123] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=42 flows=42 pps=1557 rate=14.88Mbps avg_pkt=1194B | flow-ML max_p=0.99 flagged=14%
+[poll 123] dst=10.0.0.200 MITIGATION ACTIVE  score=1.000 (thr 0.844) sources=115 flows=115 pps=1116 rate=4.89Mbps avg_pkt=548B | flow-ML max_p=1.00 flagged=22%
+[poll 123] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=15 flows=15 pps=137 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 123] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 123] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 123] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 124] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=42 flows=42 pps=1730 rate=16.89Mbps avg_pkt=1220B | flow-ML max_p=0.99 flagged=14%
+[poll 124] dst=10.0.0.200 MITIGATION ACTIVE  score=0.776 (thr 0.844) sources=91 flows=91 pps=1119 rate=4.94Mbps avg_pkt=552B | flow-ML max_p=1.00 flagged=10%
+[poll 124] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=193 rate=0.11Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 124] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 124] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 124] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 125] dst=10.0.0.199 NORMAL TRAFFIC     score=0.029 (thr 0.844) sources=38 flows=38 pps=1504 rate=14.96Mbps avg_pkt=1243B | flow-ML max_p=0.99 flagged=16%
+[poll 125] dst=10.0.0.200 MITIGATION ACTIVE  score=0.052 (thr 0.844) sources=78 flows=78 pps=995 rate=4.19Mbps avg_pkt=526B | flow-ML max_p=0.02 flagged=0%
+[poll 125] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=181 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 125] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 125] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 125] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=82 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 126] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=40 flows=40 pps=1694 rate=16.97Mbps avg_pkt=1252B | flow-ML max_p=0.99 flagged=15%
+[poll 126] dst=10.0.0.200 MITIGATION ACTIVE  score=0.045 (thr 0.844) sources=85 flows=85 pps=1180 rate=4.78Mbps avg_pkt=506B | flow-ML max_p=0.02 flagged=0%
+[poll 126] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=135 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 126] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=112 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 126] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 126] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 127] dst=10.0.0.199 NORMAL TRAFFIC     score=0.224 (thr 0.844) sources=40 flows=40 pps=1717 rate=16.53Mbps avg_pkt=1203B | flow-ML max_p=0.99 flagged=15%
+[poll 127] dst=10.0.0.200 MITIGATION ACTIVE  score=0.175 (thr 0.844) sources=87 flows=87 pps=1154 rate=4.97Mbps avg_pkt=538B | flow-ML max_p=0.02 flagged=0%
+[poll 127] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=190 rate=0.11Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 127] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 127] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 127] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 128] dst=10.0.0.199 NORMAL TRAFFIC     score=0.102 (thr 0.844) sources=39 flows=39 pps=1576 rate=15.16Mbps avg_pkt=1202B | flow-ML max_p=1.00 flagged=15%
+[poll 128] dst=10.0.0.200 MITIGATION ACTIVE  score=0.117 (thr 0.844) sources=83 flows=83 pps=1049 rate=4.02Mbps avg_pkt=479B | flow-ML max_p=0.05 flagged=0%
+[poll 128] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=12 flows=12 pps=123 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 128] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.06Mbps avg_pkt=67B | flow-ML max_p=0.00 flagged=0%
+[poll 128] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 128] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 129] dst=10.0.0.199 NORMAL TRAFFIC     score=0.085 (thr 0.844) sources=41 flows=41 pps=1649 rate=15.88Mbps avg_pkt=1204B | flow-ML max_p=1.00 flagged=15%
+[poll 129] dst=10.0.0.200 MITIGATION ACTIVE  score=0.029 (thr 0.844) sources=81 flows=81 pps=916 rate=4.35Mbps avg_pkt=594B | flow-ML max_p=0.08 flagged=0%
+[poll 129] dst=10.0.0.198 NORMAL TRAFFIC     score=0.003 (thr 0.844) sources=12 flows=12 pps=158 rate=0.09Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 129] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 129] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 129] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 130] dst=10.0.0.199 NORMAL TRAFFIC     score=0.050 (thr 0.844) sources=38 flows=38 pps=1670 rate=16.67Mbps avg_pkt=1248B | flow-ML max_p=1.00 flagged=16%
+[poll 130] dst=10.0.0.200 MITIGATION ACTIVE  score=0.013 (thr 0.844) sources=82 flows=82 pps=1194 rate=4.71Mbps avg_pkt=493B | flow-ML max_p=0.08 flagged=0%
+[poll 130] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=157 rate=0.09Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 130] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 130] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 130] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 131] dst=10.0.0.199 NORMAL TRAFFIC     score=0.068 (thr 0.844) sources=42 flows=42 pps=1742 rate=16.61Mbps avg_pkt=1192B | flow-ML max_p=1.00 flagged=14%
+[poll 131] dst=10.0.0.200 MITIGATION ACTIVE  score=0.009 (thr 0.844) sources=81 flows=81 pps=989 rate=4.53Mbps avg_pkt=573B | flow-ML max_p=0.05 flagged=0%
+[poll 131] dst=10.0.0.198 NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=12 flows=12 pps=144 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.01 flagged=0%
+[poll 131] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=114 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 131] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 131] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 132] dst=10.0.0.199 NORMAL TRAFFIC     score=0.041 (thr 0.844) sources=40 flows=40 pps=1671 rate=15.94Mbps avg_pkt=1192B | flow-ML max_p=0.99 flagged=15%
+[poll 132] dst=10.0.0.200 MITIGATION ACTIVE  score=0.020 (thr 0.844) sources=85 flows=85 pps=1062 rate=4.42Mbps avg_pkt=520B | flow-ML max_p=0.03 flagged=0%
+[poll 132] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=144 rate=0.09Mbps avg_pkt=75B | flow-ML max_p=0.01 flagged=0%
+[poll 132] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=113 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 132] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 132] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 133] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=39 flows=39 pps=1655 rate=15.99Mbps avg_pkt=1207B | flow-ML max_p=0.99 flagged=15%
+[poll 133] dst=10.0.0.200 MITIGATION ACTIVE  score=0.040 (thr 0.844) sources=82 flows=82 pps=1055 rate=4.45Mbps avg_pkt=527B | flow-ML max_p=0.01 flagged=0%
+[poll 133] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=134 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.01 flagged=0%
+[poll 133] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 133] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 133] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 134] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=41 flows=41 pps=1629 rate=15.53Mbps avg_pkt=1191B | flow-ML max_p=0.99 flagged=15%
+[poll 134] dst=10.0.0.200 MITIGATION ACTIVE  score=0.040 (thr 0.844) sources=86 flows=86 pps=1075 rate=4.30Mbps avg_pkt=500B | flow-ML max_p=0.01 flagged=0%
+[poll 134] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=164 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 134] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=108 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 134] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 134] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 135] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=41 flows=41 pps=1600 rate=15.32Mbps avg_pkt=1197B | flow-ML max_p=0.99 flagged=15%
+[poll 135] dst=10.0.0.200 MITIGATION ACTIVE  score=0.037 (thr 0.844) sources=85 flows=85 pps=1002 rate=4.23Mbps avg_pkt=527B | flow-ML max_p=0.01 flagged=0%
+[poll 135] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=12 flows=12 pps=110 rate=0.07Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 135] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 135] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 135] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 136] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=41 flows=41 pps=1520 rate=14.89Mbps avg_pkt=1225B | flow-ML max_p=0.99 flagged=15%
+[poll 136] dst=10.0.0.200 MITIGATION ACTIVE  score=0.031 (thr 0.844) sources=82 flows=82 pps=994 rate=4.11Mbps avg_pkt=517B | flow-ML max_p=0.00 flagged=0%
+[poll 136] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=134 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 136] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 136] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 136] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=81 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 137] dst=10.0.0.199 NORMAL TRAFFIC     score=0.039 (thr 0.844) sources=39 flows=39 pps=1742 rate=16.95Mbps avg_pkt=1216B | flow-ML max_p=0.99 flagged=15%
+[poll 137] dst=10.0.0.200 MITIGATION ACTIVE  score=0.029 (thr 0.844) sources=79 flows=79 pps=1023 rate=4.69Mbps avg_pkt=573B | flow-ML max_p=0.00 flagged=0%
+[poll 137] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=178 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 137] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=113 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 137] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 137] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 138] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=42 flows=42 pps=1595 rate=15.62Mbps avg_pkt=1224B | flow-ML max_p=0.99 flagged=14%
+[poll 138] dst=10.0.0.200 MITIGATION ACTIVE  score=0.043 (thr 0.844) sources=88 flows=88 pps=1149 rate=4.37Mbps avg_pkt=475B | flow-ML max_p=0.00 flagged=0%
+[poll 138] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=222 rate=0.13Mbps avg_pkt=70B | flow-ML max_p=0.00 flagged=0%
+[poll 138] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 138] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 138] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 139] dst=10.0.0.199 NORMAL TRAFFIC     score=0.028 (thr 0.844) sources=42 flows=42 pps=1587 rate=15.71Mbps avg_pkt=1237B | flow-ML max_p=0.99 flagged=14%
+[poll 139] dst=10.0.0.200 MITIGATION ACTIVE  score=0.034 (thr 0.844) sources=82 flows=82 pps=1074 rate=4.35Mbps avg_pkt=507B | flow-ML max_p=0.00 flagged=0%
+[poll 139] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=132 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 139] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 139] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 139] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 140] dst=10.0.0.199 NORMAL TRAFFIC     score=0.037 (thr 0.844) sources=42 flows=42 pps=1609 rate=15.20Mbps avg_pkt=1181B | flow-ML max_p=0.99 flagged=14%
+[poll 140] dst=10.0.0.200 MITIGATION ACTIVE  score=0.030 (thr 0.844) sources=82 flows=82 pps=940 rate=4.15Mbps avg_pkt=552B | flow-ML max_p=0.00 flagged=0%
+[poll 140] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 140] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=93 rate=0.06Mbps avg_pkt=77B | flow-ML max_p=0.00 flagged=0%
+[poll 140] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=82 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 140] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=82 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 141] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=39 flows=39 pps=1514 rate=14.76Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=15%
+[poll 141] dst=10.0.0.200 MITIGATION ACTIVE  score=0.031 (thr 0.844) sources=83 flows=83 pps=952 rate=4.11Mbps avg_pkt=540B | flow-ML max_p=0.00 flagged=0%
+[poll 141] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=131 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 141] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 141] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 141] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=82 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 142] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=41 flows=41 pps=1435 rate=13.82Mbps avg_pkt=1203B | flow-ML max_p=0.99 flagged=15%
+[poll 142] dst=10.0.0.200 MITIGATION ACTIVE  score=0.030 (thr 0.844) sources=86 flows=86 pps=865 rate=3.79Mbps avg_pkt=548B | flow-ML max_p=0.00 flagged=0%
+[poll 142] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 142] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=81 rate=0.04Mbps avg_pkt=67B | flow-ML max_p=0.00 flagged=0%
+[poll 142] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=80 rate=0.05Mbps avg_pkt=77B | flow-ML max_p=0.00 flagged=0%
+[poll 142] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=79 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 143] dst=10.0.0.199 NORMAL TRAFFIC     score=0.037 (thr 0.844) sources=40 flows=40 pps=1749 rate=17.06Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=15%
+[poll 143] dst=10.0.0.200 MITIGATION ACTIVE  score=0.029 (thr 0.844) sources=77 flows=77 pps=1113 rate=4.71Mbps avg_pkt=528B | flow-ML max_p=0.00 flagged=0%
+[poll 143] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=127 rate=0.08Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 143] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 143] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 143] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 144] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=39 flows=39 pps=1547 rate=15.13Mbps avg_pkt=1223B | flow-ML max_p=0.99 flagged=15%
+[poll 144] dst=10.0.0.200 MITIGATION ACTIVE  score=0.040 (thr 0.844) sources=85 flows=85 pps=1037 rate=4.26Mbps avg_pkt=513B | flow-ML max_p=0.00 flagged=0%
+[poll 144] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=11 flows=11 pps=142 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 144] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 144] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 144] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 145] dst=10.0.0.199 NORMAL TRAFFIC     score=0.027 (thr 0.844) sources=41 flows=41 pps=1497 rate=14.86Mbps avg_pkt=1241B | flow-ML max_p=0.99 flagged=15%
+[poll 145] dst=10.0.0.200 MITIGATION ACTIVE  score=0.025 (thr 0.844) sources=78 flows=78 pps=878 rate=4.05Mbps avg_pkt=576B | flow-ML max_p=0.00 flagged=0%
+[poll 145] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=154 rate=0.09Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 145] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 145] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 145] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 146] dst=10.0.0.199 NORMAL TRAFFIC     score=0.025 (thr 0.844) sources=42 flows=42 pps=1236 rate=11.90Mbps avg_pkt=1204B | flow-ML max_p=0.99 flagged=14%
+[poll 146] dst=10.0.0.200 MITIGATION ACTIVE  score=0.025 (thr 0.844) sources=82 flows=82 pps=794 rate=3.29Mbps avg_pkt=518B | flow-ML max_p=0.00 flagged=0%
+[poll 146] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=12 flows=12 pps=90 rate=0.05Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 146] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=77 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 146] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=67 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 146] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=66 rate=0.03Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 147] dst=10.0.0.199 NORMAL TRAFFIC     score=0.040 (thr 0.844) sources=39 flows=39 pps=1912 rate=18.87Mbps avg_pkt=1234B | flow-ML max_p=0.99 flagged=15%
+[poll 147] dst=10.0.0.200 MITIGATION ACTIVE  score=0.043 (thr 0.844) sources=83 flows=83 pps=1230 rate=5.24Mbps avg_pkt=533B | flow-ML max_p=0.00 flagged=0%
+[poll 147] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=151 rate=0.09Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 147] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=118 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 147] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 147] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 148] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=42 flows=42 pps=1731 rate=16.82Mbps avg_pkt=1215B | flow-ML max_p=0.99 flagged=14%
+[poll 148] dst=10.0.0.200 MITIGATION ACTIVE  score=0.035 (thr 0.844) sources=85 flows=85 pps=979 rate=4.58Mbps avg_pkt=584B | flow-ML max_p=0.00 flagged=0%
+[poll 148] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=122 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 148] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=108 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 148] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 148] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 149] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=40 flows=40 pps=1615 rate=15.61Mbps avg_pkt=1208B | flow-ML max_p=0.99 flagged=15%
+[poll 149] dst=10.0.0.200 MITIGATION ACTIVE  score=0.039 (thr 0.844) sources=87 flows=87 pps=1090 rate=4.33Mbps avg_pkt=497B | flow-ML max_p=0.00 flagged=0%
+[poll 149] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=147 rate=0.09Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 149] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 149] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 149] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 150] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=41 flows=41 pps=1600 rate=15.77Mbps avg_pkt=1231B | flow-ML max_p=0.99 flagged=15%
+[poll 150] dst=10.0.0.200 MITIGATION ACTIVE  score=0.031 (thr 0.844) sources=81 flows=81 pps=970 rate=4.31Mbps avg_pkt=556B | flow-ML max_p=0.00 flagged=0%
+[poll 150] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=167 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 150] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 150] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 150] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 151] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=42 flows=42 pps=1663 rate=16.30Mbps avg_pkt=1225B | flow-ML max_p=0.99 flagged=14%
+[poll 151] dst=10.0.0.200 MITIGATION ACTIVE  score=0.031 (thr 0.844) sources=82 flows=82 pps=897 rate=4.46Mbps avg_pkt=622B | flow-ML max_p=0.00 flagged=0%
+[poll 151] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=12 flows=12 pps=124 rate=0.07Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 151] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 151] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 151] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 152] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=42 flows=42 pps=1706 rate=16.63Mbps avg_pkt=1219B | flow-ML max_p=0.99 flagged=14%
+[poll 152] dst=10.0.0.200 MITIGATION ACTIVE  score=0.036 (thr 0.844) sources=83 flows=83 pps=959 rate=4.50Mbps avg_pkt=587B | flow-ML max_p=0.00 flagged=0%
+[poll 152] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=156 rate=0.09Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 152] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=114 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 152] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 152] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 153] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=41 flows=41 pps=1683 rate=16.45Mbps avg_pkt=1222B | flow-ML max_p=0.99 flagged=15%
+[poll 153] dst=10.0.0.200 MITIGATION ACTIVE  score=0.033 (thr 0.844) sources=81 flows=81 pps=1035 rate=4.52Mbps avg_pkt=546B | flow-ML max_p=0.00 flagged=0%
+[poll 153] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=143 rate=0.08Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 153] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=112 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 153] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 153] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 154] dst=10.0.0.199 NORMAL TRAFFIC     score=0.040 (thr 0.844) sources=40 flows=40 pps=1708 rate=16.32Mbps avg_pkt=1195B | flow-ML max_p=0.99 flagged=15%
+[poll 154] dst=10.0.0.200 MITIGATION ACTIVE  score=0.046 (thr 0.844) sources=84 flows=84 pps=1294 rate=4.61Mbps avg_pkt=445B | flow-ML max_p=0.00 flagged=0%
+[poll 154] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=11 flows=11 pps=112 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 154] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 154] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 154] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 155] dst=10.0.0.199 NORMAL TRAFFIC     score=0.040 (thr 0.844) sources=41 flows=41 pps=1729 rate=16.44Mbps avg_pkt=1189B | flow-ML max_p=0.99 flagged=15%
+[poll 155] dst=10.0.0.200 MITIGATION ACTIVE  score=0.044 (thr 0.844) sources=86 flows=86 pps=1131 rate=4.57Mbps avg_pkt=506B | flow-ML max_p=0.00 flagged=0%
+[poll 155] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=210 rate=0.12Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 155] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=114 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 155] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 155] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 156] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=39 flows=39 pps=1716 rate=16.61Mbps avg_pkt=1209B | flow-ML max_p=0.99 flagged=15%
+[poll 156] dst=10.0.0.200 MITIGATION ACTIVE  score=0.038 (thr 0.844) sources=84 flows=84 pps=1075 rate=4.64Mbps avg_pkt=539B | flow-ML max_p=0.00 flagged=0%
+[poll 156] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=178 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 156] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=115 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 156] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 156] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 157] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=41 flows=41 pps=1598 rate=15.61Mbps avg_pkt=1221B | flow-ML max_p=0.99 flagged=15%
+[poll 157] dst=10.0.0.200 MITIGATION ACTIVE  score=0.037 (thr 0.844) sources=84 flows=84 pps=1015 rate=4.30Mbps avg_pkt=529B | flow-ML max_p=0.00 flagged=0%
+[poll 157] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=103 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 157] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 157] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 157] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 158] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=39 flows=39 pps=1625 rate=15.71Mbps avg_pkt=1209B | flow-ML max_p=0.99 flagged=15%
+[poll 158] dst=10.0.0.200 MITIGATION ACTIVE  score=0.029 (thr 0.844) sources=82 flows=82 pps=986 rate=4.31Mbps avg_pkt=546B | flow-ML max_p=0.00 flagged=0%
+[poll 158] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=180 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 158] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 158] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 158] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.199 NORMAL TRAFFIC     score=0.040 (thr 0.844) sources=42 flows=42 pps=1731 rate=16.47Mbps avg_pkt=1189B | flow-ML max_p=0.99 flagged=14%
+[poll 159] dst=10.0.0.200 MITIGATION ACTIVE  score=0.026 (thr 0.844) sources=77 flows=77 pps=957 rate=4.47Mbps avg_pkt=584B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=188 rate=0.11Mbps avg_pkt=71B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=113 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 159] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.199 NORMAL TRAFFIC     score=0.035 (thr 0.844) sources=41 flows=41 pps=1710 rate=16.52Mbps avg_pkt=1208B | flow-ML max_p=0.99 flagged=15%
+[poll 160] dst=10.0.0.200 MITIGATION ACTIVE  score=0.039 (thr 0.844) sources=85 flows=85 pps=1057 rate=4.59Mbps avg_pkt=543B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=167 rate=0.10Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=116 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 160] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=99 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.199 NORMAL TRAFFIC     score=0.039 (thr 0.844) sources=42 flows=42 pps=1769 rate=16.97Mbps avg_pkt=1199B | flow-ML max_p=0.99 flagged=14%
+[poll 161] dst=10.0.0.200 MITIGATION ACTIVE  score=0.038 (thr 0.844) sources=83 flows=83 pps=1071 rate=4.68Mbps avg_pkt=546B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=117 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=102 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=10 flows=10 pps=95 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 161] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.199 NORMAL TRAFFIC     score=0.041 (thr 0.844) sources=39 flows=39 pps=1725 rate=16.53Mbps avg_pkt=1198B | flow-ML max_p=0.99 flagged=15%
+[poll 162] dst=10.0.0.200 MITIGATION ACTIVE  score=0.044 (thr 0.844) sources=86 flows=86 pps=1107 rate=4.56Mbps avg_pkt=515B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=129 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=115 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 162] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.199 NORMAL TRAFFIC     score=0.029 (thr 0.844) sources=40 flows=40 pps=1620 rate=16.20Mbps avg_pkt=1250B | flow-ML max_p=0.99 flagged=15%
+[poll 163] dst=10.0.0.200 MITIGATION ACTIVE  score=0.033 (thr 0.844) sources=82 flows=82 pps=1049 rate=4.47Mbps avg_pkt=533B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=198 rate=0.12Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 163] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.199 NORMAL TRAFFIC     score=0.037 (thr 0.844) sources=42 flows=42 pps=1752 rate=16.82Mbps avg_pkt=1200B | flow-ML max_p=0.99 flagged=14%
+[poll 164] dst=10.0.0.200 MITIGATION ACTIVE  score=0.038 (thr 0.844) sources=83 flows=83 pps=1138 rate=4.66Mbps avg_pkt=512B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=195 rate=0.12Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=112 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=105 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 164] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.199 NORMAL TRAFFIC     score=0.042 (thr 0.844) sources=42 flows=42 pps=1730 rate=16.05Mbps avg_pkt=1160B | flow-ML max_p=0.99 flagged=14%
+[poll 165] dst=10.0.0.200 MITIGATION ACTIVE  score=0.041 (thr 0.844) sources=88 flows=88 pps=1097 rate=4.50Mbps avg_pkt=512B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=142 rate=0.08Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=110 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 165] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=95 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=42 flows=42 pps=1738 rate=16.70Mbps avg_pkt=1201B | flow-ML max_p=0.99 flagged=14%
+[poll 166] dst=10.0.0.200 MITIGATION ACTIVE  score=0.032 (thr 0.844) sources=81 flows=81 pps=949 rate=4.55Mbps avg_pkt=599B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=111 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=101 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 166] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=96 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.199 NORMAL TRAFFIC     score=0.028 (thr 0.844) sources=42 flows=42 pps=1660 rate=16.51Mbps avg_pkt=1243B | flow-ML max_p=0.99 flagged=14%
+[poll 167] dst=10.0.0.200 MITIGATION ACTIVE  score=0.038 (thr 0.844) sources=83 flows=83 pps=1040 rate=4.52Mbps avg_pkt=544B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=127 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=115 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 167] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 168] dst=10.0.0.199 NORMAL TRAFFIC     score=0.036 (thr 0.844) sources=40 flows=40 pps=1698 rate=16.47Mbps avg_pkt=1213B | flow-ML max_p=0.99 flagged=15%
+[poll 168] dst=10.0.0.200 MITIGATION ACTIVE  score=0.043 (thr 0.844) sources=86 flows=86 pps=1184 rate=4.60Mbps avg_pkt=485B | flow-ML max_p=0.00 flagged=0%
+[poll 168] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=166 rate=0.10Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 168] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 168] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 168] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 169] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=42 flows=42 pps=1653 rate=16.23Mbps avg_pkt=1228B | flow-ML max_p=0.99 flagged=14%
+[poll 169] dst=10.0.0.200 MITIGATION ACTIVE  score=0.032 (thr 0.844) sources=82 flows=82 pps=1033 rate=4.47Mbps avg_pkt=540B | flow-ML max_p=0.00 flagged=0%
+[poll 169] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=138 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 169] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 169] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 169] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 170] dst=10.0.0.199 NORMAL TRAFFIC     score=0.028 (thr 0.844) sources=40 flows=40 pps=1647 rate=16.53Mbps avg_pkt=1254B | flow-ML max_p=0.99 flagged=15%
+[poll 170] dst=10.0.0.200 MITIGATION ACTIVE  score=0.033 (thr 0.844) sources=81 flows=81 pps=1083 rate=4.62Mbps avg_pkt=534B | flow-ML max_p=0.00 flagged=0%
+[poll 170] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 170] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 170] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=91 rate=0.06Mbps avg_pkt=77B | flow-ML max_p=0.00 flagged=0%
+[poll 170] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=91 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 171] dst=10.0.0.199 NORMAL TRAFFIC     score=0.032 (thr 0.844) sources=41 flows=41 pps=1591 rate=15.53Mbps avg_pkt=1220B | flow-ML max_p=0.99 flagged=15%
+[poll 171] dst=10.0.0.200 MITIGATION ACTIVE  score=0.031 (thr 0.844) sources=82 flows=82 pps=992 rate=4.30Mbps avg_pkt=542B | flow-ML max_p=0.00 flagged=0%
+[poll 171] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=104 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 171] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=98 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 171] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 171] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=90 rate=0.06Mbps avg_pkt=77B | flow-ML max_p=0.00 flagged=0%
+(168567) accepted ('127.0.0.1', 33312)
+127.0.0.1 - - [18/Nov/2026 09:16:48] "GET /ddos/events?since=0 HTTP/1.1" 200 36294 0.003633
+[poll 172] dst=10.0.0.199 NORMAL TRAFFIC     score=0.034 (thr 0.844) sources=39 flows=39 pps=1533 rate=14.82Mbps avg_pkt=1208B | flow-ML max_p=0.99 flagged=15%
+[poll 172] dst=10.0.0.200 MITIGATION ACTIVE  score=0.039 (thr 0.844) sources=87 flows=87 pps=962 rate=4.07Mbps avg_pkt=529B | flow-ML max_p=0.00 flagged=0%
+[poll 172] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=137 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 172] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 172] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 172] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 173] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=40 flows=40 pps=1589 rate=15.51Mbps avg_pkt=1220B | flow-ML max_p=0.99 flagged=15%
+[poll 173] dst=10.0.0.200 MITIGATION ACTIVE  score=0.036 (thr 0.844) sources=80 flows=80 pps=960 rate=4.24Mbps avg_pkt=552B | flow-ML max_p=0.00 flagged=0%
+[poll 173] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=10 flows=10 pps=167 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 173] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 173] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 173] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 174] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=42 flows=42 pps=1681 rate=16.38Mbps avg_pkt=1218B | flow-ML max_p=0.99 flagged=14%
+[poll 174] dst=10.0.0.200 MITIGATION ACTIVE  score=0.114 (thr 0.844) sources=85 flows=85 pps=1050 rate=4.53Mbps avg_pkt=539B | flow-ML max_p=0.01 flagged=0%
+[poll 174] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=265 rate=0.15Mbps avg_pkt=70B | flow-ML max_p=0.00 flagged=0%
+[poll 174] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=115 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 174] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=90 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 174] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=89 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 175] dst=10.0.0.199 NORMAL TRAFFIC     score=0.033 (thr 0.844) sources=42 flows=42 pps=1613 rate=15.53Mbps avg_pkt=1203B | flow-ML max_p=0.99 flagged=14%
+[poll 175] dst=10.0.0.200 MITIGATION ACTIVE  score=0.090 (thr 0.844) sources=82 flows=82 pps=949 rate=4.24Mbps avg_pkt=558B | flow-ML max_p=0.02 flagged=0%
+[poll 175] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=109 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 175] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=14 flows=14 pps=99 rate=0.06Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 175] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 175] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 176] dst=10.0.0.199 NORMAL TRAFFIC     score=0.031 (thr 0.844) sources=41 flows=41 pps=1626 rate=15.97Mbps avg_pkt=1227B | flow-ML max_p=0.99 flagged=15%
+[poll 176] dst=10.0.0.200 MITIGATION ACTIVE  score=0.032 (thr 0.844) sources=82 flows=82 pps=1178 rate=4.54Mbps avg_pkt=481B | flow-ML max_p=0.02 flagged=0%
+[poll 176] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=126 rate=0.08Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 176] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 176] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=100 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 176] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=97 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 177] dst=10.0.0.199 NORMAL TRAFFIC     score=0.689 (thr 0.844) sources=40 flows=40 pps=1643 rate=15.90Mbps avg_pkt=1210B | flow-ML max_p=0.99 flagged=15%
+[poll 177] dst=10.0.0.200 MITIGATION ACTIVE  score=0.411 (thr 0.844) sources=87 flows=87 pps=1084 rate=4.76Mbps avg_pkt=549B | flow-ML max_p=0.02 flagged=0%
+[poll 177] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=119 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 177] dst=10.0.0.198 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=13 flows=13 pps=115 rate=0.07Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 177] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=107 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 177] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=106 rate=0.06Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 178] dst=10.0.0.199 NORMAL TRAFFIC     score=0.596 (thr 0.844) sources=42 flows=42 pps=963 rate=8.88Mbps avg_pkt=1152B | flow-ML max_p=1.00 flagged=15%
+[poll 178] dst=10.0.0.200 MITIGATION ACTIVE  score=0.788 (thr 0.844) sources=83 flows=83 pps=680 rate=2.04Mbps avg_pkt=375B | flow-ML max_p=0.05 flagged=0%
+[poll 178] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 178] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=81 rate=0.05Mbps avg_pkt=74B | flow-ML max_p=0.00 flagged=0%
+[poll 178] dst=10.0.0.77  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=81 rate=0.05Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 178] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=69 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 179] dst=10.0.0.199 NORMAL TRAFFIC     score=0.381 (thr 0.844) sources=39 flows=39 pps=1757 rate=18.13Mbps avg_pkt=1290B | flow-ML max_p=1.00 flagged=15%
+[poll 179] dst=10.0.0.200 MITIGATION ACTIVE  score=0.017 (thr 0.844) sources=81 flows=81 pps=981 rate=5.00Mbps avg_pkt=637B | flow-ML max_p=0.08 flagged=0%
+[poll 179] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=167 rate=0.09Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 179] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=163 rate=0.09Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 179] dst=10.0.0.77  NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=67B | flow-ML max_p=0.00 flagged=0%
+[poll 179] dst=10.0.0.68  NORMAL TRAFFIC     score=0.002 (thr 0.844) sources=1 flows=1 pps=111 rate=0.06Mbps avg_pkt=67B | flow-ML max_p=0.00 flagged=0%
+[poll 180] dst=10.0.0.199 NORMAL TRAFFIC     score=0.137 (thr 0.844) sources=41 flows=41 pps=1721 rate=16.82Mbps avg_pkt=1221B | flow-ML max_p=1.00 flagged=15%
+[poll 180] dst=10.0.0.200 MITIGATION ACTIVE  score=0.019 (thr 0.844) sources=84 flows=84 pps=1160 rate=5.68Mbps avg_pkt=612B | flow-ML max_p=0.08 flagged=0%
+[poll 180] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=154 rate=0.08Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 180] dst=10.0.0.198 NORMAL TRAFFIC     score=0.003 (thr 0.844) sources=13 flows=13 pps=118 rate=0.07Mbps avg_pkt=75B | flow-ML max_p=0.00 flagged=0%
+[poll 180] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=94 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 180] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 181] dst=10.0.0.199 NORMAL TRAFFIC     score=0.037 (thr 0.844) sources=37 flows=37 pps=1596 rate=16.17Mbps avg_pkt=1266B | flow-ML max_p=1.00 flagged=16%
+[poll 181] dst=10.0.0.200 MITIGATION ACTIVE  score=0.010 (thr 0.844) sources=82 flows=82 pps=993 rate=4.40Mbps avg_pkt=554B | flow-ML max_p=0.08 flagged=0%
+[poll 181] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=12 flows=12 pps=113 rate=0.07Mbps avg_pkt=76B | flow-ML max_p=0.00 flagged=0%
+[poll 181] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=93 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 181] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 181] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 182] dst=10.0.0.199 NORMAL TRAFFIC     score=0.142 (thr 0.844) sources=41 flows=41 pps=1565 rate=15.55Mbps avg_pkt=1242B | flow-ML max_p=0.99 flagged=15%
+[poll 182] dst=10.0.0.200 MITIGATION ACTIVE  score=0.013 (thr 0.844) sources=83 flows=83 pps=1032 rate=4.33Mbps avg_pkt=524B | flow-ML max_p=0.08 flagged=0%
+[poll 182] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=129 rate=0.08Mbps avg_pkt=74B | flow-ML max_p=0.01 flagged=0%
+[poll 182] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 182] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 182] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=83 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 183] dst=10.0.0.199 NORMAL TRAFFIC     score=0.038 (thr 0.844) sources=41 flows=41 pps=1592 rate=15.66Mbps avg_pkt=1229B | flow-ML max_p=0.99 flagged=15%
+[poll 183] dst=10.0.0.200 MITIGATION ACTIVE  score=0.016 (thr 0.844) sources=82 flows=82 pps=923 rate=4.24Mbps avg_pkt=573B | flow-ML max_p=0.01 flagged=0%
+[poll 183] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=14 flows=14 pps=219 rate=0.13Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 183] dst=10.0.0.192 NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 183] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=85 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 183] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 184] dst=10.0.0.199 NORMAL TRAFFIC     score=0.030 (thr 0.844) sources=40 flows=40 pps=1577 rate=15.55Mbps avg_pkt=1233B | flow-ML max_p=0.99 flagged=15%
+[poll 184] dst=10.0.0.200 MITIGATION ACTIVE  score=0.039 (thr 0.844) sources=86 flows=86 pps=1023 rate=4.34Mbps avg_pkt=531B | flow-ML max_p=0.01 flagged=0%
+[poll 184] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=92 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 184] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=88 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 184] dst=10.0.0.8   NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 184] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=84 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 185] dst=10.0.0.199 NORMAL TRAFFIC     score=0.029 (thr 0.844) sources=42 flows=42 pps=1526 rate=15.01Mbps avg_pkt=1230B | flow-ML max_p=0.99 flagged=14%
+[poll 185] dst=10.0.0.200 MITIGATION ACTIVE  score=0.031 (thr 0.844) sources=81 flows=81 pps=1044 rate=4.16Mbps avg_pkt=498B | flow-ML max_p=0.00 flagged=0%
+[poll 185] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=13 flows=13 pps=176 rate=0.10Mbps avg_pkt=72B | flow-ML max_p=0.00 flagged=0%
+[poll 185] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=87 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 185] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=86 rate=0.05Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 185] dst=10.0.0.30  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=82 rate=0.04Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+(168567) accepted ('127.0.0.1', 38646)
+127.0.0.1 - - [18/Nov/2026 09:17:16] "GET /ddos/events?since=0 HTTP/1.1" 200 36275 0.004726
+[poll 186] dst=10.0.0.199 NORMAL TRAFFIC     score=0.017 (thr 0.844) sources=37 flows=37 pps=951 rate=9.36Mbps avg_pkt=1230B | flow-ML max_p=0.99 flagged=16%
+[poll 186] dst=10.0.0.200 MITIGATION ACTIVE  score=0.013 (thr 0.844) sources=74 flows=74 pps=600 rate=2.53Mbps avg_pkt=528B | flow-ML max_p=0.00 flagged=0%
+[poll 186] dst=10.0.0.198 NORMAL TRAFFIC     score=0.001 (thr 0.844) sources=15 flows=15 pps=111 rate=0.07Mbps avg_pkt=73B | flow-ML max_p=0.00 flagged=0%
+[poll 186] dst=10.0.0.36  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=54 rate=0.03Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 186] dst=10.0.0.68  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=52 rate=0.03Mbps avg_pkt=66B | flow-ML max_p=0.00 flagged=0%
+[poll 186] dst=10.0.0.58  NORMAL TRAFFIC     score=0.000 (thr 0.844) sources=1 flows=1 pps=50 rate=0.03Mbps avg_pkt=65B | flow-ML max_p=0.00 flagged=0%

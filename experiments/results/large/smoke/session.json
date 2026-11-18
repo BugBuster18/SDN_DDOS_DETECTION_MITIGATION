@@ -1,0 +1,1506 @@
+{
+ "session": "smoke",
+ "seed": 1,
+ "plan": "smoke",
+ "victim": "h200",
+ "victim_ip": "10.0.0.200",
+ "victim_bw_mbps": 50.0,
+ "attackers": [
+  "h1",
+  "h4",
+  "h12",
+  "h19",
+  "h27",
+  "h23",
+  "h37",
+  "h36",
+  "h50",
+  "h47",
+  "h60",
+  "h54",
+  "h70",
+  "h61",
+  "h71",
+  "h78",
+  "h90",
+  "h84",
+  "h99",
+  "h93",
+  "h101",
+  "h102",
+  "h117",
+  "h113",
+  "h122",
+  "h125",
+  "h137",
+  "h132",
+  "h149",
+  "h150",
+  "h157",
+  "h152",
+  "h165",
+  "h166",
+  "h173",
+  "h177",
+  "h181",
+  "h183",
+  "h197",
+  "h191"
+ ],
+ "attacker_ips": [
+  "10.0.0.1",
+  "10.0.0.4",
+  "10.0.0.12",
+  "10.0.0.19",
+  "10.0.0.27",
+  "10.0.0.23",
+  "10.0.0.37",
+  "10.0.0.36",
+  "10.0.0.50",
+  "10.0.0.47",
+  "10.0.0.60",
+  "10.0.0.54",
+  "10.0.0.70",
+  "10.0.0.61",
+  "10.0.0.71",
+  "10.0.0.78",
+  "10.0.0.90",
+  "10.0.0.84",
+  "10.0.0.99",
+  "10.0.0.93",
+  "10.0.0.101",
+  "10.0.0.102",
+  "10.0.0.117",
+  "10.0.0.113",
+  "10.0.0.122",
+  "10.0.0.125",
+  "10.0.0.137",
+  "10.0.0.132",
+  "10.0.0.149",
+  "10.0.0.150",
+  "10.0.0.157",
+  "10.0.0.152",
+  "10.0.0.165",
+  "10.0.0.166",
+  "10.0.0.173",
+  "10.0.0.177",
+  "10.0.0.181",
+  "10.0.0.183",
+  "10.0.0.197",
+  "10.0.0.191"
+ ],
+ "clients": {
+  "h2": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.2"
+  },
+  "h3": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.3"
+  },
+  "h5": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.5"
+  },
+  "h6": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.6"
+  },
+  "h7": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.7"
+  },
+  "h8": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.8"
+  },
+  "h9": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.9"
+  },
+  "h10": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.10"
+  },
+  "h11": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.11"
+  },
+  "h13": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.13"
+  },
+  "h14": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.14"
+  },
+  "h15": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.15"
+  },
+  "h16": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.16"
+  },
+  "h17": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.17"
+  },
+  "h18": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.18"
+  },
+  "h20": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.20"
+  },
+  "h21": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.21"
+  },
+  "h22": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.22"
+  },
+  "h24": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.24"
+  },
+  "h25": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.25"
+  },
+  "h26": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.26"
+  },
+  "h28": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.28"
+  },
+  "h29": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.29"
+  },
+  "h30": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.30"
+  },
+  "h31": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.31"
+  },
+  "h32": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.32"
+  },
+  "h33": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.33"
+  },
+  "h34": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.34"
+  },
+  "h35": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.35"
+  },
+  "h38": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.38"
+  },
+  "h39": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.39"
+  },
+  "h40": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.40"
+  },
+  "h41": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.41"
+  },
+  "h42": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.42"
+  },
+  "h43": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.43"
+  },
+  "h44": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.44"
+  },
+  "h45": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.45"
+  },
+  "h46": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.46"
+  },
+  "h48": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.48"
+  },
+  "h49": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.49"
+  },
+  "h51": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.51"
+  },
+  "h52": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.52"
+  },
+  "h53": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.53"
+  },
+  "h55": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.55"
+  },
+  "h56": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.56"
+  },
+  "h57": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.57"
+  },
+  "h58": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.58"
+  },
+  "h59": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.59"
+  },
+  "h62": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.62"
+  },
+  "h63": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.63"
+  },
+  "h64": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.64"
+  },
+  "h65": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.65"
+  },
+  "h66": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.66"
+  },
+  "h67": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.67"
+  },
+  "h68": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.68"
+  },
+  "h69": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.69"
+  },
+  "h72": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.72"
+  },
+  "h73": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.73"
+  },
+  "h74": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.74"
+  },
+  "h75": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.75"
+  },
+  "h76": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.76"
+  },
+  "h77": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.77"
+  },
+  "h79": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.79"
+  },
+  "h80": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.80"
+  },
+  "h81": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.81"
+  },
+  "h82": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.82"
+  },
+  "h83": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.83"
+  },
+  "h85": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.85"
+  },
+  "h86": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.86"
+  },
+  "h87": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.87"
+  },
+  "h88": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.88"
+  },
+  "h89": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.89"
+  },
+  "h91": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.91"
+  },
+  "h92": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.92"
+  },
+  "h94": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.94"
+  },
+  "h95": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.95"
+  },
+  "h96": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.96"
+  },
+  "h97": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.97"
+  },
+  "h98": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.98"
+  },
+  "h100": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.100"
+  },
+  "h103": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.103"
+  },
+  "h104": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.104"
+  },
+  "h105": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.105"
+  },
+  "h106": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.106"
+  },
+  "h107": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.107"
+  },
+  "h108": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.108"
+  },
+  "h109": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.109"
+  },
+  "h110": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.110"
+  },
+  "h111": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.111"
+  },
+  "h112": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.112"
+  },
+  "h114": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.114"
+  },
+  "h115": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.115"
+  },
+  "h116": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.116"
+  },
+  "h118": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.118"
+  },
+  "h119": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.119"
+  },
+  "h120": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.120"
+  },
+  "h121": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.121"
+  },
+  "h123": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.123"
+  },
+  "h124": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.124"
+  },
+  "h126": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.126"
+  },
+  "h127": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.127"
+  },
+  "h128": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.128"
+  },
+  "h129": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.129"
+  },
+  "h130": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.130"
+  },
+  "h131": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.131"
+  },
+  "h133": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.133"
+  },
+  "h134": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.134"
+  },
+  "h135": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.135"
+  },
+  "h136": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.136"
+  },
+  "h138": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.138"
+  },
+  "h139": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.139"
+  },
+  "h140": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.140"
+  },
+  "h141": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.141"
+  },
+  "h142": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.142"
+  },
+  "h143": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.143"
+  },
+  "h144": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.144"
+  },
+  "h145": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.145"
+  },
+  "h146": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.146"
+  },
+  "h147": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.147"
+  },
+  "h148": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.148"
+  },
+  "h151": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.151"
+  },
+  "h153": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.153"
+  },
+  "h154": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.154"
+  },
+  "h155": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.155"
+  },
+  "h156": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.156"
+  },
+  "h158": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.158"
+  },
+  "h159": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.159"
+  },
+  "h160": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.160"
+  },
+  "h161": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.161"
+  },
+  "h162": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.162"
+  },
+  "h163": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.163"
+  },
+  "h164": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.164"
+  },
+  "h167": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.167"
+  },
+  "h168": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.168"
+  },
+  "h169": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.169"
+  },
+  "h170": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.170"
+  },
+  "h171": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.171"
+  },
+  "h172": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.172"
+  },
+  "h174": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.174"
+  },
+  "h175": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.175"
+  },
+  "h176": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.176"
+  },
+  "h178": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.178"
+  },
+  "h179": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.179"
+  },
+  "h180": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.180"
+  },
+  "h182": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.182"
+  },
+  "h184": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.184"
+  },
+  "h185": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.185"
+  },
+  "h186": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.186"
+  },
+  "h187": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.187"
+  },
+  "h188": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.188"
+  },
+  "h189": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.189"
+  },
+  "h190": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.190"
+  },
+  "h192": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.192"
+  },
+  "h193": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.193"
+  },
+  "h194": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.194"
+  },
+  "h195": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.195"
+  },
+  "h196": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.196"
+  }
+ },
+ "victim_port": "s25-eth11",
+ "segments": [
+  {
+   "idx": 0,
+   "kind": "benign",
+   "start": 1794990523.584097,
+   "duration": 30,
+   "end": 1794990553.584097,
+   "events": []
+  },
+  {
+   "idx": 1,
+   "kind": "udp",
+   "start": 1794990553.5842109,
+   "duration": 20,
+   "end": 1794990573.5842109,
+   "events": [
+    {
+     "host": "h1",
+     "src_ip": "10.0.0.1",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h4",
+     "src_ip": "10.0.0.4",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h12",
+     "src_ip": "10.0.0.12",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h19",
+     "src_ip": "10.0.0.19",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h27",
+     "src_ip": "10.0.0.27",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h23",
+     "src_ip": "10.0.0.23",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h37",
+     "src_ip": "10.0.0.37",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h36",
+     "src_ip": "10.0.0.36",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h50",
+     "src_ip": "10.0.0.50",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h60",
+     "src_ip": "10.0.0.60",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h54",
+     "src_ip": "10.0.0.54",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h70",
+     "src_ip": "10.0.0.70",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h61",
+     "src_ip": "10.0.0.61",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h71",
+     "src_ip": "10.0.0.71",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h90",
+     "src_ip": "10.0.0.90",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h84",
+     "src_ip": "10.0.0.84",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h93",
+     "src_ip": "10.0.0.93",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h102",
+     "src_ip": "10.0.0.102",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h117",
+     "src_ip": "10.0.0.117",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h113",
+     "src_ip": "10.0.0.113",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h122",
+     "src_ip": "10.0.0.122",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h125",
+     "src_ip": "10.0.0.125",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h137",
+     "src_ip": "10.0.0.137",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h132",
+     "src_ip": "10.0.0.132",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h150",
+     "src_ip": "10.0.0.150",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h152",
+     "src_ip": "10.0.0.152",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h165",
+     "src_ip": "10.0.0.165",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h173",
+     "src_ip": "10.0.0.173",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h177",
+     "src_ip": "10.0.0.177",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h183",
+     "src_ip": "10.0.0.183",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h197",
+     "src_ip": "10.0.0.197",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h191",
+     "src_ip": "10.0.0.191",
+     "proto": "udp",
+     "rate_pps": 300,
+     "size": 800,
+     "epoch_start": 1794990553.5842109,
+     "duration": 20,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 2,
+   "kind": "spoof",
+   "start": 1794990593.58438,
+   "duration": 15,
+   "end": 1794990608.58438,
+   "events": [
+    {
+     "host": "h1",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 150,
+     "size": 512,
+     "epoch_start": 1794990593.58438,
+     "duration": 15,
+     "role": "attack"
+    },
+    {
+     "host": "h4",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 150,
+     "size": 512,
+     "epoch_start": 1794990593.58438,
+     "duration": 15,
+     "role": "attack"
+    },
+    {
+     "host": "h12",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 150,
+     "size": 512,
+     "epoch_start": 1794990593.58438,
+     "duration": 15,
+     "role": "attack"
+    },
+    {
+     "host": "h19",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 150,
+     "size": 512,
+     "epoch_start": 1794990593.58438,
+     "duration": 15,
+     "role": "attack"
+    }
+   ]
+  }
+ ],
+ "finished": 1794990623.5845628
+}

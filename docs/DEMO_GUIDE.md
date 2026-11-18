@@ -1,5 +1,9 @@
 # DEMO GUIDE — ML-based DDoS Detection and Mitigation with SDN
 
+> **Presenting live?** Use [`DEMO_3_TERMINALS.md`](DEMO_3_TERMINALS.md): 3 terminals and one
+> guided story (normal traffic, then the attack is blocked while legitimate users keep working).
+> This guide is the full reference, with every scenario.
+
 This guide lets you run the **whole project live**, from a fresh WSL session:
 start the services, generate normal traffic, launch DDoS attacks inside Mininet,
 watch the controller detect them, install real OpenFlow blocking rules, prove that
