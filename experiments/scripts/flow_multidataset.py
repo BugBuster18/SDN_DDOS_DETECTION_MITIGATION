@@ -32,8 +32,8 @@ sys.path.insert(0, str(ROOT))
 from ddos_ml.features import FEATURE_COLUMNS, canonicalize_frame  # noqa: E402
 from ddos_ml.training import _pipeline, model_factories, split_indices  # noqa: E402
 
-OUT = ROOT / "experiments" / "results" / "flow_multidataset"
-ART = ROOT / "artifacts" / "multidataset"
+OUT = ROOT / "experiments" / "results" / "flow_multidataset_v2"
+ART = ROOT / "artifacts" / "multidataset_v2"
 P18 = ROOT / "data" / "processed" / "cic2018_flows.csv.gz"
 P19 = ROOT / "data" / "processed" / "cicddos2019_flows.csv"
 RNG = np.random.default_rng(42)
@@ -82,6 +82,10 @@ def clean(df):
 def split(df, name):
     tr, te, how = split_indices(df["label"].reset_index(drop=True), df["group_id"].reset_index(drop=True))
     train, test = df.iloc[tr], df.iloc[te]
+    # Review round 2: label conflicts are resolved inside the TRAINING split only; the holdout keeps
+    # every row, including ambiguous ones (no test labels are used for filtering).
+    train, amb = clean(train)
+    print(f"{name}: removed {amb} conflicting-label rows from the training split only", flush=True)
     parts = []
     for c in (0, 1):
         sub = train[train["label"] == c]
@@ -127,8 +131,9 @@ def main():
     t0 = time.time()
     d19 = pd.read_csv(P19)
     d18 = prep_2018()
-    d19, amb19 = clean(d19)
-    d18, amb18 = clean(d18)
+    d19 = d19.replace([np.inf, -np.inf], np.nan)
+    d18 = d18.replace([np.inf, -np.inf], np.nan)
+    amb19 = amb18 = 0  # conflicts are now removed inside each training split (see split())
     info = {"cic2019_rows": len(d19), "cic2019_benign": int((d19.label == 0).sum()), "cic2019_ambiguous_removed": amb19,
             "cic2018_rows": len(d18), "cic2018_benign": int((d18.label == 0).sum()), "cic2018_ambiguous_removed": amb18,
             "cic2018_benign_udp": int(((d18.label == 0) & (d18.protocol == 17)).sum()),
@@ -138,7 +143,7 @@ def main():
     tr18, te18 = split(d18, "CSE-CIC-IDS2018")
     trains = {"CIC-DDoS2019": tr19, "CSE-CIC-IDS2018": tr18, "Combined": pd.concat([tr19, tr18])}
     tests = {"CIC-DDoS2019": te19, "CSE-CIC-IDS2018": te18}
-    rows, preds = [], {}
+    rows, preds, dupmask = [], {}, {}
     for tname, tr in trains.items():
         for mname, est in model_factories().items():
             model = _pipeline(est)
@@ -152,6 +157,15 @@ def main():
                 inf_s = time.time() - ts
                 p = (prob >= 0.5).astype(int)
                 m = metrics(y, p, prob)
+                # holdout rows whose exact feature vector also occurs in this training set
+                key = (tname, sname)
+                if key not in dupmask:
+                    hs = set(pd.util.hash_pandas_object(tr[FEATURE_COLUMNS], index=False).to_numpy())
+                    ht = pd.util.hash_pandas_object(te[FEATURE_COLUMNS], index=False).to_numpy()
+                    dupmask[key] = np.isin(ht, list(hs))
+                dm = dupmask[key]
+                m["dup_share"] = float(dm.mean())
+                m["ba_without_dups"] = balanced_accuracy_score(y[~dm], p[~dm]) if len(set(y[~dm])) > 1 else np.nan
                 m.update({"train": tname, "model": mname, "test": sname, "fit_s": round(fit_s, 2),
                           "infer_us_per_flow": round(1e6 * inf_s / len(y), 2)})
                 rows.append(m)
@@ -179,6 +193,18 @@ def main():
         sig.append({"model_B": mname, "hgb_right_B_wrong": n01, "hgb_wrong_B_right": n10, "mcnemar_chi2": round(stat, 2),
                     "p_value": pv, "ba_diff_mean": mean, "ba_diff_lo": lo, "ba_diff_hi": hi})
     pd.DataFrame(sig).to_csv(OUT / "significance_combined.csv", index=False)
+    # Review round 2: tests aligned with the selection metric -- paired, class-stratified bootstrap of the
+    # balanced-accuracy difference (HGB - other), separately on each dataset's holdout.
+    sig2 = []
+    for s in tests:
+        y = tests[s]["label"].to_numpy()
+        for mname in model_factories():
+            if mname == "Hist Gradient Boosting":
+                continue
+            mean, lo, hi = boot_diff(y, preds[("Combined", "Hist Gradient Boosting", s)], preds[("Combined", mname, s)])
+            sig2.append({"test": s, "model_B": mname, "ba_diff_pts": 100 * mean, "lo_pts": 100 * lo, "hi_pts": 100 * hi})
+    pd.DataFrame(sig2).to_csv(OUT / "significance_per_dataset_ba.csv", index=False)
+    print(pd.DataFrame(sig2).round(3).to_string(index=False))
 
     meta = json.loads((ROOT / "artifacts" / "production" / "model_metadata.json").read_text())
     meta.update({"training_source": "CIC-DDoS2019 (01-12) + CSE-CIC-IDS2018 (4 days), balanced %d/class/dataset" % PER_CLASS,

@@ -1,0 +1,498 @@
+{
+  "title": "False-Positive-Aware, Destination-Centric DDoS Detection and Source-Scoped Mitigation in Software-Defined Networks",
+  "group": "Group SDN_29",
+  "authors": "Advait Pathak (23bcs094), Venkatesh Dhangar (23bcs041), Shantanu Dukare (23bcs121), Ojas Jogdand (23bds039), Dhanraj Matke (23bcs042)",
+  "tool": "Google Deep Review (https://research.google/deepreview/), Gemini 4 Argon, Medium depth",
+  "rounds": [
+    {
+      "round": 1,
+      "uploaded_file": "SDN_DDoS_Paper_Revision0.pdf",
+      "uploaded_on": "22 Nov 2026",
+      "review_id": "98a4c3e3-c36c-4656-82e2-f9f7011215f2",
+      "custom_context": "IEEE conference paper (course research project) on ML-based DDoS detection and mitigation in SDN, evaluated on a Mininet/Ryu testbed. Please check the mathematical formulation, the experimental methodology and baselines, the statistical validity of the results, and whether the claims are supported by the evidence.",
+      "verbatim_file": "rev0/DeepReview_Round1_comments.md",
+      "revised_file": "SDN_DDoS_Paper_Revision1.pdf",
+      "new_experiments": [
+        "Fresh seed 3 with the frozen final configuration: one detection-only and one mitigation session (shuffled attack order, 60 s gaps)",
+        "Calibration session repeated at the 25 Mbit/s test capacity (sensitivity analysis)",
+        "Offline ablation: Levels 2+3 without the flow model, refitted on the calibration session",
+        "Offline: fast-path parity for all baselines, survivorship-free (penalised) latency, per-role false-positive rates",
+        "Live-attribution diagnosis per attacker and episode (diagnose_attribution.py) and carry-over accounting (rules active at onset)"
+      ],
+      "items": [
+        {
+          "id": "1.1",
+          "type": "Weakness",
+          "comment": "Missing architectural ablation without the Level-1 flow classifier; the claim that gains come from Levels 2-3 is unverified.",
+          "response": "Added the ablation (Levels 2+3 only, window and source models refitted without the six flow-ML features on the same calibration data). Pooled seed 2: F1 0.78 -> 0.73 and 21 % more false-positive windows; seed 3: 0.73 -> 0.71. The claim was corrected: most of the gain comes from Levels 2-3, but Level 1 contributes about 0.04 F1.",
+          "where": "Sec. VI-B, Table III, Table VI, Conclusion",
+          "status": "Resolved (new experiment)"
+        },
+        {
+          "id": "1.2",
+          "type": "Weakness / Major (Eq. 3)",
+          "comment": "Mitigation optimisation is ill-posed: goodput not a function of B_v, unit mismatch between packet rates and C_v (bit/s), R_max not enforced, port quarantine missing.",
+          "response": "Rewrote the mitigation problem: offered bit rate l = lambda * mean packet size; goodput under proportional sharing of the bottleneck as an explicit function of the blocked set B and quarantined ports Q; no hard capacity constraint (an overloaded link lowers goodput instead of making B infeasible); equivalence to minimising residual attack load stated; R_max = 64 per destination and 64 per window documented as implemented (ranking by source score, rate-rule hits first); Q added for spoofed sources.",
+          "where": "Sec. III-E, Eqs. (4)-(5)",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.3",
+          "type": "Major (Eq. 2)",
+          "comment": "Detection problem degenerates if (k, n, eta_f) are free; single-window quantile does not bound the confirmation false-alarm rate; continuous time vs window index; distribution of E[D] unspecified.",
+          "response": "(k, n, eta_f) are now stated as fixed design parameters and only eta is optimised; the constraint is written on the single-window exceedance and the text says explicitly that it does not bound confirmation-level false alarms, which are reported empirically (FA/h); D is defined with window completion times t*Delta; E is the empirical mean over test episodes (not Lorden's worst case). Calibration 'segment' is defined.",
+          "where": "Sec. III-D, Eq. (3); Sec. IV-E",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.4",
+          "type": "Major (Eq. 1)",
+          "comment": "Counter-delta correction for re-installed entries is not formalised; switch index missing; asynchronous polling.",
+          "response": "Eq. (1) is now a piecewise definition per switch sigma using the OpenFlow entry age delta and reply interval e: plain difference if the counter did not fall (covers re-added entries), otherwise counter * min(1, e/delta); first-seen entries; max over the path; rate divided by the largest reply interval, with the polling-jitter caveat stated.",
+          "where": "Sec. III-B, Eq. (1)",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.5",
+          "type": "Major (Eq. 4)",
+          "comment": "Latency lower bound ignores the fast path and repeat-offender trigger, pre-attack exceedances and sub-window accumulation; contradicts measured 1.2-1.3 s latencies.",
+          "response": "The bound is rescoped to pure k-of-n confirmation under stated assumptions (no pre-attack exceedance, first window crosses eta); the text explains that the fast path, repeat offenders or a pre-attack exceedance reduce D to as little as U*Delta, and that an insufficient first window adds Delta. Table IV footnote points to this.",
+          "where": "Sec. III-F, Eq. (6); Table IV",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.6",
+          "type": "Major (features)",
+          "comment": "Boundary singularities and missing formulas for entropy, response ratio, log rate change, rate jump, active windows.",
+          "response": "Added Table I with the exact definition of all 19 destination and 10 pair features, the boundary conventions used in the code (H_d = 0 if n_d <= 1; ratios with max(.,1) and a cap of 10; +1 smoothing in log ratios; 0 when nothing is scored) and the multi-feature group counts.",
+          "where": "Sec. III-B, Table I",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.7",
+          "type": "Minor",
+          "comment": "Abstract: report precision, distinguish realised FPR from the calibration budget, note that cross-dataset failure is bidirectional.",
+          "response": "Abstract rewritten: 0.42 and 0.47 in both directions; recall 0.97, precision 0.65, F1 0.78 at a realised 0.26 % FPR with a 0.3 % budget.",
+          "where": "Abstract",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.8",
+          "type": "Minor",
+          "comment": "Undefined 'src' in the spoofing definition.",
+          "response": "Now written as s != beta(sigma, p).",
+          "where": "Sec. III-C",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.9",
+          "type": "Major (Algorithm 1)",
+          "comment": "Incomplete state machine: no RECOVERING -> NORMAL, SUSPECTED and MITIGATING never assigned, quiet-window predicate and episode counter undefined, quiet check unscoped.",
+          "response": "Algorithm 1 rewritten with every transition used by the code (NORMAL/SUSPECTED/CONFIRMED/MITIGATING/RECOVERING), the over predicate o_d(t) (score >= eta, or >= 30 pps hitting drop rules while MITIGATING), the quiet counter scoped to CONFIRMED/MITIGATING, Q_e = 3 * 2^min(e_d - 1, 3), and when e_d is incremented (entering MITIGATING; never reset).",
+          "where": "Sec. IV-A, Eqs. (7)-(8), Algorithm 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.10",
+          "type": "Major (Eq. 7)",
+          "comment": "Persistence and repeat offenders missing from Eq. (7); R_d predicate unspecified; attribution gated on s_d >= eta; cold-start and slow-ramp cases.",
+          "response": "Eq. (9) now defines the instantaneous candidate set B~_d(t) and Eq. (10) the persistence-filtered B_d(t) = (B~(t) and B~(t')) or (B~(t) and R_d(t)); R_d(t) defined (blocked within 300 s and rate >= 15 pps); the gate is explained (o_d includes drop-rule hits); a new 'Edge cases' paragraph states the cold-start and slow-ramp weaknesses.",
+          "where": "Sec. IV-B",
+          "status": "Resolved (edge cases stated as limitations)"
+        },
+        {
+          "id": "1.11",
+          "type": "Major (mitigation lifecycle)",
+          "comment": "Are drop-rule counters used for quiet windows? Hard timeout vs episode length; anti-spoofing binding, priority, timeout, scope.",
+          "response": "Stated that drop-rule hit rates keep the episode open (part of o_d), that rules are removed on RECOVERING and re-installed if they expire while the attack continues, that the port binding is static topology configuration (cannot be poisoned by a first spoofed packet), quarantine priority 205 and hard timeout 300 s, independent of destination state, and that no allow rule is installed (limitation). Figure 1 caption updated.",
+          "where": "Sec. IV-A, IV-C; Fig. 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.12",
+          "type": "Minor",
+          "comment": "Exact subset of features that receive log(1+x).",
+          "response": "Marked with a dagger in Table I; all are non-negative counts or rates.",
+          "where": "Table I",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.13",
+          "type": "Minor",
+          "comment": "Figure 1 says per-source instead of per-pair features.",
+          "response": "Figure regenerated with 'per-pair'.",
+          "where": "Fig. 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.14",
+          "type": "Minor",
+          "comment": "corr(s) depends on d; time indices; set notation for a single state; phi_{s,d} computed for all pairs.",
+          "response": "Now corr_{s,d}(t) with time indices on lambda, r, s_d, B_d; 'state_d = NORMAL'; features are computed for every active pair because the baselines mu_{s,d} must be learned before an attack.",
+          "where": "Sec. IV-B, Algorithm 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.15",
+          "type": "Minor",
+          "comment": "Symbol epsilon overloaded for window and source thresholds.",
+          "response": "Source budget renamed epsilon_s = 1 %.",
+          "where": "Sec. IV-E",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.16",
+          "type": "Major (testbed)",
+          "comment": "Victim capacity 50 Mbit/s in calibration vs 25 Mbit/s in test; pooled vs stratified quantile.",
+          "response": "Rationale stated (the emulator delivers only 6-7 kpps of the 11 kpps offered, so 50 Mbit/s never saturated). Calibration was repeated at 25 Mbit/s: thresholds change (eta 0.844 -> 0.980) and the detector improves on all three held-out sessions (F1 0.80/0.82/0.78, FPR within the 0.3 % budget); destination entropy ties on one session but misses 4 of 27 episodes; conclusion: calibrate at the operating capacity and set eta_f relative to eta. The threshold is now stated to be a pooled quantile, and Table V gives the per-role FPR: 0 % on about 38,000 client windows but 24-30 % on the victim server's benign windows (none in the pre-attack benign period).",
+          "where": "Sec. V-B, IV-E, VI-B (Table V), VI-G (Table X), Abstract",
+          "status": "Resolved (new experiment); per-role calibration left as future work"
+        },
+        {
+          "id": "1.17",
+          "type": "Major (datasets)",
+          "comment": "CIC-DDoS2019 has only 16,733 benign flows; grouping variable; deduplication scope; class-balanced prior.",
+          "response": "Added: groups (bidirectional 5-tuple + protocol; day x minute x destination port for IDS2018); conflicting-label rows removed over the whole dataset before the split (stated as using holdout labels); same-label duplicates kept; only 13,386 benign CIC-DDoS2019 flows in the training split, all used, no oversampling; holdout has 569 benign; p_f not recalibrated from the 1:1 prior.",
+          "where": "Sec. V-A, III-B",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.18",
+          "type": "Major (baselines)",
+          "comment": "Latency comparison is asymmetric (fast path only for the proposed method); source-entropy definition and direction.",
+          "response": "Every baseline was re-evaluated with a single-window fast path at the same calibration exceedance rate (0.24 %) as eta_f; Table III reports both. The proposed detector remains fastest (3.2 s vs 4.5-11.9 s penalised). Source entropy is defined as unnormalised entropy in bits with an upper-tail alarm, and the choice is justified.",
+          "where": "Sec. V-C, Table III",
+          "status": "Resolved (new analysis)"
+        },
+        {
+          "id": "1.19",
+          "type": "Minor",
+          "comment": "Which edge switch hosts the victim and servers.",
+          "response": "Stated: the last edge switch hosts h200, h198, h199, two attackers and five clients.",
+          "where": "Sec. V-B",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.20",
+          "type": "Major (methodology)",
+          "comment": "Attribution rules were tuned on the held-out seed-2 schedule (data snooping); v1 covered only 5 segments.",
+          "response": "Ran a fresh seed 3 once with the frozen configuration. Zero collateral holds out of sample (0 legitimate hosts blocked); detection keeps the best F1 (0.73). The mitigation benefit is smaller (HTTP 44 % -> 60 %), reported as such. The seed-2 zero-collateral result is now labelled in-sample. Table IX adds the common horizon of the first three attacks (v1: 9, v2/v3/final: 0).",
+          "where": "Sec. VI-C, VI-E, Tables VI, VII, IX, Abstract, Conclusion",
+          "status": "Resolved (new experiment)"
+        },
+        {
+          "id": "1.21",
+          "type": "Major (methodology)",
+          "comment": "Sequential episodes confound per-attack metrics (carry-over of collapse and of 300 s rules; low-rate 0.06 -> 1.00 with 0 rules).",
+          "response": "Tables VII and VIII now separate new rules from attackers already blocked at onset; the text states that the low-rate gain is avoided collapse, not mitigation (low-rate is detected but not attributed), and gives the average over the five attacks with mainly active mitigation (69 % -> 86 %). Seed 3 uses a shuffled order and 60 s gaps (> 48 s maximum hold-down) to reduce carry-over.",
+          "where": "Sec. V-B, VI-C, VI-D, Tables VII, VIII",
+          "status": "Partly resolved (per-attack resets would need ~9x more runs; stated)"
+        },
+        {
+          "id": "1.22",
+          "type": "Major (ICMP)",
+          "comment": "Diagnose why live ICMP attribution blocks 1/40 vs 38/40 offline.",
+          "response": "Diagnosed by stepping the live configuration through the session telemetry: on seed 2, 36 of 40 ICMP attackers were already blocked at onset by all-protocol rules from the SYN episode (the original explanation was wrong). On seed 3, 28 of 40 ICMP attackers had no flow counters at all because the flood prevented flow setup. The remaining seed-2 service loss is reported as unexplained.",
+          "where": "Sec. VI-C, VI-D (The ICMP case)",
+          "status": "Resolved (root cause found); one residual effect unexplained"
+        },
+        {
+          "id": "1.23",
+          "type": "Major (statistics)",
+          "comment": "McNemar deltas contradict Table I balanced accuracies.",
+          "response": "Clarified that McNemar compares unweighted accuracy on the pooled 120,000 flows (dominated by the majority-benign IDS2018 split), recomputed the deltas as unweighted accuracy (+0.28, +0.25, +0.16 points for RF, KNN, DT) and added Naive Bayes' attack recall (0.21, 0.002).",
+          "where": "Sec. VI-A",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.24",
+          "type": "Major (statistics)",
+          "comment": "Mean latency over detected episodes only (survivorship bias).",
+          "response": "Tables III and VI now report the mean over detected episodes and a penalised mean (missed episodes counted with their full duration); captions say which is which.",
+          "where": "Tables III, IV, VI",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.25",
+          "type": "Major (metrics)",
+          "comment": "Are window metrics pre- or post-confirmation? Fig. 3 single session vs pooled numbers.",
+          "response": "Stated that window metrics use the single-window decision s_d >= eta and event metrics use the confirmation rule; Fig. 3 caption says single session test_det.",
+          "where": "Sec. VI-B, Fig. 3",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.26",
+          "type": "Minor",
+          "comment": "Chain testbed: 18 attack runs of 21?",
+          "response": "Clarified: 21 held-out runs = 18 attack runs and 3 benign-only runs.",
+          "where": "Sec. VI-B",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.27",
+          "type": "Minor",
+          "comment": "Table IV: subsets of 24 and 30 attackers, footnote placement, 4/4 ports, spoofed flood causes no collapse, units.",
+          "response": "Columns now show 'new / already active of N'; spoofed row '4 of 4 ports' with a note that the spoofed flood stays below the packet-in limit and link capacity; caption says success fractions; Sec. V-B states the 24/30 subsets.",
+          "where": "Table VIII (was Table IV), Table VII, Sec. V-B",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.28",
+          "type": "Minor",
+          "comment": "Reference [12] missing article number.",
+          "response": "Added 'Art. no. e2'.",
+          "where": "References",
+          "status": "Resolved"
+        },
+        {
+          "id": "1.29",
+          "type": "Weakness",
+          "comment": "Positioning against multi-stage SDN detectors, SAVI, NAT/shared ports; relation to sequential change detection and Bohatei.",
+          "response": "Related Work expanded (Giotis et al., Novaes et al. 2020, Bohatei, Arp et al. 2022, SAVI) with the differences of our design; confirmation rule described as a heuristic without CUSUM-style guarantees; NAT/shared-port behaviour of the port quarantine and (src, dst) rules added to the limitations.",
+          "where": "Sec. II, VI-H",
+          "status": "Resolved"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "uploaded_file": "SDN_DDoS_Paper_Revision1.pdf",
+      "uploaded_on": "22 Nov 2026",
+      "review_id": "2252fd90-753d-46f6-a385-4eb014d0ba16",
+      "custom_context": "Revision 1 of an IEEE conference paper (course research project) on ML-based DDoS detection and mitigation in SDN, evaluated on a Mininet/Ryu testbed. This revision added a fresh-seed validation, an ablation without the flow model, fast-path parity for baselines, a recalibration at the test link capacity, and a rewritten formulation and algorithm. Please check the mathematical formulation, the methodology and baselines, the statistical validity of the results, and whether the claims are supported by the evidence.",
+      "verbatim_file": "rev1/DeepReview_Round2_comments.md",
+      "revised_file": "SDN_DDoS_Paper_Revision2.pdf (final)",
+      "summary": "Deep Review judged the round-1 revision to have rigorous experimental hygiene and transparency, and raised mainly consistency, specification and statistical-alignment issues. No new emulation runs were needed; one flow-model re-evaluation and one offline analysis on logged telemetry were added.",
+      "new_experiments": [
+        "Flow model re-evaluated with label conflicts removed inside the training split only (holdouts untouched); ROC-AUC, cross-split duplicate share and balanced accuracy without duplicates; per-dataset paired bootstrap of balanced accuracy replacing the pooled McNemar test; model sizes",
+        "Offline on the three held-out detection sessions, both calibrations: Page CUSUM baseline on the window score, per-role (server/client) thresholds, quantile-defined fast path (eps_f = 0.1 %)"
+      ],
+      "items": [
+        {
+          "id": "2.1",
+          "type": "Weakness / Major",
+          "comment": "Mitigation objective ranks by bit rate but the solver ranks by packet-rate thresholds and source score; Q missing from goodput and zero-collateral constraint; equivalence only while overloaded; joint vs separate budgets.",
+          "response": "Eq. (4) now applies the quarantine to legitimate traffic too; Eq. (5) adds the constraint that no quarantined port is bound to a legitimate host; the equivalence to minimising residual load is stated as holding only while the link is overloaded; the solver's score ranking is stated as a confidence heuristic (cap never reached in our runs); separate rule and quarantine budgets in the implementation are stated.",
+          "where": "Sec. III-E, Eqs. (4)-(5)",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.2",
+          "type": "Weakness / Major",
+          "comment": "Pre-split label snooping (conflicting-label rows removed over the whole dataset).",
+          "response": "Fixed: conflicts are now removed inside the training split only and the holdouts keep all rows. Re-evaluated all models: combined HGB 0.914 / 0.919 (was 0.976 / 0.948), cross-dataset 0.485 / 0.618 with ROC-AUC 0.533 / 0.786. Abstract, Fig. 2, Table II and text updated.",
+          "where": "Sec. V-A, VI-A, Fig. 2, Table II, Abstract",
+          "status": "Resolved (re-evaluation)"
+        },
+        {
+          "id": "2.3",
+          "type": "Weakness / Major",
+          "comment": "Pooled role calibration gives 24-30 % benign FPR on the victim; test stratified thresholds offline.",
+          "response": "Evaluated per-role thresholds offline: the server threshold rises to about 1.0 and F1 collapses to 0.02-0.24, showing the server false positives are intrinsic to the window features, not only a pooling artefact. Eq. (3) now states that the H0 probability is pooled over destinations.",
+          "where": "Sec. III-D, VI-H, Table XI",
+          "status": "Resolved (new analysis); remedy left as future work"
+        },
+        {
+          "id": "2.4",
+          "type": "Weakness / Major",
+          "comment": "Fast-path threshold inversion when eta is recalibrated (eta = 0.980 > eta_f = 0.97).",
+          "response": "eta_f is now defined as the (1 - eps_f) quantile with eps_f = 0.1 % < eps, so eta_f > eta by construction; offline at 25 Mbit/s this gives eta_f = 0.998 and lowers false-alarm episodes from 44-63 to 30-43 per hour with all episodes detected in 3.2-4.2 s. The runs reported in Sec. VI-B to E are labelled as using the fixed 0.97.",
+          "where": "Sec. III-D, VI-G, VI-H, Table XI",
+          "status": "Resolved (new analysis)"
+        },
+        {
+          "id": "2.5",
+          "type": "Weakness",
+          "comment": "Counter-based attribution is blind under packet-in saturation and for low-rate attackers.",
+          "response": "Stated explicitly in Sec. IV-C and the limitations, with per-(s, d) packet-in counting proposed as the fix; low-rate attackers are reported as detected but not attributed.",
+          "where": "Sec. IV-C, VI-C, VI-I",
+          "status": "Acknowledged (architectural limitation; future work)"
+        },
+        {
+          "id": "2.6",
+          "type": "Weakness / Major",
+          "comment": "No CUSUM baseline for the confirmation heuristic.",
+          "response": "Added a one-sided Page CUSUM on the same window score with h matched on calibration. It gives a similar delay vs false-alarm trade-off; the paper now says the 2-of-3 rule is not better than standard sequential detection, only more transparent.",
+          "where": "Sec. V-C, VI-H, Table XI, Conclusion",
+          "status": "Resolved (new analysis)"
+        },
+        {
+          "id": "2.7",
+          "type": "Major (Eq. 1)",
+          "comment": "Eq. (1) does not capture new entries, unknown history, age condition, zero age, re-installed entries whose counter exceeds the old one.",
+          "response": "Eq. (1) now has four cases (a)-(d) matching the code exactly (new entry with age condition, excluded unknown history, continuous counter, restarted counter with max(delta, eps) guard); the remaining case the rule cannot distinguish is stated.",
+          "where": "Sec. III-B, Eq. (1)",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.8",
+          "type": "Major",
+          "comment": "Detection problem: unconstrained eta_f, missed-episode delay, pooled H0.",
+          "response": "D = T_ep when no window confirms (the penalised latency); eta_f defined by quantile with eta_f > eta; pooled H0 stated.",
+          "where": "Sec. III-D, Eqs. (2)-(3)",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.9",
+          "type": "Major",
+          "comment": "Rate distortion from path maximum and global reply-interval normalisation.",
+          "response": "Stated as a simplification of the implementation with its effect (up to about 40 % for a 3.5 s interval) and the more exact per-switch normalisation; shared by all methods.",
+          "where": "Sec. III-B",
+          "status": "Acknowledged (documented)"
+        },
+        {
+          "id": "2.10",
+          "type": "Major",
+          "comment": "Undefined byte symbols, q_s when Lambda_d = 0, n_d, active/new/scored flows.",
+          "response": "All defined in Sec. III-B.",
+          "where": "Sec. III-B, Table I",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.11",
+          "type": "Major",
+          "comment": "12.4 s vs 5-10 s bound; abstract should mention carry-over.",
+          "response": "Text now explains the 10-15 s case; abstract notes that part of the seed-2 gain is avoided carry-over collapse.",
+          "where": "Sec. III-F, Abstract",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.12",
+          "type": "Minor",
+          "comment": "Pulsing written with window index; quotation marks.",
+          "response": "Pulsing written in continuous time; LaTeX quotes fixed.",
+          "where": "Sec. III-C, III-E, VI-D",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.13",
+          "type": "Major (Algorithm 1)",
+          "comment": "Q_e at e_d = 0; missing quiet reset; recovery counter implicit.",
+          "response": "Q_{e_d} = 3 * 2^max(0, min(e_d - 1, 3)) as implemented; quiet and rec counters reset on entering RECOVERING; rec counter explicit in Algorithm 1; up to 54 s to return to NORMAL stated.",
+          "where": "Sec. IV-A, Algorithm 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.14",
+          "type": "Major",
+          "comment": "Persistence state across episodes and at onset.",
+          "response": "Stated that attribution is not evaluated in SUSPECTED (earliest block one over window after confirmation) and that the persistence counter is not cleared at episode end in the implementation (possible single-window block in a later episode; not observed).",
+          "where": "Sec. IV-B",
+          "status": "Resolved (documented as implemented)"
+        },
+        {
+          "id": "2.15",
+          "type": "Major",
+          "comment": "LOSO refitting scope and source-model pool.",
+          "response": "Stated: weights refitted per fold, standardisation computed once on all calibration windows (mild leak), sequential features not reset at segment boundaries; source model and eta_s use (source, victim) pairs excluding the spoofed segment.",
+          "where": "Sec. IV-E",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.16",
+          "type": "Major",
+          "comment": "Rule budget accounting, expired-rule re-installation, quarantine lifecycle.",
+          "response": "Algorithm 1 installs rules for sources without an active rule (re-installs expired ones); separate budgets; quarantine cleanup behaviour when d never confirms or recovers early is stated.",
+          "where": "Sec. III-E, IV-B, IV-C, Algorithm 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.17",
+          "type": "Minor",
+          "comment": "lambda_floor used before definition; Q_e vs Q_{e_d}; mu time index; non-NORMAL destinations without traffic; recovery counter.",
+          "response": "All fixed.",
+          "where": "Sec. III-B, IV-A, IV-B, Algorithm 1",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.18",
+          "type": "Major",
+          "comment": "Cross-split duplicates and minute-level grouping.",
+          "response": "Reported: 17-24 % of holdout vectors occur in training; balanced accuracy without them changes by at most 0.04; the minute-grouping caveat is stated.",
+          "where": "Sec. V-A",
+          "status": "Resolved (new analysis)"
+        },
+        {
+          "id": "2.19",
+          "type": "Major",
+          "comment": "Training flows are 5-tuple, testbed entries are (src, dst, proto).",
+          "response": "Stated in Sec. V-B with its consequences for Level 1 and for the new-flow corroboration, and in the limitations.",
+          "where": "Sec. V-B, VI-I",
+          "status": "Acknowledged (documented)"
+        },
+        {
+          "id": "2.20",
+          "type": "Major",
+          "comment": "Why is the mismatched 50 Mbit/s calibration primary?",
+          "response": "Stated: all live mitigation runs used the 50 Mbit/s models, so Sec. VI-B to E report the configuration as run; the 25 Mbit/s calibration with a quantile fast path is recommended.",
+          "where": "Sec. V-B, VI-G",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.21",
+          "type": "Major",
+          "comment": "Destination-entropy mapping, R_d in detection-only runs, CUSUM.",
+          "response": "Destination entropy defined (adapted to counter rates; dominant destination scored, others 0; pooled quantile); R_d = empty in detection-only evaluation stated; CUSUM added (2.6).",
+          "where": "Sec. V-C",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.22",
+          "type": "Major",
+          "comment": "Pooled McNemar test conflicts with per-dataset balanced accuracy; cross-dataset ROC-AUC; model sizes and hyperparameters.",
+          "response": "Replaced by a per-dataset, class-stratified paired bootstrap of balanced accuracy (HGB ahead of RF/DT by 7-15 points on both, ahead of KNN on 2018, tied on 2019); ROC-AUC reported; size column and all hyperparameters added.",
+          "where": "Sec. V-A, VI-A, Table II",
+          "status": "Resolved (re-evaluation)"
+        },
+        {
+          "id": "2.23",
+          "type": "Minor",
+          "comment": "kpps notation, session id formatting, Fig. 2 'chance' overlap, Table II/III abbreviations and FPR labels.",
+          "response": "Fixed (kpps throughout; Fig. 2 regenerated with the label moved; table footnotes define '19/'18 and tag each FPR).",
+          "where": "Sec. V-B, Fig. 2, Tables II-III",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.24",
+          "type": "Major",
+          "comment": "Bot reuse and post-attack false positives cause carry-over; seed-3 low-rate recovery claim.",
+          "response": "Seed-3 low-rate recovery now attributed to carry-over (34/40 still blocked, 2 attributed); 54 s full recovery and the effect of post-attack false positives stated; disjoint bot pools proposed for future runs.",
+          "where": "Sec. V-B, IV-A, VI-C",
+          "status": "Resolved (documented); new runs left as future work"
+        },
+        {
+          "id": "2.25",
+          "type": "Major",
+          "comment": "25 Mbit/s recommendation validated without fast-path degeneracy.",
+          "response": "See 2.4: Table XI reports latency and FA/h for the quantile fast path at 25 Mbit/s.",
+          "where": "Sec. VI-H, Table XI",
+          "status": "Resolved (new analysis)"
+        },
+        {
+          "id": "2.26",
+          "type": "Major",
+          "comment": "Levels 2+3 ablation is faster at equal FA/h; Table VI blanks; Table IV fast-path inconsistency; SrcEnt 16/18.",
+          "response": "Explained (ablated model used the fixed eta_f closer to its own higher eta); Table VI now has precision, FA/h and all fast-path rows including Levels 2+3; Table IV caption states that baselines are shown without fast path; verified that source entropy misses only protocol switching (16/18), the dagger belongs to the DstEnt column.",
+          "where": "Sec. VI-B, Tables III, IV, VI",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.27",
+          "type": "Major",
+          "comment": "Seed-3 ICMP 14 + 28 > 40; flow-ML F1 rounding; coverage definition.",
+          "response": "Clarified that 28 is the count in most confirmed windows and some were blocked later; Table VI gives TP = 85, FP = 77 (recall 0.445, F1 0.48 is correct); coverage defined precisely.",
+          "where": "Sec. VI-C, VI-E, Table VI",
+          "status": "Resolved"
+        },
+        {
+          "id": "2.28",
+          "type": "Minor",
+          "comment": "'low improvement' typo; 36 vs 37 ICMP attackers; reversed quotes; Fig. 5 missing re-attack; footnote spacing.",
+          "response": "Fixed; 37 = 36 blocked at onset plus 1 attributed 3.7 s in; Fig. 5 already contains the re-attack bar (label spacing kept); footnote spacing fixed.",
+          "where": "Sec. VI-D, Table VIII",
+          "status": "Resolved (Fig. 5: no change needed)"
+        }
+      ]
+    }
+  ]
+}

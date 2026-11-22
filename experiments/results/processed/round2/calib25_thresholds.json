@@ -1,0 +1,9 @@
+{
+ "tag": "calib25",
+ "eta": 0.9797,
+ "eta_f_quantile": 0.9978,
+ "eta_server": 1.0,
+ "eta_client": 0.0,
+ "cusum_h": 0.02,
+ "calib_FA_per_h_target": 50.9
+}

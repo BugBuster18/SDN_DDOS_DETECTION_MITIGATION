@@ -119,10 +119,14 @@ def fit(calib, out_dir):
     src = pd.read_csv(t / "src_windows.csv")
     out = ROOT / out_dir
     out.mkdir(parents=True, exist_ok=True)
-    wm = fit_one(dst, WINDOW_FEATURES, (dst["scenario"] + dst["seed"].astype(str)).to_numpy())
-    wm["name"] = "window_logistic_large"
+    # FEATS=noml: ablation without Level 1 (drops the four ml_* window features and two src_ml_* features)
+    noml = __import__("os").environ.get("FEATS") == "noml"
+    wf = [f for f in WINDOW_FEATURES if not (noml and f.startswith("ml_"))]
+    sf = [f for f in SOURCE_FEATURES if not (noml and f.startswith("src_ml_"))]
+    wm = fit_one(dst, wf, (dst["scenario"] + dst["seed"].astype(str)).to_numpy())
+    wm["name"] = "window_logistic_large" + ("_noml" if noml else "")
     sv = src[(src["is_victim_dst"] == 1) & (src["scenario"] != "spoof")].reset_index(drop=True)
-    sm = fit_one(sv, SOURCE_FEATURES, (sv["scenario"] + sv["seed"].astype(str)).to_numpy())
+    sm = fit_one(sv, sf, (sv["scenario"] + sv["seed"].astype(str)).to_numpy())
     sm["name"] = "source_logistic_large"
     (out / "window_model.json").write_text(json.dumps(wm, indent=2))
     (out / "source_model.json").write_text(json.dumps(sm, indent=2))
@@ -219,6 +223,7 @@ def event_metrics(d, thr, manifests, configs):
             rows.append({"config": cname, "method": m, "scenario": scn, "seed": seed, "has_attack": int(bool(atk)),
                          "detected": int(first is not None) if atk else None,
                          "latency_s": (first - a0) if first is not None else None,
+                         "episode_s": (a1 - a0) if atk else None,
                          "false_alarm_episodes": false_eps, "hours": dur_h})
     return pd.DataFrame(rows)
 
@@ -243,6 +248,14 @@ def evaluate(calib, test, model_dir, name):
                "dst_entropy k2/3": ("dst_entropy", 2, 3, None), "flow_ml_only k2/3": ("flow_ml_only", 2, 3, None),
                "hybrid k2/3": ("hybrid", 2, 3, None), "hybrid k2/3+fast": ("hybrid", 2, 3, 0.97),
                "hybrid k1/1": ("hybrid", 1, 1, None)}
+    # Fast-path parity (review round 1): every baseline gets a single-window fast path whose threshold
+    # has the SAME benign exceedance rate on calibration as the hybrid's eta_f = 0.97.
+    q_fast = float((cd.loc[cd["label"] == 0, "hybrid"] >= 0.97).mean())
+    fast_thr = {}
+    for m in ("pps_threshold", "src_entropy", "dst_entropy", "flow_ml_only"):
+        fast_thr[m] = max(thr_at_fpr(cd.loc[cd["label"] == 0, METHODS[m]], max(q_fast, 1e-5)), thr[m])
+        configs[m + " k2/3+fast"] = (m, 2, 3, fast_thr[m])
+    json.dump({"q_fast": q_fast, "fast_thresholds": fast_thr}, open(out / "fast_parity.json", "w"), indent=1)
     ev = event_metrics(td, thr, manifests, configs)
     ev.to_csv(out / "event_metrics.csv", index=False)
     summ = []
@@ -250,6 +263,8 @@ def evaluate(calib, test, model_dir, name):
         a = g[g.has_attack == 1]
         summ.append({"config": c, "attack_segments": len(a), "detected": int(a.detected.sum()),
                      "detection_rate": a.detected.mean(), "mean_latency_s": a.latency_s.mean(),
+                     # survivorship-free: a missed episode counts with its full duration
+                     "penalised_mean_latency_s": a.latency_s.clip(lower=0).fillna(a.episode_s).mean(),
                      "median_latency_s": a.latency_s.median(),
                      "false_alarm_episodes": int(g.false_alarm_episodes.sum()),
                      "false_alarms_per_hour": g.false_alarm_episodes.sum() / g.hours.sum(),

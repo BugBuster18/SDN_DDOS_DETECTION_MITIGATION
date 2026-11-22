@@ -21,17 +21,29 @@ with zipfile.ZipFile(ov, "w", zipfile.ZIP_DEFLATED) as z:
 
 # 2. source snapshot of the committed code
 src = OUT / "source_code.zip"
-subprocess.run(["git", "archive", "--format=zip", "--prefix=SDN_DDOS_DETECTION_MITIGATION/", "-o", str(src), "HEAD"],
-               cwd=ROOT, check=True)
+# snapshot of the current working tree (tracked + new, honouring .gitignore)
+files = subprocess.run(["git", "ls-files", "-co", "--exclude-standard"], cwd=ROOT, check=True,
+                       capture_output=True, text=True).stdout.split("\n")
+with zipfile.ZipFile(src, "w", zipfile.ZIP_DEFLATED) as z:
+    for f in files:
+        p = ROOT / f
+        if f and p.is_file() and not f.startswith("deliverables/"):
+            z.write(p, "SDN_DDOS_DETECTION_MITIGATION/" + f)
 
 readme = """SDN DDoS Detection and Mitigation - Group SDN_29 - submission package
 
 01_Reports/Results_Report_v2.pdf   revised report answering the review (start here)
 01_Reports/Results_Report_v1.pdf   first report (6-switch live demo, 8 repeated live runs)
-02_Paper/IEEE_Paper.pdf            IEEE conference paper (IEEEtran)
-02_Paper/IEEE_Paper_Overleaf.zip   LaTeX source + figures; Overleaf: New Project > Upload Project
-03_Code/source_code.zip            full source at the submitted commit (also on GitHub,
-                                   https://github.com/BugBuster18/SDN_DDOS_DETECTION_MITIGATION, branch main)
+02_Paper/IEEE_Paper.pdf            IEEE conference paper, FINAL = Revision 2 after two Deep Review rounds
+02_Paper/IEEE_Paper_Overleaf.zip   LaTeX source + figures of the final paper; Overleaf: New Project > Upload Project
+02_Paper/revisions/                Revision 0, 1, 2 PDFs (the versions uploaded to / produced after Deep Review)
+03_Code/source_code.zip            full source including the review-round analyses (repository:
+                                   https://github.com/BugBuster18/SDN_DDOS_DETECTION_MITIGATION)
+05_Deep_Review/Revision_Report.(docx|pdf)
+                                   per round: Deep Review comments -> modifications made, where, status
+05_Deep_Review/DeepReview_Comments_AllRounds.(docx|pdf)
+                                   complete, unedited Deep Review output of round 1 and round 2
+05_Deep_Review/raw/                the same reviews as copied from Deep Review (Markdown)
 04_Results/                        processed metrics, flow-model tables, and per-session evidence of the
                                    200-host testbed (ground truth, rule/event log, controller log,
                                    legitimate-traffic summaries). Raw per-poll telemetry (~1 GB) is not
@@ -47,13 +59,25 @@ with zipfile.ZipFile(pkg, "w", zipfile.ZIP_DEFLATED) as z:
     z.write(ROOT / "paper/main.pdf", "02_Paper/IEEE_Paper.pdf")
     z.write(ov, "02_Paper/IEEE_Paper_Overleaf.zip")
     z.write(src, "03_Code/source_code.zip")
-    for d in ["experiments/results/processed/large_test", "experiments/results/processed/large_test2",
-              "experiments/results/processed/chain_baselines", "experiments/results/flow_multidataset"]:
+    RV = ROOT / "paper/revisions"
+    for v in (0, 1, 2):
+        z.write(RV / f"rev{v}/SDN_DDoS_Paper_Revision{v}.pdf", f"02_Paper/revisions/SDN_DDoS_Paper_Revision{v}.pdf")
+    for n in ["Revision_Report.docx", "Revision_Report.pdf", "DeepReview_Comments_AllRounds.docx",
+              "DeepReview_Comments_AllRounds.pdf"]:
+        z.write(RV / "out" / n, f"05_Deep_Review/{n}")
+    z.write(RV / "rev0/DeepReview_Round1_comments.md", "05_Deep_Review/raw/DeepReview_Round1_comments.md")
+    z.write(RV / "rev1/DeepReview_Round2_comments.md", "05_Deep_Review/raw/DeepReview_Round2_comments.md")
+    procs = [p for p in (ROOT / "experiments/results/processed").iterdir()
+             if p.name.startswith(("large_test", "chain_baselines", "r1_", "cap25_", "round2"))]
+    for d in [str(p.relative_to(ROOT)) for p in procs] + ["experiments/results/flow_multidataset",
+                                                         "experiments/results/flow_multidataset_v2"]:
         for f in sorted((ROOT / d).glob("*")):
             if f.is_file():
                 z.write(f, "04_Results/" + str(f.relative_to(ROOT / "experiments/results")))
     z.write(L / "mitigation_summary.csv", "04_Results/large/mitigation_summary.csv")
-    for s in ["calib", "test_det", "test_det2", "test_mit", "test_mit_v1", "test_mit_v2", "test_mit_v3"]:
+    z.write(L / "mitigation_summary_seed3.csv", "04_Results/large/mitigation_summary_seed3.csv")
+    for s in ["calib", "calib25", "test_det", "test_det2", "test_mit", "test_mit_v1", "test_mit_v2", "test_mit_v3",
+              "test3_det", "test3_mit"]:
         for name in ["session.json", "events.json", "config.yaml", "ryu.log", "lab.log",
                      "legit_phases.csv", "legit_timeseries.csv"]:
             f = L / s / name

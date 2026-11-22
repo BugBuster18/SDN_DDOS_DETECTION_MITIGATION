@@ -123,7 +123,7 @@ def build_plan(plan, seed, attackers):
     half = rng.sample(A, 40)
     segs.append(dict(kind="mixed", duration=30, gap_after=40,
                      attacks=flood("udp", half[:20], 220, 380, [(0, 30)]) + flood("syn", half[20:], 220, 380, [(0, 30)])))
-    if plan == "test":
+    if plan in ("test", "test3"):
         sw = rng.sample(A, 24)
         atk = []
         for h in sw:  # each attacker: UDP 20 s -> ICMP 20 s -> TCP SYN 20 s
@@ -136,6 +136,16 @@ def build_plan(plan, seed, attackers):
         segs.append(dict(kind="benign", duration=60, gap_after=0, attacks=[]))
         segs.append(dict(kind="flash", duration=20, gap_after=40, attacks=[]))
     segs.append(dict(kind="benign", duration=60, gap_after=0, attacks=[]))
+    if plan == "test3":
+        # Fresh-seed validation (review round 1): same attack types, attack ORDER shuffled by the seed,
+        # and 60 s benign gaps (> the 48 s maximum hold-down) to reduce carry-over between episodes.
+        attacks = [s for s in segs if s["attacks"]]
+        rng.shuffle(attacks)
+        for s in attacks:
+            s["gap_after"] = 60
+        head = segs[:2]
+        tail = [s for s in segs[2:] if not s["attacks"]]
+        segs = head + attacks[:5] + tail[:2] + attacks[5:] + tail[2:]
     return segs
 
 
@@ -183,7 +193,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--session", required=True)
     ap.add_argument("--seed", type=int, default=1)
-    ap.add_argument("--plan", choices=["calib", "test", "smoke"], default="test")
+    ap.add_argument("--plan", choices=["calib", "test", "test3", "smoke"], default="test")
     ap.add_argument("--victim-bw", type=float, default=25.0)
     ap.add_argument("--pktin-limit", type=int, default=400)
     args = ap.parse_args()

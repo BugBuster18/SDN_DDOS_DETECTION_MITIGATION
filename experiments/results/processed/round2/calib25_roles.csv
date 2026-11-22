@@ -1,0 +1,7 @@
+session,threshold,recall,precision,f1,victim_benign_fpr,client_fpr
+large_test_det,pooled,0.947,0.691,0.799,0.217,0.0
+large_test_det,per-role,0.217,0.22,0.219,0.022,0.0037
+large_test_det2,pooled,0.954,0.712,0.816,0.206,0.0
+large_test_det2,per-role,0.223,0.253,0.237,0.046,0.003
+large_test3_det,pooled,0.974,0.648,0.778,0.212,0.0
+large_test3_det,per-role,0.157,0.117,0.134,0.024,0.0065

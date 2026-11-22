@@ -1,0 +1,9 @@
+{
+ "q_fast": 0.0028250487657227414,
+ "fast_thresholds": {
+  "pps_threshold": 2142.227446371849,
+  "src_entropy": 4.970704477208505,
+  "dst_entropy": 0.7023723135123904,
+  "flow_ml_only": 0.997700001
+ }
+}

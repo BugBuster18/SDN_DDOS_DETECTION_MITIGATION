@@ -1,0 +1,6421 @@
+{
+ "session": "test3_mit",
+ "seed": 3,
+ "plan": "test3",
+ "victim": "h200",
+ "victim_ip": "10.0.0.200",
+ "victim_bw_mbps": 25.0,
+ "attackers": [
+  "h8",
+  "h9",
+  "h16",
+  "h14",
+  "h28",
+  "h30",
+  "h39",
+  "h38",
+  "h47",
+  "h41",
+  "h56",
+  "h52",
+  "h68",
+  "h69",
+  "h78",
+  "h79",
+  "h82",
+  "h85",
+  "h96",
+  "h99",
+  "h101",
+  "h104",
+  "h119",
+  "h120",
+  "h121",
+  "h126",
+  "h134",
+  "h139",
+  "h149",
+  "h141",
+  "h153",
+  "h157",
+  "h166",
+  "h161",
+  "h179",
+  "h174",
+  "h187",
+  "h181",
+  "h193",
+  "h194"
+ ],
+ "attacker_ips": [
+  "10.0.0.8",
+  "10.0.0.9",
+  "10.0.0.16",
+  "10.0.0.14",
+  "10.0.0.28",
+  "10.0.0.30",
+  "10.0.0.39",
+  "10.0.0.38",
+  "10.0.0.47",
+  "10.0.0.41",
+  "10.0.0.56",
+  "10.0.0.52",
+  "10.0.0.68",
+  "10.0.0.69",
+  "10.0.0.78",
+  "10.0.0.79",
+  "10.0.0.82",
+  "10.0.0.85",
+  "10.0.0.96",
+  "10.0.0.99",
+  "10.0.0.101",
+  "10.0.0.104",
+  "10.0.0.119",
+  "10.0.0.120",
+  "10.0.0.121",
+  "10.0.0.126",
+  "10.0.0.134",
+  "10.0.0.139",
+  "10.0.0.149",
+  "10.0.0.141",
+  "10.0.0.153",
+  "10.0.0.157",
+  "10.0.0.166",
+  "10.0.0.161",
+  "10.0.0.179",
+  "10.0.0.174",
+  "10.0.0.187",
+  "10.0.0.181",
+  "10.0.0.193",
+  "10.0.0.194"
+ ],
+ "clients": {
+  "h1": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.1"
+  },
+  "h2": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.2"
+  },
+  "h3": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.3"
+  },
+  "h4": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.4"
+  },
+  "h5": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.5"
+  },
+  "h6": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.6"
+  },
+  "h7": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.7"
+  },
+  "h10": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.10"
+  },
+  "h11": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.11"
+  },
+  "h12": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.12"
+  },
+  "h13": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.13"
+  },
+  "h15": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.15"
+  },
+  "h17": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.17"
+  },
+  "h18": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.18"
+  },
+  "h19": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.19"
+  },
+  "h20": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.20"
+  },
+  "h21": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.21"
+  },
+  "h22": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.22"
+  },
+  "h23": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.23"
+  },
+  "h24": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.24"
+  },
+  "h25": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.25"
+  },
+  "h26": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.26"
+  },
+  "h27": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.27"
+  },
+  "h29": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.29"
+  },
+  "h31": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.31"
+  },
+  "h32": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.32"
+  },
+  "h33": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.33"
+  },
+  "h34": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.34"
+  },
+  "h35": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.35"
+  },
+  "h36": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.36"
+  },
+  "h37": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.37"
+  },
+  "h40": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.40"
+  },
+  "h42": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.42"
+  },
+  "h43": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.43"
+  },
+  "h44": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.44"
+  },
+  "h45": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.45"
+  },
+  "h46": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.46"
+  },
+  "h48": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.48"
+  },
+  "h49": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.49"
+  },
+  "h50": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.50"
+  },
+  "h51": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.51"
+  },
+  "h53": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.53"
+  },
+  "h54": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.54"
+  },
+  "h55": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.55"
+  },
+  "h57": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.57"
+  },
+  "h58": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.58"
+  },
+  "h59": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.59"
+  },
+  "h60": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.60"
+  },
+  "h61": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.61"
+  },
+  "h62": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.62"
+  },
+  "h63": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.63"
+  },
+  "h64": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.64"
+  },
+  "h65": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.65"
+  },
+  "h66": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.66"
+  },
+  "h67": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.67"
+  },
+  "h70": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.70"
+  },
+  "h71": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.71"
+  },
+  "h72": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.72"
+  },
+  "h73": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.73"
+  },
+  "h74": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.74"
+  },
+  "h75": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.75"
+  },
+  "h76": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.76"
+  },
+  "h77": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.77"
+  },
+  "h80": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.80"
+  },
+  "h81": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.81"
+  },
+  "h83": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.83"
+  },
+  "h84": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.84"
+  },
+  "h86": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.86"
+  },
+  "h87": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.87"
+  },
+  "h88": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.88"
+  },
+  "h89": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.89"
+  },
+  "h90": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.90"
+  },
+  "h91": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.91"
+  },
+  "h92": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.92"
+  },
+  "h93": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.93"
+  },
+  "h94": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.94"
+  },
+  "h95": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.95"
+  },
+  "h97": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.97"
+  },
+  "h98": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.98"
+  },
+  "h100": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.100"
+  },
+  "h102": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.102"
+  },
+  "h103": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.103"
+  },
+  "h105": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.105"
+  },
+  "h106": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.106"
+  },
+  "h107": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.107"
+  },
+  "h108": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.108"
+  },
+  "h109": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.109"
+  },
+  "h110": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.110"
+  },
+  "h111": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.111"
+  },
+  "h112": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.112"
+  },
+  "h113": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.113"
+  },
+  "h114": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.114"
+  },
+  "h115": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.115"
+  },
+  "h116": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.116"
+  },
+  "h117": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.117"
+  },
+  "h118": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.118"
+  },
+  "h122": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.122"
+  },
+  "h123": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.123"
+  },
+  "h124": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.124"
+  },
+  "h125": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.125"
+  },
+  "h127": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.127"
+  },
+  "h128": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.128"
+  },
+  "h129": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.129"
+  },
+  "h130": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.130"
+  },
+  "h131": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.131"
+  },
+  "h132": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.132"
+  },
+  "h133": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.133"
+  },
+  "h135": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.135"
+  },
+  "h136": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.136"
+  },
+  "h137": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.137"
+  },
+  "h138": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.138"
+  },
+  "h140": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.140"
+  },
+  "h142": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.142"
+  },
+  "h143": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.143"
+  },
+  "h144": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.144"
+  },
+  "h145": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.145"
+  },
+  "h146": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.146"
+  },
+  "h147": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.147"
+  },
+  "h148": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.148"
+  },
+  "h150": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.150"
+  },
+  "h151": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.151"
+  },
+  "h152": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.152"
+  },
+  "h154": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.154"
+  },
+  "h155": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.155"
+  },
+  "h156": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.156"
+  },
+  "h158": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.158"
+  },
+  "h159": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.159"
+  },
+  "h160": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.160"
+  },
+  "h162": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.162"
+  },
+  "h163": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.163"
+  },
+  "h164": {
+   "role": "bulk",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.164"
+  },
+  "h165": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.165"
+  },
+  "h167": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.167"
+  },
+  "h168": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.168"
+  },
+  "h169": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.169"
+  },
+  "h170": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.170"
+  },
+  "h171": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.171"
+  },
+  "h172": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.172"
+  },
+  "h173": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.173"
+  },
+  "h175": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.175"
+  },
+  "h176": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.176"
+  },
+  "h177": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.177"
+  },
+  "h178": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.178"
+  },
+  "h180": {
+   "role": "rr",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.180"
+  },
+  "h182": {
+   "role": "stream",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.182"
+  },
+  "h183": {
+   "role": "rr",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.183"
+  },
+  "h184": {
+   "role": "web",
+   "target": "h198",
+   "target_ip": "10.0.0.198",
+   "ip": "10.0.0.184"
+  },
+  "h185": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.185"
+  },
+  "h186": {
+   "role": "bulk",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.186"
+  },
+  "h188": {
+   "role": "web",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.188"
+  },
+  "h189": {
+   "role": "stream",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.189"
+  },
+  "h190": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.190"
+  },
+  "h191": {
+   "role": "ping",
+   "target": "h199",
+   "target_ip": "10.0.0.199",
+   "ip": "10.0.0.191"
+  },
+  "h192": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.192"
+  },
+  "h195": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.195"
+  },
+  "h196": {
+   "role": "ping",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.196"
+  },
+  "h197": {
+   "role": "web",
+   "target": "h200",
+   "target_ip": "10.0.0.200",
+   "ip": "10.0.0.197"
+  }
+ },
+ "victim_port": "s25-eth11",
+ "segments": [
+  {
+   "idx": 0,
+   "kind": "benign",
+   "start": 1795344865.1886368,
+   "duration": 60,
+   "end": 1795344925.1886368,
+   "events": []
+  },
+  {
+   "idx": 1,
+   "kind": "flash",
+   "start": 1795344925.188845,
+   "duration": 20,
+   "end": 1795344945.188845,
+   "events": []
+  },
+  {
+   "idx": 2,
+   "kind": "pulsing",
+   "start": 1795344985.1889436,
+   "duration": 58,
+   "end": 1795345043.1889436,
+   "events": [
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 324.1,
+     "size": 444,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 324.1,
+     "size": 444,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 324.1,
+     "size": 444,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 324.1,
+     "size": 444,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 291.9,
+     "size": 992,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 291.9,
+     "size": 992,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 291.9,
+     "size": 992,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 291.9,
+     "size": 992,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 362.3,
+     "size": 628,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 362.3,
+     "size": 628,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 362.3,
+     "size": 628,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 362.3,
+     "size": 628,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 378.9,
+     "size": 691,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 378.9,
+     "size": 691,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 378.9,
+     "size": 691,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 378.9,
+     "size": 691,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 341.2,
+     "size": 410,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 341.2,
+     "size": 410,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 341.2,
+     "size": 410,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 341.2,
+     "size": 410,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 310.8,
+     "size": 1054,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 310.8,
+     "size": 1054,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 310.8,
+     "size": 1054,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 310.8,
+     "size": 1054,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 367.2,
+     "size": 868,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 367.2,
+     "size": 868,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 367.2,
+     "size": 868,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 367.2,
+     "size": 868,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 322.4,
+     "size": 692,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 322.4,
+     "size": 692,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 322.4,
+     "size": 692,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 322.4,
+     "size": 692,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 379.1,
+     "size": 274,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 379.1,
+     "size": 274,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 379.1,
+     "size": 274,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 379.1,
+     "size": 274,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 361.4,
+     "size": 609,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 361.4,
+     "size": 609,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 361.4,
+     "size": 609,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 361.4,
+     "size": 609,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "udp",
+     "rate_pps": 351.8,
+     "size": 1103,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "udp",
+     "rate_pps": 351.8,
+     "size": 1103,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "udp",
+     "rate_pps": 351.8,
+     "size": 1103,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "udp",
+     "rate_pps": 351.8,
+     "size": 1103,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 374.8,
+     "size": 678,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 374.8,
+     "size": 678,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 374.8,
+     "size": 678,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 374.8,
+     "size": 678,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 368.4,
+     "size": 1112,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 368.4,
+     "size": 1112,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 368.4,
+     "size": 1112,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 368.4,
+     "size": 1112,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 280.5,
+     "size": 934,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 280.5,
+     "size": 934,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 280.5,
+     "size": 934,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 280.5,
+     "size": 934,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 351.1,
+     "size": 270,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 351.1,
+     "size": 270,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 351.1,
+     "size": 270,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 351.1,
+     "size": 270,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 374.6,
+     "size": 1074,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 374.6,
+     "size": 1074,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 374.6,
+     "size": 1074,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 374.6,
+     "size": 1074,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 283.0,
+     "size": 1111,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 283.0,
+     "size": 1111,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 283.0,
+     "size": 1111,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 283.0,
+     "size": 1111,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 274.7,
+     "size": 464,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 274.7,
+     "size": 464,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 274.7,
+     "size": 464,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 274.7,
+     "size": 464,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 267.9,
+     "size": 836,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 267.9,
+     "size": 836,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 267.9,
+     "size": 836,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 267.9,
+     "size": 836,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 341.6,
+     "size": 1079,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 341.6,
+     "size": 1079,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 341.6,
+     "size": 1079,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 341.6,
+     "size": 1079,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 254.8,
+     "size": 1156,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 254.8,
+     "size": 1156,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 254.8,
+     "size": 1156,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 254.8,
+     "size": 1156,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 283.2,
+     "size": 1085,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 283.2,
+     "size": 1085,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 283.2,
+     "size": 1085,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 283.2,
+     "size": 1085,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 255.9,
+     "size": 387,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 255.9,
+     "size": 387,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 255.9,
+     "size": 387,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 255.9,
+     "size": 387,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 305.0,
+     "size": 946,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 305.0,
+     "size": 946,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 305.0,
+     "size": 946,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 305.0,
+     "size": 946,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 353.9,
+     "size": 320,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 353.9,
+     "size": 320,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 353.9,
+     "size": 320,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 353.9,
+     "size": 320,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 262.0,
+     "size": 1053,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 262.0,
+     "size": 1053,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 262.0,
+     "size": 1053,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 262.0,
+     "size": 1053,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 368.8,
+     "size": 236,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 368.8,
+     "size": 236,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 368.8,
+     "size": 236,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 368.8,
+     "size": 236,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 296.4,
+     "size": 794,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 296.4,
+     "size": 794,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 296.4,
+     "size": 794,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 296.4,
+     "size": 794,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 345.4,
+     "size": 544,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 345.4,
+     "size": 544,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 345.4,
+     "size": 544,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 345.4,
+     "size": 544,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 250.9,
+     "size": 542,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 250.9,
+     "size": 542,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 250.9,
+     "size": 542,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 250.9,
+     "size": 542,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 588,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 588,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 588,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 588,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "udp",
+     "rate_pps": 313.2,
+     "size": 415,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "udp",
+     "rate_pps": 313.2,
+     "size": 415,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "udp",
+     "rate_pps": 313.2,
+     "size": 415,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "udp",
+     "rate_pps": 313.2,
+     "size": 415,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 333.8,
+     "size": 960,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 333.8,
+     "size": 960,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 333.8,
+     "size": 960,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 333.8,
+     "size": 960,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 374.2,
+     "size": 600,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 374.2,
+     "size": 600,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 374.2,
+     "size": 600,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 374.2,
+     "size": 600,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 266.3,
+     "size": 526,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 266.3,
+     "size": 526,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 266.3,
+     "size": 526,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 266.3,
+     "size": 526,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 265.5,
+     "size": 481,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 265.5,
+     "size": 481,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 265.5,
+     "size": 481,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 265.5,
+     "size": 481,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 259.9,
+     "size": 642,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 259.9,
+     "size": 642,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 259.9,
+     "size": 642,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 259.9,
+     "size": 642,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 264.6,
+     "size": 1108,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 264.6,
+     "size": 1108,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 264.6,
+     "size": 1108,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 264.6,
+     "size": 1108,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 318.6,
+     "size": 456,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 318.6,
+     "size": 456,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 318.6,
+     "size": 456,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 318.6,
+     "size": 456,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 262.6,
+     "size": 1163,
+     "epoch_start": 1795344985.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 262.6,
+     "size": 1163,
+     "epoch_start": 1795345001.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 262.6,
+     "size": 1163,
+     "epoch_start": 1795345017.1889436,
+     "duration": 6,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 262.6,
+     "size": 1163,
+     "epoch_start": 1795345033.1889436,
+     "duration": 6,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 3,
+   "kind": "mixed",
+   "start": 1795345103.1890974,
+   "duration": 30,
+   "end": 1795345133.1890974,
+   "events": [
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 226.7,
+     "size": 716,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 263.4,
+     "size": 912,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 343.0,
+     "size": 562,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 360.0,
+     "size": 1167,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 284.5,
+     "size": 754,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 349.5,
+     "size": 270,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 276.5,
+     "size": 1067,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 379.3,
+     "size": 355,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 263.3,
+     "size": 302,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 329.0,
+     "size": 777,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 344.6,
+     "size": 944,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 237.9,
+     "size": 914,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 250.3,
+     "size": 626,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 327.2,
+     "size": 600,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 350.5,
+     "size": 966,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 240.6,
+     "size": 822,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 243.4,
+     "size": 607,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 347.7,
+     "size": 757,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 304.4,
+     "size": 782,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 248.6,
+     "size": 1089,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "syn",
+     "rate_pps": 260.0,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "syn",
+     "rate_pps": 345.1,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "syn",
+     "rate_pps": 224.8,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "syn",
+     "rate_pps": 348.5,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "syn",
+     "rate_pps": 362.6,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "syn",
+     "rate_pps": 371.9,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "syn",
+     "rate_pps": 281.3,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "syn",
+     "rate_pps": 308.4,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "syn",
+     "rate_pps": 313.3,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "syn",
+     "rate_pps": 321.4,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "syn",
+     "rate_pps": 376.3,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "syn",
+     "rate_pps": 329.9,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "syn",
+     "rate_pps": 267.9,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "syn",
+     "rate_pps": 357.6,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "syn",
+     "rate_pps": 297.5,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "syn",
+     "rate_pps": 316.2,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "syn",
+     "rate_pps": 336.3,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "syn",
+     "rate_pps": 220.4,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "syn",
+     "rate_pps": 343.3,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "syn",
+     "rate_pps": 325.9,
+     "size": 0,
+     "epoch_start": 1795345103.1890974,
+     "duration": 30,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 4,
+   "kind": "syn",
+   "start": 1795345193.189209,
+   "duration": 30,
+   "end": 1795345223.189209,
+   "events": [
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "syn",
+     "rate_pps": 338.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "syn",
+     "rate_pps": 223.5,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "syn",
+     "rate_pps": 229.7,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "syn",
+     "rate_pps": 328.2,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "syn",
+     "rate_pps": 374.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "syn",
+     "rate_pps": 260.2,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "syn",
+     "rate_pps": 293.0,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "syn",
+     "rate_pps": 314.8,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "syn",
+     "rate_pps": 271.2,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "syn",
+     "rate_pps": 278.2,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "syn",
+     "rate_pps": 270.0,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "syn",
+     "rate_pps": 279.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "syn",
+     "rate_pps": 315.3,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "syn",
+     "rate_pps": 268.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "syn",
+     "rate_pps": 280.3,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "syn",
+     "rate_pps": 343.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "syn",
+     "rate_pps": 224.3,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "syn",
+     "rate_pps": 311.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "syn",
+     "rate_pps": 337.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "syn",
+     "rate_pps": 269.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "syn",
+     "rate_pps": 255.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "syn",
+     "rate_pps": 348.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "syn",
+     "rate_pps": 258.2,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "syn",
+     "rate_pps": 250.0,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "syn",
+     "rate_pps": 289.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "syn",
+     "rate_pps": 331.7,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "syn",
+     "rate_pps": 236.3,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "syn",
+     "rate_pps": 271.5,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "syn",
+     "rate_pps": 273.4,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "syn",
+     "rate_pps": 353.4,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "syn",
+     "rate_pps": 290.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "syn",
+     "rate_pps": 356.9,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "syn",
+     "rate_pps": 247.1,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "syn",
+     "rate_pps": 273.9,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "syn",
+     "rate_pps": 324.0,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "syn",
+     "rate_pps": 361.6,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "syn",
+     "rate_pps": 292.2,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "syn",
+     "rate_pps": 256.0,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "syn",
+     "rate_pps": 239.3,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "syn",
+     "rate_pps": 304.7,
+     "size": 0,
+     "epoch_start": 1795345193.189209,
+     "duration": 30,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 5,
+   "kind": "lowrate",
+   "start": 1795345283.1893218,
+   "duration": 40,
+   "end": 1795345323.1893218,
+   "events": [
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 42.6,
+     "size": 1158,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 31.5,
+     "size": 1192,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 43.0,
+     "size": 1009,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 42.4,
+     "size": 324,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 34.3,
+     "size": 326,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 43.8,
+     "size": 949,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "udp",
+     "rate_pps": 38.2,
+     "size": 1108,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 35.6,
+     "size": 585,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 38.4,
+     "size": 951,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 31.4,
+     "size": 744,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 27.1,
+     "size": 801,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 39.3,
+     "size": 684,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 27.9,
+     "size": 992,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 32.8,
+     "size": 739,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 26.8,
+     "size": 301,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 38.2,
+     "size": 584,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 28.6,
+     "size": 224,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 31.8,
+     "size": 1072,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 27.4,
+     "size": 1064,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 27.3,
+     "size": 693,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 41.7,
+     "size": 1175,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 30.7,
+     "size": 506,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 41.0,
+     "size": 237,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "udp",
+     "rate_pps": 44.9,
+     "size": 777,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 35.2,
+     "size": 932,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 29.8,
+     "size": 767,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 40.0,
+     "size": 1156,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 36.1,
+     "size": 763,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 31.5,
+     "size": 777,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 28.6,
+     "size": 279,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 29.8,
+     "size": 384,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 37.9,
+     "size": 665,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 37.3,
+     "size": 971,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 43.9,
+     "size": 458,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 32.3,
+     "size": 606,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 43.8,
+     "size": 769,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 33.4,
+     "size": 285,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 32.5,
+     "size": 440,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 44.5,
+     "size": 622,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 41.9,
+     "size": 1190,
+     "epoch_start": 1795345283.1893218,
+     "duration": 40,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 6,
+   "kind": "udp",
+   "start": 1795345383.1894689,
+   "duration": 30,
+   "end": 1795345413.1894689,
+   "events": [
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "udp",
+     "rate_pps": 283.2,
+     "size": 1020,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 312.3,
+     "size": 1187,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "udp",
+     "rate_pps": 369.7,
+     "size": 1099,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 278.5,
+     "size": 236,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 241.8,
+     "size": 422,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 261.3,
+     "size": 888,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 289.8,
+     "size": 841,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 356.8,
+     "size": 631,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 301.2,
+     "size": 595,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "udp",
+     "rate_pps": 311.8,
+     "size": 746,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 313.6,
+     "size": 798,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "udp",
+     "rate_pps": 257.2,
+     "size": 544,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 329.1,
+     "size": 1151,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 224.6,
+     "size": 486,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 378.6,
+     "size": 887,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 331.3,
+     "size": 915,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "udp",
+     "rate_pps": 357.7,
+     "size": 1187,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 306.7,
+     "size": 785,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 311.1,
+     "size": 930,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 324.9,
+     "size": 848,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 353.1,
+     "size": 787,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 262.7,
+     "size": 327,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 230.2,
+     "size": 1074,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 322.2,
+     "size": 695,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 234.2,
+     "size": 1019,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 230.7,
+     "size": 1118,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 244.1,
+     "size": 500,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 288.3,
+     "size": 625,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 359.6,
+     "size": 245,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 316.8,
+     "size": 979,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 227.2,
+     "size": 935,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 313.8,
+     "size": 764,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 360.9,
+     "size": 485,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 300.9,
+     "size": 236,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 269.5,
+     "size": 278,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 237.3,
+     "size": 748,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 225.0,
+     "size": 402,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 375.4,
+     "size": 498,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 317.7,
+     "size": 359,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 330.4,
+     "size": 1088,
+     "epoch_start": 1795345383.1894689,
+     "duration": 30,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 7,
+   "kind": "benign",
+   "start": 1795345473.1895986,
+   "duration": 60,
+   "end": 1795345533.1895986,
+   "events": []
+  },
+  {
+   "idx": 8,
+   "kind": "flash",
+   "start": 1795345533.1897373,
+   "duration": 20,
+   "end": 1795345553.1897373,
+   "events": []
+  },
+  {
+   "idx": 9,
+   "kind": "reattack",
+   "start": 1795345593.1898391,
+   "duration": 105,
+   "end": 1795345698.1898391,
+   "events": [
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 271.9,
+     "size": 702,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 271.9,
+     "size": 702,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 271.9,
+     "size": 702,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 274.0,
+     "size": 1061,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 274.0,
+     "size": 1061,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "udp",
+     "rate_pps": 274.0,
+     "size": 1061,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 252.9,
+     "size": 658,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 252.9,
+     "size": 658,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 252.9,
+     "size": 658,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 291.3,
+     "size": 233,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 291.3,
+     "size": 233,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "udp",
+     "rate_pps": 291.3,
+     "size": 233,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 341.4,
+     "size": 252,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 341.4,
+     "size": 252,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 341.4,
+     "size": 252,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 281.1,
+     "size": 240,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 281.1,
+     "size": 240,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 281.1,
+     "size": 240,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 301.6,
+     "size": 227,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 301.6,
+     "size": 227,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "udp",
+     "rate_pps": 301.6,
+     "size": 227,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 368.2,
+     "size": 1104,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 368.2,
+     "size": 1104,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 368.2,
+     "size": 1104,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 278.5,
+     "size": 296,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 278.5,
+     "size": 296,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 278.5,
+     "size": 296,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 300.6,
+     "size": 395,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 300.6,
+     "size": 395,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 300.6,
+     "size": 395,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 271.4,
+     "size": 837,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 271.4,
+     "size": 837,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "udp",
+     "rate_pps": 271.4,
+     "size": 837,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 265.1,
+     "size": 1134,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 265.1,
+     "size": 1134,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "udp",
+     "rate_pps": 265.1,
+     "size": 1134,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 266.1,
+     "size": 253,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 266.1,
+     "size": 253,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "udp",
+     "rate_pps": 266.1,
+     "size": 253,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 355.0,
+     "size": 497,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 355.0,
+     "size": 497,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 355.0,
+     "size": 497,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 285.8,
+     "size": 1006,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 285.8,
+     "size": 1006,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 285.8,
+     "size": 1006,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 372.5,
+     "size": 1008,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 372.5,
+     "size": 1008,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "udp",
+     "rate_pps": 372.5,
+     "size": 1008,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 371.3,
+     "size": 507,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 371.3,
+     "size": 507,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "udp",
+     "rate_pps": 371.3,
+     "size": 507,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 313.5,
+     "size": 774,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 313.5,
+     "size": 774,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 313.5,
+     "size": 774,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 284.6,
+     "size": 1034,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 284.6,
+     "size": 1034,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "udp",
+     "rate_pps": 284.6,
+     "size": 1034,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 293.8,
+     "size": 553,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 293.8,
+     "size": 553,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 293.8,
+     "size": 553,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 291.2,
+     "size": 258,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 291.2,
+     "size": 258,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 291.2,
+     "size": 258,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 338.7,
+     "size": 1192,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 338.7,
+     "size": 1192,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 338.7,
+     "size": 1192,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 261.6,
+     "size": 832,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 261.6,
+     "size": 832,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 261.6,
+     "size": 832,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 250.5,
+     "size": 231,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 250.5,
+     "size": 231,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 250.5,
+     "size": 231,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 338.5,
+     "size": 219,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 338.5,
+     "size": 219,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 338.5,
+     "size": 219,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 272.1,
+     "size": 237,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 272.1,
+     "size": 237,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "udp",
+     "rate_pps": 272.1,
+     "size": 237,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 312.6,
+     "size": 393,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 312.6,
+     "size": 393,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "udp",
+     "rate_pps": 312.6,
+     "size": 393,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 335.1,
+     "size": 1121,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 335.1,
+     "size": 1121,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 335.1,
+     "size": 1121,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 1121,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 1121,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 293.1,
+     "size": 1121,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 376.6,
+     "size": 688,
+     "epoch_start": 1795345593.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 376.6,
+     "size": 688,
+     "epoch_start": 1795345633.1898391,
+     "duration": 25,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 376.6,
+     "size": 688,
+     "epoch_start": 1795345673.1898391,
+     "duration": 25,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 10,
+   "kind": "icmp",
+   "start": 1795345758.1899471,
+   "duration": 30,
+   "end": 1795345788.1899471,
+   "events": [
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "icmp",
+     "rate_pps": 357.8,
+     "size": 1078,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "icmp",
+     "rate_pps": 314.2,
+     "size": 493,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h187",
+     "src_ip": "10.0.0.187",
+     "proto": "icmp",
+     "rate_pps": 239.2,
+     "size": 450,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "icmp",
+     "rate_pps": 227.2,
+     "size": 1125,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h85",
+     "src_ip": "10.0.0.85",
+     "proto": "icmp",
+     "rate_pps": 348.5,
+     "size": 724,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "icmp",
+     "rate_pps": 367.8,
+     "size": 1118,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h30",
+     "src_ip": "10.0.0.30",
+     "proto": "icmp",
+     "rate_pps": 361.4,
+     "size": 640,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "icmp",
+     "rate_pps": 312.3,
+     "size": 213,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h47",
+     "src_ip": "10.0.0.47",
+     "proto": "icmp",
+     "rate_pps": 297.0,
+     "size": 323,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "icmp",
+     "rate_pps": 247.5,
+     "size": 507,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "icmp",
+     "rate_pps": 258.2,
+     "size": 220,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "icmp",
+     "rate_pps": 304.0,
+     "size": 623,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h126",
+     "src_ip": "10.0.0.126",
+     "proto": "icmp",
+     "rate_pps": 228.5,
+     "size": 1134,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "icmp",
+     "rate_pps": 317.9,
+     "size": 549,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "icmp",
+     "rate_pps": 240.1,
+     "size": 1195,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "icmp",
+     "rate_pps": 357.9,
+     "size": 688,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "icmp",
+     "rate_pps": 349.8,
+     "size": 262,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h153",
+     "src_ip": "10.0.0.153",
+     "proto": "icmp",
+     "rate_pps": 276.3,
+     "size": 402,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "icmp",
+     "rate_pps": 239.6,
+     "size": 1108,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h166",
+     "src_ip": "10.0.0.166",
+     "proto": "icmp",
+     "rate_pps": 350.7,
+     "size": 375,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "icmp",
+     "rate_pps": 258.3,
+     "size": 480,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h120",
+     "src_ip": "10.0.0.120",
+     "proto": "icmp",
+     "rate_pps": 367.5,
+     "size": 1025,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "icmp",
+     "rate_pps": 240.6,
+     "size": 1142,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h99",
+     "src_ip": "10.0.0.99",
+     "proto": "icmp",
+     "rate_pps": 221.2,
+     "size": 843,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "icmp",
+     "rate_pps": 311.3,
+     "size": 609,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "icmp",
+     "rate_pps": 228.0,
+     "size": 477,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "icmp",
+     "rate_pps": 259.7,
+     "size": 832,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h38",
+     "src_ip": "10.0.0.38",
+     "proto": "icmp",
+     "rate_pps": 304.4,
+     "size": 633,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h179",
+     "src_ip": "10.0.0.179",
+     "proto": "icmp",
+     "rate_pps": 228.2,
+     "size": 530,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "icmp",
+     "rate_pps": 344.2,
+     "size": 201,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h39",
+     "src_ip": "10.0.0.39",
+     "proto": "icmp",
+     "rate_pps": 357.1,
+     "size": 993,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h56",
+     "src_ip": "10.0.0.56",
+     "proto": "icmp",
+     "rate_pps": 240.3,
+     "size": 327,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "icmp",
+     "rate_pps": 228.0,
+     "size": 694,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "10.0.0.149",
+     "proto": "icmp",
+     "rate_pps": 376.0,
+     "size": 1074,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "icmp",
+     "rate_pps": 334.0,
+     "size": 727,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "icmp",
+     "rate_pps": 300.3,
+     "size": 523,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "icmp",
+     "rate_pps": 245.1,
+     "size": 273,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h79",
+     "src_ip": "10.0.0.79",
+     "proto": "icmp",
+     "rate_pps": 276.2,
+     "size": 862,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "icmp",
+     "rate_pps": 282.3,
+     "size": 511,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h121",
+     "src_ip": "10.0.0.121",
+     "proto": "icmp",
+     "rate_pps": 277.7,
+     "size": 395,
+     "epoch_start": 1795345758.1899471,
+     "duration": 30,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 11,
+   "kind": "protoswitch",
+   "start": 1795345848.1900718,
+   "duration": 60,
+   "end": 1795345908.1900718,
+   "events": [
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "udp",
+     "rate_pps": 330.4,
+     "size": 718,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "icmp",
+     "rate_pps": 330.4,
+     "size": 718,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h157",
+     "src_ip": "10.0.0.157",
+     "proto": "syn",
+     "rate_pps": 330.4,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "udp",
+     "rate_pps": 260.1,
+     "size": 751,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "icmp",
+     "rate_pps": 260.1,
+     "size": 751,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h52",
+     "src_ip": "10.0.0.52",
+     "proto": "syn",
+     "rate_pps": 260.1,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "udp",
+     "rate_pps": 252.5,
+     "size": 547,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "icmp",
+     "rate_pps": 252.5,
+     "size": 547,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h161",
+     "src_ip": "10.0.0.161",
+     "proto": "syn",
+     "rate_pps": 252.5,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "udp",
+     "rate_pps": 292.0,
+     "size": 1091,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "icmp",
+     "rate_pps": 292.0,
+     "size": 1091,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h141",
+     "src_ip": "10.0.0.141",
+     "proto": "syn",
+     "rate_pps": 292.0,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "udp",
+     "rate_pps": 294.7,
+     "size": 910,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "icmp",
+     "rate_pps": 294.7,
+     "size": 910,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h68",
+     "src_ip": "10.0.0.68",
+     "proto": "syn",
+     "rate_pps": 294.7,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "udp",
+     "rate_pps": 267.5,
+     "size": 1078,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "icmp",
+     "rate_pps": 267.5,
+     "size": 1078,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h174",
+     "src_ip": "10.0.0.174",
+     "proto": "syn",
+     "rate_pps": 267.5,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "udp",
+     "rate_pps": 359.1,
+     "size": 993,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "icmp",
+     "rate_pps": 359.1,
+     "size": 993,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h181",
+     "src_ip": "10.0.0.181",
+     "proto": "syn",
+     "rate_pps": 359.1,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "udp",
+     "rate_pps": 370.5,
+     "size": 933,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "icmp",
+     "rate_pps": 370.5,
+     "size": 933,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h69",
+     "src_ip": "10.0.0.69",
+     "proto": "syn",
+     "rate_pps": 370.5,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "udp",
+     "rate_pps": 260.4,
+     "size": 551,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "icmp",
+     "rate_pps": 260.4,
+     "size": 551,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h16",
+     "src_ip": "10.0.0.16",
+     "proto": "syn",
+     "rate_pps": 260.4,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "udp",
+     "rate_pps": 379.7,
+     "size": 410,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "icmp",
+     "rate_pps": 379.7,
+     "size": 410,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h134",
+     "src_ip": "10.0.0.134",
+     "proto": "syn",
+     "rate_pps": 379.7,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "udp",
+     "rate_pps": 371.1,
+     "size": 1082,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "icmp",
+     "rate_pps": 371.1,
+     "size": 1082,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "10.0.0.82",
+     "proto": "syn",
+     "rate_pps": 371.1,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "udp",
+     "rate_pps": 276.0,
+     "size": 915,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "icmp",
+     "rate_pps": 276.0,
+     "size": 915,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h101",
+     "src_ip": "10.0.0.101",
+     "proto": "syn",
+     "rate_pps": 276.0,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "udp",
+     "rate_pps": 348.4,
+     "size": 696,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "icmp",
+     "rate_pps": 348.4,
+     "size": 696,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h78",
+     "src_ip": "10.0.0.78",
+     "proto": "syn",
+     "rate_pps": 348.4,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "udp",
+     "rate_pps": 291.1,
+     "size": 1005,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "icmp",
+     "rate_pps": 291.1,
+     "size": 1005,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h14",
+     "src_ip": "10.0.0.14",
+     "proto": "syn",
+     "rate_pps": 291.1,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "udp",
+     "rate_pps": 255.6,
+     "size": 279,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "icmp",
+     "rate_pps": 255.6,
+     "size": 279,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "10.0.0.96",
+     "proto": "syn",
+     "rate_pps": 255.6,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "udp",
+     "rate_pps": 359.9,
+     "size": 922,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "icmp",
+     "rate_pps": 359.9,
+     "size": 922,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h41",
+     "src_ip": "10.0.0.41",
+     "proto": "syn",
+     "rate_pps": 359.9,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "udp",
+     "rate_pps": 270.9,
+     "size": 709,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "icmp",
+     "rate_pps": 270.9,
+     "size": 709,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h104",
+     "src_ip": "10.0.0.104",
+     "proto": "syn",
+     "rate_pps": 270.9,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "udp",
+     "rate_pps": 311.5,
+     "size": 269,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "icmp",
+     "rate_pps": 311.5,
+     "size": 269,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h28",
+     "src_ip": "10.0.0.28",
+     "proto": "syn",
+     "rate_pps": 311.5,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "udp",
+     "rate_pps": 319.9,
+     "size": 632,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "icmp",
+     "rate_pps": 319.9,
+     "size": 632,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h119",
+     "src_ip": "10.0.0.119",
+     "proto": "syn",
+     "rate_pps": 319.9,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "udp",
+     "rate_pps": 277.1,
+     "size": 700,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "icmp",
+     "rate_pps": 277.1,
+     "size": 700,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h139",
+     "src_ip": "10.0.0.139",
+     "proto": "syn",
+     "rate_pps": 277.1,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "udp",
+     "rate_pps": 289.6,
+     "size": 675,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "icmp",
+     "rate_pps": 289.6,
+     "size": 675,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h194",
+     "src_ip": "10.0.0.194",
+     "proto": "syn",
+     "rate_pps": 289.6,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "udp",
+     "rate_pps": 309.5,
+     "size": 907,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "icmp",
+     "rate_pps": 309.5,
+     "size": 907,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h9",
+     "src_ip": "10.0.0.9",
+     "proto": "syn",
+     "rate_pps": 309.5,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "udp",
+     "rate_pps": 302.2,
+     "size": 384,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "icmp",
+     "rate_pps": 302.2,
+     "size": 384,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h8",
+     "src_ip": "10.0.0.8",
+     "proto": "syn",
+     "rate_pps": 302.2,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "udp",
+     "rate_pps": 309.2,
+     "size": 238,
+     "epoch_start": 1795345848.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "icmp",
+     "rate_pps": 309.2,
+     "size": 238,
+     "epoch_start": 1795345868.1900718,
+     "duration": 20,
+     "role": "attack"
+    },
+    {
+     "host": "h193",
+     "src_ip": "10.0.0.193",
+     "proto": "syn",
+     "rate_pps": 309.2,
+     "size": 0,
+     "epoch_start": 1795345888.1900718,
+     "duration": 20,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 12,
+   "kind": "spoof",
+   "start": 1795345968.190221,
+   "duration": 30,
+   "end": 1795345998.190221,
+   "events": [
+    {
+     "host": "h120",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 126.4,
+     "size": 512,
+     "epoch_start": 1795345968.190221,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h149",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 176.7,
+     "size": 512,
+     "epoch_start": 1795345968.190221,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h96",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 140.3,
+     "size": 512,
+     "epoch_start": 1795345968.190221,
+     "duration": 30,
+     "role": "attack"
+    },
+    {
+     "host": "h82",
+     "src_ip": "spoofed",
+     "proto": "spoof",
+     "rate_pps": 154.0,
+     "size": 512,
+     "epoch_start": 1795345968.190221,
+     "duration": 30,
+     "role": "attack"
+    }
+   ]
+  },
+  {
+   "idx": 13,
+   "kind": "benign",
+   "start": 1795346058.1903322,
+   "duration": 60,
+   "end": 1795346118.1903322,
+   "events": []
+  }
+ ],
+ "finished": 1795346118.190488
+}

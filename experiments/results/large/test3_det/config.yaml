@@ -1,0 +1,55 @@
+# Large testbed (25 switches, 200 hosts) - experiments/large/run_session.sh
+# Differences from demo.yaml (all motivated by the review):
+#   * 2 s polling (was 5 s) + fast confirmation of very confident windows  -> lower latency
+#   * one drop rule per (source, victim) for ALL protocols                  -> no protocol-switch bypass
+#   * repeat-offender memory + exponential hold-down                        -> re-attack / pulsing
+#   * source-address validation on host ports                               -> spoofed sources
+# The window/source models are refitted on the large-testbed CALIBRATION session only
+# (DDOS_artifacts/experiments/large/window_model.json / DDOS_artifacts/experiments/large/source_model.json are substituted by run_session.sh).
+detection:
+  enabled: true
+  mode: enforce
+  method: hybrid
+  window_model: artifacts/experiments/large/window_model.json
+  source_model: artifacts/experiments/large/source_model.json
+  ml_threshold: 0.5
+  confirm_k: 2
+  confirm_n: 3
+  fast_confirm_score: 0.97
+  recovery_windows: 3              # 3 quiet 2-s windows -> roll back (doubles per repeated episode)
+  cooldown_windows: 3
+  recovery_backoff: true
+  max_backoff_exponent: 3
+  offender_memory_seconds: 300
+  min_source_pps: 15.0
+  min_source_pps_strict: true
+  source_min_attribute_pps: 150.0
+  rate_requires_corroboration: true
+  corroboration_ml_prob: 0.5
+  corroboration_new_flows: 10
+  attribution_baseline_factor: 3.0   # a source already sending before the attack must triple its rate to be blocked
+  new_source_corroborates: true      # a heavy sender never seen in normal traffic counts as corroborated
+  source_confirm_windows: 2          # a source must qualify in 2 consecutive windows (repeat offenders: at once)
+
+mitigation:
+  mode: DETECTION_ONLY
+  rule_scope: src_dst
+  priority: 200
+  hard_timeout_seconds: 300
+  max_rules_per_window: 64
+  max_sources_per_destination: 64
+  drop_rate_threshold_pps: 30.0
+  allowlist: []
+  kill_switch_file: experiments/MITIGATION_DISABLE
+  anti_spoofing:
+    enabled: true
+    min_packets: 20
+    bindings_file: experiments/results/large/current_lab_state.json
+
+monitoring:
+  polling_interval_seconds: 2
+  reply_timeout_seconds: 1.5
+  ml_api_url: http://127.0.0.1:8765/predict
+  max_ml_flows_per_poll: 20000
+  flow_expire_seconds: 20
+  log_jsonl: null

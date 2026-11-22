@@ -1,6 +1,7 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % Based on the IEEE Conference Template (Overleaf): IEEEtran, conference mode.
+% Revision 1: addresses Deep Review round-1 comments (see revision report).
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -11,9 +12,8 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{url}
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \graphicspath{{figures/}}
+\newcommand{\pending}[1]{\textcolor{red}{#1}}
 
 \begin{document}
 
@@ -39,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-Machine-learning DDoS detectors for software-defined networks (SDN) are usually trained and evaluated per flow on public datasets, and their accuracy does not transfer to a live network: in our testbed a flow classifier trained on CIC-DDoS2019 labels ordinary large-packet UDP traffic as an attack, and the same model scores below chance (balanced accuracy 0.42) on CSE-CIC-IDS2018. We formulate DDoS defence in SDN as a quickest-change-detection problem under a false-alarm constraint, coupled with a block-set selection problem that maximises legitimate goodput subject to link capacity, a flow-table budget and a zero-collateral constraint. We propose a three-level controller: (1) a flow-level gradient-boosting model trained on two datasets, (2) destination-centric window features computed from OpenFlow counter deltas, and (3) a transparent logistic window score with k-of-n confirmation, a fast path, repeat-offender memory, and a baseline-aware, persistence-filtered source attribution that installs one protocol-agnostic drop rule per attacker at its ingress switch, plus source-address validation against spoofing. On a 200-host, 25-switch Mininet/Open vSwitch testbed with 157 concurrent legitimate clients and 40 attackers, the detector reaches recall 0.97 and F1 0.78 at a 0.26\,\% window false-positive rate on two held-out sessions, detects all 18 attack episodes of nine types (UDP, TCP SYN, ICMP, low-rate, pulsing, spoofed, mixed, protocol-switching, re-attack) with a mean latency of 3.2\,s, and outperforms per-destination rate thresholds, source- and destination-IP entropy and flow-ML-only detection (F1 0.45--0.74). With mitigation enabled, legitimate HTTP success during attacks rises from 48\,\% to 89\,\% on average, with no legitimate host blocked. We also report what does not yet work: ICMP floods are detected but not mitigated, and false-alarm episodes remain frequent at network scale.
+Flow-level machine-learning DDoS detectors for software-defined networks (SDN) are usually trained and tested on one public dataset, and their accuracy does not transfer: a classifier trained on CIC-DDoS2019 scores a balanced accuracy of 0.49 (ROC-AUC 0.53) on CSE-CIC-IDS2018, and the reverse transfer scores 0.62 (ROC-AUC 0.79). We cast DDoS defence in SDN as quickest detection under a false-alarm budget together with block-set selection that maximises legitimate goodput on a bottleneck link under a flow-table budget and a zero-collateral constraint, and we implement a plug-in controller for it: (1) a flow model trained on both datasets, (2) destination-centric window features from OpenFlow counter deltas, and (3) a logistic window score with k-of-n confirmation and a fast path, followed by baseline-aware, persistence-filtered source attribution, protocol-agnostic per-source drop rules and source-address validation. On a 200-host, 25-switch Mininet/Open vSwitch testbed with 157 concurrent legitimate clients and 40 attackers, two held-out sessions give window recall 0.97, precision 0.65 and F1 0.78 at a realised 0.26\,\% window false-positive rate (calibration budget 0.3\,\%), all 18 attack episodes of nine types detected and a mean latency of 3.2\,s. Standard rate and entropy baselines reach F1 0.45--0.74, and remain slower when given the same fast path. On a fresh seed with the frozen configuration the detector keeps the best F1 (0.73 vs.\ 0.48--0.65), and recalibrating at the test link capacity raises its F1 to 0.78--0.82 within the false-positive budget. Removing the flow model lowers F1 by about 0.04. Mitigation blocked no legitimate host on either seed. Legitimate HTTP success during attacks rose from 48\,\% to 89\,\% on the tuning schedule, partly because the protected network avoided carry-over control-plane collapse rather than through active mitigation of every attack, but only from 44\,\% to 60\,\% on the fresh seed, where an ICMP flood that saturated the packet-in path hid its own sources from counter-based attribution. False alarms concentrate on the busy victim server (about one in four of its benign windows), which remains the main limitation.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -48,68 +48,113 @@ software-defined networking, DDoS, OpenFlow, anomaly detection, machine learning
 
 %=====================================================================
 \section{Introduction}
-Distributed denial-of-service (DDoS) attacks exhaust the bandwidth or processing capacity of a victim by aggregating traffic from many sources. Software-defined networking (SDN) separates the control plane from the data plane~\cite{mckeown2008openflow,kreutz2015sdn}: a logically centralised controller sees per-flow counters from every switch and can install filtering rules anywhere in the network. This global view makes SDN attractive for DDoS defence, but the controller is also a new target: reactive flow setup sends the first packet of every new flow to the controller, so a flood can saturate the control channel itself~\cite{shin2013avant,wang2015floodguard,yan2016sdn}.
+Distributed denial-of-service (DDoS) attacks exhaust the bandwidth or processing capacity of a victim by aggregating traffic from many sources. Software-defined networking (SDN) separates the control plane from the data plane~\cite{mckeown2008openflow,kreutz2015sdn}: a logically centralised controller reads per-flow counters from every switch and can install filtering rules anywhere. This global view makes SDN attractive for DDoS defence, but the controller is also a new target, because reactive flow setup sends the first packet of every new flow to it~\cite{shin2013avant,wang2015floodguard,yan2016sdn}.
 
-Many recent proposals train a classifier on per-flow statistics from a public dataset and report accuracies above 99\,\%. Such numbers rarely survive deployment~\cite{sommer2010outside}: the classifier sees one flow at a time, whereas a DDoS attack is a property of the \emph{aggregate} arriving at a destination; public datasets contain few benign examples of some traffic classes; and an alarm alone does not protect anyone unless the controller can also decide \emph{which} sources to block without blocking legitimate users.
+Many proposals train a classifier on per-flow statistics from a public dataset and report accuracies above 99\,\%. Such numbers rarely survive deployment~\cite{sommer2010outside,arp2022dos}: the classifier sees one flow at a time, whereas a DDoS attack is a property of the \emph{aggregate} arriving at a destination; public datasets contain few benign examples of some traffic classes; and an alarm does not protect anyone unless the controller can also decide \emph{which} sources to block without blocking legitimate users.
 
-This paper makes the following contributions:
+Contributions:
 \begin{itemize}
-\item A formal problem statement (Section~\ref{sec:model}): quickest detection under a per-window false-alarm budget, and goodput-maximising block-set selection with link-capacity, flow-table and zero-collateral constraints.
-\item A three-level detector and mitigator (Section~\ref{sec:method}) that combines a flow model trained on two datasets with destination-centric window features from OpenFlow counter deltas, a k-of-n state machine with a fast path and repeat-offender memory, and an attribution rule that compares each source with its own pre-attack baseline and requires persistence.
-\item Protocol-agnostic per-source drop rules (closing protocol-switching bypasses) and source-address validation with port quarantine against spoofed floods.
-\item An evaluation on a 200-host, 25-switch testbed (Sections~\ref{sec:setup}--\ref{sec:results}) against four standard SDN baselines, nine attack types, two held-out sessions and paired runs with and without mitigation, including an ablation of attribution failures that we observed and fixed.
+\item A problem statement (Section~\ref{sec:model}) that separates what is optimised from what is fixed by design: detection delay under a single-window false-alarm budget, and goodput-maximising block-set selection on a bottleneck link with a flow-table budget and a zero-collateral constraint. The controller solves a plug-in version of both.
+\item A three-level detector and mitigator (Section~\ref{sec:method}) with a fully specified state machine, counter-delta rules, and an attribution rule that compares each source with its own pre-attack baseline and requires persistence.
+\item An evaluation on a 200-host, 25-switch testbed (Sections~\ref{sec:setup}--\ref{sec:results}) against four standard SDN baselines with fast-path parity, nine attack types, three held-out sessions including a fresh seed, an ablation without the flow model, and paired runs with and without mitigation, including the attribution failures we observed and how they were fixed.
 \end{itemize}
 
 %=====================================================================
 \section{Related Work}
-\textbf{Statistical detection in SDN.} Braga \emph{et al.}~\cite{braga2010lightweight} classified OpenFlow flow statistics with self-organising maps. Mousavi and St-Hilaire~\cite{mousavi2015early} detect attacks at the controller from a drop in the entropy of destination IP addresses over a window of packet-ins. Giotis \emph{et al.}~\cite{giotis2014combining} combine sFlow sampling with entropy-based anomaly detection and OpenFlow mitigation. Entropy of source addresses per destination and per-destination packet-rate thresholds are common simple baselines~\cite{bawany2017ddos,yan2016sdn}. We implement all three as baselines with thresholds calibrated on the same data as our method.
+\textbf{Statistical and multi-stage detection in SDN.} Braga \emph{et al.}~\cite{braga2010lightweight} classified OpenFlow flow statistics with self-organising maps. Mousavi and St-Hilaire~\cite{mousavi2015early} detect attacks from a drop in the entropy of destination addresses over a window of packet-ins. Giotis \emph{et al.}~\cite{giotis2014combining} combine sFlow sampling with entropy-based detection and OpenFlow mitigation, and Novaes \emph{et al.}~\cite{novaes2020lstm} combine an LSTM traffic predictor with fuzzy logic for detection and mitigation. These systems are multi-stage like ours; our differences are the destination-centric window features computed from counter deltas, the explicit false-alarm calibration, and attribution that is conditioned on each source's own pre-attack behaviour. Per-destination rate thresholds and source entropy are common simple detectors~\cite{bawany2017ddos,yan2016sdn}; we implement them, and destination entropy, as baselines.
 
-\textbf{Machine learning.} Tang \emph{et al.}~\cite{tang2016deep} and Niyaz \emph{et al.}~\cite{niyaz2017deep} apply deep learning to flow features in SDN. Most such work evaluates on CIC datasets~\cite{sharafaldin2019ddos,sharafaldin2018toward}. Sommer and Paxson~\cite{sommer2010outside} warn that a closed-world evaluation overstates real-world performance; our cross-dataset results (Section~\ref{sec:flow}) confirm this for flow-level DDoS models.
+\textbf{Machine learning.} Tang \emph{et al.}~\cite{tang2016deep} and Niyaz \emph{et al.}~\cite{niyaz2017deep} apply deep learning to flow features in SDN, mostly on CIC datasets~\cite{sharafaldin2019ddos,sharafaldin2018toward}. Sommer and Paxson~\cite{sommer2010outside} and Arp \emph{et al.}~\cite{arp2022dos} warn about closed-world evaluation and data snooping; our cross-dataset tests and the fresh-seed validation (Section~\ref{sec:seed3}) respond to these warnings.
 
-\textbf{Control-plane protection.} AVANT-GUARD~\cite{shin2013avant} adds connection migration to switches against SYN floods, and FloodGuard~\cite{wang2015floodguard} protects the controller from data-to-control-plane saturation. We observe exactly this saturation in an unprotected 200-host network and show that ingress drop rules relieve it. Ingress filtering~\cite{rfc2827} and SAVI~\cite{rfc7039} bind source addresses to access ports; we use the same principle reactively.
+\textbf{Mitigation and control-plane protection.} Bohatei~\cite{fayaz2015bohatei} formulates DDoS defence as constrained resource allocation for elastic defence functions; our block-set problem is a much smaller instance (drop rules at ingress switches under a rule budget). AVANT-GUARD~\cite{shin2013avant} and FloodGuard~\cite{wang2015floodguard} protect the controller against data-to-control-plane saturation, which we observe in an unprotected 200-host network. Ingress filtering~\cite{rfc2827} and SAVI~\cite{rfc7039} bind source addresses to access ports; we apply the same principle reactively. A single address per port does not hold behind NAT or on shared ports, where a port quarantine would also block legitimate users (Section~\ref{sec:limits}).
 
-\textbf{Change detection.} Our confirmation rule is a simple instance of sequential change detection~\cite{page1954continuous,lorden1971procedures}, where the trade-off is between detection delay and false-alarm rate. Low-rate and pulsing attacks~\cite{kuzmanovic2003low} and flash crowds~\cite{jung2002flash} are the classic hard cases for such detectors and are part of our test schedule.
+\textbf{Change detection.} Our confirmation rule is a simple heuristic in the spirit of sequential change detection~\cite{page1954continuous,lorden1971procedures}, which trades detection delay against false alarms; unlike CUSUM it has no optimality guarantee, and we treat its parameters as design constants. Low-rate and pulsing attacks~\cite{kuzmanovic2003low} and flash crowds~\cite{jung2002flash} are part of our test schedule.
 
 %=====================================================================
 \section{Problem Scenario, System Model and Formulation}\label{sec:model}
 \subsection{Scenario}
-An OpenFlow network $G=(S\cup H,E)$ has switches $S$, hosts $H$ and one controller. A server $v\in H$ (the victim) is reached through an access link of capacity $C_v$. Legitimate clients $L\subset H$ use $v$ and other servers. An unknown attack set $A\subset H$, $A\cap L=\emptyset$, starts at an unknown time $\tau_a$. The controller cannot inspect payloads; it observes flow-entry counters polled every $\Delta$ seconds and packet-in messages (ingress switch and port of a new flow).
+An OpenFlow network $G=(S\cup H,E)$ has switches $S$, hosts $H$ and one controller. A server $v\in H$ (the victim) is reached through an access link of capacity $C_v$ (bit/s). Legitimate clients $L\subset H$ use $v$ and other servers. An unknown attack set $A\subset H$, $A\cap L=\emptyset$, starts at an unknown time $\tau_a$ (seconds). The controller observes flow-entry counters, polled every $\Delta$ seconds, and packet-in messages (ingress switch and port of a table miss).
 
 \subsection{Observation model}
-Time is divided into windows $t=1,2,\dots$ of length $\Delta$. For a flow entry $f$ with cumulative packet counter $P_f$ on the switches of its path, the per-window delta and the rate from source $s$ to destination $d$ are
+Windows are indexed by $t=1,2,\dots$ and window $t$ ends at time $t\Delta$. Let $P_{f,\sigma}(t)$, $\delta_{f,\sigma}(t)$ be the cumulative packet counter and the age (OpenFlow \texttt{duration}) of the entry for flow $f$ on switch $\sigma$, and $e_\sigma(t)$ the time since $\sigma$'s previous reply. The per-switch delta is
 \begin{equation}
-x_f(t)=\max_{\text{sw}\in\text{path}}\big[P_f(t)-P_f(t-1)\big],\quad
-\lambda_{s,d}(t)=\tfrac{1}{\Delta}\textstyle\sum_{f:\,s\to d} x_f(t).
+x_{f,\sigma}(t)=\begin{cases}
+P_{f,\sigma}(t) & \text{(a)}\\
+\text{excluded} & \text{(b)}\\
+P_{f,\sigma}(t)-P_{f,\sigma}(t^-) & \text{(c)}\\
+P_{f,\sigma}(t)\min\!\big(1,\tfrac{e_\sigma(t)}{\max(\delta_{f,\sigma}(t),\epsilon)}\big) & \text{(d)}
+\end{cases}\label{eq:delta}
 \end{equation}
-The maximum (not the sum) counts a flow crossing several switches once. When an entry is re-installed, only the share of its counter that falls inside the window is counted; when an entry is re-added with continuous counters, the plain difference is used. Both cases otherwise create one-window rate spikes (Section~\ref{sec:ablation}).
+where $P_{f,\sigma}(t^-)$ is the last recorded counter of the entry (records are kept 20\,s after an entry disappears) and $\epsilon=10^{-6}$\,s. (a) No record and $\delta_{f,\sigma}(t)\le e_\sigma(t)+1$\,s: a new entry. (b) No record and an older entry: earlier counts unknown (e.g.\ after a missed reply). (c) $P_{f,\sigma}(t)\ge P_{f,\sigma}(t^-)$, including entries re-added with continuous counters (age restarts, counter does not fall). (d) $P_{f,\sigma}(t)<P_{f,\sigma}(t^-)$: a re-installed entry whose restarted counter is spread over its age. A re-installed entry whose new counter already exceeds the old one falls into the third case and is under-counted; we did not observe this to matter, but the rule cannot distinguish it. The window delta of $f$ is $x_f(t)=\max_{\sigma\in\text{path}(f)}x_{f,\sigma}(t)$, so a flow crossing several switches is counted once, and the pair rate is $\lambda_{s,d}(t)=\sum_{f:s\to d}x_f(t)/\bar e(t)$ in packets/s, with $\bar e(t)$ the largest reply interval of the poll. Byte deltas $B_{s\to d}(t)$ are computed the same way from byte counters. This normalisation is a simplification of the implementation: the path maximum can pick the switch with the longest interval, and one late reply lowers all rates of that poll (by up to $\approx$40\,\% for a 3.5\,s interval). All detection methods share it, but the fixed packet-rate thresholds of attribution (Section~\ref{sec:attr}) are affected; normalising each switch delta by its own $e_\sigma(t)$ would be more exact.
 
-\textbf{Level 1.} Each flow has a lifetime vector $z_f\in\mathbb{R}^7$ (protocol, duration, packets, bytes, packet rate, byte rate, mean packet size), all computable from OpenFlow counters, and a probability $p_f=g_\theta(z_f)$.
+\textbf{Level 1.} Each flow has a lifetime vector $z_f\in\mathbb{R}^7$ (protocol, duration, packets, bytes, packet rate, byte rate, mean packet size) and a probability $p_f=g_\theta(z_f)$ from a model trained on class-balanced data (not recalibrated to a natural prior).
 
-\textbf{Level 2.} For each destination $d$ the controller builds $\phi_d(t)\in\mathbb{R}^{19}$: number of sources $n_d$, active and new flows, new-flow rate, $\Lambda_d=\sum_s\lambda_{s,d}$, bit rate, mean packet size, top-source share, normalised source entropy $H_d=-\sum_s q_s\log q_s/\log n_d$ with $q_s=\lambda_{s,d}/\Lambda_d$, UDP/TCP/ICMP shares, response ratio $\rho_d$ (bytes from $d$ to its sources over bytes towards $d$), log rate change, packet-in rate, and four aggregates of $\{p_f\}$ (maximum, mean, flagged-flow fraction, flagged-packet share). For each pair $(s,d)$ it builds $\phi_{s,d}(t)\in\mathbb{R}^{10}$ (rate, share, flows, new flows, packets per flow, maximum and mean $p_f$, response ratio, rate jump, active windows).
+\textbf{Level 2.} Table~\ref{tab:feat} lists $\phi_d(t)\in\mathbb{R}^{19}$ and $\phi_{s,d}(t)\in\mathbb{R}^{10}$. A flow is \emph{active} in window $t$ if $x_f(t)>0$ or it is new or re-installed in $t$; \emph{new} flows are those in the first or fourth case of Eq.~(\ref{eq:delta}); \emph{scored} flows are active flows with a known baseline (at most 20\,000 per poll, largest first). $n_d$ is the number of active sources, $B_{\cdot\to d}=\sum_s B_{s\to d}$ and $B_{d\to\cdot}=\sum_s B_{d\to s}$; when $\Lambda_d=0$ all shares and $H_d$ are 0. Only destinations with at least one active source are scored; a non-NORMAL destination without traffic gets $s_d(t)=0$.
+
+\begin{table}[t]
+\caption{Window features (Level 2); $\Lambda_d=\sum_s\lambda_{s,d}$, $q_s=\lambda_{s,d}/\Lambda_d$; $\dagger$: $\log(1+x)$ applied}
+\label{tab:feat}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{p{0.37\columnwidth}p{0.57\columnwidth}}
+\toprule
+$\phi_d(t)$ (19) & definition \\
+\midrule
+sources$^\dagger$, active flows$^\dagger$, new flows$^\dagger$ (3) & counts in window $t$ \\
+new-flow rate$^\dagger$, $\Lambda_d^\dagger$, bit rate$^\dagger$ (3) & per second \\
+mean packet size$^\dagger$ & bytes/packets (0 if no packets) \\
+top-source share & $\max_s q_s$ \\
+source entropy $H_d$ & $-\sum_s q_s\ln q_s/\ln n_d$; $H_d=0$ if $n_d\le1$ \\
+UDP / TCP / ICMP shares (3) & packet shares (0 if no packets) \\
+response ratio $\rho_d$ & $\min(B_{d\to\cdot}/\max(B_{\cdot\to d},1),10)$ \\
+log rate change & $\ln\frac{\Lambda_d(t)+1}{\bar\Lambda_d(t-1)+1}$, $\bar\Lambda$: EWMA, $\alpha=0.3$ \\
+packet-in rate$^\dagger$ & packet-ins towards $d$ per second \\
+flow-ML aggregates (4) & max $p_f$, mean $p_f$, share of flows / packets with $p_f\ge0.5$ (0 if none scored) \\
+\midrule
+$\phi_{s,d}(t)$ (10) & \\
+\midrule
+rate$^\dagger$, share, flows$^\dagger$, new flows$^\dagger$ & $\lambda_{s,d}$, $q_s$, counts \\
+packets/flow$^\dagger$ & packets$/\max(\text{flows},1)$ \\
+max / mean $p_f$ (2) & over $s$'s scored flows to $d$ (0 if none) \\
+response ratio & $\min(B_{d\to s}/\max(B_{s\to d},1),10)$ \\
+rate jump & $\ln\frac{\lambda_{s,d}(t)+1}{\lambda_{s,d}(t-1)+1}$ ($\lambda=0$ if silent) \\
+active windows$^\dagger$ & consecutive windows with traffic $s\to d$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Hypotheses and attack models}
-For every destination and window, $H_0$: $y_d(t)=0$ (benign) and $H_1$: $y_d(t)=1$ ($d$ is the target of an active attack episode). We consider volumetric floods ($\sum_{a\in A}\lambda_{a,v}$ far above $C_v$ divided by packet size) over UDP, TCP SYN and ICMP; low-rate attacks (each $\lambda_{a,v}$ small, $|A|$ large); pulsing attacks $\lambda_{a,v}(t)=\lambda\,\mathbb{1}\{t \bmod T<T_{\text{on}}\}$; multi-vector and protocol-switching attacks; spoofed sources, i.e.\ $\mathrm{src}\neq\beta(\text{sw},p)$ where $\beta$ binds a host port to its address; and repeated attacks by the same $A$ after rules are removed.
+For every destination and window, $H_0$: $y_d(t)=0$ (benign) and $H_1$: $y_d(t)=1$ ($d$ is the target of an active attack episode). We consider volumetric floods over UDP, TCP SYN and ICMP whose bit rate exceeds $C_v$; low-rate attacks (each $\lambda_{a,v}$ small, $|A|$ large); pulsing attacks whose instantaneous rate is $\lambda\,\mathbb{1}\{\tau \bmod T<T_{\text{on}}\}$ in continuous time $\tau$; multi-vector and protocol-switching attacks; spoofed sources, i.e.\ packets entering host port $(\sigma,p)$ whose source address $s\neq\beta(\sigma,p)$, the address bound to that port; and repeated attacks by the same $A$.
 
-\subsection{Optimisation problem}
-Detection is a quickest-change-detection problem under a false-alarm constraint:
-\begin{align}
-\min_{w,b,\eta,k,n,\eta_f}\; & \mathbb{E}[D],\quad D=\min\{t\ge\tau_a:\mathrm{confirm}_v(t)=1\}-\tau_a\label{eq:detect}\\
-\text{s.t.}\; & \Pr\big(\mathrm{confirm}_d(t)=1\mid H_0\big)\le\varepsilon .\nonumber
-\end{align}
-Mitigation chooses the block set $B_v$ to maximise legitimate goodput $G_{s,v}$:
-\begin{align}
-\max_{B_v}\; & \textstyle\sum_{s\in L}G_{s,v}\label{eq:mitig}\\
-\text{s.t.}\; & \textstyle\sum_{a\in A\setminus B_v}\lambda_{a,v}+\sum_{s\in L}\lambda_{s,v}\le C_v,\nonumber\\
-& |B_v\cap L|=0,\qquad |B_v|\le R_{\max}.\nonumber
-\end{align}
-Neither $A$ nor $\tau_a$ is known, so the controller solves a plug-in version: the threshold $\eta$ is set on calibration data to meet $\varepsilon$, $B_v$ is estimated by the attribution rule of Section~\ref{sec:method}, and the collateral constraint $|B_v\cap L|=0$ is protected by rate floors, a per-source baseline and persistence.
-
-\subsection{Latency bound}
-The first window that contains the attack ends at most $\Delta$ after $\tau_a$, and k-of-n confirmation adds $(k-1)\Delta$, so
+\subsection{Detection problem}
+Let $\mathrm{confirm}_d(t)\in\{0,1\}$ be the controller's confirmation in window $t$ (Section~\ref{sec:method}) and
 \begin{equation}
-D\ \ge\ (k-1+U)\,\Delta,\qquad U\in(0,1].
+D=\min\{t\Delta\in[\tau_a,\tau_a{+}T_{\text{ep}}]:\ \mathrm{confirm}_v(t)=1\}-\tau_a,
 \end{equation}
-With $\Delta=5$\,s and $k=2$ the bound is 5--10\,s before any processing; this is why an earlier version of our system needed 12.4\,s. We therefore use $\Delta=2$\,s and a fast path that confirms a very confident window at once.
+with $D=T_{\text{ep}}$ (the episode duration) if no window confirms; this is the penalised latency reported in Section~\ref{sec:results}. The confirmation rule has design parameters $(k,n)=(2,3)$ and a fast-path threshold $\eta_f$, and learned parameters $(w,b)$ of a window score $s_d(t)$. $\eta_f$ must exceed $\eta$, otherwise 2-of-3 confirmation degenerates to 1-of-1; we define it as the $(1-\varepsilon_f)$ quantile of benign calibration scores with $\varepsilon_f=0.1\,\%<\varepsilon$. (The runs in Sections~\ref{sec:results}-B to E used the fixed value $\eta_f=0.97$, which at 50\,Mbit/s corresponds to a 0.24\,\% exceedance; Section~\ref{sec:cap} shows why the quantile definition is needed.) With these fixed, the problem we solve is
+\begin{equation}
+\min_{\eta}\ \mathbb{E}_{\text{episodes}}[D]\quad\text{s.t.}\quad \Pr\big(s_d(t)\ge\eta\mid H_0\big)\le\varepsilon, \label{eq:detect}
+\end{equation}
+whose solution is the smallest $\eta$ meeting the constraint, i.e.\ the $(1-\varepsilon)$ quantile of $s_d$ under $H_0$, estimated on calibration data. $\Pr(\cdot\mid H_0)$ is pooled over all active destination windows; since about 97\,\% of these belong to quiet clients, the constraint holds network-wide but not per destination, which is the origin of the server false positives in Table~\ref{tab:role}. The constraint is on the single-window exceedance; it does \emph{not} bound the confirmation-level false-alarm rate, which depends on the autocorrelation of $s_d$, the fast path and the repeat-offender trigger. We therefore report the confirmation-level rate empirically (false-alarm episodes per hour). Were $(k,n,\eta_f)$ free, problem (\ref{eq:detect}) would degenerate to $k=n=1$; we keep 2-of-3 as a design choice that trades delay for fewer false-alarm episodes (Table~\ref{tab:detect} shows the measured trade-off). $\mathbb{E}_{\text{episodes}}$ is the empirical mean over test episodes, not Lorden's worst case~\cite{lorden1971procedures}.
+
+\subsection{Mitigation problem}
+Let $\ell_{s,v}=\lambda_{s,v}\,\bar b_{s,v}$ be the offered bit rate of source $s$ to $v$ ($\bar b$: mean packet size in bits). Under proportional sharing of the bottleneck, a legitimate source receives goodput
+\begin{equation}
+G_{s,v}(B,Q)=\ell^{Q}_{s,v}\min\!\Big(1,\ \frac{C_v}{\sum_{a\in A\setminus B}\ell^{Q}_{a,v}+\sum_{u\in L}\ell^{Q}_{u,v}}\Big),
+\end{equation}
+where $B\subseteq H$ is the set of blocked sources, $Q$ the set of quarantined host ports, and $\ell^Q$ excludes traffic entering through $Q$ (for a legitimate host behind a quarantined port, $\ell^Q_{s,v}=0$). The mitigation problem is
+\begin{multline}
+\max_{B,Q}\ \sum_{s\in L}G_{s,v}(B,Q)\quad\text{s.t.}\quad |B\cap L|=0,\\
+\{\beta(\sigma,p):(\sigma,p)\in Q\}\cap L=\emptyset,\quad |B|+|Q|\le R_{\max}. \label{eq:mitig}
+\end{multline}
+While the link is overloaded, maximising (\ref{eq:mitig}) is equivalent to minimising the residual attack load $\sum_{a\in A\setminus B}\ell^{Q}_{a,v}$, i.e.\ blocking the heaviest attackers (by bit rate) first; once the residual load fits within $C_v$, every further block leaves goodput unchanged, so minimising residual load is sufficient but not necessary there. Without a hard capacity constraint no choice is ``invalid''; an overloaded link simply lowers $G$. The plug-in solver replaces the unknown $A$ by the attributed set of Section~\ref{sec:attr}. It ranks candidates by source score (rate-rule hits first), a confidence heuristic rather than the bit-rate order of the objective; with at most 40 attackers and $R_{\max}=64$ the cap was never reached in our runs, so the order did not matter. The implementation applies $R_{\max}=64$ to per-source rules per destination (and 64 new rules per window) and installs port quarantines under a separate budget.
+
+\subsection{Latency of pure k-of-n confirmation}
+If confirmation uses only the $k$-of-$n$ rule, no pre-attack window exceeded $\eta$, and the first window overlapping the attack accumulates enough packets to cross $\eta$, then, with $U\Delta\in(0,\Delta]$ the time from $\tau_a$ to the end of that window,
+\begin{equation}
+D=(k-1+U)\,\Delta. \label{eq:lat}
+\end{equation}
+With $\Delta=5$\,s and $k=2$ this gives 5--10\,s; when the first partial window is too short to cross $\eta$, $D$ grows by $\Delta$ to 10--15\,s, and the mixture of both cases explains the 12.4\,s mean of an earlier version of our system. More generally, if a pre-attack window already exceeded $\eta$, or the fast path or repeat-offender trigger fires, $D$ can be as small as $U\Delta\in(0,\Delta]$, which is why measured latencies below 2\,s occur (Table~\ref{tab:types}). We use $\Delta=2$\,s.
 
 %=====================================================================
 \section{Proposed Method}\label{sec:method}
@@ -118,82 +163,90 @@ Fig.~\ref{fig:arch} shows the architecture. The controller is a Ryu~\cite{ryu} a
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.82\textwidth]{fig_architecture.png}
-\caption{Architecture: counter deltas feed a flow-level model (Level~1) and destination-centric window features (Level~2); a transparent decision layer (Level~3) confirms attacks, attributes sources and installs scoped OpenFlow rules.}
+\caption{Architecture: counter deltas feed a flow-level model (Level~1) and destination-centric window features (Level~2); a decision layer (Level~3) confirms attacks, attributes sources and installs scoped OpenFlow rules. Anti-spoofing works on packet-ins from host ports and is independent of the destination state.}
 \label{fig:arch}
 \end{figure*}
 
-\subsection{Window score and confirmation}
-The window score is a logistic model on transformed features,
+\subsection{Window score and state machine}
+The window score is $s_d(t)=\sigma(w^\top\psi(\phi_d(t))+b)$, where $\psi$ applies $\log(1+x)$ to the non-negative count and rate features marked in Table~\ref{tab:feat} and standardises with calibration statistics. Every alert is explained by the logged contributions $w_j\psi_j$. A window is \emph{over} if
+\begin{multline}
+o_d(t)=\mathbb{1}\{s_d(t)\ge\eta\}\\
+\lor\ \big(\text{state}_d=\text{MITIGATING}\wedge \mathrm{drop}_d(t)\ge 30\,\text{pps}\big),
+\end{multline}
+where $\mathrm{drop}_d(t)$ is the packet rate hitting $d$'s installed drop rules (read from their counters). Thus a flood that is being dropped keeps the episode open even though forwarded traffic is normal. Confirmation in window $t$ is
+\begin{multline}
+\mathrm{confirm}_d(t)=\mathbb{1}\Big\{\textstyle\sum_{i=0}^{2}o_d(t-i)\ge2\\
+\lor\ \big(o_d(t)\wedge(s_d(t)\ge\eta_f\lor R_d(t)\neq\emptyset)\big)\Big\},
+\end{multline}
+with $R_d(t)=\{s:\ s\text{ blocked at }d\text{ within the last }M=300\text{\,s},\ \lambda_{s,d}(t)\ge\lambda_{\text{floor}}\}$ (repeat offenders; $\lambda_{\text{floor}}=15$\,pps, Section~\ref{sec:attr}). The per-destination state machine is given in Algorithm~\ref{alg:main}: NORMAL$\to$SUSPECTED on a single over window; NORMAL/SUSPECTED$\to$CONFIRMED when confirm $=1$; CONFIRMED$\to$MITIGATING when rules are installed; CONFIRMED/MITIGATING$\to$RECOVERING after $Q_{e_d}$ consecutive windows that are not over, with $Q_{e_d}=3\cdot2^{\max(0,\min(e_d-1,3))}$ (3, 6, 12, 24 windows) and $e_d$ the number of episodes on $d$ in which rules were installed (incremented on entering MITIGATING; never reset in our runs); the quiet counter is reset to 0 on entering RECOVERING; RECOVERING$\to$CONFIRMED on an over window, else$\to$NORMAL after 3 consecutive quiet windows (counter rec$_d$). A full return to NORMAL therefore needs up to $(24+3)\Delta=54$\,s without over windows, and post-attack false positives at the victim (Table~\ref{tab:role}) prolong it.
+
+\subsection{Source attribution}\label{sec:attr}
+At a destination in CONFIRMED or MITIGATING with $o_d(t)=1$, the instantaneous candidate set is
+\begin{multline}
+\tilde B_d(t)=\big\{s:\ \lambda_{s,d}(t)\ge\lambda_{\text{floor}}\ \wedge\ \lambda_{s,d}(t)\ge\beta\mu_{s,d}(t)\ \wedge\\
+\big(r_{s,d}(t)\ge\eta_s\ \lor\ (\lambda_{s,d}(t)\ge\lambda_{\text{rate}}\wedge \mathrm{corr}_{s,d}(t))\big)\big\},
+\end{multline}
+with source score $r_{s,d}=\sigma(u^\top\psi(\phi_{s,d})+c)$, $\lambda_{\text{floor}}=15$\,pps, $\lambda_{\text{rate}}=150$\,pps, $\beta=3$, and $\mathrm{corr}_{s,d}(t)$ true if $s$'s maximum $p_f$ towards $d$ is $\ge0.5$, $s$ opens $\ge10$ new flows to $d$ in the window, or $s$ has never been seen sending to $d$ in a normal window. The baseline $\mu_{s,d}(t)\leftarrow\max(\lambda_{s,d}(t),0.97\mu_{s,d}(t-1))$ is updated only in windows where $d$ is NORMAL and not over (peak-hold, half-life $\approx23$ windows). The block set adds persistence:
 \begin{equation}
-s_d(t)=\sigma\big(w^\top\psi(\phi_d(t))+b\big),
+B_d(t)=\big(\tilde B_d(t)\cap\tilde B_d(t')\big)\ \cup\ \big(\tilde B_d(t)\cap R_d(t)\big),
 \end{equation}
-where $\psi$ applies $\log(1+x)$ to heavy-tailed features (counts and rates) and standardises with calibration statistics. A linear score was chosen deliberately: every alert is explained by the per-feature contributions $w_j\psi_j$, which the controller logs. A destination is confirmed when
-\begin{multline}
-\textstyle\sum_{i=0}^{n-1}\mathbb{1}\{s_d(t-i)\ge\eta\}\ge k\ \ \lor\ \ s_d(t)\ge\eta_f\\
-\lor\ \ \big(s_d(t)\ge\eta\wedge R_d(t)\neq\emptyset\big),
-\end{multline}
-with $k$-of-$n$ $=2$-of-$3$, $\eta_f=0.97$, and $R_d(t)$ the sources blocked at $d$ within the last $M=300$\,s that are sending again (repeat offenders). A per-destination state machine (NORMAL, SUSPECTED, CONFIRMED, MITIGATING, RECOVERING) removes the rules of $d$ after $Q_e=Q\cdot2^{\min(e-1,3)}$ quiet windows in the $e$-th attack episode on $d$ ($Q=3$), i.e.\ with an exponential hold-down against pulsing attacks.
+where $t'$ is the previous window in which attribution was evaluated for $d$. Attribution is evaluated only in over windows of CONFIRMED or MITIGATING (not in SUSPECTED), so a single window with $s_d<\eta$ but a running episode neither adds nor resets candidates; since $o_d$ includes drop-rule hits, this gate rarely blocks attribution once mitigation has started. Consequently a first-time attacker is blocked at the earliest one over window after confirmation. Two implementation details matter: the persistence counter of a candidate is cleared only when attribution is evaluated and the candidate does not qualify, not at the end of an episode, so a candidate from the last window of one episode could be blocked after a single window of a later episode (we observed no such case); and ``new'' sources in Algorithm~\ref{alg:main} are those without an active rule, which also re-installs expired rules.
 
-\subsection{Source attribution}
-For a confirmed $d$ the block set is
-\begin{multline}
-B_d(t)=\big\{s:\ \lambda_{s,d}\ge\lambda_{\text{floor}}\ \wedge\ \lambda_{s,d}\ge\beta\,\mu_{s,d}\ \wedge\\
-\big(r_{s,d}\ge\eta_s\ \lor\ (\lambda_{s,d}\ge\lambda_{\text{rate}}\wedge \mathrm{corr}(s))\big)\big\},
-\end{multline}
-where $r_{s,d}=\sigma(u^\top\psi(\phi_{s,d})+c)$ is a logistic source score, $\lambda_{\text{floor}}=15$\,pps, $\lambda_{\text{rate}}=150$\,pps, and $\mathrm{corr}(s)$ holds if the flow model flags $s$'s flows ($\max p_f\ge0.5$), if $s$ opens $\ge10$ new flows per window, or if $s$ was never seen sending to $d$ in normal windows. The baseline $\mu_{s,d}$ is a peak-hold average of $\lambda_{s,d}$ learned only in windows in which $d$ is NORMAL and below threshold ($\mu\leftarrow\max(\lambda,0.97\mu)$); with $\beta=3$ a source that already sent at that rate before the attack (a video stream, a bulk transfer) is not blocked unless its rate triples. Finally, a source enters $B_d$ only after qualifying in two consecutive windows (repeat offenders at once).
+\textbf{Edge cases.} A legitimate client that starts a new heavy transfer to $d$ \emph{during} a confirmed attack has $\mu_{s,d}=0$ and satisfies the new-source corroboration; if it exceeds 150\,pps for two windows it is blocked. Conversely, attackers that ramp up slowly while $d$ stays below threshold raise their own baseline and can evade attribution. Neither occurred in our schedules, but both are real weaknesses of the rule.
 
-\subsection{Mitigation}
-For each $s\in B_d$ one OpenFlow rule (priority 200, hard timeout 300\,s) matching \texttt{ipv4\_src}$=s$, \texttt{ipv4\_dst}$=d$ for \emph{all} IP protocols drops the traffic at $s$'s ingress switch, so switching from UDP to ICMP or TCP does not bypass it. For anti-spoofing, every host port $(\text{sw},p)$ is bound to its address $\beta(\text{sw},p)$; if a port emits $\ge\kappa=20$ packet-ins towards $d$ with a foreign source address in one window, a quarantine rule (\texttt{in\_port}$=p$, \texttt{ipv4\_dst}$=d$, drop) is installed on that switch. Algorithm~\ref{alg:main} summarises one polling cycle.
+\subsection{Mitigation and anti-spoofing}
+For each $s\in B_d$ (top $R_{\max}$ by score) one rule (priority 200, hard timeout 300\,s) matching \texttt{ipv4\_src}$=s$, \texttt{ipv4\_dst}$=d$ for all IP protocols drops the traffic at $s$'s ingress switch, so switching protocol does not bypass it. Rules are removed when $d$ enters RECOVERING. If a rule expires by hard timeout while the attack continues, the source is attributed again (immediately, as a repeat offender) and the rule re-installed. Each host port $(\sigma,p)$ is statically bound to the address of the host behind it (topology configuration, not learned, so a spoofed first packet cannot poison it). Independently of the destination state, if a port emits $\ge\kappa=20$ packet-ins towards $d$ with a foreign source address in one window, a quarantine rule (\texttt{in\_port}$=p$, \texttt{ipv4\_dst}$=d$, drop; priority 205, hard timeout 300\,s) is installed; it is removed with $d$'s rules or by timeout. Because quarantine is decoupled from the destination state, a quarantine for a destination that never confirms stays for the full 300\,s, and one installed just before $d$ recovers is removed early. No allow rule for $\beta(\sigma,p)$ is installed, so the quarantined host loses access to $d$ entirely. Non-spoofed packet-ins are not attributed to sources: a flood that saturates the packet-in path before its forwarding entries exist has $\lambda_{s,d}=0$ and is invisible to Eq.~(9) (Section~\ref{sec:seed3}); counting packet-ins per $(s,d)$ would close this gap.
 
 \begin{algorithm}[t]
 \caption{One polling cycle of the controller}\label{alg:main}
 \begin{algorithmic}[1]
-\STATE Request flow statistics from all switches; wait $\le 1.5$\,s
-\STATE Compute counter deltas $x_f(t)$ (max over path, re-installation aware)
-\STATE Score active flows with $g_\theta$ (Level 1)
-\STATE Build $\phi_d(t)$ for every destination, $\phi_{s,d}(t)$ for every pair
-\FOR{each destination $d$}
-  \STATE $s_d\gets\sigma(w^\top\psi(\phi_d)+b)$; update history
-  \IF{state$_d\in\{$NORMAL$\}$ and $s_d<\eta$}
-     \STATE update baselines $\mu_{s,d}$
+\STATE Request flow statistics from all switches; wait $\le1.5$\,s
+\STATE Compute $x_f(t)$ by Eq.~(\ref{eq:delta}); score active flows with $g_\theta$
+\STATE Build $\phi_d(t)$ and $\phi_{s,d}(t)$ for every active destination and pair
+\FOR{each active or non-NORMAL destination $d$}
+  \STATE $s_d(t)\gets\sigma(w^\top\psi(\phi_d(t))+b)$; compute $o_d(t)$
+  \IF{state$_d=$ NORMAL \AND $o_d(t)=0$} \STATE update $\mu_{s,d}$ for all $s$ \ENDIF
+  \IF{state$_d\in\{$NORMAL, SUSPECTED$\}$}
+     \STATE state$_d\gets$ CONFIRMED if confirm$_d(t)$, else SUSPECTED if $o_d(t)$, else NORMAL
+  \ELSIF{state$_d=$ RECOVERING}
+     \STATE \textbf{if} $o_d(t)$ \textbf{then} state$_d\gets$ CONFIRMED \textbf{else} rec$_d\gets$ rec$_d+1$; \textbf{if} rec$_d\ge3$ \textbf{then} state$_d\gets$ NORMAL
+  \ELSE[CONFIRMED or MITIGATING]
+     \STATE quiet$_d\gets0$ if $o_d(t)$ else quiet$_d+1$
+     \IF{quiet$_d\ge Q_{e_d}$} \STATE remove $d$'s rules; state$_d\gets$ RECOVERING; quiet$_d\gets0$; rec$_d\gets0$ \ENDIF
   \ENDIF
-  \IF{$k$-of-$n$ over $\eta$ \OR $s_d\ge\eta_f$ \OR ($s_d\ge\eta$ \AND $R_d\neq\emptyset$)}
-     \STATE state$_d\gets$ CONFIRMED
+  \IF{state$_d\in\{$CONFIRMED, MITIGATING$\}$ \AND $o_d(t)$}
+     \STATE compute $B_d(t)$; install a rule for each $s\in B_d(t)$ without an active rule (rank by score, cap $R_{\max}$)
+     \IF{a rule was installed} \STATE \textbf{if} state$_d\neq$ MITIGATING \textbf{then} $e_d\gets e_d+1$; state$_d\gets$ MITIGATING \ENDIF
   \ENDIF
-  \IF{state$_d\in\{$CONFIRMED, MITIGATING$\}$ and $s_d\ge\eta$}
-     \STATE compute $B_d$ (floor, baseline, score/corroboration, persistence)
-     \STATE install one all-protocol drop rule per new $s\in B_d$ at its ingress switch
-  \ENDIF
-  \IF{quiet for $Q_e$ windows} \STATE remove the rules of $d$; state$_d\gets$ RECOVERING \ENDIF
 \ENDFOR
-\STATE Quarantine host ports with $\ge\kappa$ spoofed packet-ins per destination
+\STATE Quarantine host ports with $\ge\kappa$ spoofed packet-ins towards any $d$
 \end{algorithmic}
 \end{algorithm}
 
 \subsection{Calibration}
-The window and source models are fitted with class-balanced logistic regression ($C=1$) on a separate calibration session only. Their thresholds are the $(1-\varepsilon)$ quantile of leave-one-segment-out probabilities on benign windows, with $\varepsilon=0.3\,\%$ for the window model and $1\,\%$ for the source model (source decisions are only made at already confirmed victims). The baselines receive their thresholds the same way.
+The window and source models are fitted with class-balanced logistic regression ($C=1$) on a separate calibration session only. A \emph{segment} is one scheduled period of that session (a benign period, a flash crowd, or one attack with its following gap; 10 segments). Thresholds are the $(1-\varepsilon)$ quantile of leave-one-segment-out probabilities on benign windows, pooled over all destinations, with $\varepsilon=0.3\,\%$ for the window model and $\varepsilon_s=1\,\%$ for the source model. In each fold the logistic weights are refitted on the other nine segments, but the standardisation statistics of $\psi$ were computed once on all calibration windows (a mild in-sample leak into $\eta$); sequential features (EWMA, $\mu_{s,d}$) run over the whole session and are not reset at segment boundaries. The source model is fitted on (source, victim) pairs only, excluding the spoofed segment, and $\eta_s$ is the quantile of its benign pairs. The baselines get their thresholds the same way.
 
 %=====================================================================
 \section{Baselines and Experimental Setup}\label{sec:setup}
-\subsection{Flow-level data}\label{sec:flowdata}
-We map CIC-DDoS2019~\cite{sharafaldin2019ddos} (folder 01-12) and four days of CSE-CIC-IDS2018~\cite{sharafaldin2018toward} (15, 16, 21, 22 Feb.; DoS and DDoS classes kept, others dropped) to the seven features of Level~1 and remove all rows whose feature vectors are identical but whose labels differ. After cleaning, CIC-DDoS2019 has 1\,831\,822 flows with only 16\,733 benign (7\,302 benign UDP), and CSE-CIC-IDS2018 has 3\,654\,924 flows with 2\,557\,308 benign (647\,892 benign UDP). Splits are group-disjoint; each model is trained on 20\,000 flows per class per dataset and tested on natural-ratio holdouts of 60\,000 flows per dataset. Seven scikit-learn~\cite{pedregosa2011scikit} classifiers are compared; HistGradientBoosting follows the LightGBM design~\cite{ke2017lightgbm}.
+\subsection{Flow-level data}
+We map CIC-DDoS2019~\cite{sharafaldin2019ddos} (folder 01-12) and four days of CSE-CIC-IDS2018~\cite{sharafaldin2018toward} (15, 16, 21, 22 Feb.; DoS and DDoS classes kept) to the seven Level-1 features. The group-disjoint 80/20 split is made first; groups are the bidirectional 5-tuple with protocol (CIC-DDoS2019) and day $\times$ capture minute $\times$ destination port (CSE-CIC-IDS2018, which has no addresses; adjacent minutes of one attack can still fall on both sides). Rows whose feature vectors are identical but whose labels differ are then removed from the \emph{training split only} (1\,069\,925 and 391\,527 rows); the holdouts keep every row, including ambiguous ones. Identical rows with the same label are kept, so 17--24\,\% of holdout feature vectors also occur in training; removing them changes balanced accuracy by at most 0.04 (0.948 and 0.905 for the combined model). Training draws up to 20\,000 flows per class per dataset without replacement (no oversampling; CIC-DDoS2019 has fewer benign flows than that in its training split), and each natural-ratio holdout has 60\,000 flows (330 and 41\,056 benign). Seven scikit-learn~\cite{pedregosa2011scikit} classifiers are compared, with balanced class weights where supported: Random Forest (160 trees, depth 10, min. leaf 15), Extra Trees (180 trees, depth 14), Decision Tree (depth 10, min. leaf 15), logistic regression, KNN ($k=9$, distance-weighted), Gaussian naive Bayes, and HistGradientBoosting (160 iterations, 15 leaves, learning rate 0.08, L2 2.0), which follows LightGBM~\cite{ke2017lightgbm}. The model used in the live experiments was trained before this correction, with conflicts removed over the whole dataset; that affected which training rows existed, not the holdout evaluation reported here.
 
 \subsection{Testbed}
-Mininet~\cite{lantz2010network} with Open vSwitch~\cite{pfaff2015ovs} (OpenFlow 1.3) emulates a three-tier tree: one core switch, four aggregation switches and 20 edge switches with 10 hosts each (25 switches, 200 hosts). Host links run at 100\,Mbit/s, edge--aggregation links at 200\,Mbit/s and aggregation--core links at 400\,Mbit/s. The victim h200 sits behind a 25\,Mbit/s access link in the test sessions (50\,Mbit/s in calibration). Two further servers carry only benign traffic. Forwarding entries are installed per (source, destination, protocol), the packet-in rate is limited to 400\,pps per switch, and flows idle out after 15\,s.
+Mininet~\cite{lantz2010network} with Open vSwitch~\cite{pfaff2015ovs} (OpenFlow 1.3) emulates a three-tier tree: one core, four aggregation and 20 edge switches with 10 hosts each. Host links run at 100\,Mbit/s, edge--aggregation at 200\,Mbit/s, aggregation--core at 400\,Mbit/s. The victim h200 and the two benign servers h198, h199 sit on the last edge switch, which also hosts two attackers and five clients. Forwarding entries match only (source, destination, protocol), without L4 ports, packet-ins are limited to 400\,pps per switch, and entries idle out after 15\,s. This granularity differs from the bidirectional 5-tuple flows of the training datasets: a testbed ``flow'' aggregates all connections of a host pair and protocol, which shifts $z_f$ away from the training distribution (one reason Level~1 contributes little and misses SYN floods) and means the ``$\ge10$ new flows'' corroboration fires only when entries are re-installed repeatedly.
 
-\textbf{Legitimate workload (157 clients).} 95 web clients (10\,kB/100\,kB pages, think time 0.5--3\,s, 60\,\% to the victim), 25 DNS-like UDP request/response clients (4 queries/s), 12 UDP video-like streams (1\,Mbit/s), 10 bulk TCP transfers (2\,Mbit/s) and 15 ping clients. About 17\,Mbit/s of benign load reaches the victim. Flash crowds make every web client fetch the large page six times in 20\,s.
+\textbf{Victim capacity.} The single-machine emulator delivers only about 6--7\,kpps of the $\approx$11\,kpps offered across five switch hops, so at 50\,Mbit/s the flood did not saturate the victim link and legitimate users were unaffected. We therefore set the victim link to 25\,Mbit/s in all test sessions; the calibration session had already been run at 50\,Mbit/s. All live mitigation runs used the 50\,Mbit/s models, so Sections~\ref{sec:results}-B to E report that configuration as run; Section~\ref{sec:cap} repeats calibration at 25\,Mbit/s offline and shows that it is the better configuration.
 
-\textbf{Attackers (40).} Two per edge switch, sharing switches with legitimate users, using hping3. Floods use 220--380\,pps per attacker (about 11\,000 pps offered), low-rate attacks 25--45\,pps, spoofed floods 120--180\,pps with random source addresses from four hosts.
+\textbf{Workload.} 157 legitimate clients: 95 web clients (10\,kB/100\,kB pages, think time 0.5--3\,s, 60\,\% to the victim), 25 DNS-like UDP request/response clients (4 queries/s), 12 UDP video-like streams (1\,Mbit/s), 10 bulk TCP transfers (2\,Mbit/s) and 15 ping clients; about 17\,Mbit/s of benign load reaches the victim. Flash crowds make every web client fetch the large page six times in 20\,s, which briefly exceeds the 25\,Mbit/s link. Forty attackers (two per edge switch) use hping3: floods at 220--380\,pps each ($\approx$11\,kpps offered), low-rate attacks at 25--45\,pps, spoofed floods at 120--180\,pps from four hosts. Every attack draws its participants from the same 40 bots (all 40 for floods, 24 for protocol switching, 30 for re-attack).
 
-\textbf{Sessions.} A calibration session (seed 1) and held-out sessions with seed 2 (new attacker subsets, rates and sizes). The test schedule is: benign, flash crowd, UDP, SYN, ICMP, low-rate, pulsing ($4\times$ 6\,s on / 10\,s off), spoofed, mixed UDP+SYN, protocol switching (UDP$\to$ICMP$\to$SYN, 20\,s each), re-attack (three 25\,s bursts 15\,s apart), benign, flash crowd, benign; attacks last 30--105\,s with 40\,s gaps. Two detection-only replicates (test\_det, test\_det2) give detection metrics; test\_det2 and a run with mitigation enabled (test\_mit) form a paired comparison. Ground truth (attacker addresses and intervals) comes from the scheduler, never from the detector. Every HTTP request, UDP query and ping reply of every client is logged (44\,000--56\,000 HTTP requests and 110\,000 UDP queries per session), and all edge-port counters are sampled every second.
+\textbf{Sessions.} Calibration: seed 1. Tuning schedule: seed 2 (benign, flash crowd, UDP, SYN, ICMP, low-rate, pulsing $4\times$6\,s/10\,s, spoofed, mixed UDP+SYN, protocol switching UDP$\to$ICMP$\to$SYN, re-attack with three bursts, benign, flash crowd, benign; 40\,s gaps). Two detection-only sessions (test\_det, test\_det2) and the mitigation run test\_mit use seed 2. Fresh validation: seed 3, with the same attack types in a seed-shuffled order and 60\,s gaps (longer than the 48\,s maximum hold-down, though a full return to NORMAL needs up to 54\,s and post-attack false positives extend it), one detection-only and one mitigation session, run once with the configuration frozen. Because all episodes reuse the same 40 bots, rules and repeat-offender memory carry over between episodes; disjoint bot pools per episode would isolate per-attack mitigation and are left for future runs. Ground truth comes from the scheduler. Every HTTP request, UDP query and ping is logged, and all edge-port counters are sampled every second.
 
 \subsection{Baselines}
-All baselines use the same features, the same 2-of-3 confirmation and thresholds set on calibration data at the same false-positive budget: (i) \emph{pps per destination} $\Lambda_d(t)>\eta_\Lambda$; (ii) \emph{source-IP entropy} of the packet distribution over sources at $d$ (bits); (iii) \emph{destination-IP entropy}~\cite{mousavi2015early}, the normalised entropy of all traffic over destinations, alarming on the dominant destination when it drops; (iv) \emph{flow-ML only}, $\max_f p_f$ at $d$.
+All baselines use 2-of-3 confirmation and thresholds set on calibration data at the same $\varepsilon$: (i) \emph{pps per destination}, alarm if $\Lambda_d(t)\ge\eta_\Lambda$; (ii) \emph{source-IP entropy}, alarm if the unnormalised entropy $-\sum_s q_s\log_2 q_s$ (bits) exceeds its threshold (upper tail: many sources converging; unnormalised because the normalised $H_d$ hides the number of sources); (iii) \emph{destination-IP entropy}, adapted from~\cite{mousavi2015early} (which uses packet-ins) to counter rates: the normalised entropy of all traffic over destinations, $1-H$ is assigned as score to the dominant destination of the window and 0 to all others, and the threshold is the same pooled quantile, so in practice it concerns the busiest destination; (iv) \emph{flow-ML only}, $\max_f p_f$ at $d$. For latency parity we also give every baseline a single-window fast path whose threshold has the same benign exceedance rate on calibration (0.24\,\%) as the hybrid's $\eta_f$. Detection-only sessions are evaluated offline without blocking, so $R_d(t)=\emptyset$ there and the proposed detector gains nothing from repeat-offender memory in these comparisons. We also evaluate a one-sided Page CUSUM~\cite{page1954continuous} on the proposed window score, $S_d(t)=\max(0,S_d(t-1)+s_d(t)-\eta)$, alarming while $S_d\ge h$, with $h$ chosen on calibration so that its false-alarm episodes per hour match the proposed rule's.
 
 %=====================================================================
 \section{Results and Performance Analysis}\label{sec:results}
 \subsection{Flow-level model}\label{sec:flow}
-Fig.~\ref{fig:cross} shows that a model trained on one dataset does not transfer: HGB trained on CIC-DDoS2019 reaches a balanced accuracy of 0.998 on its own holdout but 0.421 on CSE-CIC-IDS2018, and vice versa 0.956 and 0.469. Training on both keeps 0.976 and 0.948. Table~\ref{tab:flow} compares all models trained on both datasets. HGB, Random Forest, Decision Tree and KNN are within 0.5 points; McNemar tests~\cite{mcnemar1947note,dietterich1998approximate} on the same 120\,000 test flows find RF ($-0.42$ points, $p=4\times10^{-18}$), KNN ($-0.26$, $p=7\times10^{-8}$) and DT ($-0.23$, $p=5\times10^{-6}$) slightly but significantly better than HGB. The differences are statistically detectable but not practically meaningful; we keep HGB because it is 4--5$\times$ faster than KNN, 23$\times$ smaller, and does not grow with the training set. The gains of the system come from Levels 2 and 3, not from the classifier.
+A model trained on one dataset does not transfer (Fig.~\ref{fig:cross}): HGB trained on CIC-DDoS2019 scores 0.969 on its own holdout but 0.485 on CSE-CIC-IDS2018 with ROC-AUC 0.533, i.e.\ its ranking is no better than chance; trained on CSE-CIC-IDS2018 it scores 0.925 on its own and 0.618 on CIC-DDoS2019 (ROC-AUC 0.786), so that direction is partly a threshold shift. Training on both gives 0.914 and 0.919. These holdouts keep all ambiguous rows (Section~\ref{sec:setup}-A); with the earlier whole-dataset filtering the same model scored 0.976 and 0.948, which overstated accuracy. Table~\ref{tab:flow} compares all models trained on both datasets. A paired, class-stratified bootstrap of the balanced-accuracy difference on each holdout (1\,000 resamples) shows HGB significantly ahead of RF and DT on both datasets (+14 to +15 and +7 to +8 points), ahead of KNN on CSE-CIC-IDS2018 (+5.2, CI +4.9 to +5.5) and tied with KNN on CIC-DDoS2019 ($-0.8$, CI $-2.1$ to $+0.4$). HGB is also 7--15$\times$ faster and 25$\times$ smaller than KNN; Decision Tree and Random Forest are as fast or faster but 7--15 points worse. All metrics use the uncalibrated threshold $p_f\ge0.5$.
 
 \begin{figure}[t]
 \centering
@@ -203,57 +256,63 @@ Fig.~\ref{fig:cross} shows that a model trained on one dataset does not transfer
 \end{figure}
 
 \begin{table}[t]
-\caption{Flow models trained on both datasets (balanced accuracy, false-positive rate, inference cost)}
+\caption{Flow models trained on both datasets}
 \label{tab:flow}
-\centering
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{lccccc}
-\toprule
-Model & BA'19 & FPR'19 & BA'18 & FPR'18 & $\mu$s/flow \\
-\midrule
-KNN & 0.982 & 2.8\,\% & 0.942 & 5.6\,\% & 15.6--20.0 \\
-\textbf{HGB (used)} & \textbf{0.976} & \textbf{3.5\,\%} & \textbf{0.948} & \textbf{5.9\,\%} & \textbf{3.6--4.5} \\
-Decision Tree & 0.972 & 4.4\,\% & 0.947 & 5.4\,\% & 0.2--0.3 \\
-Random Forest & 0.971 & 4.6\,\% & 0.947 & 4.9\,\% & 5.6--6.1 \\
-Extra Trees & 0.915 & 15.5\,\% & 0.903 & 12.7\,\% & 3.0--3.1 \\
-Logistic Reg. & 0.666 & 37.4\,\% & 0.685 & 61.0\,\% & 0.3--0.5 \\
-Naive Bayes & 0.594 & 1.8\,\% & 0.498 & 0.6\,\% & 0.3--0.4 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Detection on the large testbed}
-Table~\ref{tab:detect} pools the two held-out detection sessions: 78\,141 destination windows (77\,755 benign, 386 under attack) and 18 attack episodes. Fig.~\ref{fig:methods} shows the window-level comparison for test\_det. The proposed detector has the highest recall (0.97) and F1 (0.78) at a 0.26\,\% window false-positive rate, and it is the only method that detects all 18 episodes; with the fast path its mean latency is 3.2\,s (4.5\,s without), compared with 5.4--7.7\,s for the baselines. Destination-IP entropy is a strong baseline in this setting (F1 0.74), because one victim receives a large share of all traffic, but it cannot identify sources and missed one spoofing episode. The rate threshold misses both low-rate episodes, source entropy misses both protocol-switching episodes, and the flow model alone misses the SYN floods (Table~\ref{tab:types}).
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{fig_methods_large_test.png}
-\caption{Window-level recall and F1 on the held-out session test\_det (same calibration false-positive budget for all methods).}
-\label{fig:methods}
-\end{figure}
-
-\begin{table}[t]
-\caption{Detection on two held-out 200-host sessions (pooled)}
-\label{tab:detect}
 \centering
 \setlength{\tabcolsep}{2.6pt}
 \begin{tabular}{lcccccc}
 \toprule
-Method & Rec. & FPR & F1 & Det. & Lat. & FA/h \\
+Model & BA'19 & FPR'19 & BA'18 & FPR'18 & $\mu$s/flow & MB \\
 \midrule
-pps per destination & 0.63 & 0.35\,\% & 0.54 & 16/18 & 7.5\,s & 57 \\
-Source-IP entropy & 0.56 & 0.45\,\% & 0.45 & 16/18 & 6.9\,s & 37 \\
-Dest.-IP entropy~\cite{mousavi2015early} & 0.90 & 0.26\,\% & 0.74 & 17/18 & 5.4\,s & 30 \\
-Flow-ML only & 0.56 & 0.24\,\% & 0.54 & 16/18 & 7.7\,s & 67 \\
-Proposed (2-of-3) & 0.97 & 0.26\,\% & 0.78 & 18/18 & 4.5\,s & 40 \\
-\textbf{Proposed + fast path} & \textbf{0.97} & \textbf{0.26\,\%} & \textbf{0.78} & \textbf{18/18} & \textbf{3.2\,s} & \textbf{45} \\
+\textbf{HGB (used)} & \textbf{0.914} & \textbf{7.9\,\%} & \textbf{0.919} & \textbf{7.4\,\%} & \textbf{3.9--4.4} & \textbf{0.30} \\
+KNN & 0.922 & 5.8\,\% & 0.867 & 9.4\,\% & 28--65 & 7.47 \\
+Random Forest & 0.773 & 2.4\,\% & 0.845 & 5.2\,\% & 2.6--3.6 & 5.38 \\
+Decision Tree & 0.766 & 3.6\,\% & 0.843 & 5.2\,\% & 0.2--0.3 & 0.04 \\
+Extra Trees & 0.676 & 22.4\,\% & 0.772 & 13.9\,\% & 3.0--3.5 & 2.00 \\
+Logistic Reg. & 0.510 & 39.1\,\% & 0.595 & 61.8\,\% & 0.3--0.8 & $<$0.01 \\
+Naive Bayes & 0.479 & 94.2\,\% & 0.524 & 94.7\,\% & 0.3--0.4 & $<$0.01 \\
 \bottomrule
 \end{tabular}\\[2pt]
-\footnotesize Rec./FPR/F1 per destination window; Det.: attack episodes detected; Lat.: mean detection latency; FA/h: false-alarm episodes per hour over all $\approx$100 active destinations.
+\footnotesize '19: CIC-DDoS2019, '18: CSE-CIC-IDS2018 holdout. BA: balanced accuracy; BA and FPR at $p_f\ge0.5$; MB: serialised model size. Holdouts keep ambiguous rows.
+\end{table}
+
+\subsection{Detection on the tuning schedule (seed 2)}
+Table~\ref{tab:detect} pools the two detection-only sessions: 78\,141 destination windows (77\,755 benign, 386 under attack), 18 episodes, 36 minutes. Window metrics use the single-window decision $s_d(t)\ge\eta$ (before confirmation); detection, latency and false-alarm episodes use the full confirmation rule. Fig.~\ref{fig:methods} shows session test\_det alone. The detector has the highest recall and F1 and detects all 18 episodes. With fast-path parity, destination entropy also detects all 18 but is 1.4\,s slower; pps per destination gains detections only at twice the false-alarm rate. Penalising missed episodes with their full duration (survivorship-free) widens the gaps: 3.2\,s for the detector against 4.5--11.9\,s for the baselines with fast path. Removing the flow model (Levels 2+3 only, refitted on the same calibration data) lowers F1 from 0.78 to 0.73 and increases false-positive windows by 21\,\%: Level~1 is not where most of the gain comes from, but it contributes. The ablated detector confirms faster (2.6 vs.\ 3.2\,s) because it used the same fixed $\eta_f=0.97$ while its own threshold is higher ($\eta=0.924$ vs.\ 0.844): the fast path sits closer to its $\eta$ and fires more often. With the quantile definition of $\eta_f$ this artefact disappears; on seed 3 its false-alarm rate is higher than the full detector's (72 vs.\ 55 per hour, Table~\ref{tab:seed3}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_methods_large_test.png}
+\caption{Window-level recall and F1 on session test\_det (single session; per-method FPR on the axis).}
+\label{fig:methods}
+\end{figure}
+
+\begin{table}[t]
+\caption{Detection on two seed-2 sessions (pooled)}
+\label{tab:detect}
+\centering
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{lcccccc}
+\toprule
+Method & Rec. & Prec. & F1 & Det. & Lat./Pen. & FA/h \\
+\midrule
+pps per destination & 0.63 & 0.47 & 0.54 & 16/18 & 7.5/11.1 & 57 \\
+\quad + fast path & & & & 18/18 & 5.3/5.3 & 89 \\
+Source-IP entropy & 0.56 & 0.38 & 0.45 & 16/18 & 6.9/12.8 & 37 \\
+\quad + fast path & & & & 16/18 & 5.9/11.9 & 37 \\
+Dest.-IP entropy~\cite{mousavi2015early} & 0.90 & 0.63 & 0.74 & 17/18 & 5.4/6.7 & 30 \\
+\quad + fast path & & & & 18/18 & 4.5/4.5 & 49 \\
+Flow-ML only & 0.56 & 0.53 & 0.54 & 16/18 & 7.7/10.2 & 67 \\
+\quad + fast path & & & & 16/18 & 6.0/8.7 & 69 \\
+Levels 2+3 only (no flow ML) & 0.95 & 0.60 & 0.73 & 18/18 & 2.6/2.6 & 45 \\
+Proposed (2-of-3) & 0.97 & 0.65 & 0.78 & 18/18 & 4.5/4.5 & 40 \\
+\textbf{Proposed + fast path} & \textbf{0.97} & \textbf{0.65} & \textbf{0.78} & \textbf{18/18} & \textbf{3.2/3.2} & \textbf{45} \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize Window FPR at the decision threshold (budget 0.3\,\%): pps 0.35\,\%, source entropy 0.45\,\%, dest.\ entropy 0.26\,\%, flow-ML 0.24\,\%, Levels 2+3 0.32\,\%, proposed 0.26\,\%. Lat.: mean over detected episodes (s); Pen.: missed episodes counted with their duration. FA/h: false-alarm episodes per hour over all $\approx$100 active destinations. The no-flow-ML row uses its own fast path.
 \end{table}
 
 \begin{table}[t]
-\caption{Mean detection latency (s) per attack type over both sessions (--: not detected)}
+\caption{Mean latency (s) over detected episodes per attack type, seed 2 (--: not detected in either session); proposed with fast path, baselines 2-of-3 without fast path (with fast path see Table~\ref{tab:detect})}
 \label{tab:types}
 \centering
 \setlength{\tabcolsep}{3pt}
@@ -270,84 +329,207 @@ Spoofed & 2.6 & 4.7$^\dagger$ & 2.6 & 2.6 & 4.8 \\
 Mixed UDP+SYN & 1.2 & 5.4 & 23.7 & 24.7 & 6.6 \\
 Protocol switching & 4.4 & 4.1 & 6.2 & -- & 5.3 \\
 Re-attack & 2.4 & 3.7 & 7.7 & 8.7 & 2.4 \\
-\midrule
-Mean & \textbf{3.2} & 5.4 & 7.5 & 6.9 & 7.7 \\
 \bottomrule
 \end{tabular}\\[2pt]
-\footnotesize $^\dagger$detected in one of the two sessions.
+\footnotesize $^\dagger$DstEnt column: detected in one of the two sessions. Source entropy misses only protocol switching (2 episodes, 16/18), consistent with Table~\ref{tab:detect}. Values below $\Delta=2$\,s arise from the cases discussed after Eq.~(\ref{eq:lat}).
 \end{table}
 
-On the original 6-switch, 18-host chain testbed (21 held-out runs, 5\,s windows), the same comparison gives window F1 0.78 for the proposed detector against 0.42 (pps), 0.49 (source entropy), 0.47 (destination entropy) and 0.09 (flow-ML only), with 15 of 18 attack runs detected against at most 10.
+On the earlier 6-switch, 18-host chain testbed (21 held-out runs: 18 attack runs and 3 benign-only runs; 5\,s windows; 1\,\% budget), the same comparison gives window F1 0.78 for the proposed detector against 0.42 (pps), 0.49 (source entropy), 0.47 (destination entropy) and 0.09 (flow-ML only), with 15 of the 18 attack runs detected against at most 10.
 
-\subsection{Mitigation and legitimate users}
-Without protection, attacks hurt legitimate users through two channels. On the data plane the flood fills the 25\,Mbit/s link; during the UDP flood HTTP still succeeds but its 95th-percentile latency rises from 0.04\,s to 1.04\,s. On the control plane, at flood onset each attacker sends hundreds of packets before its forwarding entry exists; they fill the rate-limited packet-in queue, legitimate flows that need a new entry wait behind them, and from the ICMP flood onward legitimate service collapses and does not recover between attacks (Fig.~\ref{fig:pulse}). Table~\ref{tab:mitig} compares the paired sessions. Averaged over the nine attacks, legitimate HTTP success rises from 48\,\% to 89\,\%, DNS-like UDP success from 52\,\% to 94\,\%, ping delivery from 47\,\% to 86\,\% and bulk TCP throughput from 0.85 to 1.82\,Mbit/s (of 2.0 offered). Over the whole session 157 rules were installed, all 40 attackers were blocked at some time, four spoofing ports were quarantined 3.2\,s after onset, and \textbf{no legitimate host was blocked}. Repeat offenders were re-blocked 1.3\,s into a new burst, and protocol switching did not bypass the all-protocol rules. Fig.~\ref{fig:legit} shows HTTP success per attack.
+\textbf{Where false positives occur.} The pooled window FPR hides a strong role effect (Table~\ref{tab:role}). Across about 38\,000 client windows per session the FPR is 0, but 24--28\,\% of the victim server's benign windows exceed $\eta$: most of them within 30\,s after an attack and in the later benign periods, none in the first benign period before any attack. The threshold is a pooled quantile, so it is set mostly by client windows; a busy server shortly after an attack looks like an attack to the window score. A per-role calibration is the obvious remedy and is future work.
+
+\begin{table}[t]
+\caption{Window FPR of the proposed score by destination role}
+\label{tab:role}
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccc}
+\toprule
+Session & victim server & other servers & clients \\
+\midrule
+calibration & 29.6\,\% (223) & 1.1\,\% (661) & 0.0\,\% (22\,482) \\
+test\_det & 28.3\,\% (318) & 2.7\,\% (1\,014) & 0.0\,\% (37\,267) \\
+test\_det2 & 24.0\,\% (325) & 1.0\,\% (1\,043) & 0.0\,\% (37\,788) \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize Number of benign windows in parentheses. Victim, first benign period (pre-attack): 0\,\% in both test sessions.
+\end{table}
+
+\subsection{Fresh-seed validation (seed 3)}\label{sec:seed3}
+With all models, thresholds and attribution rules frozen, a new seed with shuffled attack order and 60\,s gaps gives the results in Table~\ref{tab:seed3}. The proposed detector again has the best F1 and detects all nine attack types; its window FPR (0.40\,\%) exceeds the 0.3\,\% budget, i.e.\ calibration does not transfer perfectly. Destination entropy again detects all nine and is the strongest baseline. Without the flow model F1 is 0.71.
+
+\begin{table}[t]
+\caption{Fresh seed 3, frozen configuration (detection-only session)}
+\label{tab:seed3}
+\centering
+\setlength{\tabcolsep}{1.8pt}
+\begin{tabular}{lccccccc}
+\toprule
+Method & Rec. & Prec. & FPR & F1 & Det. & Lat./Pen. & FA/h \\
+\midrule
+pps per destination & 0.57 & 0.62 & 0.19\,\% & 0.59 & 7/9 & 11.7/16.9 & 40 \\
+\quad + fast path & & & & & 7/9 & 7.8/13.8 & 69 \\
+Source-IP entropy & 0.49 & 0.67 & 0.13\,\% & 0.57 & 7/9 & 14.5/21.3 & 23 \\
+\quad + fast path & & & & & 7/9 & 11.0/18.6 & 29 \\
+Dest.-IP entropy & 0.89 & 0.51 & 0.47\,\% & 0.65 & 9/9 & 5.8/5.8 & 37 \\
+\quad + fast path & & & & & 9/9 & 3.8/3.8 & 60 \\
+Flow-ML only & 0.445 & 0.52 & 0.22\,\% & 0.48 & 7/9 & 4.3/10.0 & 49 \\
+\quad + fast path & & & & & 7/9 & 2.7/8.8 & 55 \\
+Levels 2+3 + fast & 0.92 & 0.58 & 0.37\,\% & 0.71 & 9/9 & 3.2/3.2 & 72 \\
+\textbf{Proposed + fast} & \textbf{0.98} & \textbf{0.57} & \textbf{0.40\,\%} & \textbf{0.73} & \textbf{9/9} & \textbf{3.5/3.5} & \textbf{55} \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize 34\,898 destination windows (191 under attack: flow-ML has TP\,=\,85, FP\,=\,77), 9 episodes, 0.35\,h. pps misses low-rate and spoofed; source entropy misses spoofed and protocol switching; flow-ML misses ICMP and SYN.
+\end{table}
+
+The seed-3 mitigation run (Table~\ref{tab:seed3mit}) is the out-of-sample test of the attribution rules that were tuned on seed 2. \textbf{No legitimate host was blocked} (206 rules; all 40 attackers blocked at some time; four spoofing ports quarantined 3.2\,s after onset), so the zero-collateral result holds on a fresh seed. The service benefit, however, is much smaller than on seed 2: legitimate HTTP success during attacks rises only from 44\,\% to 60\,\% on average. Re-attack and spoofed episodes recover almost fully through new rules. The low-rate episode also recovers, but not through attribution: 34 of its 40 bots were still blocked from the preceding SYN flood (post-attack false positives kept the episode open), and only 2 were newly attributed. SYN and protocol switching stay near zero in both runs, and during the UDP and ICMP floods the protected run was \emph{worse} than the unprotected one. In the ICMP episode the first rule came 22.9\,s after onset and only 14 of 40 attackers were blocked by its end; in most confirmed windows 28 of the 40 attackers had no flow counters at all (some of them were blocked later), because the flood saturated the packet-in path and their forwarding entries were never installed. Attribution relies on flow counters, so a flood that defeats flow setup also hides its own sources. In the UDP episode 37 of 40 attackers were blocked within 5.3\,s, yet service did not recover in the remaining window, consistent with a packet-in backlog built up before the rules took effect. Because control-plane collapse is chaotic, single paired episodes are noisy; the per-episode differences in Table~\ref{tab:seed3mit} should be read together, not individually.
+
+\begin{table}[t]
+\caption{Fresh seed 3: paired mitigation (success fractions, no mitigation $\to$ mitigation); attacks in schedule order}
+\label{tab:seed3mit}
+\centering
+\setlength{\tabcolsep}{2.0pt}
+\begin{tabular}{lccccc}
+\toprule
+Attack & 1st rule & New / active & HTTP & UDP query & Ping \\
+\midrule
+Pulsing & 5.8\,s & 39 / 0 of 40 & 0.98$\to$1.00 & 0.99$\to$0.99 & 0.73$\to$0.79 \\
+Mixed & 5.7\,s & 31 / 0 of 40 & 1.00$\to$1.00 & 1.00$\to$1.00 & 0.91$\to$0.92 \\
+TCP SYN & 9.8\,s & 34 / 0 of 40 & 0.00$\to$0.11 & 0.00$\to$0.00 & 0.02$\to$0.17 \\
+Low-rate & 4.4\,s & 2 / 34 of 40 & 0.07$\to$0.95 & 0.00$\to$1.00 & 0.11$\to$1.00 \\
+UDP flood & 5.3\,s & 37 / 0 of 40 & 0.65$\to$0.32 & 0.86$\to$0.65 & 0.17$\to$0.04 \\
+Re-attack & 2.6\,s & 30 / 0 of 30 & 0.26$\to$0.89 & 0.60$\to$0.95 & 0.24$\to$0.95 \\
+ICMP & 22.9\,s & 14 / 0 of 40 & 0.69$\to$0.07 & 0.89$\to$0.44 & 0.35$\to$0.01 \\
+Proto. switch & 3.9\,s & 15 / 7 of 24 & 0.00$\to$0.12 & 0.00$\to$0.29 & 0.00$\to$0.16 \\
+Spoofed & 3.2\,s & 4 of 4 ports & 0.33$\to$0.96 & 0.75$\to$0.99 & 0.59$\to$0.95 \\
+\midrule
+Mean (9) & & & 0.44$\to$0.60 & 0.56$\to$0.70 & 0.35$\to$0.56 \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize 0 legitimate hosts blocked. 60\,s gaps between attacks.
+\end{table}
+
+\subsection{Mitigation and legitimate users (seed 2)}
+Without protection, attacks hurt legitimate users through the data plane (the UDP flood raises HTTP p95 latency from 0.04\,s to 1.04\,s) and through the control plane: at flood onset each attacker sends hundreds of packets before its forwarding entry exists, these fill the rate-limited packet-in queue, and legitimate flows that need a new entry time out. From the ICMP flood onward legitimate service in the unprotected session collapses and does not recover between attacks (Fig.~\ref{fig:pulse}). The per-attack values of the unprotected session after that point therefore include carry-over from earlier attacks.
+
+Table~\ref{tab:mitig} compares the paired sessions and separates new rules from rules already active at onset. Because the same 40 bots are reused, rules installed during one attack still block them in the next unless the destination has recovered in between: 36 of 40 ICMP attackers, 23 of 24 protocol-switching attackers and 26 of 30 re-attack bots were already blocked at onset. The apparent improvement on low-rate UDP (0.06$\to$1.00) is therefore mostly the absence of control-plane collapse in the protected run, not active mitigation: low-rate attackers are detected but never attributed (0/40; each sends well below $\lambda_{\text{rate}}$ and the source score). Averaged over the nine attacks, legitimate HTTP success rises from 48\,\% to 89\,\%; over the five attacks with mainly active, new mitigation (UDP, SYN, pulsing, spoofed, mixed) it rises from 69\,\% to 86\,\%. Over the whole session 157 rules were installed, all 40 attackers were blocked at some time, four spoofing ports were quarantined 3.2\,s after onset, and no legitimate host was blocked.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_timeline_pulsing.png}
-\caption{Pulsing attack (shaded bursts) on the same schedule without and with mitigation: delivered traffic at the victim and legitimate HTTP success (3\,s rolling mean).}
+\caption{Pulsing attack (shaded bursts), same schedule without and with mitigation: delivered traffic at the victim and legitimate HTTP success (3\,s rolling mean).}
 \label{fig:pulse}
 \end{figure}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_legit_http.png}
-\caption{Legitimate HTTP success during each attack, paired sessions without and with mitigation.}
+\caption{Legitimate HTTP success during each attack, paired seed-2 sessions without and with mitigation.}
 \label{fig:legit}
 \end{figure}
 
 \begin{table}[t]
-\caption{Paired mitigation results (no mitigation $\to$ mitigation)}
+\caption{Paired mitigation results, seed 2 (success fractions, no mitigation $\to$ mitigation)}
 \label{tab:mitig}
 \centering
-\setlength{\tabcolsep}{2.4pt}
+\setlength{\tabcolsep}{2.0pt}
 \begin{tabular}{lccccc}
 \toprule
-Attack & 1st rule & Rules & HTTP & UDP query & Ping \\
+Attack & 1st rule & New / active & HTTP & UDP query & Ping \\
 \midrule
-UDP flood & 9.9\,s & 38/40 & 1.00$\to$1.00$^*$ & 1.00$\to$1.00 & 0.99$\to$0.99 \\
-TCP SYN & 6.8\,s & 36/40 & 1.00$\to$1.00 & 1.00$\to$1.00 & 0.98$\to$0.98 \\
-ICMP & 3.7\,s & 1/40 & 0.73$\to$0.74 & 0.80$\to$0.79 & 0.16$\to$0.22 \\
-Low-rate & -- & 0/40 & 0.06$\to$1.00 & 0.00$\to$1.00 & 0.34$\to$0.99 \\
-Pulsing & 6.5\,s & 40/40 & 0.43$\to$1.00 & 0.69$\to$1.00 & 0.33$\to$0.99 \\
-Spoofed & 3.2\,s & 4 ports & 1.00$\to$0.99 & 1.00$\to$1.00 & 0.98$\to$0.98 \\
-Mixed & 3.7\,s & 34/40 & 0.01$\to$0.29 & 0.11$\to$0.66 & 0.02$\to$0.58 \\
-Proto. switch & --$^\ddagger$ & 0/24 & 0.03$\to$1.00 & 0.00$\to$1.00 & 0.10$\to$0.98 \\
-Re-attack & 1.3\,s & 4/30$^\ddagger$ & 0.02$\to$1.00 & 0.07$\to$1.00 & 0.28$\to$0.98 \\
+UDP flood & 9.9\,s & 38 / 0 of 40 & 1.00$\to$1.00$^*$ & 1.00$\to$1.00 & 0.99$\to$0.99 \\
+TCP SYN & 6.8\,s & 36 / 0 of 40 & 1.00$\to$1.00 & 1.00$\to$1.00 & 0.98$\to$0.98 \\
+ICMP & 3.7\,s & 1 / 36 of 40 & 0.73$\to$0.74 & 0.80$\to$0.79 & 0.16$\to$0.22 \\
+Low-rate & -- & 0 / 0 of 40 & 0.06$\to$1.00$^\S$ & 0.00$\to$1.00 & 0.34$\to$0.99 \\
+Pulsing & 6.5\,s & 40 / 0 of 40 & 0.43$\to$1.00 & 0.69$\to$1.00 & 0.33$\to$0.99 \\
+Spoofed & 3.2\,s & 4 of 4 ports & 1.00$\to$0.99 & 1.00$\to$1.00 & 0.98$\to$0.98 \\
+Mixed & 3.7\,s & 34 / 0 of 40 & 0.01$\to$0.29 & 0.11$\to$0.66 & 0.02$\to$0.58 \\
+Proto. switch & -- & 0 / 23 of 24 & 0.03$\to$1.00 & 0.00$\to$1.00 & 0.10$\to$0.98 \\
+Re-attack & 1.3\,s & 4 / 26 of 30 & 0.02$\to$1.00 & 0.07$\to$1.00 & 0.28$\to$0.98 \\
 \midrule
-Mean & & & 0.48$\to$0.89 & 0.52$\to$0.94 & 0.47$\to$0.86 \\
+Mean (9) & & & 0.48$\to$0.89 & 0.52$\to$0.94 & 0.47$\to$0.86 \\
 \bottomrule
 \end{tabular}\\[2pt]
-\footnotesize Rules: new rules installed during the attack; 0 legitimate hosts blocked in every row. $^*$HTTP p95 latency 1.04\,s$\to$0.04\,s. $^\ddagger$Most bots still blocked from earlier episodes.
+\footnotesize New: rules installed during the attack; active: attackers already blocked at onset. 0 legitimate hosts blocked. The spoofed flood (4 hosts, 480--720\,pps in total) stays below the per-switch packet-in limit and the link capacity, so it causes no collapse on its own in this session. $^*$\,HTTP p95 latency 1.04\,s$\to$0.04\,s. $^\S$\,Detected, not attributed; the gain is the absence of carry-over collapse.
 \end{table}
 
+\textbf{The ICMP case.} The original reading of this row (``1 of 40 attributed live, 38 of 40 offline'') was wrong: 36 attackers were already blocked at onset by the all-protocol rules from the SYN episode, while the offline replay starts without rules and therefore attributes them again. Stepping the live configuration through the mitigation session's own telemetry confirms this (over the confirmed windows, 37 attackers ``already blocked''---the 36 blocked at onset plus the one attributed 3.7\,s in---2 without traffic to the victim, 1 qualifying). The remaining service loss during that segment is not explained by unblocked attack traffic: service collapses about 14\,s after onset and stays down after the attack ends, together with a packet-in surge of 550--1\,400\,pps that blocked attackers cannot cause. We have not identified its root cause; a synchronised re-installation of forwarding entries under the packet-in limit is a candidate.
+
 \subsection{Attribution ablation}\label{sec:ablation}
-The final attribution rule was reached through three earlier mitigation runs on the same schedule (Table~\ref{tab:abl}). Without a per-source baseline, steady legitimate senders to the victim (video streams, bulk transfers) look like flood sources and nine were blocked. The baseline removed most of them; the remaining blocks were traced to one-window rate spikes caused by re-installed flow entries (e.g.\ a 104\,pps stream measured at 629\,pps), which the counter-delta correction and two-window persistence removed. Each change was validated offline by replaying a detection-only session before the next live run. Attacker coverage stayed at 97--98\,\% throughout.
+The final attribution rule was reached through three earlier mitigation runs on the seed-2 schedule (Table~\ref{tab:abl}); this is tuning on that schedule, which is why the zero-collateral result on seed 2 is in-sample and the seed-3 run is the out-of-sample check. Over the common horizon of the first three attacks (UDP, SYN, ICMP), only v1 blocked legitimate hosts; v2 and v3 blocked video streams later, during low-rate and pulsing attacks, through one-window rate spikes of re-installed entries (e.g.\ a 104\,pps stream measured at 629\,pps), which the counter correction of Eq.~(\ref{eq:delta}) and persistence removed. Each change was first checked offline by replaying the seed-2 detection-only session. Attacker coverage, defined as the mean over attack episodes of the share of that episode's bots with an active rule at some time during the episode (including rules carried over), stayed at 97--98\,\% in every run; it does not measure per-episode attribution (low-rate bots, for instance, are never attributed).
 
 \begin{table}[t]
-\caption{Collateral blocking in successive mitigation runs}
+\caption{Legitimate hosts blocked in successive mitigation runs (seed 2)}
 \label{tab:abl}
 \centering
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{llcc}
 \toprule
-Run & Attribution & Attackers & Legit blocked \\
+Run & Attribution & First 3 attacks & Full session \\
 \midrule
-v1 & score + corroborated rate rule$^\S$ & 40 & 9 \\
-v2 & + baseline $\beta\mu_{s,d}$ & 40 & 6 \\
-v3 & + counter fix, new-source corr. & 40 & 5 \\
-\textbf{final} & \textbf{+ 2-window persistence} & \textbf{40} & \textbf{0} \\
+v1 & score + corroborated rate rule & 9 & (stopped) \\
+v2 & + baseline $\beta\mu_{s,d}$ & 0 & 6 \\
+v3 & + counter fix, new-source corr. & 0 & 5 \\
+\textbf{final} & \textbf{+ 2-window persistence} & \textbf{0} & \textbf{0} \\
 \bottomrule
-\end{tabular}\\[2pt]
-\footnotesize $^\S$stopped after 5 of 14 segments.
+\end{tabular}
 \end{table}
 
-\subsection{Limitations}
-ICMP floods are detected but their sources are not attributed live (1 of 40), although the same rule attributed 38 of 40 in an offline replay; mixed UDP+SYN floods only partly recover. Window precision (0.65) and 30--67 false-alarm episodes per hour across $\approx$100 destinations remain the main open problem for every method. All results come from one machine (8 cores, WSL2) with one calibration and two held-out sessions of the same seed; the attribution rules were refined while observing mitigation runs on the test schedule, so a fresh seed would be a cleaner confirmation. Traffic is scripted, not real user traces.
+\subsection{Calibration capacity}\label{sec:cap}
+To test whether the capacity mismatch matters, we repeated the calibration session (seed 1) at the test capacity of 25\,Mbit/s, refitted all models and thresholds on it with the same recipe, and re-evaluated all three held-out detection sessions (Table~\ref{tab:cap}). It matters: the window threshold rises from 0.844 to 0.980, and the detector improves on every session (F1 +0.02 to +0.05), with a realised window FPR within the 0.3\,\% budget on all three, including the fresh seed. Destination entropy recalibrated at 25\,Mbit/s becomes much more precise and ties with the detector on test\_det2 (0.82 vs.\ 0.82), but it misses 2 of 18 and 2 of 9 episodes and takes about 11\,s, while the detector still detects every episode in 3--5\,s. The rate, source-entropy and flow-ML baselines change little. Two consequences: calibration must be done at the operating capacity, and the fast-path threshold must be set relative to $\eta$; at 25\,Mbit/s $\eta=0.980>\eta_f=0.97$, so the fast path degenerates to 1-of-1 confirmation and raises false-alarm episodes (25 to 49 per hour on seed 2, 5.8 to 63 on seed 3). The main results above use the original 50\,Mbit/s calibration as run; the 25\,Mbit/s calibration with a quantile-defined fast path (Section~\ref{sec:cusum}) is the configuration we recommend.
+
+\begin{table}[t]
+\caption{Window F1 (FPR) after calibrating at 50 vs.\ 25\,Mbit/s}
+\label{tab:cap}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lcccc}
+\toprule
+Session & Proposed, 50 & Proposed, 25 & DstEnt, 50 & DstEnt, 25 \\
+\midrule
+test\_det & 0.75 (0.30\,\%) & 0.80 (0.21\,\%) & 0.73 (0.31\,\%) & 0.73 (0.05\,\%) \\
+test\_det2 & 0.80 (0.22\,\%) & 0.82 (0.19\,\%) & 0.76 (0.21\,\%) & 0.82 (0.04\,\%) \\
+seed 3 & 0.73 (0.40\,\%) & 0.78 (0.29\,\%) & 0.65 (0.47\,\%) & 0.74 (0.03\,\%) \\
+\midrule
+Episodes & 27/27 & 27/27 & 26/27 & 23/27 \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize Proposed: 2-of-3 confirmation. pps, source entropy and flow-ML stay at F1 0.42--0.59 under both calibrations.
+\end{table}
+
+\subsection{CUSUM, per-role thresholds and a quantile fast path}\label{sec:cusum}
+Table~\ref{tab:cusum} evaluates three alternatives offline on the three held-out detection sessions, for both calibrations. (i) A quantile-defined fast path ($\varepsilon_f=0.1\,\%$, giving $\eta_f=0.998>\eta$ in both calibrations) removes the 25\,Mbit/s degeneracy: false-alarm episodes fall from 44--63 to 30--43 per hour while all episodes are still detected in 3.2--4.2\,s. (ii) Page's CUSUM on the same window score, with $h$ matched on calibration, gives a delay--false-alarm trade-off similar to our heuristic: slightly faster with the 50\,Mbit/s models, slower but with fewer false alarms with the 25\,Mbit/s models. The 2-of-3 rule is therefore not better than standard sequential detection; it is simply an equivalent, more transparent choice. (iii) Separate thresholds for servers and clients at 0.3\,\% each push the server threshold to about 1.0 and destroy recall (F1 0.02--0.24): benign windows of the victim shortly after an attack score as high as attack windows. The server false positives are thus an intrinsic limitation of the window features, not merely an artefact of pooled calibration; per-destination normalisation of the features is the more promising remedy.
+
+\begin{table}[t]
+\caption{Offline alternatives on the three held-out sessions (test\_det / test\_det2 / seed 3): mean latency (s) and false-alarm episodes per hour}
+\label{tab:cusum}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{llcc}
+\toprule
+Calib. & Confirmation rule & Latency & FA/h \\
+\midrule
+50 & fixed $\eta_f=0.97$ & 3.3 / 3.0 / 3.5 & 47 / 44 / 55 \\
+50 & quantile $\eta_f$ & 4.9 / 4.2 / 4.7 & 47 / 34 / 46 \\
+50 & CUSUM ($h=0.08$) & 3.1 / 2.4 / 3.2 & 37 / 47 / 72 \\
+25 & fixed $\eta_f$ (degenerate) & 3.3 / 2.5 / 3.2 & 44 / 54 / 63 \\
+25 & \textbf{quantile $\eta_f$} &\textbf{4.2 / 3.2 / 3.7} & \textbf{30 / 37 / 43} \\
+25 & CUSUM ($h=0.02$) & 4.2 / 4.0 / 5.4 & 24 / 34 / 37 \\
+\midrule
+50 / 25 & per-role thresholds & F1 0.02--0.04 / 0.13--0.24 & 54--158 \\
+\bottomrule
+\end{tabular}\\[2pt]
+\footnotesize All rows except per-role detect 9/9 episodes in every session; per-role detects 0--1/9 (50) and 5--7/9 (25).
+\end{table}
+
+\subsection{Limitations}\label{sec:limits}
+Mitigation benefit did not transfer fully to the fresh seed (Table~\ref{tab:seed3mit}); attribution cannot see sources whose forwarding entries are never installed. False positives concentrate on the busy victim server (Table~\ref{tab:role}), and false-alarm episodes (30--89 per hour across $\approx$100 destinations for all methods) remain the main open problem. Low-rate attackers are detected but not attributed. The ICMP-segment control-plane collapse is unexplained. The confirmation rule has no formal false-alarm guarantee. Anti-spoofing assumes one address per host port; behind NAT or on shared ports a quarantine blocks legitimate users too, and a single \texttt{(src,dst)} rule against a NAT address blocks every user behind it. New heavy legitimate senders that appear during an attack, and slowly ramping attackers, are edge cases of the attribution rule. Testbed forwarding entries aggregate connections per host pair and protocol, unlike the 5-tuple training flows of Level~1. Episodes reuse the same 40 bots, so per-attack mitigation results include carry-over. All results come from one machine (8 cores, WSL2), with three held-out sessions; traffic is scripted.
 
 %=====================================================================
 \section{Conclusion}
-We formulated DDoS defence in SDN as quickest detection under a false-alarm budget combined with goodput-maximising, collateral-free block-set selection, and implemented a controller that solves a plug-in version of both problems. Destination-centric window features over a two-dataset flow model detect nine attack types on a 200-host network with F1 0.78 and 3.2\,s mean latency, better than standard rate and entropy baselines, and baseline-aware, persistence-filtered attribution with protocol-agnostic and anti-spoofing rules raises legitimate service during attacks from 48\,\% to 89\,\% without blocking any legitimate host. The experiments also show that the flow classifier is not where the gains come from, that single-dataset flow models do not transfer, and that the collateral constraint is the hard part of mitigation at scale. Future work is attribution for ICMP and mixed floods, fewer false alarms through per-destination adaptive thresholds, and validation on real traces and hardware switches.
+We cast DDoS defence in SDN as quickest detection under a single-window false-alarm budget combined with goodput-maximising, collateral-free block-set selection, and implemented a plug-in controller for it. Destination-centric window features over a two-dataset flow model detect nine attack types on a 200-host network with the best F1 among standard SDN baselines on the tuning schedule (0.78) and on a fresh seed with frozen configuration (0.73), at about 3\,s mean latency. The flow model contributes about 0.04 F1; the larger part of the gain comes from the window and attribution layers. Baseline-aware, persistence-filtered attribution with protocol-agnostic and anti-spoofing rules blocked no legitimate host on either seed, and raised legitimate service during attacks from 48\,\% to 89\,\% on the tuning schedule but only from 44\,\% to 60\,\% on a fresh seed; part of the seed-2 gain is avoided carry-over collapse rather than active mitigation. An offline CUSUM on the same score performs about as well as our confirmation rule, so the rule's value is transparency rather than better sequential detection. The main open problems are false positives at busy servers, which per-role thresholds cannot fix without losing recall, attribution when a flood prevents flow setup (packet-in evidence could fill this gap), low-rate attribution, and validation on real traces and hardware switches.
 
 %=====================================================================
 \begin{thebibliography}{00}
@@ -357,14 +539,17 @@ We formulated DDoS defence in SDN as quickest detection under a false-alarm budg
 \bibitem{shin2013avant} S. Shin, V. Yegneswaran, P. Porras, and G. Gu, ``AVANT-GUARD: Scalable and vigilant switch flow management in software-defined networks,'' in \emph{Proc. ACM CCS}, 2013, pp. 413--424.
 \bibitem{wang2015floodguard} H. Wang, L. Xu, and G. Gu, ``FloodGuard: A DoS attack prevention extension in software-defined networks,'' in \emph{Proc. IEEE/IFIP DSN}, 2015, pp. 239--250.
 \bibitem{sommer2010outside} R. Sommer and V. Paxson, ``Outside the closed world: On using machine learning for network intrusion detection,'' in \emph{Proc. IEEE Symp. Security and Privacy}, 2010, pp. 305--316.
+\bibitem{arp2022dos} D. Arp \emph{et al.}, ``Dos and don'ts of machine learning in computer security,'' in \emph{Proc. USENIX Security Symp.}, 2022, pp. 3971--3988.
 \bibitem{braga2010lightweight} R. Braga, E. Mota, and A. Passito, ``Lightweight DDoS flooding attack detection using NOX/OpenFlow,'' in \emph{Proc. IEEE LCN}, 2010, pp. 408--415.
 \bibitem{mousavi2015early} S. M. Mousavi and M. St-Hilaire, ``Early detection of DDoS attacks against SDN controllers,'' in \emph{Proc. Int. Conf. Computing, Networking and Communications (ICNC)}, 2015, pp. 77--81.
 \bibitem{giotis2014combining} K. Giotis, C. Argyropoulos, G. Androulidakis, D. Kalogeras, and V. Maglaris, ``Combining OpenFlow and sFlow for an effective and scalable anomaly detection and mitigation mechanism on SDN environments,'' \emph{Comput. Netw.}, vol. 62, pp. 122--136, 2014.
+\bibitem{novaes2020lstm} M. P. Novaes, L. F. Carvalho, J. Lloret, and M. L. Proen\c{c}a Jr., ``Long short-term memory and fuzzy logic for anomaly detection and mitigation in software-defined network environment,'' \emph{IEEE Access}, vol. 8, pp. 83765--83781, 2020.
 \bibitem{bawany2017ddos} N. Z. Bawany, J. A. Shamsi, and K. Salah, ``DDoS attack detection and mitigation using SDN: Methods, practices, and solutions,'' \emph{Arabian J. Sci. Eng.}, vol. 42, no. 2, pp. 425--441, 2017.
 \bibitem{tang2016deep} T. A. Tang, L. Mhamdi, D. McLernon, S. A. R. Zaidi, and M. Ghogho, ``Deep learning approach for network intrusion detection in software defined networking,'' in \emph{Proc. Int. Conf. Wireless Networks and Mobile Communications (WINCOM)}, 2016, pp. 258--263.
-\bibitem{niyaz2017deep} Q. Niyaz, W. Sun, and A. Y. Javaid, ``A deep learning based DDoS detection system in software-defined networking (SDN),'' \emph{EAI Endorsed Trans. Security and Safety}, vol. 4, no. 12, 2017.
+\bibitem{niyaz2017deep} Q. Niyaz, W. Sun, and A. Y. Javaid, ``A deep learning based DDoS detection system in software-defined networking (SDN),'' \emph{EAI Endorsed Trans. Security and Safety}, vol. 4, no. 12, Art. no. e2, 2017.
 \bibitem{sharafaldin2019ddos} I. Sharafaldin, A. H. Lashkari, S. Hakak, and A. A. Ghorbani, ``Developing realistic distributed denial of service (DDoS) attack dataset and taxonomy,'' in \emph{Proc. IEEE Int. Carnahan Conf. Security Technology (ICCST)}, 2019, pp. 1--8.
 \bibitem{sharafaldin2018toward} I. Sharafaldin, A. H. Lashkari, and A. A. Ghorbani, ``Toward generating a new intrusion detection dataset and intrusion traffic characterization,'' in \emph{Proc. Int. Conf. Information Systems Security and Privacy (ICISSP)}, 2018, pp. 108--116.
+\bibitem{fayaz2015bohatei} S. K. Fayaz, Y. Tobioka, V. Sekar, and M. Bailey, ``Bohatei: Flexible and elastic DDoS defense,'' in \emph{Proc. USENIX Security Symp.}, 2015, pp. 817--832.
 \bibitem{rfc2827} P. Ferguson and D. Senie, ``Network ingress filtering: Defeating denial of service attacks which employ IP source address spoofing,'' IETF RFC 2827 (BCP 38), 2000.
 \bibitem{rfc7039} J. Wu, J. Bi, M. Bagnulo, F. Baker, and C. Vogt, ``Source Address Validation Improvement (SAVI) framework,'' IETF RFC 7039, 2013.
 \bibitem{page1954continuous} E. S. Page, ``Continuous inspection schemes,'' \emph{Biometrika}, vol. 41, no. 1/2, pp. 100--115, 1954.

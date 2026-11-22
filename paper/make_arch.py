@@ -34,7 +34,7 @@ box(1, 2, 22, 40, "Data plane\n(Mininet + Open vSwitch)\n\n25 OpenFlow 1.3 switc
 # controller pipeline
 box(30, 31, 19, 11, "Counter tracker\nper-window deltas\n$x_f(t)$ (max over path)", YEL)
 box(30, 17, 19, 11, "Level 1: flow ML\nHGB, 7 features\nCIC-DDoS2019\n+ CSE-CIC-IDS2018", ORANGE)
-box(30, 2, 19, 12, "Level 2: destination\nwindow features $\\phi_d(t)$\n(19) and per-source\nfeatures $\\phi_{s,d}(t)$ (10)", AQUA)
+box(30, 2, 19, 12, "Level 2: destination\nwindow features $\\phi_d(t)$\n(19) and per-pair\nfeatures $\\phi_{s,d}(t)$ (10)", AQUA)
 box(56, 24, 20, 18, "Level 3: decision\nlogistic score $s_d(t)$\nk-of-n + fast confirm\n+ repeat offenders\nstate machine", YEL)
 box(56, 2, 20, 18, "Attribution $B_d(t)$\nrate floor, source score,\nbaseline $\\beta\\mu_{s,d}$,\ncorroboration,\n2-window persistence", AQUA)
 box(82, 24, 17, 18, "Mitigation\n(src,dst) drop rule\nall protocols, at the\nattacker's ingress\nswitch; hold-down", ORANGE)

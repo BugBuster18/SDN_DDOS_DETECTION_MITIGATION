@@ -23,7 +23,7 @@ plt.rcParams.update({"font.size": 10, "axes.edgecolor": INK2, "axes.labelcolor":
 
 
 def fig_cross_dataset():
-    d = pd.read_csv(ROOT / "experiments/results/flow_multidataset/cross_dataset_metrics.csv")
+    d = pd.read_csv(ROOT / "experiments/results/flow_multidataset_v2/cross_dataset_metrics.csv")
     h = d[d.model == "Hist Gradient Boosting"].pivot(index="train", columns="test", values="balanced_accuracy")
     h = h.loc[["CIC-DDoS2019", "CSE-CIC-IDS2018", "Combined"], ["CIC-DDoS2019", "CSE-CIC-IDS2018"]]
     fig, ax = plt.subplots(figsize=(6.2, 3.0))
@@ -34,7 +34,7 @@ def fig_cross_dataset():
         for r, v in zip(b, h[col]):
             ax.text(r.get_x() + r.get_width() / 2, v + 0.015, "%.3f" % v, ha="center", fontsize=8, color=INK)
     ax.axhline(0.5, color=INK2, lw=1, ls="--")
-    ax.text(2.55, 0.51, "chance", fontsize=8, color=INK2, ha="right")
+    ax.text(-0.55, 0.515, "chance", fontsize=8, color=INK2, ha="left")
     ax.set_xticks(x, ["trained on\nCIC-DDoS2019", "trained on\nCSE-CIC-IDS2018", "trained on\nboth (deployed)"])
     ax.set_ylim(0, 1.1)
     ax.set_ylabel("balanced accuracy")

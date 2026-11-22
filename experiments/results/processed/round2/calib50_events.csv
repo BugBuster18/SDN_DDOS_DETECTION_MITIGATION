@@ -1,0 +1,13 @@
+config,detected,lat,lat_pen,FA_per_h,session
+proposed 2-of-3 + fast 0.97,9/9,3.32,3.32,47.0,large_test_det
+proposed 2-of-3 + quantile fast,9/9,4.87,4.87,47.0,large_test_det
+per-role thresholds 2-of-3,1/9,0.73,42.19,87.3,large_test_det
+CUSUM on s_d (h=0.08),9/9,3.09,3.09,36.9,large_test_det
+proposed 2-of-3 + fast 0.97,9/9,3.0,3.0,43.6,large_test_det2
+proposed 2-of-3 + quantile fast,9/9,4.19,4.19,33.6,large_test_det2
+per-role thresholds 2-of-3,1/9,1.66,42.3,67.1,large_test_det2
+CUSUM on s_d (h=0.08),9/9,2.42,2.42,47.0,large_test_det2
+proposed 2-of-3 + fast 0.97,9/9,3.49,3.49,54.6,large_test3_det
+proposed 2-of-3 + quantile fast,9/9,4.74,4.74,46.0,large_test3_det
+per-role thresholds 2-of-3,0/9,,45.44,158.2,large_test3_det
+CUSUM on s_d (h=0.08),9/9,3.24,3.24,71.9,large_test3_det
